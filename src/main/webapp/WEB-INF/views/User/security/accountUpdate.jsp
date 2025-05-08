@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보 수정 페이지</title>
-<script src="/JS/check.js"></script>
+<title>회원정보 수정페이지</title>
+<script src="/JS/checkForm.js"></script>
 </head>
 <body>
 	<h3>회원정보수정</h3>

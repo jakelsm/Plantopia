@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<script src="/JS/check.js"></script>
+<script src="/JS/checkForm.js"></script>
 </head>
 <body>
 	<h3>회원가입</h3>
@@ -16,12 +16,12 @@
 		이름 : <input type="text" name="user_name" id="user_name"> <br>
 		닉네임 : <input type="text" name="user_nickname" id="user_nickname"> <br>
 		주소 : <input type="text" name="roadAddrPart1" id="roadAddrPart1" size="30" readonly> 
-			  <input type="button" value="주소검색" onclick="goPopup();"> <br>
+			  <input type="button" value="주소검색" onclick="goPopup()"> <br>
 		상세주소 : <input type="text" name="addrDetail" id="addrDetail" readonly> <br>
 		우편번호 : <input type="text" name="zipNo" id="zipNo" readonly> <br>
 		이메일 : <input type="text" name="user_email" id="user_email"> <br>
 		연락처 : <input type="text" name="user_tel" id="user_tel"> <br>
-		<input type="submit" value="회원가입">
+		<input type="button" value="회원가입" onclick="check()">
 		<input type="reset" value="가입취소">
 	</form>
 </body>

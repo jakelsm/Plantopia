@@ -11,8 +11,6 @@ function jusoCallBack(roadAddrPart1, addrDetail, zipNo){
 function check(){
 	let form = document.member;
 	
-	// if(!form.id.value)
-	// if(form.getElementById("id").value=="")
 	if(form.user_id.value == "") {
 		alert("아이디를 입력하세요!");
 		form.user_id.focus();
