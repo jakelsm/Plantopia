@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.PlantMapper">
+	<select id="selectPlantList" resultType="com.plantopia.dto.PlantDto">
+		select pla_idx,pla_title,pla_date,pla_hit_cnt from Plant
+	</select>
+	
+	<insert id="insertPlant" parameterType="com.plantopia.dto.PlantDto">
+		insert into Plant (pla_title,pla_contents,pla_img,pla_date) 
+		 values(#{pla_title},#{pla_contents},#{pla_img},NOW())
+	</insert>
+	
+	<update id="updateHitCount" parameterType="int">
+		update Plant set pla_hit_cnt = pla_hit_cnt +1 where pla_idx =#{plaIdx} 
+	</update>
+	
+	<select id="selectPlantDetail" parameterType="int" resultType="com.plantopia.dto.PlantDto">
+		select pla_idx,pla_title,pla_contents,pla_date,pla_hit_cnt from Plant 
+		 where pla_idx = #{pla_idx}
+	</select>
+	
+	<update id="updatePlant">
+		update Plant set pla_title=#{pla_title},pla_contents=#{pla_contents},pla_date=NOW()  
+		 where pla_idx = #{pla_idx}
+	</update>
+	
+	<delete id="deletePlant">
+		delete from Plant where pla_idx = #{pla_idx}
+	</delete>
+	
+	
+</mapper>        
+        
