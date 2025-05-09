@@ -9,12 +9,12 @@
 </head>
 <body>
 	<h3>회원정보수정</h3>
-	<form name="member" id="member" method="post" action="memberUpdateOk">
+	<form name="member" id="member" method="post" action="accountUpdateOk">
 		<input type="hidden" name="user_num" value="${dto.user_num}">
-		아이디 : ${dto.user_id} <br>
+		아이디 : <input type="text" name="user_id" id="user_id" value="${dto.user_id}" readonly> <br>
 		비밀번호 : <input type="password" name="user_passwd" id="user_passwd"> <br>
 		비밀번호 확인 : <input type="password" name="passwdconfirm" id="passwdconfirm"> <br>
-		이름 : ${dto.user_name} <br>
+		이름 : <input type="text" name="user_name" id="user_name" value="${dto.user_name}" readonly> <br>
 		닉네임 : <input type="text" name="user_nickname" id="user_nickname"> <br>
 		주소 : <input type="text" name="roadAddrPart1" id="roadAddrPart1" size="30" value="${dto.roadAddrPart1}" readonly> 
 			  <input type="button" value="주소검색" onclick="goPopup();"> <br>

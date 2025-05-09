@@ -23,11 +23,18 @@
 	</insert>
 	
 	<update id="updateUser" parameterType="com.plantopia.dto.UserDto">
-		<![CDATA[
-			update User 
-			 set roadAddrPart1=#{roadAddrPart1}, addrDetail=#{addrDetail}, zipNo=#{zipNo}
-			 where user_num=#{user_num}
-		]]>
+	    <![CDATA[
+	        update User 
+	        set 
+	            user_passwd = #{user_passwd},
+	            user_nickname = #{user_nickname},
+	            roadAddrPart1 = #{roadAddrPart1},
+	            addrDetail = #{addrDetail},
+	            zipNo = #{zipNo},
+	            user_email = #{user_email},
+	            user_tel = #{user_tel}
+	        where user_num = #{user_num}
+	    ]]>
 	</update>
 	
 	<delete id="deleteUser" parameterType="int">
@@ -35,4 +42,22 @@
 			delete from User where user_num=#{user_num}
 		]]>
 	</delete>
+	
+	<select id="findByUserId" parameterType="String" resultType="com.plantopia.dto.UserDto">
+		<![CDATA[
+    		select * from User where user_id=#{user_id}
+    	]]>
+	</select>
+	
+	<select id="findByUserNickname" parameterType="String" resultType="com.plantopia.dto.UserDto">
+		<![CDATA[
+    		select * from User where user_nickname=#{user_nickname}
+    	]]>
+	</select>
+	
+	<select id="findByUserEmail" parameterType="String" resultType="com.plantopia.dto.UserDto">
+		<![CDATA[
+    		select * from User where user_email=#{user_email}
+    	]]>
+	</select>
 </mapper>

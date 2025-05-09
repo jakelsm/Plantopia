@@ -38,8 +38,8 @@
 			<td>${dto.user_tel}</td>
 			<td>${dto.user_authority}</td>
 			<td>
-				<a href="accountUpdate?num=${dto.user_num}">수정</a> /
-				<a href="accountDelete?num=${dto.user_num}">삭제</a>
+				<a href="accountUpdate?user_num=${dto.user_num}">수정</a> /
+				<a href="accountDelete?user_num=${dto.user_num}">삭제</a>
 			</td>
 		</tr>
 	</c:forEach>
