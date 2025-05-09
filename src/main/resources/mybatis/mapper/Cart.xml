@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.ICartDao">
+	<select id="getCartbyUser" resultType="com.plantopia.dto.CartDto">
+		select s.p_name as pname ,c.c_img as cimg ,c.c_price as cprice, c.c_amount as c_amount, c.p_idx as p_idx, c.user_num as user_num, c.c_idx as c_idx
+		 from Store s join Cart c 
+		 on s.p_idx = c.p_idx 
+		 where user_num = #{user_num} 
+		 order by c.c_idx desc 
+	</select>
+	
+	<select id="getCartbyIdx" resultType="com.plantopia.dto.CartDto">
+    	select * from Cart 
+    	 where c_idx = #{c_idx}
+	</select>
+	
+	<insert id="insertCart" parameterType="com.plantopia.dto.CartDto">
+		insert into Cart(c_img, c_price, c_amount, p_idx, user_num) 
+		 values(#{cimg} , #{cprice}, #{c_amount}, #{p_idx}, #{user_num})
+	</insert>
+	
+	<update id="updateCart" parameterType="com.plantopia.dto.CartDto">
+		update Cart 
+		 set c_price=#{cprice}, c_amount =#{c_amount}
+		 where c_idx = #{c_idx}
+	</update>
+	
+	<delete id="deleteCart" parameterType="int">
+		delete from Cart
+		 where c_idx = #{c_idx}
+	</delete>
+	
+</mapper>
