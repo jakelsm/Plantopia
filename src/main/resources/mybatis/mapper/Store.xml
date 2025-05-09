@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.IStoreDao">
+	<select id="getAllStore" resultType="com.plantopia.dto.StoreDto">
+		select * from Store order by p_idx desc 
+	</select>
+	
+	<select id="getStore" resultType="com.plantopia.dto.StoreDto">
+		select * from Store where p_idx = #{p_idx}
+	</select>
+	
+	<insert id="insertStore" parameterType="com.plantopia.dto.StoreDto">
+		insert into Store(p_name,p_img,p_price,p_description,p_stockQuantity)
+		 values(#{p_name},#{p_img},#{p_price},#{p_description},#{p_stockQuantity})
+	</insert>
+	
+	<update id="updateStore" parameterType="com.plantopia.dto.StoreDto">
+		update Store 
+		 set p_name=#{p_name}, p_img=#{p_img}, p_price=#{p_price}, p_description=#{p_description}, p_stockQuantity=#{p_stockQuantity}, p_addedDate=#{p_addedDate}
+		 where p_idx = #{p_idx}
+	</update>
+	
+	<delete id="deleteStore" parameterType="int">
+		delete from Store 
+		 where p_idx = #{p_idx}
+	</delete>
+	
+	<select id="searchStore" resultType="com.plantopia.dto.StoreDto">
+		select * from Store 
+		 where p_name like #{keyword}
+	</select>
+	
+	<select id="getStorePaging" resultType="com.plantopia.dto.StoreDto">
+		select * from Store
+		 order by p_idx desc
+		 LIMIT #{limit} OFFSET #{offset} 
+	</select>
+	
+	<select id="getTotalStoreCount" resultType="int">
+		select count(*) from Store 
+	</select>
+</mapper>
