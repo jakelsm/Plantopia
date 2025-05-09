@@ -14,5 +14,4 @@ public interface PlantMapper {
 	PlantDto selectPlantDetail(int plaIdx) throws Exception;
 	void updatePlant(PlantDto plant) throws Exception;
 	void deletePlant(int plaIdx) throws Exception;
-	 
 }

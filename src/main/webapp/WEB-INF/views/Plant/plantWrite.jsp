@@ -9,9 +9,10 @@
 </head>
 <body>
 	<h3>게시판 작성</h3>
-	<form name="plantForm" method="post" action="plantWriteProc">
+	<form name="plantForm" method="post" action="plantWriteProc" enctype="multipart/form-data">
 		제목 : <input type="text" name="plaTitle"> <br>
 		내용 : <textarea name="plaContents" rows="5" cols="40"></textarea> <br>
+		<input type="file" name="plaImg" multiple> <br>
 		<input type="submit" value="글 작성">
 	</form>
 </body>
