@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 작성</title>
+<title>게시글 수정</title>
 </head>
 <body>
-	<h3>게시판 작성</h3>
-	<form name="plantForm" method="post" action="/plantWriteProc" enctype="multipart/form-data">
+	<h3>게시글 수정</h3>
+	<form name="plantUpdate" method="post" action="plantUpdateProc" enctype="multipart/form-data">
 		제목 : <input type="text" name="pla_title"> <br>
 		내용 : <textarea name="pla_contents" rows="5" cols="40"></textarea> <br>
-		<input type="file" name="imgFile"> <br>
-		<input type="submit" value="글 작성">
+		<input type="file" name="imgFile">
+		<input type="submit" value="수정">
 	</form>
 </body>
 </html>

@@ -17,8 +17,8 @@
 		</tr>
 		<c:forEach var="dto" items="${plantList}">
 		<tr>
-			<th>${dto.plaIdx}</th>
-			<th>${dto.plaTitle}</th>
+			<th>${dto.pla_idx}</th>
+			<th>${dto.pla_title}</th>
 			<th>삭제</th>
 		</tr>
 		</c:forEach>

@@ -9,7 +9,7 @@ public class PlantConfiguration implements WebMvcConfigurer {
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/upload/plant/**")
-				.addResourceLocations("file:///C:/Springboot/Plantopia/path/src/main/webapp/upload/plant/");
+		registry.addResourceHandler("/img/plant/**")
+				.addResourceLocations("file:///C:/upload/img/plant/");
 	}
 }

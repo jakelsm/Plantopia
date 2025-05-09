@@ -10,8 +10,8 @@ import com.plantopia.dto.PlantDto;
 public interface PlantMapper {
 	List<PlantDto> selectPlantList() throws Exception;
 	void insertPlant(PlantDto plant) throws Exception;
-	void updateHitCount(int plaIdx) throws Exception;
-	PlantDto selectPlantDetail(int plaIdx) throws Exception;
+	void updateHitCount(int pla_idx) throws Exception;
+	PlantDto selectPlantDetail(int pla_idx) throws Exception;
 	void updatePlant(PlantDto plant) throws Exception;
-	void deletePlant(int plaIdx) throws Exception;
+	void deletePlant(int pla_idx) throws Exception;
 }

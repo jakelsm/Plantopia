@@ -29,7 +29,5 @@
 	<delete id="deletePlant">
 		delete from Plant where pla_idx = #{pla_idx}
 	</delete>
-	
-	
 </mapper>        
         

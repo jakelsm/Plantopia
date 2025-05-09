@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantopia.dao.PlantMapper;
 import com.plantopia.dto.PlantDto;
@@ -23,7 +24,7 @@ public class PlantService {
 		
 	}
 	
-	public PlantDto selectPlantDetail(int plaIdx) throws Exception {
+	public PlantDto selectPlantDetail(@RequestParam("plaIdx") int plaIdx) throws Exception {
 		plantMapper.updateHitCount(plaIdx);
 		PlantDto plant = plantMapper.selectPlantDetail(plaIdx);
 		
@@ -34,7 +35,7 @@ public class PlantService {
 		plantMapper.updatePlant(plant);
 	}
 	
-	public void deletePlant(int plaIdx) throws Exception {
+	public void deletePlant(@RequestParam("plaIdx") int plaIdx) throws Exception {
 		plantMapper.deletePlant(plaIdx);
 	}
 	

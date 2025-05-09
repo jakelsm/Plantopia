@@ -2,16 +2,18 @@ package com.plantopia.dto;
 
 import java.time.LocalDateTime;
 
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
 public class PlantDto {
-	private int plaIdx;
-	private String plaTitle;
-	private String plaContents;
-	private String plaImg;
-	private LocalDateTime plaDate;
-	private int plaHitCnt;
-	private int userNum;
+	private int pla_idx;
+	private String pla_title;
+	private String pla_contents;
+	private String pla_img;
+	private LocalDateTime pla_date;
+	private int pla_hit_cnt;
+	private int user_num;
 }
 	

@@ -9,10 +9,8 @@
 </head>
 <body>
 	<h3>게시글 상세보기</h3>
-	제목 : ${plant.plaTitle} <br>
-	<c:if test="${not empty plant.plaImg}">
-		<img src="/upload/plant/${plant.plaImg}" width="300" />
-	</c:if>
-	내용 : ${plant.plaContents} <br>
+	제목 : ${plant.pla_title} <br>
+	<img src="/img/plant/${plant.pla_img}" alt="#" width="600" height="600"/> <br>
+	내용 : ${plant.pla_contents} <br>
 </body>
 </html>
