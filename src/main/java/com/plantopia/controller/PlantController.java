@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantopia.dto.PlantDto;
 import com.plantopia.service.PlantService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class PlantController {
@@ -25,17 +24,22 @@ public class PlantController {
 	}
 	
 	@RequestMapping("/plantWrite")
-	public String plantWrite() {
+	public String plantWrite() throws Exception {
 		return "plantWrite";
 	}
 	
 	@RequestMapping("/plantWriteProc")
-	public String plantWriteProc( ) throws Exception {
-		PlantDto plant = new PlantDto();
-		
-		
+	public String plantWriteProc(PlantDto plant) throws Exception {
+		plantService.insertPlant(plant);
 		return "redirect:/plantList";
 	}
 	
+	@RequestMapping("/plantDetail")
+	public String plantDetail(@RequestParam("plaIdx") int plaIdx,Model model) throws Exception {
+		PlantDto plant = plantService.selectPlantDetail(plaIdx);
+		model.addAttribute("plant", plant);
+		
+		return "plantDetail";
+	}
 	
 }

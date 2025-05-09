@@ -23,16 +23,18 @@ public class PlantService {
 		
 	}
 	
-	PlantDto selectPlantDetail(int plaIdx) throws Exception {
+	public PlantDto selectPlantDetail(int plaIdx) throws Exception {
 		plantMapper.updateHitCount(plaIdx);
-		return plantMapper.selectPlantDetail(plaIdx);
+		PlantDto plant = plantMapper.selectPlantDetail(plaIdx);
+		
+		return plant;
 	}
 	
-	void updatePlant(PlantDto plant) throws Exception { 
+	public void updatePlant(PlantDto plant) throws Exception { 
 		plantMapper.updatePlant(plant);
 	}
 	
-	void deletePlant(int plaIdx) throws Exception {
+	public void deletePlant(int plaIdx) throws Exception {
 		plantMapper.deletePlant(plaIdx);
 	}
 	

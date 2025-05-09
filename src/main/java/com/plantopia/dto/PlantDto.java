@@ -14,3 +14,4 @@ public class PlantDto {
 	private int plaHitCnt;
 	private int userNum;
 }
+	
