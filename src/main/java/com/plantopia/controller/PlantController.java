@@ -10,15 +10,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.plantopia.dto.PlantCommentDto;
 import com.plantopia.dto.PlantDto;
+import com.plantopia.service.PlantCommentService;
 import com.plantopia.service.PlantService;
+import com.plantopia.service.PostLikeService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class PlantController {
 	@Autowired
 	private PlantService plantService;
+	
+	@Autowired
+    PlantCommentService plantCommentService;
+
+    @Autowired
+    PostLikeService postLikeService;
 	
 	@RequestMapping("/Plant/plantList")
 	public String plantList(Model model) throws Exception {
@@ -60,10 +70,21 @@ public class PlantController {
 		return "redirect:/Plant/plantList";
 	}
 	
-	@RequestMapping("/Plant/plantDetail")
-	public String plantDetail(@RequestParam("pla_idx") int pla_idx,Model model) throws Exception {
-		PlantDto plant = plantService.selectPlantDetail(pla_idx);
-		model.addAttribute("plant", plant);
+	@RequestMapping("/Plant/plantDetail") // 게시글 상세보기
+	public String plantDetail(@RequestParam("pla_idx") int pla_idx,
+							  HttpSession session ,Model model) throws Exception {
+		
+		int user_num = (int) session.getAttribute("user_num");
+
+	    PlantDto plant = plantService.selectPlantDetail(pla_idx); // 게시글 정보
+	    List<PlantCommentDto> commentList = plantCommentService.selectComments(pla_idx); // 댓글 목록
+	    int likeCount = postLikeService.countLike(pla_idx); // 좋아요 수
+	    boolean userLiked = postLikeService.hasUserLiked(pla_idx, user_num); // 현재 사용자가 좋아요 눌렀는지
+
+	    model.addAttribute("plant", plant);
+	    model.addAttribute("commentList", commentList);
+	    model.addAttribute("likeCount", likeCount);
+	    model.addAttribute("userLiked", userLiked);
 		
 		return "Plant/plantDetail";
 	}

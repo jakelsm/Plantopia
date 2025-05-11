@@ -12,31 +12,29 @@ import com.plantopia.dto.PlantDto;
 @Service
 public class PlantService {
 	@Autowired
-	private PlantMapper plantMapper;
-	
+	PlantMapper plantMapper;
 	
 	public List<PlantDto> selectPlantList() throws Exception {
 		return plantMapper.selectPlantList();
 	}
 	
-	public void insertPlant(PlantDto plant) throws Exception {
-		plantMapper.insertPlant(plant);
-		
+	public int insertPlant(PlantDto plant) throws Exception {
+		return plantMapper.insertPlant(plant);
 	}
 	
-	public PlantDto selectPlantDetail(@RequestParam("plaIdx") int plaIdx) throws Exception {
+	public PlantDto selectPlantDetail(int plaIdx) throws Exception {
 		plantMapper.updateHitCount(plaIdx);
 		PlantDto plant = plantMapper.selectPlantDetail(plaIdx);
 		
 		return plant;
 	}
 	
-	public void updatePlant(PlantDto plant) throws Exception { 
-		plantMapper.updatePlant(plant);
+	public int updatePlant(PlantDto plant) throws Exception { 
+		return plantMapper.updatePlant(plant);
 	}
 	
-	public void deletePlant(@RequestParam("plaIdx") int plaIdx) throws Exception {
-		plantMapper.deletePlant(plaIdx);
+	public int deletePlant(int plaIdx) throws Exception {
+		return plantMapper.deletePlant(plaIdx);
 	}
 	
 }
