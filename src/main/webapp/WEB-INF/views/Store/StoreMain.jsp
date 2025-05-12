@@ -37,7 +37,7 @@
 <body>
 	<form name="StoreMain" id="StoreMain" method="post" action="/addStore">
 	<h2>Plantopia 쇼핑몰</h2>
-	<a href="getCartList?user_num=1">장바구니</a> <!-- ${sessionScope.user_num} -->
+	<a href="getCartList?user_num=${sessionScope.user_num}">장바구니</a> <!-- ${sessionScope.user_num} -->
 	<div class="container">
 	<c:forEach var="dto" items="${lists}">	
 	<div class="store-item">
