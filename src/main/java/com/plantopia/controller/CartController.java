@@ -1,0 +1,96 @@
+package com.plantopia.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.plantopia.dto.CartDto;
+import com.plantopia.service.CartService;
+import com.plantopia.service.StoreService;
+
+@Controller
+public class CartController {
+	
+	@Autowired
+	CartService cartService;
+	
+	@Autowired
+	StoreService storeService;
+	
+	// 1. 장바구니 리스트 보기(특정 사용자)
+	@RequestMapping("/getCartList")
+	public String getCartList(@RequestParam("user_num") int user_num, Model model) throws Exception {
+		model.addAttribute("cartList", cartService.getCartbyUser(user_num));
+		return "Store/CartList";
+	}
+	
+	// 2. 장바구니 담기 기능
+	@RequestMapping("/addCart")
+	public String addCart(@RequestParam("p_idx") int p_idx,						 
+						 @RequestParam("cimg") String cimg,
+						 @RequestParam("c_amount") int c_amount,
+						 @RequestParam("user_num") int user_num,
+						 Model model) throws Exception {
+		//@RequestParam("user_num") 추가하기
+		
+		int unitPrice = storeService.getStore(p_idx).getP_price();
+		int totalPrice = unitPrice * c_amount;
+		
+		// int user_num = (int) session.getAttribute("user_num"); 로그인 구현 후 수정
+		user_num = 1; // 테스트용 
+		
+		CartDto cartDto = new CartDto();
+		cartDto.setP_idx(p_idx);
+		cartDto.setUser_num(user_num);
+		cartDto.setCimg(cimg);
+		cartDto.setC_amount(c_amount);
+		cartDto.setCprice(totalPrice);
+		
+		cartService.insertCart(cartDto);
+									
+		return "redirect:/getCartList?user_num=" + user_num;
+	}
+	
+	// 3. 장바구니 물품 수정 
+	@RequestMapping("/CartUpdate")
+	public String CartUpdate(@RequestParam("c_idx") int c_idx,Model model) throws Exception{
+		CartDto cartDto = cartService.getCartbyIdx(c_idx);
+		model.addAttribute("cart", cartDto);
+		return "Store/CartUpdateForm";
+		
+	}
+	
+	@RequestMapping("/CartUpdateProcess")
+	public String CartUpdateProcess(@RequestParam("c_idx") int c_idx,
+									@RequestParam("c_amount") int c_amount,
+									@RequestParam("user_num") int user_num
+									) throws Exception {
+				
+		CartDto originCart = cartService.getCartbyIdx(c_idx); // 현재 장바구니 항목 조회
+		
+		
+		int unitPrice = storeService.getStore(originCart.getP_idx()).getP_price(); // 상품 테이블에서 단가 조회
+		
+		CartDto cartDto = new CartDto();
+		cartDto.setC_idx(c_idx);
+		cartDto.setC_amount(c_amount);
+		cartDto.setCprice(unitPrice * c_amount);
+			
+		cartService.updateCart(cartDto);
+		
+		return "redirect:/getCartList?user_num=" + user_num;	
+	}
+		
+	
+	// 4. 장바구니 물품 삭제
+	@RequestMapping("/CartDelete")
+	public String CartDelete(@RequestParam("c_idx") int c_idx,
+							@RequestParam("user_num") int user_num
+							) throws Exception {		
+		cartService.deleteCart(c_idx);		
+		return "redirect:/getCartList?user_num=" + user_num;
+	}
+	
+}

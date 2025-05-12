@@ -6,7 +6,7 @@
 	<select id="getCommentByProduct" resultType="com.plantopia.dto.StoreCommentDto">
 		select * from Store_Comment 
 		 where p_idx= #{p_idx}
-		 order by scom_idx desc
+		 order by scom_idx asc
 	</select>
 	
 	<select id="getCommentByIdx" resultType="com.plantopia.dto.StoreCommentDto">
