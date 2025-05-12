@@ -15,9 +15,9 @@ public class StoreCommentService {
 		IStoreCommentDao storeCommentDao;
 	
 		// 1. 스토어 후기 보기
-		public List<StoreCommentDto> getCommentByProduct(@Param("p_idx") int p_idx) throws Exception{
-			return storeCommentDao.getCommentByProduct(p_idx);
-		}
+		//public List<StoreCommentDto> getCommentByProduct(@Param("p_idx") int p_idx) throws Exception{
+			//return storeCommentDao.getCommentByProduct(p_idx);
+		//}
 		
 		// 2. 특정 스토어 후기 하나만 보기 
 		public StoreCommentDto getCommentByIdx(@Param("scom_idx") int scom_idx) throws Exception {

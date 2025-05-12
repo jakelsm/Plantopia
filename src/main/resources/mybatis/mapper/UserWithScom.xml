@@ -4,9 +4,9 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.plantopia.dao.IUserWithScomDao">
 	<select id="getCommentWithUserByProduct" resultType="com.plantopia.dto.UserWithScomDto">
-		select sc.scom_idx as scom_idx, sc.scom_contents as scom_contents, sc.user_num as user_num, u.user_nickname as user_nickname 
+		select sc.scom_idx as scom_idx, sc.scom_contents as scom_contents, sc.user_num as user_num, u.user_nickname as user_nickname  
 		 from Store_Comment sc join user u 
-		 on sc.user_num = u.user_num 
-		 where sc.p_idx = #{p_idx} 		
+		 on sc.user_num = u.user_num  
+		 where sc.p_idx = #{p_idx}  		
 	</select>
 </mapper>

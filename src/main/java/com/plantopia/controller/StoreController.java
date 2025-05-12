@@ -4,13 +4,14 @@ import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.plantopia.dto.StoreCommentDto;
+import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.StoreDto;
 import com.plantopia.dto.UserWithScomDto;
 import com.plantopia.service.StoreCommentService;
@@ -49,15 +50,26 @@ public class StoreController {
 	// 2. 스토어 후기 보기
 	//  + 스토어 게시판 상세 조회	
 		@RequestMapping("/StoreDetail")
-		public String StoreDetail(@RequestParam("p_idx") int p_idx,Model model) throws Exception {
+		public String StoreDetail(@RequestParam("p_idx") int p_idx,Model model,@AuthenticationPrincipal CustomUserDetails user) throws Exception {			
 			// 상품 정보
 			StoreDto store = storeService.getStore(p_idx);
 			model.addAttribute("store", store);
-			// 후기 리스트
-			//List<StoreCommentDto> comment = commentService.getCommentByProduct(p_idx);
+			// 후기 리스트		
 			List<UserWithScomDto> commentList = userScomService.getCommentWithUserByProduct(p_idx);
 			model.addAttribute("commentList", commentList);
-			//model.addAttribute("comment", comment);
+			
+			if (user != null) {
+		        model.addAttribute("user_num", user.getUser_num());
+		        model.addAttribute("user_nickname", user.getUser_nickname());
+		    } else {
+		        model.addAttribute("user_num", null);
+		        model.addAttribute("user_nickname", null);
+		    }
+			
+			if (user != null) {
+			    System.out.println(">>> 로그인한 사용자 번호: " + user.getUser_num());
+			    System.out.println(">>> 로그인한 닉네임: " + user.getUser_nickname());
+			}
 			
 			return "Store/StoreDetail";
 		}

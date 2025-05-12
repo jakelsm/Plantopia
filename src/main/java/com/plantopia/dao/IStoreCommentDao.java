@@ -10,7 +10,7 @@ import com.plantopia.dto.StoreCommentDto;
 @Mapper
 public interface IStoreCommentDao {
 		// 1. 스토어 후기 보기
-		public List<StoreCommentDto> getCommentByProduct(@Param("p_idx") int p_idx) throws Exception;
+		//public List<StoreCommentDto> getCommentByProduct(@Param("p_idx") int p_idx) throws Exception;
 		
 		// 2. 특정 스토어 후기 하나만 보기
 		public StoreCommentDto getCommentByIdx(@Param("scom_idx") int scom_idx) throws Exception;
