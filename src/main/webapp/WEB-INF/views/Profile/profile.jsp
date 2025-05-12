@@ -20,7 +20,8 @@
 			</tr>
 		</table>
 	</fieldset>	
-		
+	<p><a href="accountUpdate?user_num=${profile.user_num}">회원정보수정</a> /
+		<a href="accountDelete?user_num=${profile.user_num}">회원탈퇴</a></p>	
 	<!-- 향후 확장 영역: 별점 평균, 작성글 목록 등 -->
 		
 	<p><a href="${pageContext.request.contextPath}/loginTest">뒤로</a></p>

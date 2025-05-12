@@ -9,7 +9,7 @@ public class PlantopiaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PlantopiaApplication.class, args);
-//		String enc = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("12345678");
+//		String enc = PasswordEncoderFactories.createDelegatingPasswordEncoder().encode("admin1234");
 //		System.out.println(enc);
 	}
 

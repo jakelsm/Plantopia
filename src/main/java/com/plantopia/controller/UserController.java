@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -127,14 +128,37 @@ public class UserController {
 	}
 	
 	@RequestMapping("accountUpdateOk")
-	public String memberUpdateOk(UserDto dto) throws Exception {
+	public String memberUpdateOk(UserDto dto, @AuthenticationPrincipal CustomUserDetails principal) throws Exception {
 		iuserdao.updateUser(dto);
+		
+		// ① 비밀번호를 새로 입력했으면 암호화
+        if (dto.getUser_passwd() != null && !dto.getUser_passwd().isEmpty()) {
+            String raw = dto.getUser_passwd();
+            dto.setUser_passwd(passwordEncoder.encode(raw));
+        }
+
+        // ② DB 업데이트
+        iuserdao.updateUser(dto);
+		
+        // ③ 본인이 수정한 경우 프로필로, 아니라면 리스트로
+		if (dto.getUser_num() == principal.getUser_num()) {
+            return "redirect:/profile";
+        }
 		return "redirect:accountList";
 	}
 	
 	@RequestMapping("accountDelete")
-	public String memberDelete(@Param("user_num") Integer user_num) throws Exception {
+	public String memberDelete(@Param("user_num") Integer user_num, @AuthenticationPrincipal CustomUserDetails principal) throws Exception {
 		iuserdao.deleteUser(user_num);
+		
+		// ② 자신이 탈퇴한 거라면 로그아웃 후 로그인 화면으로,
+        //    관리자가 삭제한 거라면 /accountList 로
+        if (user_num.equals(principal.getUser_num())) {
+            // (선택) 세션 클리어
+            SecurityContextHolder.clearContext();
+            return "redirect:/login";
+        }
+        // 관리자가 삭제한 경우 리스트로
 		return "redirect:accountList";
 	}
 }

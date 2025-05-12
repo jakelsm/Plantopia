@@ -35,7 +35,14 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeHttpRequests()
-                .requestMatchers("/accountList").hasRole("admin")
+            	// 관리자 전용 페이지, 스토어 게시판 제품 추가, 수정, 삭제 가능
+                .requestMatchers("/accountList", "/addStore", "/StoreUpdate",
+                        "/StoreDelete").hasRole("admin")
+                // 로그인·회원가입·프로필·로그아웃는 모두 허용
+                .requestMatchers("/", "/login", "/loginProc", "/logout",
+                        "/accountForm", "/accountWrite",
+                        "/profile", "/profile/**", "/StoreMain", "/StoreDetail", "/StoreSearch").permitAll()
+                // 나머지는 인증만 필요(user 권한)
                 .anyRequest().permitAll()
             .and()
             .formLogin()
