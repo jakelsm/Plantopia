@@ -2,12 +2,7 @@
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.plantopia.dao.IStoreCommentDao">
-	<select id="getCommentByProduct" resultType="com.plantopia.dto.StoreCommentDto">
-		select * from Store_Comment 
-		 where p_idx= #{p_idx}
-		 order by scom_idx asc
-	</select>
+<mapper namespace="com.plantopia.dao.IStoreCommentDao">	
 	
 	<select id="getCommentByIdx" resultType="com.plantopia.dto.StoreCommentDto">
 		select * from Store_Comment 
@@ -15,9 +10,8 @@
 	</select>
 	
 	<insert id="insertStoreComment">
-	<!-- user_num추가하기 -->
-		insert into Store_Comment(scom_contents,p_idx) 
-		 values(#{scom_contents},#{p_idx})
+		insert into Store_Comment(scom_contents,p_idx,user_num) 
+		 values(#{scom_contents},#{p_idx},#{user_num})
 	</insert>
 	
 	<update id="updateStoreComment">

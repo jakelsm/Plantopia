@@ -1,15 +1,15 @@
 package com.plantopia.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.StoreCommentDto;
 import com.plantopia.service.StoreCommentService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class StoreCommentController {
@@ -25,15 +25,21 @@ public class StoreCommentController {
 	
 	@RequestMapping("/addCommentProcess")	
 	public String addCommentProcess(@RequestParam("scom_contents") String scom_contents,
-									@RequestParam("p_idx") int p_idx
+									@RequestParam("p_idx") int p_idx,									
+									@AuthenticationPrincipal CustomUserDetails user
 									) throws Exception {
 		
-		//int user_num = 1;
-		// @RequestParam("user_num") int user_num 추가 
+		
+		if (user == null) {
+			return "redirect:/login";
+		}
+		
+		int user_num = user.getUser_num();	
+		
 		StoreCommentDto commentDto = StoreCommentDto.builder()
 									.scom_contents(scom_contents)
 									.p_idx(p_idx)
-									//.user_num(user_num)
+									.user_num(user_num)
 									.build();
 		
 		commentService.insertStoreComment(commentDto);

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h3>회원 정보 리스트</h3>
-	<table border="1" width="1000">
+	<table border="1" width="1500">
 		<tr>
 			<th>번호</th>
 			<th>아이디</th>
