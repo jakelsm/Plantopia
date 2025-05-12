@@ -25,7 +25,8 @@ public class StoreCommentController {
 	
 	@RequestMapping("/addCommentProcess")	
 	public String addCommentProcess(@RequestParam("scom_contents") String scom_contents,
-									@RequestParam("p_idx") int p_idx
+									@RequestParam("p_idx") int p_idx,
+									@RequestParam("user_num") int user_num
 									) throws Exception {
 		
 		//int user_num = 1;
@@ -33,7 +34,7 @@ public class StoreCommentController {
 		StoreCommentDto commentDto = StoreCommentDto.builder()
 									.scom_contents(scom_contents)
 									.p_idx(p_idx)
-									//.user_num(user_num)
+									.user_num(user_num)
 									.build();
 		
 		commentService.insertStoreComment(commentDto);

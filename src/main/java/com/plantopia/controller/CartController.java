@@ -10,6 +10,8 @@ import com.plantopia.dto.CartDto;
 import com.plantopia.service.CartService;
 import com.plantopia.service.StoreService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class CartController {
 	
@@ -30,16 +32,23 @@ public class CartController {
 	@RequestMapping("/addCart")
 	public String addCart(@RequestParam("p_idx") int p_idx,						 
 						 @RequestParam("cimg") String cimg,
-						 @RequestParam("c_amount") int c_amount,
-						 @RequestParam("user_num") int user_num,
+						 @RequestParam("c_amount") int c_amount,						 
+						 HttpSession session,
 						 Model model) throws Exception {
-		//@RequestParam("user_num") 추가하기
 		
+		Integer user_num = (Integer) session.getAttribute("user_num");
+		
+		
+		if(user_num == null) {
+			return "redirect:login";
+		}
+			
 		int unitPrice = storeService.getStore(p_idx).getP_price();
 		int totalPrice = unitPrice * c_amount;
 		
-		// int user_num = (int) session.getAttribute("user_num"); 로그인 구현 후 수정
-		user_num = 1; // 테스트용 
+		
+		//Integer user_num = (Integer) session.getAttribute("user_num");
+		
 		
 		CartDto cartDto = new CartDto();
 		cartDto.setP_idx(p_idx);
@@ -47,6 +56,7 @@ public class CartController {
 		cartDto.setCimg(cimg);
 		cartDto.setC_amount(c_amount);
 		cartDto.setCprice(totalPrice);
+		cartDto.setUser_num(user_num);
 		
 		cartService.insertCart(cartDto);
 									

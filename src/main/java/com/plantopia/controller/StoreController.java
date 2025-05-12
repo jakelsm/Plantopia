@@ -12,8 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.plantopia.dto.StoreCommentDto;
 import com.plantopia.dto.StoreDto;
+import com.plantopia.dto.UserWithScomDto;
 import com.plantopia.service.StoreCommentService;
 import com.plantopia.service.StoreService;
+import com.plantopia.service.UserWithScomService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -24,6 +26,9 @@ public class StoreController {
 	
 	@Autowired
 	StoreCommentService commentService;
+	
+	@Autowired
+	UserWithScomService userScomService;
 	
 	// 1. 스토어 게시판 전체 조회
 	@RequestMapping("/StoreMain")
@@ -49,8 +54,10 @@ public class StoreController {
 			StoreDto store = storeService.getStore(p_idx);
 			model.addAttribute("store", store);
 			// 후기 리스트
-			List<StoreCommentDto> commentList = commentService.getCommentByProduct(p_idx);
+			//List<StoreCommentDto> comment = commentService.getCommentByProduct(p_idx);
+			List<UserWithScomDto> commentList = userScomService.getCommentWithUserByProduct(p_idx);
 			model.addAttribute("commentList", commentList);
+			//model.addAttribute("comment", comment);
 			
 			return "Store/StoreDetail";
 		}

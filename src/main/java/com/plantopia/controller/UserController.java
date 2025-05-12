@@ -18,6 +18,8 @@ import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.UserDto;
 import com.plantopia.service.ProfileService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class UserController {
 	@Autowired
@@ -92,8 +94,11 @@ public class UserController {
 	
 	// 2) 로그인 성공 확인용 (필요 없으면 삭제 가능)
 	@RequestMapping("loginTest")
-	public String loginTest(@AuthenticationPrincipal CustomUserDetails user, Model model) {
-	    if (user != null) {
+	public String loginTest(@AuthenticationPrincipal CustomUserDetails user, Model model, HttpSession session) {
+	    if (user != null) {	    	
+	    	session.setAttribute("user_num", user.getUser_num());
+	        session.setAttribute("user_nickname", user.getUser_nickname());
+	        
 	        model.addAttribute("loginInfo", user);
 	        return "User/security/loginSuccess"; // 로그인 성공 후 확인용 JSP
 	    } else {
