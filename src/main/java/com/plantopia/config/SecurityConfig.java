@@ -35,7 +35,7 @@ public class SecurityConfig {
         http
             .csrf().disable()
             .authorizeHttpRequests()
-                .requestMatchers("User/admin/accountList").hasRole("admin")
+                .requestMatchers("/accountList").hasRole("admin")
                 .anyRequest().permitAll()
             .and()
             .formLogin()
@@ -51,7 +51,7 @@ public class SecurityConfig {
                     // 로그아웃 성공 시 바로 /login으로 리다이렉트
                     .logoutSuccessUrl("/login")
                     .permitAll()
-                );
+            	);
         return http.build();
     }
 }

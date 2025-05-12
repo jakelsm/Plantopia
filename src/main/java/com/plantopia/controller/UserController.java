@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.plantopia.dao.IUserDao;
 import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.UserDto;
+import com.plantopia.service.ProfileService;
 
 @Controller
 public class UserController {
@@ -25,14 +26,22 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	@Autowired
+    private ProfileService profileService;   // ← 추가
+	
 	@RequestMapping("/")
 	public String root() {
-		return "User/security/accountForm";
+		return "User/security/login";
 	}
 	
 	@RequestMapping("popup")
 	public String popup() {
 		return "User/security/jusoPopup";
+	}
+	
+	@RequestMapping("/accountForm")
+	public String accountForm() {
+	    return "User/security/accountForm";
 	}
 	
 	@RequestMapping("accountWrite")
@@ -47,6 +56,10 @@ public class UserController {
 		// 비밀번호 암호화 후 저장
 		dto.setUser_passwd(passwordEncoder.encode(dto.getUser_passwd()));
 		iuserdao.insertUser(dto);
+		
+		// User insert 후 반환된 dto.getUser_num()으로 Profile 생성
+        profileService.createProfile(dto.getUser_num());
+		
 		return "redirect:accountList";
 	}
 	
