@@ -31,7 +31,7 @@ public class CartController {
 	// 2. 장바구니 담기 기능
 	@RequestMapping("/addCart")
 	public String addCart(@RequestParam("p_idx") int p_idx,						 
-						 @RequestParam("cimg") String cimg,
+						 @RequestParam("c_img") String c_img,
 						 @RequestParam("c_amount") int c_amount,						 
 						 HttpSession session,
 						 Model model) throws Exception {
@@ -53,9 +53,9 @@ public class CartController {
 		CartDto cartDto = new CartDto();
 		cartDto.setP_idx(p_idx);
 		cartDto.setUser_num(user_num);
-		cartDto.setCimg(cimg);
+		cartDto.setC_img(c_img);
 		cartDto.setC_amount(c_amount);
-		cartDto.setCprice(totalPrice);
+		cartDto.setC_price(totalPrice);
 		cartDto.setUser_num(user_num);
 		
 		cartService.insertCart(cartDto);
@@ -86,7 +86,7 @@ public class CartController {
 		CartDto cartDto = new CartDto();
 		cartDto.setC_idx(c_idx);
 		cartDto.setC_amount(c_amount);
-		cartDto.setCprice(unitPrice * c_amount);
+		cartDto.setC_price(unitPrice * c_amount);
 			
 		cartService.updateCart(cartDto);
 		

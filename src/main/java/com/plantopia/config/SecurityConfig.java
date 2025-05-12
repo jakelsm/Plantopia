@@ -41,7 +41,8 @@ public class SecurityConfig {
                 // 로그인·회원가입·프로필·로그아웃는 모두 허용
                 .requestMatchers("/", "/login", "/loginProc", "/logout",
                         "/accountForm", "/accountWrite",
-                        "/profile", "/profile/**", "/StoreMain", "/StoreDetail", "/StoreSearch").permitAll()
+                        "/profile", "/profile/**", "/StoreMain", "/StoreDetail", "/StoreSearch",
+                        "/getCartList", "/addCart", "/CartUpdate", "/CartDelete").permitAll()
                 // 나머지는 인증만 필요(user 권한)
                 .anyRequest().permitAll()
             .and()

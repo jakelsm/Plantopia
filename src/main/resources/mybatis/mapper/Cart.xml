@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.plantopia.dao.ICartDao">
 	<select id="getCartbyUser" resultType="com.plantopia.dto.CartDto">
-		select s.p_name as pname ,c.c_img as cimg ,c.c_price as cprice, c.c_amount as c_amount, c.p_idx as p_idx, c.user_num as user_num, c.c_idx as c_idx
+		select s.p_name as p_name ,c.c_img as c_img ,c.c_price as c_price, c.c_amount as c_amount, c.p_idx as p_idx, c.user_num as user_num, c.c_idx as c_idx
 		 from Store s join Cart c 
 		 on s.p_idx = c.p_idx 
 		 where user_num = #{user_num} 
@@ -18,12 +18,12 @@
 	
 	<insert id="insertCart" parameterType="com.plantopia.dto.CartDto">
 		insert into Cart(c_img, c_price, c_amount, p_idx, user_num) 
-		 values(#{cimg} , #{cprice}, #{c_amount}, #{p_idx}, #{user_num})
+		 values(#{c_img} , #{c_price}, #{c_amount}, #{p_idx}, #{user_num})
 	</insert>
 	
 	<update id="updateCart" parameterType="com.plantopia.dto.CartDto">
 		update Cart 
-		 set c_price=#{cprice}, c_amount =#{c_amount}
+		 set c_price=#{c_price}, c_amount =#{c_amount}
 		 where c_idx = #{c_idx}
 	</update>
 	

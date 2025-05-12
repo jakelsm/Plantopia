@@ -33,7 +33,7 @@
 				제품 가격 : ${store.p_price} <br>
 				제품 수량 : ${store.p_stockQuantity} <br>
 				등록된 시간 : ${store.p_addedDate} <br>		
-				<input type="hidden" name="cimg" value="${store.p_img}">
+				<input type="hidden" name="c_img" value="${store.p_img}">
 				<input type="hidden" name="p_idx" value="${store.p_idx}">				
 				
 				<input type="hidden" name="c_price" value="${store.p_price}">
