@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+           "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.IProfileDao">
+  <select id="selectProfileByUserNum" parameterType="int" resultType="com.plantopia.dto.ProfileDto">
+    select
+      p.pro_num,
+      p.user_num,
+      u.user_nickname as userNickname,
+      u.user_email as userEmail
+     from Profile p
+     join User u on p.user_num = u.user_num
+     where p.user_num=#{user_num}
+     LIMIT 1
+  </select>
+  
+  <insert id="insertProfile" parameterType="int">
+    insert into Profile (user_num)
+    values (#{user_num})
+  </insert>
+</mapper>

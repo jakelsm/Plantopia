@@ -27,7 +27,7 @@ public class StoreController {
 	
 	// 1. 스토어 게시판 전체 조회
 	@RequestMapping("/StoreMain")
-	public String StoreMain(@RequestParam(defaultValue="1") int page, Model model) throws Exception {
+	public String StoreMain(@RequestParam(defaultValue="1",name = "page") int page, Model model) throws Exception {
 		
 		int pageSize = 8; 
 		
@@ -41,7 +41,7 @@ public class StoreController {
 		return "Store/StoreMain";
 	}
 	
-	// 1. 스토어 후기 보기
+	// 2. 스토어 후기 보기
 	//  + 스토어 게시판 상세 조회	
 		@RequestMapping("/StoreDetail")
 		public String StoreDetail(@RequestParam("p_idx") int p_idx,Model model) throws Exception {

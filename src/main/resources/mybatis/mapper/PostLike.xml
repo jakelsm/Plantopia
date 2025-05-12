@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.PostLikeMapper">
+
+    <!-- 좋아요 추가 -->
+    <insert id="insertLike">
+        INSERT INTO PostLike (pla_idx, user_num)
+         VALUES (#{pla_idx}, #{user_num})
+    </insert>
+
+    <!-- 좋아요 취소 -->
+    <delete id="deleteLike">
+        DELETE FROM PostLike
+         WHERE pla_idx = #{pla_idx} AND user_num = #{user_num}
+    </delete>
+
+    <!-- 특정 게시글의 좋아요 개수 조회 -->
+    <select id="countLike" resultType="int">
+        SELECT COUNT(*) FROM PostLike WHERE pla_idx = #{pla_idx}
+    </select>
+
+    <!-- 특정 사용자가 해당 글에 좋아요 눌렀는지 확인 -->
+    <select id="checkIfLiked" resultType="int">
+        SELECT COUNT(*) FROM PostLike
+         WHERE pla_idx = #{pla_idx} AND user_num = #{user_num}
+    </select>
+
+</mapper>

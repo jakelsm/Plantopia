@@ -14,19 +14,25 @@ public class PlantCommentService {
 	 private PlantCommentMapper plantCommentMapper;
 	 
 	 public int insertComment(PlantCommentDto dto) throws Exception {
-	        if (dto.getPlacom_root() == null) {
-	            dto.setPlacom_indent(0);
-	            dto.setPlacom_step(0);
-	            plantCommentMapper.insertComment(dto);
-	            dto.setPlacom_root(dto.getPlacom_idx());
-	        } else {
-	            int newStep = plantCommentMapper.getMaxStep(dto.getPlacom_root()) + 1;
-	            plantCommentMapper.updateStepAfter(newStep, dto.getPla_idx());
-	            dto.setPlacom_step(newStep);
-	            dto.setPlacom_indent(dto.getPlacom_indent() + 1);
-	        }
+		 if (dto.getPlacom_root() == null) {
+		        // 최상위 댓글
+		        dto.setPlacom_indent(0);
+		        dto.setPlacom_step(0);
+		        plantCommentMapper.insertComment(dto); // 1번만 insert
 
-	        return plantCommentMapper.insertComment(dto);
+		        // 2. 방금 등록된 댓글의 placom_idx를 root로 다시 update
+		        plantCommentMapper.updateRoot(dto.getPlacom_idx());
+		        
+		        return 1;
+		    } else {
+		        // 대댓글
+		        int newStep = plantCommentMapper.getMaxStep(dto.getPlacom_root()) + 1;
+		        plantCommentMapper.updateStepAfter(newStep, dto.getPla_idx());
+		        dto.setPlacom_step(newStep);
+		        dto.setPlacom_indent(dto.getPlacom_indent() + 1);
+
+		        return plantCommentMapper.insertComment(dto);
+		    }
 	    }
 
 	    public List<PlantCommentDto> selectComments(int pla_idx) throws Exception {
@@ -40,4 +46,9 @@ public class PlantCommentService {
 	    public int deleteComment(int placom_idx) throws Exception {
 	        return plantCommentMapper.deleteComment(placom_idx);
 	    }
+	    
+	    public PlantCommentDto selectCommentDetail(int placom_idx) throws Exception {
+	        return plantCommentMapper.selectCommentDetail(placom_idx);
+	    }
+
 }

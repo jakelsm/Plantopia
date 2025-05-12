@@ -19,6 +19,13 @@
         <p>로그인된 사용자 ID: ${loginId}</p>
     </c:if>
     
+    <!-- 프로필 페이지로 이동하는 버튼 -->
+    <p>
+      <a href="${pageContext.request.contextPath}/profile">
+        프로필 페이지
+      </a>
+    </p>
+    
     <!-- 로그아웃 링크: 클릭 시 /logout 호출 → 시큐리티가 세션 무효화 후 /login으로 이동 -->
     <p><a href="<c:url value='/logout'/>">로그아웃</a></p>
 </body>

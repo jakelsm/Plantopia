@@ -8,11 +8,11 @@
 </head>
 <body>
 	<h3>댓글 수정</h3>
-	<form action="/Plant/plantList/comment/update" method="post">
-	    <input type="hidden" name="placom_idx" value="${param.placom_idx}" />
-	    <input type="hidden" name="pla_idx" value="${param.pla_idx}" />
-		작성자 :
-	    내용 : <textarea name="placom_contents" rows="4" cols="50">${param.placom_contents}</textarea><br>
+	<form action="/Plant/plantList/comment/updateProc" method="post">
+	    <input type="hidden" name="placom_idx" value="${dto.placom_idx}" />
+	    <input type="hidden" name="pla_idx" value="${pla_idx}" />
+		작성자 : ${nickname} <br>
+	    내용 : <textarea name="placom_contents" rows="4" cols="50">${dto.placom_contents}</textarea><br>
 	    <input type="submit" value="수정 완료" />
 	</form>
 </body>

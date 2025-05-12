@@ -18,4 +18,6 @@ public interface PlantCommentMapper {
     	String placom_contents) throws Exception;
     // 댓글 삭제
     public int deleteComment(@Param("placom_idx") int placom_idx) throws Exception;
+    public PlantCommentDto selectCommentDetail(@Param("placom_idx") int placom_idx) throws Exception;
+    public int updateRoot(@Param("placom_idx") int placom_idx) throws Exception;
 }

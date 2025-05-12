@@ -3,29 +3,54 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.plantopia.dao.PlantMapper">
-	<select id="selectPlantList" resultType="com.plantopia.dto.PlantDto">
-		select pla_idx,pla_title,pla_date,pla_hit_cnt from Plant
+	<resultMap id="plantResultMap" type="com.plantopia.dto.PlantDto">
+        <id property="pla_idx" column="pla_idx" />
+        <result property="pla_title" column="pla_title" />
+        <result property="pla_contents" column="pla_contents" />
+        <result property="pla_img" column="pla_img" />
+        <result property="pla_date" column="pla_date" />
+        <result property="pla_hit_cnt" column="pla_hit_cnt" />
+        <result property="user_num" column="user_num" />
+        <result property="writer" column="writer" />
+    </resultMap>
+
+	<!-- 게시글 목록 -->
+	<select id="selectPlantList" resultMap="plantResultMap">
+		select p.pla_idx, p.pla_title, p.pla_date, 
+		 p.pla_hit_cnt, u.user_nickname as writer 
+		  from Plant p join User u on p.user_num = u.user_num
 	</select>
-	
+
+	<!-- 게시글 등록 -->
 	<insert id="insertPlant" parameterType="com.plantopia.dto.PlantDto">
-		insert into Plant (pla_title,pla_contents,pla_img,pla_date) 
-		 values(#{pla_title},#{pla_contents},#{pla_img},NOW())
+		insert into Plant (pla_title, pla_contents, pla_img, pla_date, user_num)
+		 values (#{pla_title}, #{pla_contents}, #{pla_img}, NOW(), #{user_num})
 	</insert>
-	
+
+	<!-- 조회수 증가 -->
 	<update id="updateHitCount" parameterType="int">
-		update Plant set pla_hit_cnt = pla_hit_cnt +1 where pla_idx =#{plaIdx} 
+		update Plant set pla_hit_cnt = pla_hit_cnt + 1 where pla_idx = #{plaIdx}
 	</update>
-	
-	<select id="selectPlantDetail" parameterType="int" resultType="com.plantopia.dto.PlantDto">
-		select pla_idx,pla_title,pla_contents,pla_date,pla_hit_cnt from Plant 
-		 where pla_idx = #{pla_idx}
+
+	<!-- 게시글 상세 조회 -->
+	<select id="selectPlantDetail" parameterType="int" resultMap="plantResultMap">
+		select p.pla_idx, p.pla_title, p.pla_contents,
+		  p.pla_img, p.pla_date, p.pla_hit_cnt, p.user_num,
+		   u.user_nickname as writer
+			from Plant p join User u on p.user_num = u.user_num
+ 			 where p.pla_idx = #{pla_idx}
 	</select>
-	
+
+	<!-- 게시글 수정 -->
 	<update id="updatePlant">
-		update Plant set pla_title=#{pla_title},pla_contents=#{pla_contents},pla_date=NOW()  
-		 where pla_idx = #{pla_idx}
+		update Plant
+		set pla_title = #{pla_title},
+		    pla_contents = #{pla_contents},
+		    pla_img = #{pla_img},
+		    pla_date = NOW() where pla_idx = #{pla_idx}
 	</update>
-	
+
+	<!-- 게시글 삭제 -->
 	<delete id="deletePlant">
 		delete from Plant where pla_idx = #{pla_idx}
 	</delete>

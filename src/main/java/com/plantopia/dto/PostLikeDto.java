@@ -4,7 +4,6 @@ import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
 public class PostLikeDto {
 	private int pl_idx;           // 좋아요 고유 ID
     private int pla_idx;          // 게시글 ID (FK)

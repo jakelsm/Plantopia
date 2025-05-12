@@ -13,6 +13,7 @@ public class CustomUserDetails extends UserDto implements UserDetails {
         super.setUser_id(dto.getUser_id());
         super.setUser_passwd(dto.getUser_passwd());
         super.setUser_authority(dto.getUser_authority());
+        super.setUser_nickname(dto.getUser_nickname()); // 닉네임 추가
     }
 
     @Override

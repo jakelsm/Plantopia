@@ -13,6 +13,7 @@
 		제목 : <input type="text" name="pla_title"> <br>
 		내용 : <textarea name="pla_contents" rows="5" cols="40"></textarea> <br>
 		<input type="file" name="imgFile"> <br>
+		<p>작성자: ${nickname}</p>
 		<input type="submit" value="글 작성">
 	</form>
 </body>
