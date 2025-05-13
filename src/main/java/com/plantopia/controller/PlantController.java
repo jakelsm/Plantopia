@@ -103,7 +103,6 @@ public class PlantController {
 	        commentList = new ArrayList<>(); // 빈 리스트로 초기화
 	    }
 	    
-	    
 	    // 좋아요 관련 데이터
 	    int likeCount = postLikeService.countLike(pla_idx); // 좋아요 수
 	    boolean userLiked = postLikeService.hasUserLiked(pla_idx, user_num); // 현재 사용자가 좋아요 눌렀는지
@@ -127,7 +126,7 @@ public class PlantController {
 		
 		return "Plant/plantDetail";
 	}
-	
+		
 	@RequestMapping("/Plant/plantUpdate")
 	public String plantUpdate(@RequestParam("pla_idx") int pla_idx,Model model) throws Exception {
 		PlantDto plant = plantService.selectPlantDetail(pla_idx);

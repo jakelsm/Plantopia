@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.PlantClinicCommentMapper">
+
+    <resultMap id="clinicCommentResultMap" type="com.plantopia.dto.PlantClinicCommentDto">
+        <id property="plccom_idx" column="plccom_idx"/>
+        <result property="plccom_contents" column="plccom_contents"/>
+        <result property="plccom_date" column="plccom_date"/>
+        <result property="plccom_root" column="plccom_root"/>
+        <result property="plccom_step" column="plccom_step"/>
+        <result property="plccom_indent" column="plccom_indent"/>
+        <result property="user_num" column="user_num"/>
+        <result property="plc_idx" column="plc_idx"/>
+        <result property="writer" column="writer"/>
+    </resultMap>
+
+    <select id="selectComments" resultMap="clinicCommentResultMap">
+        SELECT c.*, u.user_nickname AS writer
+        FROM PlantClinic_Comment c
+        JOIN User u ON c.user_num = u.user_num
+        WHERE c.plc_idx = #{plc_idx}
+        ORDER BY c.plccom_root ASC, c.plccom_step ASC
+    </select>
+
+    <insert id="insertComment" parameterType="com.plantopia.dto.PlantClinicCommentDto" useGeneratedKeys="true" keyProperty="plccom_idx">
+        INSERT INTO PlantClinic_Comment (
+            plccom_contents, plccom_date, plccom_root, plccom_step, plccom_indent,
+            user_num, plc_idx
+        ) VALUES (
+            #{plccom_contents}, NOW(), #{plccom_root}, #{plccom_step}, #{plccom_indent},
+            #{user_num}, #{plc_idx}
+        )
+    </insert>
+
+    <select id="getMaxStep" resultType="int">
+        SELECT COALESCE(MAX(plccom_step), 0) FROM PlantClinic_Comment WHERE plccom_root = #{plccom_root}
+    </select>
+
+    <update id="updateStepAfter">
+        UPDATE PlantClinic_Comment
+        SET plccom_step = plccom_step + 1
+        WHERE plccom_step >= #{step} AND plc_idx = #{plc_idx}
+    </update>
+
+    <update id="updateComment">
+        UPDATE PlantClinic_Comment
+        SET plccom_contents = #{plccom_contents}, plccom_date = NOW()
+        WHERE plccom_idx = #{plccom_idx}
+    </update>
+
+    <delete id="deleteComment">
+        DELETE FROM PlantClinic_Comment WHERE plccom_idx = #{plccom_idx}
+    </delete>
+
+    <select id="selectCommentDetail" resultMap="clinicCommentResultMap">
+        SELECT c.*, u.user_nickname AS writer
+        FROM PlantClinic_Comment c
+        JOIN User u ON c.user_num = u.user_num
+        WHERE c.plccom_idx = #{plccom_idx}
+    </select>
+
+    <update id="updateRoot">
+        UPDATE PlantClinic_Comment
+        SET plccom_root = #{plccom_idx}
+        WHERE plccom_idx = #{plccom_idx}
+    </update>
+</mapper>
