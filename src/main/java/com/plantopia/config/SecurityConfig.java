@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,11 +15,13 @@ import com.plantopia.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
+    private final CustomAccessDeniedHandler accessDeniedHandler;
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();  // 암호화 알고리즘
@@ -28,6 +31,10 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(
         AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
+    }
+    
+    public SecurityConfig(CustomAccessDeniedHandler accessDeniedHandler) {
+        this.accessDeniedHandler = accessDeniedHandler;
     }
 
     @Bean
@@ -67,6 +74,7 @@ public class SecurityConfig {
                 // 나머지는 인증만 필요(user 권한)
                 .anyRequest().permitAll()
             .and()
+            .exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler))
             .formLogin()
                 .loginPage("/login")  // 사용자 정의 로그인 페이지
                 .loginProcessingUrl("/loginProc")  // form action
