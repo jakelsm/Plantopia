@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,11 +15,13 @@ import com.plantopia.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
+    private final CustomAccessDeniedHandler accessDeniedHandler;
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();  // 암호화 알고리즘
@@ -29,6 +32,10 @@ public class SecurityConfig {
         AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
+    
+    public SecurityConfig(CustomAccessDeniedHandler accessDeniedHandler) {
+        this.accessDeniedHandler = accessDeniedHandler;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -37,14 +44,15 @@ public class SecurityConfig {
             .authorizeHttpRequests()
             	// 관리자 전용 페이지, 스토어 게시판 제품 추가, 수정, 삭제 가능
                 .requestMatchers("/accountList", "/addStore", "/StoreUpdate",
-                        "/StoreDelete").hasRole("admin")
+                        "/StoreDelete", "/addNotice", "/addNoticeProcess", "/updateNotice",
+                        "/updateNoticeProcess", "/deleteNotice").hasRole("admin")
                 // 로그인·회원가입·프로필·로그아웃는 모두 허용
                 .requestMatchers("/", "/login", "/loginProc", "/logout",
                         "/accountForm", "/accountWrite",
                         "/profile", "/profile/**",
                         "/StoreMain", "/StoreDetail", "/StoreSearch",
                         "/getCartList", "/addCart", "/CartUpdate", "/CartDelete",
-                        "/Plant/plantList", "/Plant/plantDetail").permitAll()
+                        "/Plant/plantList", "/Plant/plantDetail", "/gardenList", "/gardenDtl").permitAll()
                 
                 // - 로그인한 user 또는 admin이 가능한 동작—
                 .requestMatchers("/Plant/plantWrite", "/plantWriteProc",
@@ -66,11 +74,12 @@ public class SecurityConfig {
                 // 나머지는 인증만 필요(user 권한)
                 .anyRequest().permitAll()
             .and()
+            .exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler))
             .formLogin()
                 .loginPage("/login")  // 사용자 정의 로그인 페이지
                 .loginProcessingUrl("/loginProc")  // form action
                 .failureUrl("/login?error") // 로그인 실패 시 /login?error 로 리다이렉트
-                .defaultSuccessUrl("/loginTest", true)  // 로그인 성공 시
+                .defaultSuccessUrl("/Main", true)  // 로그인 성공 시
                 .permitAll()
             .and()
             .logout(logout -> logout

@@ -71,7 +71,10 @@ public class CartController {
 	@RequestMapping("/CartUpdate")
 	public String CartUpdate(@RequestParam("c_idx") int c_idx,Model model) throws Exception{
 		CartDto cartDto = cartService.getCartbyIdx(c_idx);
+		int stock = storeService.getStore(cartDto.getP_idx()).getP_stockQuantity(); // 상품 재고 조회
 		model.addAttribute("cart", cartDto);
+		model.addAttribute("stock", stock);
+		
 		return "Store/CartUpdateForm";
 		
 	}
