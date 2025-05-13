@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,10 +38,15 @@
             	<textarea name="placom_contents" placeholder="답글을 입력하세요" rows="2" cols="50"></textarea><br>
             	<input type="submit" value="답글 작성" />
         	</form>
-
-        	<!-- 수정/삭제 링크 -->
-        	<a href="/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">수정</a> |
-        	<a href="/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">삭제</a>
+			
+			<c:if test="${not empty loginInfo}">
+  			<!-- admin 이거나, 내가 쓴 글이면 버튼 보임 -->
+  				<c:if test="${loginInfo.user_authority eq 'admin' or loginInfo.user_num eq plant.user_num}">
+        		<!-- 수정/삭제 링크 -->
+        			<a href="<c:url value='/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}'/>">수정</a> |
+        			<a href="<c:url value='/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}'/>">삭제</a>
+        		</c:if>
+			</c:if>
     	</div>
 	</c:forEach>
 

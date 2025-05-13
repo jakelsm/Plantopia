@@ -50,6 +50,6 @@
     </c:if>
   </fieldset>
 
-  <p><a href="${pageContext.request.contextPath}/Main">뒤로</a></p>
+  <p><a href="${pageContext.request.contextPath}/Main"><button type="button">⬅️ 메인으로 돌아가기</button></a></p>
 </body>
 </html>

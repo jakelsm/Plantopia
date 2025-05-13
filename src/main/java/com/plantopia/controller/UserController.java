@@ -107,14 +107,6 @@ public class UserController {
 	    }
 	}
 	
-	// 3) 로그인 성공 후 실제 보여줄 메인 페이지
-//    @RequestMapping(value = "/main", method = RequestMethod.GET)
-//    public String mainPage(@AuthenticationPrincipal CustomUserDetails user, Model model) {
-//        // 필요시 로그인 사용자 정보도 모델에 담아 뷰에서 사용 가능
-//        model.addAttribute("loginInfo", user);
-//        return "User/security/main";  // /WEB-INF/views/User/security/main.jsp 또는 .html
-//    }
-	
 	@RequestMapping("accountList")
 	public ModelAndView memberList() throws Exception {
 		ModelAndView mv = new ModelAndView("User/admin/accountList");
