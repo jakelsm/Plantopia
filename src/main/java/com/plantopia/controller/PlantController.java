@@ -63,7 +63,7 @@ public class PlantController {
 		
 		if(!imgFile.isEmpty()) {
 			fileName = imgFile.getOriginalFilename();
-			String uploadPath = "C:/upload/img/plant/";
+			String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/plant/";
 			File file = new File(uploadPath+fileName);
 			imgFile.transferTo(file);
 		} else {
@@ -164,7 +164,7 @@ public class PlantController {
 	
 		if(!imgFile.isEmpty()) {
 			fileName = imgFile.getOriginalFilename();
-			String uploadPath = "C:/upload/img/plant/";
+			String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/plant";
 			File file = new File(uploadPath+fileName);
 			imgFile.transferTo(file);
 		} else {

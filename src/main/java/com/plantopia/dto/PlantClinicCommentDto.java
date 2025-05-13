@@ -21,4 +21,7 @@ public class PlantClinicCommentDto {
 	 private int plc_idx;              // 게시글 ID (FK)
 	 private int user_num;             // 작성자 ID (FK)
 	 private String writer;            // 작성자 닉네임
+	 
+	 private Double avgRating;     	   // JSP에서 쓰이는 필드
+	 private Integer myRating;         // JSP에서 쓰이는 필드
 }

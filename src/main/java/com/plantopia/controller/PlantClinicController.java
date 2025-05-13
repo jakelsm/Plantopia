@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.PlantClinicCommentDto;
 import com.plantopia.dto.PlantClinicDto;
+import com.plantopia.service.CommentRatingsService;
 import com.plantopia.service.PlantClinicCommentService;
 import com.plantopia.service.PlantClinicService;
 
@@ -27,6 +28,9 @@ public class PlantClinicController {
 
     @Autowired
     PlantClinicCommentService commentService;
+    
+    @Autowired
+    CommentRatingsService commentRatingsService;
 
     // 클리닉 게시글 목록
     @RequestMapping("/Clinic/clinicList")
@@ -66,7 +70,7 @@ public class PlantClinicController {
         
         if (!imgFile.isEmpty()) {
             fileName = imgFile.getOriginalFilename();
-            String uploadPath = "C:/upload/img/clinic/";
+            String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/plantClinic/";
             File file = new File(uploadPath + fileName);
             imgFile.transferTo(file);
         } else {
@@ -94,7 +98,7 @@ public class PlantClinicController {
 
     // 상세보기
     @RequestMapping("/Clinic/clinicDetail")
-    public String clinicDetail(@RequestParam("pla_idx") int plc_idx,
+    public String clinicDetail(@RequestParam("plc_idx") int plc_idx,
                                 @AuthenticationPrincipal CustomUserDetails user,
                                 Model model) throws Exception {
 
@@ -119,6 +123,14 @@ public class PlantClinicController {
 	    System.out.println("clinic Details: " + clinic);
 	    System.out.println("Comments: " + comments);
 	    
+	    // 댓글별 별점 정보 세팅
+        for (PlantClinicCommentDto comment : comments) {
+            Double avgRating = commentRatingsService.getAverageRating(comment.getPlccom_idx());
+            Integer myRating = commentRatingsService.getUserRating(comment.getPlccom_idx(), user.getUser_num());
+            comment.setAvgRating(avgRating);
+            comment.setMyRating(myRating);
+        }
+	    
 	    // 댓글 계층 정렬
 	    comments = comments.stream()
 	        .sorted(Comparator.comparingInt(PlantClinicCommentDto::getPlccom_root)
@@ -141,7 +153,7 @@ public class PlantClinicController {
         return "PlantClinic/clinicUpdate";
     }
 
-    // 글 수정 처리
+    // 글 수정 
     @RequestMapping("/Clinic/clinicUpdateProc")
     public String clinicUpdateProc(@RequestParam("plc_idx") int plc_idx,
                                    @RequestParam("plc_title") String plc_title,
@@ -161,7 +173,7 @@ public class PlantClinicController {
         String fileName = null;
         if (!imgFile.isEmpty()) {
             fileName = imgFile.getOriginalFilename();
-            String uploadPath = "C:/upload/img/clinic/";
+            String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/plantClinic/";
             File file = new File(uploadPath + fileName);
             imgFile.transferTo(file);
         } else {
@@ -187,7 +199,7 @@ public class PlantClinicController {
         return "redirect:/Clinic/clinicList";
     }
 
-    // 글 삭제 처리
+    // 글 삭제 
     @RequestMapping("/Clinic/clinicDelete")
     public String clinicDelete(@RequestParam("plc_idx") int plc_idx) throws Exception {
         plantClinicService.deleteClinic(plc_idx);

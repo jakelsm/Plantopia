@@ -2,10 +2,12 @@ package com.plantopia.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.plantopia.dto.PlantClinicCommentDto;
 
+@Mapper
 public interface PlantClinicCommentMapper {
 	List<PlantClinicCommentDto> selectComments(@Param("plc_idx") int plc_idx) throws Exception;
     int insertComment(PlantClinicCommentDto dto) throws Exception;
