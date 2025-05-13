@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.PlantClinicMapper">
+
+    <resultMap id="clinicResultMap" type="com.plantopia.dto.PlantClinicDto">
+        <id property="plc_idx" column="plc_idx" />
+        <result property="plc_title" column="plc_title" />
+        <result property="growing_loc" column="growing_loc" />
+        <result property="growth_con" column="growth_con" />
+        <result property="watering" column="watering" />
+        <result property="last_rep" column="last_rep" />
+        <result property="last_fert" column="last_fert" />
+        <result property="last_pruned" column="last_pruned" />
+        <result property="plant_pos" column="plant_pos" />
+        <result property="pest_dmg" column="pest_dmg" />
+        <result property="discolored" column="discolored" />
+        <result property="plc_contents" column="plc_contents" />
+        <result property="plc_img" column="plc_img" />
+        <result property="plc_date" column="plc_date" />
+        <result property="plc_hit_cnt" column="plc_hit_cnt" />
+        <result property="user_num" column="user_num" />
+        <result property="writer" column="writer" />
+    </resultMap>
+
+    <select id="selectClinicList" resultMap="clinicResultMap">
+        SELECT c.*, u.user_nickname AS writer
+        FROM PlantClinic c
+        JOIN User u ON c.user_num = u.user_num
+        ORDER BY c.plc_date DESC
+    </select>
+
+    <select id="selectClinicDetail" parameterType="int" resultMap="clinicResultMap">
+        SELECT c.*, u.user_nickname AS writer
+        FROM PlantClinic c
+        JOIN User u ON c.user_num = u.user_num
+        WHERE c.plc_idx = #{plc_idx}
+    </select>
+
+    <insert id="insertClinic" parameterType="com.plantopia.dto.PlantClinicDto">
+        INSERT INTO PlantClinic (
+            plc_title, growing_loc, growth_con, watering, last_rep, last_fert, last_pruned,
+            plant_pos, pest_dmg, discolored, plc_contents, plc_img, plc_date, user_num
+        ) VALUES (
+            #{plc_title}, #{growing_loc}, #{growth_con}, #{watering}, #{last_rep}, #{last_fert}, #{last_pruned},
+            #{plant_pos}, #{pest_dmg}, #{discolored}, #{plc_contents}, #{plc_img}, NOW(), #{user_num}
+        )
+    </insert>
+
+    <update id="updateClinic" parameterType="com.plantopia.dto.PlantClinicDto">
+        UPDATE PlantClinic
+        SET plc_title = #{plc_title}, growing_loc = #{growing_loc}, growth_con = #{growth_con},
+            watering = #{watering}, last_rep = #{last_rep}, last_fert = #{last_fert},
+            last_pruned = #{last_pruned}, plant_pos = #{plant_pos}, pest_dmg = #{pest_dmg},
+            discolored = #{discolored}, plc_contents = #{plc_contents}, plc_img = #{plc_img},
+            plc_date = NOW()
+        WHERE plc_idx = #{plc_idx}
+    </update>
+
+    <delete id="deleteClinic" parameterType="int">
+        DELETE FROM PlantClinic WHERE plc_idx = #{plc_idx}
+    </delete>
+
+    <update id="updateHitCount" parameterType="int">
+        UPDATE PlantClinic SET plc_hit_cnt = plc_hit_cnt + 1 WHERE plc_idx = #{plc_idx}
+    </update>
+</mapper>

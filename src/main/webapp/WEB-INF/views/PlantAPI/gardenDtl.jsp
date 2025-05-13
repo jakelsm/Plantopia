@@ -210,10 +210,7 @@
 			<col width="15%">
 			<col width="*">
 		</colgroup>
-		<tr>
-            <th>식물학명</th>
-            <td><%=plntbneNm%></td>
-        </tr>
+		
         <tr>
             <th>식물영명</th>
             <td><%=plntzrNm%></td>
@@ -221,71 +218,28 @@
         <tr>
             <th>유통명</th>
             <td><%=distbNm%></td>
-        </tr>
-        <tr>
-            <th>과명</th>
-            <td><%=fmlNm%></td>
-        </tr>
+        </tr>       
         <tr>
             <th>원산지 정보</th>
             <td><%=orgplceInfo%></td>
         </tr>
         <tr>
-            <th>조언 정보</th>
-            <td><%=adviseInfo%></td>
-        </tr>
-        <tr>
-            <th>이미지 평가 링크 경로</th>
-            <td><%=imageEvlLinkCours%></td>
-        </tr>
-        <tr>
             <th>성장 높이 정보</th>
             <td><%=growthHgInfo%></td>
-        </tr>
-        <tr>
-            <th>성장 넓이 정보</th>
-            <td><%=growthAraInfo%></td>
-        </tr>
-        <tr>
-            <th>잎 형태 정보</th>
-            <td><%=lefStleInfo%></td>
-        </tr>
+        </tr>     
         <tr>
             <th>냄새 코드</th>
             <td><%=smellCode%></td>
-        </tr>
-        <tr>
-            <th>독성 정보</th>
-            <td><%=toxctyInfo%></td>
-        </tr>
+        </tr>    
         <tr>
             <th>번식 시기 정보</th>
             <td><%=prpgtEraInfo%></td>
         </tr>
-        <tr>
-            <th>기타 시기 정보</th>
-            <td><%=etcEraInfo%></td>
-        </tr>
+      
         <tr>
             <th>관리수준 코드</th>
             <td><%=managelevelCode%></td>
-        </tr>
-        <tr>
-            <th>생장속도 코드</th>
-            <td><%=grwtveCode%></td>
-        </tr>
-        <tr>
-            <th>생육 온도 코드</th>
-            <td><%=grwhTpCode%></td>
-        </tr>
-        <tr>
-            <th>겨울 최저 온도 코드</th>
-            <td><%=winterLwetTpCode%></td>
-        </tr>
-        <tr>
-            <th>습도 코드</th>
-            <td><%=hdCode%></td>
-        </tr>
+        </tr> 
         <tr>
             <th>비료 정보</th>
             <td><%=frtlzrInfo%></td>
@@ -295,109 +249,10 @@
             <td><%=soilInfo%></td>
         </tr>
         <tr>
-            <th>물주기 봄 코드</th>
-            <td><%=watercycleSprngCode%></td>
-        </tr>
-        <tr>
-            <th>물주기 여름 코드</th>
-            <td><%=watercycleSummerCode%></td>
-        </tr>
-        <tr>
-            <th>물주기 가을 코드</th>
-            <td><%=watercycleAutumnCode%></td>
-        </tr>
-        <tr>
-            <th>물주기 겨울 코드</th>
-            <td><%=watercycleWinterCode%></td>
-        </tr>
-        <tr>
-            <th>병충해 관리 정보</th>
-            <td><%=dlthtsManageInfo%></td>
-        </tr>
-        <tr>
-            <th>특별관리 정보</th>
-            <td><%=speclmanageInfo%></td>
-        </tr>
-        <tr>
             <th>기능성 정보</th>
             <td><%=fncltyInfo%></td>
         </tr>
-        <tr>
-            <th>화분직경 대 정보</th>
-            <td><%=flpodmtBigInfo%></td>
-        </tr>
-        <tr>
-            <th>화분직경 중 정보</th>
-            <td><%=flpodmtMddlInfo%></td>
-        </tr>
-        <tr>
-            <th>화분직경 소 정보</th>
-            <td><%=flpodmtSmallInfo%></td>
-        </tr>
-        <tr>
-            <th>가로 대 정보</th>
-            <td><%=widthBigInfo%></td>
-        </tr>
-        <tr>
-            <th>가로 중 정보</th>
-            <td><%=widthMddlInfo%></td>
-        </tr>
-        <tr>
-            <th>가로 소 정보</th>
-            <td><%=widthSmallInfo%></td>
-        </tr>
-        <tr>
-            <th>세로 대 정보</th>
-            <td><%=vrticlBigInfo%></td>
-        </tr>
-        <tr>
-            <th>세로 중 정보</th>
-            <td><%=vrticlMddlInfo%></td>
-        </tr>
-        <tr>
-            <th>세로 소 정보</th>
-            <td><%=vrticlSmallInfo%></td>
-        </tr>
-        <tr>
-            <th>높이 대 정보</th>
-            <td><%=hgBigInfo%></td>
-        </tr>
-        <tr>
-            <th>높이 중 정보</th>
-            <td><%=hgMddlInfo%></td>
-        </tr>
-        <tr>
-            <th>높이 소 정보</th>
-            <td><%=hgSmallInfo%></td>
-        </tr>
-        <tr>
-            <th>볼륨 대 정보</th>
-            <td><%=volmeBigInfo%></td>
-        </tr>
-        <tr>
-            <th>볼륨 중 정보</th>
-            <td><%=volmeMddlInfo%></td>
-        </tr>
-        <tr>
-            <th>볼륨 소 정보</th>
-            <td><%=volmeSmallInfo%></td>
-        </tr>
-        <tr>
-            <th>가격 대 정보</th>
-            <td><%=pcBigInfo%></td>
-        </tr>
-        <tr>
-            <th>가격 중 정보</th>
-            <td><%=pcMddlInfo%></td>
-        </tr>
-        <tr>
-            <th>가격 소 정보</th>
-            <td><%=pcSmallInfo%></td>
-        </tr>
-        <tr>
-            <th>관리요구도 코드</th>
-            <td><%=managedemanddoCode%></td>
-        </tr>
+    
 	</table>
 <%
 	}else{

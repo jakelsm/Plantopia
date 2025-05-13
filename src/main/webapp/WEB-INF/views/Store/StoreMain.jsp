@@ -44,12 +44,16 @@
 		<img src="/img/store/${dto.p_img}" alt="${dto.p_name}" />
 		<h4><a href="StoreDetail?p_idx=${dto.p_idx}">${dto.p_name}</a></h4>
 		<p>${dto.p_price}</p>
-		<a href="StoreUpdate?p_idx=${dto.p_idx}">수정</a>
-		<a href="StoreDelete?p_idx=${dto.p_idx}">삭제</a>
+		<c:if test="${userAuthority eq 'admin'}">
+			<a href="StoreUpdate?p_idx=${dto.p_idx}">수정</a>
+			<a href="StoreDelete?p_idx=${dto.p_idx}">삭제</a>
+		</c:if>
 	</div>	
 	</c:forEach>
 	</div>
-	<input type="submit" value="제품추가">
+	<c:if test="${userAuthority eq 'admin'}">
+		<input type="submit" value="제품추가">
+	</c:if>
 	</form>
 	<form name="StoreSearch" id="StoreSearch" method="get" action="/StoreSearch">
 		<div class="ctn">
