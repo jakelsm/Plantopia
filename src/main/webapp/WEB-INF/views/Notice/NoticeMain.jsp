@@ -15,7 +15,9 @@
 				<td>제목</td>
 				<td>작성일</td>
 				<td>글쓴이</td>
-				<td>수정/삭제</td>
+				<c:if test="${userAuthority eq 'admin'}">
+					<td>수정/삭제</td>
+				</c:if>
 			</tr>
 			<c:forEach var="notice" items="${noticeLists}">
 			<tr>
@@ -23,12 +25,17 @@
 				<td><a href="NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a></td>
 				<td>${notice.n_date}</td>
 				<td>운영자</td>
-				<td><a href="updateNotice?n_idx=${notice.n_idx}">수정</a>/<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a></td>
+				<c:if test="${userAuthority eq 'admin'}">			
+				<td><a href="updateNotice?n_idx=${notice.n_idx}">수정</a>
+					/<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a></td>
+				</c:if>
 			</tr>
 			</c:forEach>
 		</table>
 	</form>
-	<a href="/addNotice"><button type="button">공지추가</button></a>
+	<c:if test="${userAuthority eq 'admin'}">	
+		<a href="/addNotice"><button type="button">공지추가</button></a>
+	</c:if>
 	<div class="pagination">
 	<c:forEach var="i" begin="1" end="${totalPage}">
 		<a href="/NoticeMain?page=${i}">${i}</a>

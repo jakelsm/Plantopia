@@ -1,6 +1,7 @@
 package com.plantopia.controller;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,7 @@ public class NoticeController {
 	public String NoticeDetail(@RequestParam("n_idx") int n_idx, Model model) throws Exception {
 		NoticeDto notice = noticeService.getNoticeByIdx(n_idx);
 		model.addAttribute("notice", notice);
+	
 		return "Notice/NoticeDetail";
 	}
 	
@@ -75,7 +77,7 @@ public class NoticeController {
 		} else {
 			// 새로 업로드 안 하면 기존 이미지 유지
 			fileName = original_img;
-		}			
+		}		
 		
 		NoticeDto noticeDto = NoticeDto.builder()
 							.n_title(n_title)
