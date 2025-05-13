@@ -37,4 +37,9 @@ public class PlantService {
 		return plantMapper.deletePlant(plaIdx);
 	}
 	
+	/** (추가) 특정 사용자가 쓴 글만 반환 */
+    public List<PlantDto> selectPlantByUser(int userNum) throws Exception {
+        return plantMapper.selectPlantByUser(userNum);
+    }
+	
 }
