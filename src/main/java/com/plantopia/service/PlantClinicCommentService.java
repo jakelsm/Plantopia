@@ -28,6 +28,10 @@ public class PlantClinicCommentService {
             plantClinicCommentMapper.updateStepAfter(newStep, dto.getPlc_idx());
             dto.setPlccom_step(newStep);
             dto.setPlccom_indent(dto.getPlccom_indent() + 1);
+            
+            // 대댓글일 경우 별점 무효화
+            dto.setRating(null);
+            
             return plantClinicCommentMapper.insertComment(dto);
         }
     }

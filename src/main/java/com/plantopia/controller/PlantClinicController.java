@@ -125,10 +125,15 @@ public class PlantClinicController {
 	    
 	    // 댓글별 별점 정보 세팅
         for (PlantClinicCommentDto comment : comments) {
-            Double avgRating = commentRatingsService.getAverageRating(comment.getPlccom_idx());
-            Integer myRating = commentRatingsService.getUserRating(comment.getPlccom_idx(), user.getUser_num());
-            comment.setAvgRating(avgRating);
-            comment.setMyRating(myRating);
+        	if (comment.getPlccom_indent() == 0) { // 일반 댓글에만 별점 부여
+                Double avgRating = commentRatingsService.getAverageRating(comment.getPlccom_idx());
+                Integer myRating = commentRatingsService.getUserRating(comment.getPlccom_idx(), user.getUser_num());
+                comment.setAvgRating(avgRating);
+                comment.setMyRating(myRating);
+            } else {
+                comment.setAvgRating(null);
+                comment.setMyRating(null);
+            }
         }
 	    
 	    // 댓글 계층 정렬
@@ -153,7 +158,7 @@ public class PlantClinicController {
         return "PlantClinic/clinicUpdate";
     }
 
-    // 글 수정 
+    // 글 수정 처리
     @RequestMapping("/Clinic/clinicUpdateProc")
     public String clinicUpdateProc(@RequestParam("plc_idx") int plc_idx,
                                    @RequestParam("plc_title") String plc_title,

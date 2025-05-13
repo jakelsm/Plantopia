@@ -18,9 +18,10 @@ public class PlantCommentService {
 		        // 최상위 댓글
 		        dto.setPlacom_indent(0);
 		        dto.setPlacom_step(0);
-		        plantCommentMapper.insertComment(dto); // 1번만 insert
-
-		        // 2. 방금 등록된 댓글의 placom_idx를 root로 다시 update
+		        // 한 번만 insert 
+		        plantCommentMapper.insertComment(dto);
+		        
+		        // 등록된 댓글의 placom_idx를 root로 다시 update
 		        plantCommentMapper.updateRoot(dto.getPlacom_idx());
 		        
 		        return 1;
@@ -30,7 +31,8 @@ public class PlantCommentService {
 		        plantCommentMapper.updateStepAfter(newStep, dto.getPla_idx());
 		        dto.setPlacom_step(newStep);
 		        dto.setPlacom_indent(dto.getPlacom_indent() + 1);
-
+		        dto.setRating(null); // 별점 무효화
+		        
 		        return plantCommentMapper.insertComment(dto);
 		    }
 	    }

@@ -11,8 +11,10 @@
 	<h3>게시글 상세보기</h3>
 	제목 : ${plant.pla_title} <br>
 	작성자 : ${plant.writer} <br>
+	<p>조회수 : ${plant.pla_hit_cnt}</p>
 	<img src="/img/plant/${plant.pla_img}" alt="#" width="300" height="300"/> <br>
 	내용 : ${plant.pla_contents} <br>
+	
 	
 	<p> 좋아요 수 : ${likeCount} </p>
 	

@@ -21,4 +21,7 @@ public class PlantCommentDto {
     private int user_num;             // 작성자 ID
     private int pla_idx;              // 게시글(식물) ID
     private String writer; // 댓글 작성자 닉네임
+    
+    // 일반 댓글에만 사용될 별점 필드
+ 	private Integer rating;
 }
