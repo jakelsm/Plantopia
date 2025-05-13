@@ -65,4 +65,12 @@
     <update id="updateHitCount" parameterType="int">
         UPDATE PlantClinic SET plc_hit_cnt = plc_hit_cnt + 1 WHERE plc_idx = #{plc_idx}
     </update>
+    
+    <select id="selectClinicByUser" parameterType="int" resultMap="clinicResultMap">
+    	SELECT c.*, u.user_nickname AS writer
+      	FROM PlantClinic c
+      	JOIN User u ON c.user_num = u.user_num
+     	WHERE c.user_num = #{user_num}
+     	ORDER BY c.plc_date DESC
+  	</select>
 </mapper>
