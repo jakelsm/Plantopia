@@ -24,6 +24,10 @@
   <p>
     <a href="<c:url value='/Plant/plantList'/>"><button type="button">🌱 플랜트 게시판</button></a>
   </p>
+  
+  <p>
+  	<a href="<c:url value='/Clinic/clinicList'/>"><button type="button">🏥 클리닉 게시판</button></a>
+  </p>
 
   <!-- 플랜트api 게시판 이동 -->
   <p>

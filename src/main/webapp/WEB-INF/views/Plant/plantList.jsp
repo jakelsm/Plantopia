@@ -15,7 +15,7 @@
 			<th>제목</th>
 			<th>작성자</th>
 			<c:if test="${showAction}">
-        		<th>삭제</th>
+        		<th>관리</th>
       		</c:if>
 		</tr>
 		<c:forEach var="dto" items="${plantList}">
