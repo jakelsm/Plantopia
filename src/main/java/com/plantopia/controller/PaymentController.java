@@ -1,13 +1,17 @@
 package com.plantopia.controller;
 
 import java.io.IOException;
-import com.siot.IamportRestClient.exception.IamportResponseException;
-import com.siot.IamportRestClient.response.Payment;
-import com.siot.IamportRestClient.response.IamportResponse;
-import com.siot.IamportRestClient.IamportClient;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.siot.IamportRestClient.response.IamportResponse;
+import com.siot.IamportRestClient.response.Payment;
 
 @Controller
 public class PaymentController {
@@ -18,7 +22,7 @@ public class PaymentController {
     public PaymentController(IamportClient iamportClient) {
         this.iamportClient = iamportClient;
     }
-
+    
     /**
      *  POST /verify/{imp_uid}
      *  - AJAX 콜백에서 imp_uid 만 서버로 전달

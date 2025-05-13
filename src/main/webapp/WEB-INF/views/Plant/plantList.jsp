@@ -21,7 +21,10 @@
   		  <td>${dto.pla_idx}</td>
 	      <td><a href="/Plant/plantDetail?pla_idx=${dto.pla_idx}">${dto.pla_title}</a></td>
 		  <td>${dto.writer}</td>
-		  <td><a href="/Plant/plantdelete?pla_idx=${dto.pla_idx}">삭제</a></td>
+		  <td>
+		  	<a href="/Plant/plantdelete?pla_idx=${dto.pla_idx}">삭제</a>
+		  	<a href="/Plant/plantUpdate?pla_idx=${dto.pla_idx}">수정</a>
+		  </td>
 		</tr>
 		</c:forEach>
 	</table>
