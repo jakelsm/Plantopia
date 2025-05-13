@@ -10,8 +10,8 @@
 	<form name="commentUpdateForm" id="commentUpdateForm" method="post" action="CommentUpdateProcess">
 		<input type="hidden" name="scom_idx" value="${comment.scom_idx}">
 		<input type="hidden" name="p_idx" value="${p_idx}">
-		작성자 : <br>
-		후기 내용 : <textarea name="scom_contents"></textarea> <br>
+		작성자 : ${user_nickname}<br>
+		후기 내용 : <textarea name="scom_contents" maxlength="200"></textarea> <br>
 		<input type="submit" value="후기 수정">		
 	</form>
 </body>

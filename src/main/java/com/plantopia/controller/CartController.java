@@ -41,11 +41,15 @@ public class CartController {
 		
 		if(user_num == null) {
 			return "redirect:login";
-		}
-			
+		}		
+		
 		int unitPrice = storeService.getStore(p_idx).getP_price();
 		int totalPrice = unitPrice * c_amount;
+		//int stock = storeService.getStore(p_idx).getP_stockQuantity();
 		
+		//if (c_amount < 1 || c_amount > stock) {
+		       //throw new IllegalArgumentException("잘못된 수량입니다.");
+		  //}
 		
 		//Integer user_num = (Integer) session.getAttribute("user_num");
 		

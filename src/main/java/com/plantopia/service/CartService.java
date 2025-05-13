@@ -26,6 +26,7 @@ public class CartService {
 	// 2. 장바구니 담기 기능
 	public int insertCart(CartDto cartDto) throws Exception {
 		return cartDao.insertCart(cartDto);
+		
 	}
 		
 	// 3. 장바구니 물품 수정 

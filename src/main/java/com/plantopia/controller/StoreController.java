@@ -65,12 +65,7 @@ public class StoreController {
 		        model.addAttribute("user_num", null);
 		        model.addAttribute("user_nickname", null);
 		    }
-			
-			if (user != null) {
-			    System.out.println(">>> 로그인한 사용자 번호: " + user.getUser_num());
-			    System.out.println(">>> 로그인한 닉네임: " + user.getUser_nickname());
-			}
-			
+					
 			return "Store/StoreDetail";
 		}
 	
