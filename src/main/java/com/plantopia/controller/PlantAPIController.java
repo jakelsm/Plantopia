@@ -15,7 +15,7 @@ public class PlantAPIController {
 	    return "PlantAPI/gardenList";
 	}
 	
-	@RequestMapping("gardenDtl")
+	@RequestMapping("/gardenDtl")
 	public String detail(@RequestParam("cntntsNo") String cntntsNo, Model model) {
 	    model.addAttribute("cntntsNo", cntntsNo);
 	    return "PlantAPI/gardenDtl"; 

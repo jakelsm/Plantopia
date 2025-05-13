@@ -52,7 +52,7 @@ public class SecurityConfig {
                         "/profile", "/profile/**",
                         "/StoreMain", "/StoreDetail", "/StoreSearch",
                         "/getCartList", "/addCart", "/CartUpdate", "/CartDelete",
-                        "/Plant/plantList", "/Plant/plantDetail").permitAll()
+                        "/Plant/plantList", "/Plant/plantDetail", "/gardenList", "/gardenDtl").permitAll()
                 
                 // - 로그인한 user 또는 admin이 가능한 동작—
                 .requestMatchers("/Plant/plantWrite", "/plantWriteProc",
@@ -79,7 +79,7 @@ public class SecurityConfig {
                 .loginPage("/login")  // 사용자 정의 로그인 페이지
                 .loginProcessingUrl("/loginProc")  // form action
                 .failureUrl("/login?error") // 로그인 실패 시 /login?error 로 리다이렉트
-                .defaultSuccessUrl("/loginTest", true)  // 로그인 성공 시
+                .defaultSuccessUrl("/Main", true)  // 로그인 성공 시
                 .permitAll()
             .and()
             .logout(logout -> logout

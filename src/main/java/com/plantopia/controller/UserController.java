@@ -94,14 +94,14 @@ public class UserController {
     }
 	
 	// 2) 로그인 성공 확인용 (필요 없으면 삭제 가능)
-	@RequestMapping("loginTest")
-	public String loginTest(@AuthenticationPrincipal CustomUserDetails user, Model model, HttpSession session) {
+	@RequestMapping("/Main")
+	public String mainPage(@AuthenticationPrincipal CustomUserDetails user, Model model, HttpSession session) {
 	    if (user != null) {	    	
 	    	session.setAttribute("user_num", user.getUser_num());
 	        session.setAttribute("user_nickname", user.getUser_nickname());
 	        
 	        model.addAttribute("loginInfo", user);
-	        return "User/security/loginSuccess"; // 로그인 성공 후 확인용 JSP
+	        return "Main/main"; // 로그인 성공 후 확인용 JSP
 	    } else {
 	    	return "redirect:/login?error=fail"; // 로그인되지 않은 상태일 경우
 	    }
