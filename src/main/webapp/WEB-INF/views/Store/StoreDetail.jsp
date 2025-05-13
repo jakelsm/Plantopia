@@ -21,7 +21,7 @@
 	}
 </style>
 <body>
-	<a href="getCartList?user_num=${user_num}">장바구니</a> <!-- ${sessionScope.user_num} -->	
+	<a href="getCartList?user_num=${user_num}">장바구니</a>
 	<div class="container">
 		<div>
 			<img src="/img/store/${store.p_img}" alt="${store.p_name}" width="600" height="600"/> <br>
@@ -46,13 +46,11 @@
 	<hr>
 	<h3>후기</h3>
 	<form name="StoreComment" id="StoreComment" method="post" action="/addCommentProcess?p_idx=${store.p_idx}">
-		<input type="hidden" name="p_idx" value="${store.p_idx}">
-		
+		<input type="hidden" name="p_idx" value="${store.p_idx}">		
 			<c:if test="${not empty user_nickname}">
-				<p> 닉네임 : ${user_nickname}</p>
-				<p>user_num: ${user_num}</p>
+				<p> 닉네임 : ${user_nickname}</p>				
 			</c:if>
-			후기입력 : <textarea name="scom_contents"></textarea><br>
+			후기입력 : <textarea name="scom_contents" maxlength="200"></textarea><br>
 		<input type="submit" value="후기등록">	
 	</form>
 	<c:forEach var="comment" items="${commentList}">

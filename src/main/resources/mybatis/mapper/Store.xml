@@ -18,7 +18,7 @@
 	
 	<update id="updateStore" parameterType="com.plantopia.dto.StoreDto">
 		update Store 
-		 set p_name=#{p_name}, p_img=#{p_img}, p_price=#{p_price}, p_description=#{p_description}, p_stockQuantity=#{p_stockQuantity}, p_addedDate=#{p_addedDate}
+		 set p_name=#{p_name}, p_img=#{p_img}, p_price=#{p_price}, p_description=#{p_description}, p_stockQuantity=#{p_stockQuantity}
 		 where p_idx = #{p_idx}
 	</update>
 	

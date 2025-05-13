@@ -3,6 +3,7 @@ package com.plantopia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,6 +57,12 @@ public class PlantCommentController {
 					    		Model model) throws Exception {
         PlantCommentDto dto = plantCommentService.selectCommentDetail(placom_idx);
         
+        // 권한 확인
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && dto.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("댓글 수정 권한이 없습니다.");
+        }
+        
         model.addAttribute("dto", dto);
         model.addAttribute("pla_idx", pla_idx);
         model.addAttribute("nickname", user.getUser_nickname()); // 로그인된 사용자 닉네임 전달
@@ -68,7 +75,16 @@ public class PlantCommentController {
     @RequestMapping("/Plant/plantList/comment/updateProc")
     public String updateCommentProc(@RequestParam int placom_idx,
                                     @RequestParam String placom_contents,
+                                    @AuthenticationPrincipal CustomUserDetails user,
                                     @RequestParam int pla_idx) throws Exception {
+    	// 권한 확인
+    	PlantCommentDto dto = plantCommentService.selectCommentDetail(placom_idx);
+
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && dto.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("댓글 수정 권한이 없습니다.");
+        }
+    	
         plantCommentService.updateComment(placom_idx, placom_contents);
         return "redirect:/Plant/plantDetail?pla_idx=" + pla_idx;
     }
@@ -76,7 +92,16 @@ public class PlantCommentController {
     @RequestMapping("/Plant/plantList/comment/delete")
     public String deleteComment(@RequestParam int placom_idx, 
 					    		@RequestParam int pla_idx, 
+					    		@AuthenticationPrincipal CustomUserDetails user,
 					    		Model model) throws Exception {
+    	// 권한 확인
+    	PlantCommentDto dto = plantCommentService.selectCommentDetail(placom_idx);
+
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && dto.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("댓글 삭제 권한이 없습니다.");
+        }
+    	
         plantCommentService.deleteComment(placom_idx);
         
         return "redirect:/Plant/plantDetail?pla_idx=" + pla_idx;

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -128,9 +129,16 @@ public class PlantController {
 	}
 		
 	@RequestMapping("/Plant/plantUpdate")
-	public String plantUpdate(@RequestParam("pla_idx") int pla_idx,Model model) throws Exception {
+	public String plantUpdate(@RequestParam("pla_idx") int pla_idx,Model model,@AuthenticationPrincipal CustomUserDetails user) throws Exception {
 		PlantDto plant = plantService.selectPlantDetail(pla_idx);
-		model.addAttribute("plant", plant);
+		
+		// 권한 확인
+		boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && plant.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("수정 권한이 없습니다.");
+        }
+		
+        model.addAttribute("dto", plant);
 		return "Plant/plantUpdate";
 	}
 	
@@ -141,8 +149,17 @@ public class PlantController {
 					 @RequestParam("pla_contents") String pla_contents,
 					 @RequestParam("imgFile") MultipartFile imgFile,
 					 @RequestParam("original_img") String original_img,
+					 @AuthenticationPrincipal CustomUserDetails user,
 					 HttpServletRequest request) throws Exception {
+		
+		// 권한 확인
+		PlantDto plant = plantService.selectPlantDetail(pla_idx);
 
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && plant.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("수정 권한이 없습니다.");
+        }
+        
 		String fileName = null;
 	
 		if(!imgFile.isEmpty()) {
@@ -154,18 +171,27 @@ public class PlantController {
 			fileName = original_img;
 		}
 		
-		PlantDto plant = new PlantDto();
-	    plant.setPla_idx(pla_idx);
-	    plant.setPla_title(pla_title);
-	    plant.setPla_contents(pla_contents);
-	    plant.setPla_img(fileName);
-		
-		plantService.updatePlant(plant);
-		return "redirect:/Plant/plantList";
+		PlantDto dto = new PlantDto();
+        dto.setPla_idx(pla_idx);
+        dto.setPla_title(pla_title);
+        dto.setPla_contents(pla_contents);
+        dto.setPla_img(fileName);
+        dto.setUser_num(plant.getUser_num());
+        plantService.updatePlant(dto);
+
+        return "redirect:/Plant/plantDetail?pla_idx=" + pla_idx;
 	}
 	
 	@RequestMapping("/Plant/plantdelete")
-	public String Plantdelete(@RequestParam("pla_idx") int pla_idx) throws Exception {
+	public String Plantdelete(@RequestParam("pla_idx") int pla_idx, @AuthenticationPrincipal CustomUserDetails user) throws Exception {
+		// 권한 확인
+		PlantDto plant = plantService.selectPlantDetail(pla_idx);
+
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && plant.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("삭제 권한이 없습니다.");
+        }
+        
 		plantService.deletePlant(pla_idx);
 		return "redirect:/Plant/plantList";
 	}

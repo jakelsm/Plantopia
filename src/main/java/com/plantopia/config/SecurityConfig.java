@@ -41,8 +41,28 @@ public class SecurityConfig {
                 // 로그인·회원가입·프로필·로그아웃는 모두 허용
                 .requestMatchers("/", "/login", "/loginProc", "/logout",
                         "/accountForm", "/accountWrite",
-                        "/profile", "/profile/**", "/StoreMain", "/StoreDetail", "/StoreSearch",
-                        "/getCartList", "/addCart", "/CartUpdate", "/CartDelete").permitAll()
+                        "/profile", "/profile/**",
+                        "/StoreMain", "/StoreDetail", "/StoreSearch",
+                        "/getCartList", "/addCart", "/CartUpdate", "/CartDelete",
+                        "/Plant/plantList", "/Plant/plantDetail").permitAll()
+                
+                // - 로그인한 user 또는 admin이 가능한 동작—
+                .requestMatchers("/Plant/plantWrite", "/plantWriteProc",
+                        "/Plant/plantList/comment").hasAnyRole("user","admin")
+                
+                //  수정/삭제 URL 자체는 인증된 user/admin
+                //     실제 권한(본인 or admin) 검사는 컨트롤러에서 수행
+                .requestMatchers(
+                    "/Plant/plantUpdate", "/Plant/plantUpdateProc",
+                    "/Plant/plantdelete",
+                    "/Plant/plantList/comment/update", "/Plant/plantList/comment/updateProc",
+                    "/Plant/plantList/comment/delete"
+                ).hasAnyRole("user","admin")
+                
+                // 수정/삭제는 로그인만 하면 라우팅은 열어두고, 실제 권한은 컨트롤러에서 소유자 검사
+                .requestMatchers("/Plant/plantUpdate", "/Plant/plantDelete")
+                  .hasAnyRole("user","admin")
+                
                 // 나머지는 인증만 필요(user 권한)
                 .anyRequest().permitAll()
             .and()

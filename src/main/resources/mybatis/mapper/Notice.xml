@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plantopia.dao.INoticeDao">
+	<select id="getAllNotice" resultType="com.plantopia.dto.NoticeDto">
+		select * from Notice 
+		 order by n_idx desc
+	</select>
+	
+	<select id="getNoticeByIdx" resultType="com.plantopia.dto.NoticeDto">
+		select * from Notice
+		 where n_idx = #{n_idx}
+	</select>
+	
+	<insert id="insertNotice" parameterType="com.plantopia.dto.NoticeDto">
+		insert into Notice(n_title,n_contents,n_img) 
+		 values(#{n_title},#{n_contents},#{n_img})
+	</insert>
+	
+	<update id="updateNotice" parameterType="com.plantopia.dto.NoticeDto">
+		update Notice 
+		 set n_title=#{n_title}, n_contents=#{n_contents}, n_img=#{n_img}
+		 where n_idx = #{n_idx}
+	</update>
+	
+	<delete id="deleteNotice" parameterType="int">
+		delete from Notice 
+		 where n_idx = #{n_idx}
+	</delete>
+	
+	<select id="getNoticePaging" resultType="com.plantopia.dto.NoticeDto">
+		select * from Notice 
+		 order by n_idx desc 
+		 LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<select id="getTotalNoticeCount" resultType="int">
+		select count(*) from Notice 
+	</select>
+</mapper>
