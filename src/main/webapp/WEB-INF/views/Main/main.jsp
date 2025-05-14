@@ -95,7 +95,7 @@
 		    </div>
 		  </div>
 		 
-		<h3>📢 공지사항</h3>
+		<h3><a href="NoticeMain">📢 공지사항</a></h3>
 		<ul>
 		  <c:forEach var="notice" items="${noticeList}">
 		    <li>
