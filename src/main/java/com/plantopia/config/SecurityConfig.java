@@ -68,10 +68,23 @@ public class SecurityConfig {
                 ).hasAnyRole("user","admin")
                 
                 // 수정/삭제는 로그인만 하면 라우팅은 열어두고, 실제 권한은 컨트롤러에서 소유자 검사
-                .requestMatchers("/Plant/plantUpdate", "/Plant/plantDelete")
+                .requestMatchers("/Plant/plantUpdate", "/Plant/plantdelete")
                   .hasAnyRole("user","admin")
                 
-                // 나머지는 인증만 필요(user 권한)
+               // Clinic 목록·상세·쓰기·댓글 쓰기는 로그인만
+                .requestMatchers(
+                      "/Clinic/clinicList", "/Clinic/clinicDetail",
+                      "/Clinic/clinicWrite", "/Clinic/clinicWriteProc",
+                      "/Clinic/comment/list", "/Clinic/comment/write"
+                  ).hasAnyRole("user","admin")
+               // Clinic 수정·삭제 URL 진입은 로그인만, 실제 권한은 컨트롤러에서
+                .requestMatchers(
+                      "/Clinic/clinicUpdate", "/Clinic/clinicUpdateProc", "/Clinic/clinicDelete",
+                      "/Clinic/comment/update", "/Clinic/comment/updateProc", "/Clinic/comment/delete",
+                      "/Clinic/comment/rate", "/Clinic/comment/rating/delete"
+                  ).hasAnyRole("user","admin")  
+                  
+              // 나머지는 인증만 필요(user 권한)
                 .anyRequest().permitAll()
             .and()
             .exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler))

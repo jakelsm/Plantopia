@@ -15,4 +15,5 @@ public interface PlantClinicMapper {
     int updateClinic(PlantClinicDto dto) throws Exception;
     int deleteClinic(@Param("plc_idx") int plc_idx) throws Exception;
     int updateHitCount(@Param("plc_idx") int plc_idx) throws Exception;
+    List<PlantClinicDto> selectClinicByUser(int user_num);
 }

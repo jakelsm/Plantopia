@@ -38,4 +38,9 @@ public class PlantClinicService {
 	 public int deleteClinic(int plc_idx) throws Exception {
 	     return plantClinicMapper.deleteClinic(plc_idx);
 	 }
+	 
+	 // 사용자별 글 목록 조회 
+	 public List<PlantClinicDto> getClinicsByUser(int user_num) throws Exception {
+	        return plantClinicMapper.selectClinicByUser(user_num);
+	    }
 }

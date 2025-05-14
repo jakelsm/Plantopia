@@ -1,15 +1,18 @@
 package com.plantopia.controller;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.NoticeDto;
 import com.plantopia.service.NoticeService;
 
@@ -22,7 +25,7 @@ public class NoticeController {
 	
 	// 1. 공지 게시판 전체 조회(+페이징기능)
 	@RequestMapping("/NoticeMain")
-	public String NoticeMain(@RequestParam(defaultValue="1",name = "page") int page, Model model) throws Exception {
+	public String NoticeMain(@RequestParam(defaultValue="1",name = "page") int page, Model model,@AuthenticationPrincipal CustomUserDetails user) throws Exception {
 		
 		int pageSize = 8; // 한 페이지에 보여줄 공지사항 수
 		
@@ -34,6 +37,10 @@ public class NoticeController {
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPage", totalPage); 
 		
+	    if (user != null) {
+	        model.addAttribute("userAuthority", user.getUser_authority());
+	    }
+		
 		return "Notice/NoticeMain";
 	}
 	
@@ -42,6 +49,7 @@ public class NoticeController {
 	public String NoticeDetail(@RequestParam("n_idx") int n_idx, Model model) throws Exception {
 		NoticeDto notice = noticeService.getNoticeByIdx(n_idx);
 		model.addAttribute("notice", notice);
+	
 		return "Notice/NoticeDetail";
 	}
 	
@@ -63,13 +71,13 @@ public class NoticeController {
 		
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/upload/img/store/";
+			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/notice/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {
 			// 새로 업로드 안 하면 기존 이미지 유지
 			fileName = original_img;
-		}			
+		}		
 		
 		NoticeDto noticeDto = NoticeDto.builder()
 							.n_title(n_title)
@@ -102,7 +110,7 @@ public class NoticeController {
 		
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/upload/img/store/";
+			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/notice/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {

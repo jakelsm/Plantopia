@@ -37,7 +37,7 @@ function fncSearch(){
 		flclrChkVal.value = fncCheckValue(document.getElementsByName("flclrChk"));
 		fmldecolrChkVal.value = fncCheckValue(document.getElementsByName("fmldecolrChk"));
 		ignSeasonChkVal.value = fncCheckValue(document.getElementsByName("ignSeasonChk"));
-		winterLwetChkVal.value = fncCheckValue(document.getElementsByName("winterLwetChk"));
+ 		winterLwetChkVal.value = fncCheckValue(document.getElementsByName("winterLwetChk"));
 		pageNo.value = "1";
 		method="get";
 		action = "gardenList";
@@ -536,42 +536,42 @@ String waterCycleSel = request.getParameter("waterCycleSel")==null?"":request.ge
 		out.print("</td></tr>");
 	}
 	//가격대 검색 조건
-	if(operationNameMap.containsKey("priceTypeList")){
-		doc=operationNameMap.get("priceTypeList");
+// 	if(operationNameMap.containsKey("priceTypeList")){
+// 		doc=operationNameMap.get("priceTypeList");
 		
-		items = doc.getElementsByTagName("item");
-		size = doc.getElementsByTagName("item").getLength();	
-		codes = doc.getElementsByTagName("code");
-		codeNms = doc.getElementsByTagName("codeNm");
+// 		items = doc.getElementsByTagName("item");
+// 		size = doc.getElementsByTagName("item").getLength();	
+// 		codes = doc.getElementsByTagName("code");
+// 		codeNms = doc.getElementsByTagName("codeNm");
 		
-		try{resultCode = doc.getElementsByTagName("resultCode").item(0).getFirstChild().getNodeValue();}catch(Exception e){resultCode = "";}
-		try{resultMsg = doc.getElementsByTagName("resultMsg").item(0).getFirstChild().getNodeValue();}catch(Exception e){resultMsg = "";}
+// 		try{resultCode = doc.getElementsByTagName("resultCode").item(0).getFirstChild().getNodeValue();}catch(Exception e){resultCode = "";}
+// 		try{resultMsg = doc.getElementsByTagName("resultMsg").item(0).getFirstChild().getNodeValue();}catch(Exception e){resultMsg = "";}
 		
-		out.print("<tr><th>가격대</th><td>");
-		if(resultCode.equals("00")){
-			for(int i=0; i<size; i++){
-				//코드
-				String code = codes.item(i).getFirstChild() == null ? "" : codes.item(i).getFirstChild().getNodeValue();
-				//코드명
-				String codeNm = codeNms.item(i).getFirstChild() == null ? "" : codeNms.item(i).getFirstChild().getNodeValue();
-				if(i == 0){
+// 		out.print("<tr><th>가격대</th><td>");
+// 		if(resultCode.equals("00")){
+// 			for(int i=0; i<size; i++){
+// 				//코드
+// 				String code = codes.item(i).getFirstChild() == null ? "" : codes.item(i).getFirstChild().getNodeValue();
+// 				//코드명
+// 				String codeNm = codeNms.item(i).getFirstChild() == null ? "" : codeNms.item(i).getFirstChild().getNodeValue();
+// 				if(i == 0){
 %>
-				<input type="radio" id="priceType" name="priceType" value="big" <%= priceType.equals("big") ? "checked": "" %>/>대형&nbsp;
-				<input type="radio" id="priceType" name="priceType" value="medium" <%= priceType.equals("medium") ? "checked": "" %>/>중형&nbsp;
-				<input type="radio" id="priceType" name="priceType" value="3" <%= priceType.equals("3") ? "checked": "" %>/>소형&nbsp;
-				<select id="priceTypeSel" name="priceTypeSel">
-				<option value="">선택하세요.</option>
+<%-- 				<input type="radio" id="priceType" name="priceType" value="big" <%= priceType.equals("big") ? "checked": "" %>/>대형&nbsp; --%>
+<%-- 				<input type="radio" id="priceType" name="priceType" value="medium" <%= priceType.equals("medium") ? "checked": "" %>/>중형&nbsp; --%>
+<%-- 				<input type="radio" id="priceType" name="priceType" value="3" <%= priceType.equals("3") ? "checked": "" %>/>소형&nbsp; --%>
+<!-- 				<select id="priceTypeSel" name="priceTypeSel"> -->
+<!-- 				<option value="">선택하세요.</option> -->
 <%
-				}
+// 				}
 %>
-				<option value="<%=code%>" <%=priceTypeSel.equals(code)?"selected":""%>><%=codeNm%></option>
+<%-- 				<option value="<%=code%>" <%=priceTypeSel.equals(code)?"selected":""%>><%=codeNm%></option> --%>
 <%
-			}
-		}else{
-			out.print("조회한 정보가 없습니다.");
-		}
-		out.print("</select></td></tr>");
-	}
+// 			}
+// 		}else{
+// 			out.print("조회한 정보가 없습니다.");
+// 		}
+// 		out.print("</select></td></tr>");
+// 	}
 	//물주기 검색 조건
 	if(operationNameMap.containsKey("waterCycleList")){
 		doc=operationNameMap.get("waterCycleList");

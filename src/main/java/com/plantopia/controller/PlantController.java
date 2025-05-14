@@ -36,9 +36,28 @@ public class PlantController {
     PostLikeService postLikeService;
 	
 	@RequestMapping("/Plant/plantList")
-	public String plantList(Model model) throws Exception {
+	public String plantList(@AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
 		List<PlantDto> plantList = plantService.selectPlantList();
 		model.addAttribute("plantList", plantList);
+		model.addAttribute("loginInfo", user);
+		
+		// 액션 칼럼 노출 여부 판단
+	    boolean showAction = false;
+	    if (user != null) {
+	        // 관리자면 무조건 true
+	        if ("admin".equals(user.getUser_authority())) {
+	            showAction = true;
+	        } else {
+	            // 일반 사용자는 자신의 글이 하나라도 있으면 true
+	            for (PlantDto p : plantList) {
+	                if (p.getUser_num() == user.getUser_num()) {
+	                    showAction = true;
+	                    break;
+	                }
+	            }
+	        }
+	    }
+	    model.addAttribute("showAction", showAction);
 		return "Plant/plantList";
 	}
 	
@@ -124,7 +143,8 @@ public class PlantController {
 	    model.addAttribute("commentList", commentList);
 	    model.addAttribute("likeCount", likeCount);
 	    model.addAttribute("userLiked", userLiked);
-		
+	    model.addAttribute("loginInfo", user);
+	    
 		return "Plant/plantDetail";
 	}
 		
@@ -195,7 +215,5 @@ public class PlantController {
 		plantService.deletePlant(pla_idx);
 		return "redirect:/Plant/plantList";
 	}
-	
-		
 	
 }

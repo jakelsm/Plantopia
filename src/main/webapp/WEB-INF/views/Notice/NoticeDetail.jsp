@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>
-		<img src="/img/store/${notice.n_img}" width="1000" height="1000"/> <br>
+		<img src="/img/notice/${notice.n_img}" width="600" height="600"/> <br>	
 	</div>
 	<form name="NoticeDetail" id="NoticeDetail" method="post" action="">
 		공지 제목 : ${notice.n_title} <br>

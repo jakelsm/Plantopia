@@ -17,26 +17,31 @@
 
   <!-- 스토어 게시판 이동 -->
   <p>
-    <a href="<c:url value='/StoreMain'/>">스토어 게시판</a>
+    <a href="<c:url value='/StoreMain'/>"><button type="button">🛒 스토어 게시판</button></a>
   </p>
 
   <!-- 플랜트 게시판 이동 -->
   <p>
-    <a href="<c:url value='/Plant/plantList'/>">플랜트 게시판</a>
+    <a href="<c:url value='/Plant/plantList'/>"><button type="button">🌱 플랜트 게시판</button></a>
+  </p>
+  
+  <!-- 플랜트 클리닉 게시판 이동 -->
+  <p>
+  	<a href="<c:url value='/Clinic/clinicList'/>"><button type="button">🏥 클리닉 게시판</button></a>
   </p>
 
   <!-- 플랜트api 게시판 이동 -->
   <p>
-    <a href="<c:url value='/gardenList'/>">식물 백과사전</a>
+    <a href="<c:url value='/gardenList'/>"><button type="button">📖 식물 백과사전</button></a>
   </p>
   
   <!-- 모든 링크에 c:url 을 써서 contextPath 문제를 방지 -->
   <p>
-    <a href="<c:url value='/profile'/>">프로필 페이지</a>
+    <a href="<c:url value='/profile'/>"><button type="button">👤 내 프로필</button></a>
   </p>
 
   <p>
-    <a href="<c:url value='/logout'/>">로그아웃</a>
+    <a href="<c:url value='/logout'/>"><button type="button">🔒 로그아웃</button></a>
   </p>
 </body>
 </html>

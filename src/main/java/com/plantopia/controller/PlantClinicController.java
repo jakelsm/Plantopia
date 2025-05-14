@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.PlantClinicCommentDto;
 import com.plantopia.dto.PlantClinicDto;
+import com.plantopia.dto.PlantDto;
 import com.plantopia.service.CommentRatingsService;
 import com.plantopia.service.PlantClinicCommentService;
 import com.plantopia.service.PlantClinicService;
@@ -34,9 +36,28 @@ public class PlantClinicController {
 
     // 클리닉 게시글 목록
     @RequestMapping("/Clinic/clinicList")
-    public String clinicList(Model model) throws Exception {
+    public String clinicList(@AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
         List<PlantClinicDto> list = plantClinicService.selectClinicList();
         model.addAttribute("clinicList", list);
+        model.addAttribute("loginInfo", user);
+        
+        // 액션 칼럼 노출 여부 판단
+	    boolean showAction = false;
+	    if (user != null) {
+	        // 관리자면 무조건 true
+	        if ("admin".equals(user.getUser_authority())) {
+	            showAction = true;
+	        } else {
+	            // 일반 사용자는 자신의 글이 하나라도 있으면 true
+	            for (PlantClinicDto p : list) {
+	                if (p.getUser_num() == user.getUser_num()) {
+	                    showAction = true;
+	                    break;
+	                }
+	            }
+	        }
+	    }
+	    model.addAttribute("showAction", showAction);
         return "PlantClinic/clinicList";
     }
 
@@ -152,8 +173,14 @@ public class PlantClinicController {
     
     // 글 수정 폼
     @RequestMapping("/Clinic/clinicUpdate")
-    public String clinicUpdate(@RequestParam("plc_idx") int plc_idx, Model model) throws Exception {
+    public String clinicUpdate(@RequestParam("plc_idx") int plc_idx, @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
         PlantClinicDto clinic = plantClinicService.selectClinicDetail(plc_idx);
+        // —— 본인 or admin 검사 —— 
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && clinic.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("수정 권한이 없습니다.");
+        }
+        
         model.addAttribute("clinic", clinic);
         return "PlantClinic/clinicUpdate";
     }
@@ -173,7 +200,8 @@ public class PlantClinicController {
                                    @RequestParam("discolored") String discolored,
                                    @RequestParam("plc_contents") String plc_contents,
                                    @RequestParam("imgFile") MultipartFile imgFile,
-                                   @RequestParam("original_img") String original_img) throws Exception {
+                                   @RequestParam("original_img") String original_img,
+                                   @AuthenticationPrincipal CustomUserDetails user) throws Exception {
 
         String fileName = null;
         if (!imgFile.isEmpty()) {
@@ -199,14 +227,25 @@ public class PlantClinicController {
         clinic.setDiscolored(discolored);
         clinic.setPlc_contents(plc_contents);
         clinic.setPlc_img(fileName);
-
+        
+        PlantClinicDto existing = plantClinicService.selectClinicDetail(plc_idx);
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && existing.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("수정 권한이 없습니다.");
+        }
+        
         plantClinicService.updateClinic(clinic);
         return "redirect:/Clinic/clinicList";
     }
 
     // 글 삭제 
     @RequestMapping("/Clinic/clinicDelete")
-    public String clinicDelete(@RequestParam("plc_idx") int plc_idx) throws Exception {
+    public String clinicDelete(@RequestParam("plc_idx") int plc_idx, @AuthenticationPrincipal CustomUserDetails user) throws Exception {
+    	PlantClinicDto existing = plantClinicService.selectClinicDetail(plc_idx);
+        boolean isAdmin = "admin".equals(user.getUser_authority());
+        if (!isAdmin && existing.getUser_num() != user.getUser_num()) {
+            throw new AccessDeniedException("삭제 권한이 없습니다.");
+        }
         plantClinicService.deleteClinic(plc_idx);
         return "redirect:/Clinic/clinicList";
     }

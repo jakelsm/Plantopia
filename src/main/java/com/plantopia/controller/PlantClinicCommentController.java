@@ -3,6 +3,7 @@ package com.plantopia.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -57,7 +58,12 @@ public class PlantClinicCommentController {
 	                                    Model model) throws Exception {
 
 	        PlantClinicCommentDto dto = commentService.selectCommentDetail(plccom_idx);
-
+	        
+	        boolean isAdmin = "admin".equals(user.getUser_authority());
+	        if (!isAdmin && dto.getUser_num() != user.getUser_num()) {
+	            throw new AccessDeniedException("댓글 수정 권한이 없습니다.");
+	        }
+	        
 	        model.addAttribute("dto", dto);
 	        model.addAttribute("plc_idx", plc_idx);
 	        model.addAttribute("nickname", user.getUser_nickname());
@@ -69,7 +75,14 @@ public class PlantClinicCommentController {
 	    @RequestMapping("/Clinic/comment/updateProc")
 	    public String updateCommentProc(@RequestParam int plccom_idx,
 	                                    @RequestParam("plccom_contents") String plccom_contents,
-	                                    @RequestParam int plc_idx) throws Exception {
+	                                    @RequestParam int plc_idx,
+	                                    @AuthenticationPrincipal CustomUserDetails user) throws Exception {
+	    	PlantClinicCommentDto comment = commentService.selectCommentDetail(plccom_idx);
+	        boolean isAdmin = "admin".equals(user.getUser_authority());
+	        if (!isAdmin && comment.getUser_num() != user.getUser_num()) {
+	            throw new AccessDeniedException("댓글 수정 권한이 없습니다.");
+	        }
+	    	
 	        commentService.updateComment(plccom_idx, plccom_contents);
 	        return "redirect:/Clinic/clinicDetail?plc_idx=" + plc_idx;
 	    }
@@ -77,7 +90,14 @@ public class PlantClinicCommentController {
 	    // 댓글 삭제 처리
 	    @RequestMapping("/Clinic/comment/delete")
 	    public String deleteComment(@RequestParam int plccom_idx,
-	                                 @RequestParam int plc_idx) throws Exception {
+	                                @RequestParam int plc_idx,
+	                                @AuthenticationPrincipal CustomUserDetails user) throws Exception {
+	    	PlantClinicCommentDto comment = commentService.selectCommentDetail(plccom_idx);
+	        boolean isAdmin = "admin".equals(user.getUser_authority());
+	        if (!isAdmin && comment.getUser_num() != user.getUser_num()) {
+	            throw new AccessDeniedException("댓글 삭제 권한이 없습니다.");
+	        }
+	        
 	        commentService.deleteComment(plccom_idx);
 	        return "redirect:/Clinic/clinicDetail?plc_idx=" + plc_idx;
 	    }

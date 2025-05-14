@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니 리스트</title>
+<script src="/js/CartPay.js"></script>
 <!-- jQuery (아임포트 SDK 콜백에서 $.ajax 를 쓰고 싶다면) -->
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <!-- 아임포트 결제 SDK -->

@@ -49,7 +49,32 @@
       </table>
     </c:if>
   </fieldset>
+  
+  <!-- Clinic 게시판 내가 쓴 글 목록 -->
+  <fieldset>
+    <legend>내가 쓴 Plant Clinic 글</legend>
+    <c:if test="${not empty clinicList}">
+      <table border="1" width="100%">
+        <tr><th>번호</th><th>제목</th><th>작성일</th></tr>
+        <c:forEach var="dto" items="${clinicList}">
+          <tr>
+            <td>${dto.plc_idx}</td>
+            <td>
+              <a href="<c:url value='/Clinic/clinicDetail?plc_idx=${dto.plc_idx}'/>">
+                ${dto.plc_title}
+              </a>
+            </td>
+            <td>${dto.plc_date}</td>
+          </tr>
+        </c:forEach>
+      </table>
+    </c:if>
+    <c:if test="${empty clinicList}">
+      <p>작성한 글이 없습니다.</p>
+    </c:if>
+  </fieldset>
 
-  <p><a href="${pageContext.request.contextPath}/Main">뒤로</a></p>
+  <p><a href="${pageContext.request.contextPath}/Main"><button type="button">⬅️ 메인으로 돌아가기</button></a></p>
+  <p><a href="<c:url value='/logout'/>"><button type="button">🚪 로그아웃</button></a></p>
 </body>
 </html>

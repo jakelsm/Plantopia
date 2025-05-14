@@ -15,17 +15,23 @@
 	        <th>번호</th>
 	        <th>제목</th>
 	        <th>작성자</th>
-	        <th>관리</th>
+	        <c:if test="${showAction}">
+        		<th>관리</th>
+      		</c:if>
 	    </tr>
 	    <c:forEach var="dto" items="${clinicList}">
 	        <tr>
 	            <td>${dto.plc_idx}</td>
 	            <td><a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">${dto.plc_title}</a></td>
 	            <td>${dto.writer}</td>
-	            <td>
-	                <a href="/Clinic/clinicUpdate?plc_idx=${dto.plc_idx}">수정</a>
-	                <a href="/Clinic/clinicDelete?plc_idx=${dto.plc_idx}">삭제</a>
-	            </td>
+	            <c:if test="${not empty loginInfo}">
+                    <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == dto.user_num}">
+			            <td>
+			                <a href="/Clinic/clinicUpdate?plc_idx=${dto.plc_idx}">수정</a> | 
+			                <a href="/Clinic/clinicDelete?plc_idx=${dto.plc_idx}">삭제</a>
+			            </td>
+	            	</c:if>
+	           </c:if>
 	        </tr>
 	    </c:forEach>
 	</table>

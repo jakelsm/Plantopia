@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +34,7 @@ public class StoreController {
 	
 	// 1. 스토어 게시판 전체 조회
 	@RequestMapping("/StoreMain")
-	public String StoreMain(@RequestParam(defaultValue="1",name = "page") int page, Model model) throws Exception {
+	public String StoreMain(@RequestParam(defaultValue="1",name = "page") int page, Model model,@AuthenticationPrincipal CustomUserDetails user) throws Exception {
 		
 		int pageSize = 8; 
 		
@@ -44,6 +45,11 @@ public class StoreController {
 		model.addAttribute("lists", storeList);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPage", totalPage);
+		
+		if (user != null) {
+	        model.addAttribute("userAuthority", user.getUser_authority());
+	    }
+		
 		return "Store/StoreMain";
 	}
 	
@@ -84,14 +90,14 @@ public class StoreController {
 							@RequestParam("p_stockQuantity") int p_stockQuantity,
 							HttpServletRequest request
 			) throws Exception {
-		
-		
+				
 		String fileName = null;
 		String original_img = null;
 		
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/upload/img/store/";
+			//String uploadPath = "C:/upload/img/store/";
+			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/store/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {
@@ -137,7 +143,7 @@ public class StoreController {
 				
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/upload/img/store/";
+			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/store/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {
