@@ -7,7 +7,22 @@
   <meta charset="UTF-8">
   <title>메인 페이지</title>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <style>
+	 /* 메달 색상 정의 */
+    .medal-1 { color: #FFD700; } /* 골드 */
+    .medal-2 { color: #C0C0C0; } /* 실버 */
+    .medal-3 { color: #CD7F32; } /* 브론즈 */
+    /* 아이콘과 텍스트 간격 */
+    .word i {
+      margin-right: 4px;
+      font-size: 1.2rem;
+      vertical-align: middle;
+    }
+	.letter {
+		font-size: 30px;
+		color: green;
+	}
 	.word {
 		font-size: 20px;
 		color: black;
@@ -100,14 +115,25 @@
       <div class="grid_12">
         <!-- 인기글 영역 시작 -->
 		  <div class="container_12 popular-section">
-		  	<h2 class="black">인기 글 순위</h2>
+		  	<h2 class="black">🏆 인기 글 순위</h2>
 		  	<!-- 1~4위 (왼쪽 6칸) -->
 		    <div class="grid_6">
 		      <ol>
 		        <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
 		          <li>
 		          	<div class="word">
-			            ${vs.index+1}. 
+			          	<c:choose>
+				            <c:when test="${vs.index == 0}">
+				              <i class="bi bi-trophy-fill medal-1"></i>
+				            </c:when>
+				            <c:when test="${vs.index == 1}">
+				              <i class="bi bi-trophy-fill medal-2"></i>
+				            </c:when>
+				            <c:when test="${vs.index == 2}">
+				              <i class="bi bi-trophy-fill medal-3"></i>
+				            </c:when>
+				        </c:choose>
+				        ${vs.index + 1}.
 			            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
 			              ${post.pla_title}
 			            </a>
@@ -157,7 +183,7 @@
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
 			<div class="grid_12">
-			<h2 class="black">인기 상품 미리보기</h2>
+			<h2 class="black">🎁 인기 상품 미리보기</h2>
 			   <div class="store-preview-list">
 			   		<c:forEach var="store" items="${storeList}" begin="0" end="3">
 			        <div class="store-preview-card">
