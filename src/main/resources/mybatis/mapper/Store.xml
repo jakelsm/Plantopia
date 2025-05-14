@@ -41,4 +41,10 @@
 	<select id="getTotalStoreCount" resultType="int">
 		select count(*) from Store 
 	</select>
+	
+	<select id="getTop5" resultType="com.plantopia.dto.StoreDto">
+   	 	SELECT * FROM store 
+    	 ORDER BY p_idx DESC 
+   	 	 LIMIT 5
+	</select>
 </mapper>

@@ -25,4 +25,6 @@ public interface IStoreDao {
 	
 	public int getTotalStoreCount(); // 스토어 게시판 페이징 총 카운트 
 	
+	List<StoreDto> getTop5(); // 메인페이지 top5
+	
 }

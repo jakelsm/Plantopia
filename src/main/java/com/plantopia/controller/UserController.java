@@ -16,8 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.plantopia.dao.IUserDao;
 import com.plantopia.dto.CustomUserDetails;
+import com.plantopia.dto.StoreDto;
 import com.plantopia.dto.UserDto;
 import com.plantopia.service.ProfileService;
+import com.plantopia.service.StoreService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -31,6 +33,9 @@ public class UserController {
 	
 	@Autowired
     private ProfileService profileService;   // ← 추가
+	
+	@Autowired
+	StoreService storeService;
 	
 	@RequestMapping("/")
 	public String root() {
@@ -101,6 +106,12 @@ public class UserController {
 	        session.setAttribute("user_nickname", user.getUser_nickname());
 	        
 	        model.addAttribute("loginInfo", user);
+	        
+	        // 스토어 게시글 5개 가져오기 (최신순 or 인기순)
+	        List<StoreDto> storeList = storeService.getTop5();
+	        model.addAttribute("storeList", storeList);
+	        
+	        
 	        return "Main/main"; // 로그인 성공 후 확인용 JSP
 	    } else {
 	    	return "redirect:/login?error=fail"; // 로그인되지 않은 상태일 경우

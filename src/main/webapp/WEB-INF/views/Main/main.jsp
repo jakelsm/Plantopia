@@ -6,64 +6,74 @@
 <head>
   <meta charset="UTF-8">
   <title>메인 페이지</title>
-  <link rel="icon" href="/images/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/form.css">
-  <script src="/js/jquery.js"></script>
-  <script src="/js/jquery-migrate-1.1.1.js"></script>
-  <script src="/js/script.js"></script>
 </head>
-<body id="top">
-  <!-- 헤더 영역 -->
-  <header>
-    <div class="container_12">
-      <div class="grid_12">
-        <h1>
-          <a href="/"><img src="/img/logo.png" alt="Plantopia 로고"></a>
-        </h1>
-        <a href="/profile">내 프로필</a>
-        <a href="/logout">로그아웃</a>
-      </div>
-    </div>
-    <div class="menu_block">
-      <div class="container_12">
-        <div class="grid_12">
-          <nav class="horizontal-nav full-width horizontalNav-notprocessed">
-            <ul class="sf-menu">
-              <li class="current"><a href="/">Home</a></li>
-              <li><a href="/StoreMain">스토어</a></li>
-              <li><a href="/Plant/plantList">플랜트</a></li>
-              <li><a href="/Clinic/clinicList">클리닉</a></li>
-              <li><a href="/gardenList">백과사전</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
+<style>
+	.store-preview-list {
+	  display: flex;
+	  gap: 20px;
+	  flex-wrap: wrap;
+	  margin-top: 20px;
+	}
 
+	.store-preview-card {
+	  	flex: 1 1 calc(25% - 20px); /* 한 줄에 4개 */
+  		max-width: calc(25% - 20px);
+  		box-sizing: border-box;
+  		padding: 3px;
+  		border: 1px solid #ccc;
+  		text-align: center;
+  		border-radius: 8px;
+  		background: #fff;
+	}
+	
+	.store-preview-card h3 {
+	  font-size: 14px;
+	  margin: 4px 0;
+	}
+
+	.store-preview-card p {
+	  font-size: 13px;
+	  margin: 2px 0;
+	}
+
+	.store-thumb {
+	  width: 100%;
+	  height: 180px;
+	  object-fit: cover;	
+	}
+	
+	 .black {
+	 	color : black;
+	 }
+	 
+</style>
+<body id="top">
+  <%@ include file="/WEB-INF/views/Main/header.jsp" %>
   <!-- 본문 콘텐츠 -->
   <div class="content">
     <div class="container_12">
       <div class="grid_12">
         <h2>Welcome to Plantopia!</h2>
-
-        <c:if test="${not empty loginInfo}">
-          <p>✅ <strong>${loginInfo.user_nickname}</strong></p>
-        </c:if>
-      </div>
-    </div>
-  </div>
-
-  <!-- 푸터 -->
-  <footer>
-    <div class="container_12">
-      <div class="grid_12">
-        <div class="copy">
-          &copy; Plantopia 2025 | Template from TemplateMonster
-        </div>
-      </div>
-    </div>
-  </footer>
+        <!-- Store 게시판 미리보기 영역 -->
+		<div class="container_12">
+			<div class="grid_12">
+			<h2 class="black">인기 상품 미리보기</h2>
+			   <div class="store-preview-list">
+			   		<c:forEach var="store" items="${storeList}" begin="0" end="3">
+			        <div class="store-preview-card">
+			        	<a href="/StoreDetail?p_idx=${store.p_idx}">	          
+			           	<img src="/img/store/${store.p_img}" alt="${store.p_name}" class="store-thumb">
+			           	</a>           
+			         	<h3>${store.p_name}</h3>
+			          	<p>${store.p_price}원</p>
+			        </div>
+			      	</c:forEach>
+			    </div>
+			  </div>
+		</div>      
+	</div>
+	</div>
+	</div>
+   <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
 </body>
 </html>

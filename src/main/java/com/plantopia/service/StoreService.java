@@ -56,4 +56,9 @@ public class StoreService {
 		return (int) Math.ceil((double) total / pageSize);
 	}
 	
+	// 8. 메인페이지 top5개 
+	public List<StoreDto> getTop5(){
+		return storeDao.getTop5();
+	}
+	
 }
