@@ -36,10 +36,17 @@ public class PlantClinicController {
 
     // 클리닉 게시글 목록
     @RequestMapping("/Clinic/clinicList")
-    public String clinicList(@AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
-        List<PlantClinicDto> list = plantClinicService.selectClinicList();
+    public String clinicList(@RequestParam(defaultValue="1") int page,
+    						 @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
+    	int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
+    	
+    	List<PlantClinicDto> list = plantClinicService.getClinicPaging(page, pageSize);
+        int totalPage = plantClinicService.getTotalClinicCount();  // 전체 게시글 수 기반으로 총 페이지 수 계산
+
         model.addAttribute("clinicList", list);
         model.addAttribute("loginInfo", user);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPage", totalPage);
         
         // 액션 칼럼 노출 여부 판단
 	    boolean showAction = false;

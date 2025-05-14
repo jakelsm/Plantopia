@@ -42,5 +42,17 @@ public class PlantClinicService {
 	 // 사용자별 글 목록 조회 
 	 public List<PlantClinicDto> getClinicsByUser(int user_num) throws Exception {
 	        return plantClinicMapper.selectClinicByUser(user_num);
-	    }
+	 }
+	 
+	 // 페이징 처리된 게시글 조회
+	 public List<PlantClinicDto> getClinicPaging(int page, int pageSize) throws Exception {
+	     int offset = (page - 1) * pageSize;  // 페이지 번호를 기준으로 OFFSET 계산
+	     return plantClinicMapper.getClinicPaging(offset, pageSize);
+	 }
+	 
+     // 전체 게시글 개수 조회
+	 public int getTotalClinicCount() throws Exception {
+	     return plantClinicMapper.getTotalClinicCount();
+	 }
+
 }

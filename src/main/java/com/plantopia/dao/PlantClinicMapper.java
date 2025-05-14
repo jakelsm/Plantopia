@@ -16,4 +16,8 @@ public interface PlantClinicMapper {
     int deleteClinic(@Param("plc_idx") int plc_idx) throws Exception;
     int updateHitCount(@Param("plc_idx") int plc_idx) throws Exception;
     List<PlantClinicDto> selectClinicByUser(int user_num);
+    // 페이지마다 가져올 것 (offset, limit)
+    List<PlantClinicDto> getClinicPaging(@Param("offset") int offset, @Param("limit") int limit);
+    // 전체 게시글 수
+    int getTotalClinicCount();
 }
