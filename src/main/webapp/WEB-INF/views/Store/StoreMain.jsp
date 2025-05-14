@@ -37,6 +37,33 @@
 	.right {
 		text-align : right;
 	}
+	
+	.pagination {
+		text-align: center;
+ 		margin: 30px 0 10px 0;
+	}
+	
+	.pagination a {
+	    display: inline-block;
+	    margin: 0 5px;
+	    padding: 6px 12px;
+	    border: 1px solid #ddd;
+	    border-radius: 4px;
+	    background-color: #f9f9f9;
+	    text-decoration: none;
+	    color: #333;
+ 	 }
+ 	
+ 	.pagination a:hover {
+    	background-color: #e0e0e0;
+  	}
+  	
+  	.pagination a.active {
+	  background-color: #4CAF50;
+	  color: white;
+	  font-weight: bold;
+	}
+	
 </style>
 <body id="top">
 	 <%@ include file="/WEB-INF/views/Main/header.jsp" %> 
@@ -48,9 +75,11 @@
 			<div class="right">
 				<p><strong>${sessionScope.user_nickname}님</strong></p>
 				<a href="getCartList?user_num=${sessionScope.user_num}">장바구니</a>
+				<a href="getCartList?user_num=${sessionScope.user_num}">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
  					<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
 				</svg>
+				</a>
 			</div>		
 			<div class="container">
 			<c:forEach var="dto" items="${lists}">	
@@ -62,7 +91,7 @@
 					<a href="StoreUpdate?p_idx=${dto.p_idx}">수정</a>
 					<a href="StoreDelete?p_idx=${dto.p_idx}">삭제</a>
 				</c:if>
-			</div>	
+			</div>
 			</c:forEach>
 			</div>
 			<c:if test="${userAuthority eq 'admin'}">
