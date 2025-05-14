@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<!-- 회원가입 전용 스타일 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/signup.css">
+<!-- JS 토글 (로그인 페이지와 동일한 CSS 애니메이션을 위해 필요) -->
+<script src="${pageContext.request.contextPath}/js/signup.js"></script>
+<!-- 기존 체크폼 기능 -->
+<script src="${pageContext.request.contextPath}/js/checkForm.js"></script>
 <script src="/JS/checkForm.js"></script>
 </head>
 <script>
@@ -81,25 +87,76 @@ function checkDuplicateEmail() {
 }
 </script>
 <body>
-	<h3>회원가입</h3>
-	<form name="member" id="member" method="post" action="accountWrite">
-		아이디 : <input type="text" name="user_id" id="user_id">
-			    <input type="button" value="중복 확인" onclick="checkDuplicateId()">
-				<span id="idCheckResult" style="color:red;"></span><br>
-		비밀번호 : <input type="password" name="user_passwd" id="user_passwd"> <br>
-		비밀번호 확인 : <input type="password" name="passwdconfirm" id="passwdconfirm"> <br>
-		이름 : <input type="text" name="user_name" id="user_name"> <br>
-		닉네임 : <input type="text" name="user_nickname" id="user_nickname">
-				<input type="button" value="중복 확인" onclick="checkDuplicateNickname()"><br>
-		주소 : <input type="text" name="roadAddrPart1" id="roadAddrPart1" size="30" readonly> 
-			  <input type="button" value="주소검색" onclick="goPopup()"> <br>
-		상세주소 : <input type="text" name="addrDetail" id="addrDetail" readonly> <br>
-		우편번호 : <input type="text" name="zipNo" id="zipNo" readonly> <br>
-		이메일 : <input type="text" name="user_email" id="user_email">
-				<input type="button" value="중복 확인" onclick="checkDuplicateEmail()"><br>
-		연락처 : <input type="text" name="user_tel" id="user_tel"> <br>
-		<input type="button" value="회원가입" onclick="check()">
-		<input type="reset" value="가입취소">
-	</form>
+  <div id="container" class="container sign-up">
+    <div class="row">
+      <div class="col align-items-center flex-col sign-up">
+        <div class="form-wrapper">
+          <!-- 기존 폼을 그대로 가져오되, 클래스만 추가 -->
+          <form class="form sign-up" name="member" id="member" method="post" action="accountWrite">
+            <h3>회원가입</h3>
+            
+            <div class="input-group">
+              <i class='bx bxs-user'></i>
+              <input type="text" name="user_id" id="user_id" placeholder="아이디">
+              <button type="button" class="dup-check" onclick="checkDuplicateId()">중복 확인</button>
+            </div>
+
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" name="user_passwd" id="user_passwd" placeholder="비밀번호">
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-lock-alt'></i>
+              <input type="password" name="passwdconfirm" id="passwdconfirm" placeholder="비밀번호 확인">
+            </div>
+            
+			<div class="input-group">
+              <i class='bx bxs-id-card'></i>
+              <input type="text" name="user_name" id="user_name" placeholder="이름">
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-id-card'></i>
+              <input type="text" name="user_nickname" id="user_nickname" placeholder="닉네임">
+              <button type="button" class="dup-check" onclick="checkDuplicateNickname()">중복 확인</button>
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-map'></i>
+              <input type="text" name="roadAddrPart1" id="roadAddrPart1" placeholder="주소" readonly>
+              <button type="button" class="dup-check" onclick="goPopup()">주소검색</button>
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-home'></i>
+              <input type="text" name="addrDetail" id="addrDetail" placeholder="상세주소" readonly>
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-home'></i>
+              <input type="text" name="zipNo" id="zipNo" placeholder="우편번호" readonly>
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-envelope'></i>
+              <input type="email" name="user_email" id="user_email" placeholder="이메일">
+              <button type="button" class="dup-check" onclick="checkDuplicateEmail()">중복 확인</button>
+            </div>
+            
+            <div class="input-group">
+              <i class='bx bxs-phone'></i>
+              <input type="text" name="user_tel" id="user_tel" placeholder="연락처">
+            </div>
+
+            <div class="form-buttons">
+              <button type="button" onclick="check()">회원가입</button>
+              <button type="reset" class="secondary">취소</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

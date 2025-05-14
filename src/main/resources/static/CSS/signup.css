@@ -1,0 +1,134 @@
+/* signup.css */
+
+:root {
+  --primary-color: #4EA685;
+  --secondary-color: #57B894;
+  --white: #ffffff;
+  --gray: #efefef;
+  --gray-2: #757575;
+}
+
+/* 폼 초기 숨김 & 애니메이션 */
+.form { 
+  background: var(--white);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 24rem;
+  box-shadow: rgba(0,0,0,0.2) 0 5px 15px;
+  transform: scale(0);
+  transition: .5s ease-in-out;
+}
+
+/* 전체 폼을 담고 있는 래퍼를 좀 더 넓게 조정 */
+.form-wrapper {
+  width: 100%;
+  max-width: 600px;    /* 최대 600px 로 늘림 */
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* 컬럼을 50% → 100% 로 늘려서 충분한 공간 확보 */
+.row > .col.sign-up {
+  width: 100%;
+}
+
+/* 컨테이너 클래스에 따라 보이기 */
+.container.sign-up .form.sign-up {
+  transform: scale(1);
+}
+
+/* input-group: flex + gap */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+/* 아이콘도 flex 아이템으로 처리 */
+.input-group i {
+  font-size: 1.2rem;
+  color: var(--gray-2);
+}
+
+/* input 확장 */
+.input-group input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--gray);
+  border-radius: .5rem;
+  background: var(--gray);
+  outline: none;
+}
+
+/* focus 시 테두리 강조 */
+.input-group input:focus {
+  border-color: var(--primary-color);
+}
+
+/* 중복확인 버튼 */
+.dup-check {
+  padding: .6rem 1rem;
+  background: var(--secondary-color);
+  border: none;
+  color: var(--white);
+  border-radius: .3rem;
+  cursor: pointer;
+}
+
+/* 회원가입/취소 버튼 영역 */
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.form-buttons button {
+  flex: 1;
+  padding: .8rem;
+  border: none;
+  border-radius: .5rem;
+  background: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
+}
+.form-buttons .secondary {
+  background: var(--gray-2);
+}
+/* ────────────────────────────────────────── */
+/* signup.css 마지막에 추가: auth.css 덮어쓰기 */
+/* ────────────────────────────────────────── */
+
+.container.sign-up .input-group {
+  /* auth.css 의 position/width 고정 해제하고 flex 적용 */
+  display: flex !important;
+  position: static !important;
+  width: auto !important;
+  margin: 1rem 0;       /* 기존 여백 유지 */
+}
+
+.container.sign-up .input-group i {
+  /* 절대위치 해제, inline 요소로 바꾸기 */
+  position: static !important;
+  transform: none !important;
+  margin-right: 0.5rem; /* 아이콘과 input 간격 */
+  font-size: 1.4rem;    /* auth.css 기본 크기 유지 */
+  color: var(--gray-2);
+}
+
+.container.sign-up .input-group input {
+  /* 100% 너비 해제, flex-grow 로 남은 공간 사용 */
+  flex: 1 1 auto !important;
+  width: auto !important;
+  padding: 1rem !important;
+  border: 1px solid var(--gray) !important;
+  border-radius: .5rem !important;
+  background: var(--gray) !important;
+}
+
+.container.sign-up .input-group .dup-check {
+  /* 버튼도 flex 안에서 옆에 붙도록 */
+  margin: 0 !important; 
+  padding: .6rem 1rem !important;
+}
+
