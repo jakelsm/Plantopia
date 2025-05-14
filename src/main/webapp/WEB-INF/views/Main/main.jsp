@@ -94,6 +94,21 @@
 		      </ol>
 		    </div>
 		  </div>
+		 
+		<h3>📢 공지사항</h3>
+		<ul>
+		  <c:forEach var="notice" items="${noticeList}">
+		    <li>
+		      <a href="/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
+		      <span style="font-size: 12px; color: gray;">(${notice.n_date})</span>
+		    </li>
+		  </c:forEach>
+		  <c:if test="${empty noticeList}">
+		    <li>등록된 공지사항이 없습니다.</li>
+		  </c:if>
+		</ul>
+  
+		  
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
 			<div class="grid_12">
