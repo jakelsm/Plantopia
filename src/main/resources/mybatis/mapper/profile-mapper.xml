@@ -19,4 +19,15 @@
     insert into Profile (user_num)
     values (#{user_num})
   </insert>
+  
+  <select id="selectAverageRatingByUserNum"
+          resultType="double"
+          parameterType="int">
+    SELECT
+      ROUND(COALESCE(AVG(r.rating),0), 2)
+    FROM comment_ratings r
+    JOIN PlantClinic_Comment c
+      ON r.plccom_idx = c.plccom_idx
+    WHERE c.user_num = #{user_num}
+  </select>
 </mapper>

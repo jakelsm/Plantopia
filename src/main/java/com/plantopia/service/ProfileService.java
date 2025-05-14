@@ -19,4 +19,9 @@ public class ProfileService {
     public void createProfile(int userNum) {
         profileDao.insertProfile(userNum);
     }
+    
+    // 이 사용자가 받은 평균 별점 조회
+    public Double getAverageRatingByUserNum(int userNum) {
+        return profileDao.selectAverageRatingByUserNum(userNum);
+    }
 }

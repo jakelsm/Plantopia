@@ -14,6 +14,9 @@
     <table width="500">
       <tr><th>닉네임</th><td>${profile.userNickname}</td></tr>
       <tr><th>이메일</th><td>${profile.userEmail}</td></tr>
+      <tr>
+        <th>평균 별점</th><td>${avgRating} ★</td>
+      </tr>
     </table>
   </fieldset>
 

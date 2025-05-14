@@ -40,7 +40,11 @@ public class ProfileController {
         // Profile 정보
         ProfileDto profile = profileService.getByUserNum(userNum);
         model.addAttribute("profile", profile);
-
+        
+        // 별점 평균
+        Double avgRating = profileService.getAverageRatingByUserNum(userNum);
+        model.addAttribute("avgRating", avgRating);
+        
         // 내가 쓴 Plant 게시판 글 목록
         List<PlantDto> myPosts = plantService.selectPlantByUser(userNum);
         model.addAttribute("myPosts", myPosts);

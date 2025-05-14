@@ -14,4 +14,6 @@ public interface IProfileDao {
     ProfileDto selectProfileByUserNum(@Param("user_num") int userNum);
     /** 회원가입 직후 user_num 으로 프로필 기본 레코드 삽입 */
     int insertProfile(@Param("user_num") int userNum);
+    // 내가 작성한 댓글에 달린 별점의 평균
+    Double selectAverageRatingByUserNum(@Param("user_num") int userNum);
 }
