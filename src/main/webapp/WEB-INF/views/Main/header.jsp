@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1G+LcOV2e1zF1ikGmF5j5Qe1VVtS3IQfTbtE3MoK7nr"
+        crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+        rel="stylesheet">
   <link rel="icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/form.css">
@@ -38,7 +46,7 @@
     <div class="container_12">
       <div class="grid_12">
       	 <div class="header-right">
-	        <a href="/profile"><strong>${sessionScope.user_nickname}님</strong>/</a>
+	        <a href="/profile"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong>/</a>
 	        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니/</a>
 	        <a href="/logout">로그아웃</a>
         </div>         
