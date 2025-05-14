@@ -59,6 +59,38 @@
 	 	color : black;
 	 }
 	 
+	 .company-section {
+	  display: flex;
+	  gap: 30px;
+	  margin: 50px auto;
+	  max-width: 1000px;
+	  align-items: center;
+	  padding: 20px;
+	  background-color: #fff;
+	  border-radius: 8px;
+	}
+	
+	.company-img img {
+	  width: 500px;
+	  height: auto;
+	  border-radius: 8px;
+	  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+	}
+	
+	.company-text {
+	  flex: 1;
+	  font-size: 16px;
+	  line-height: 1.8;
+	  color: #333;
+	}
+	
+	.company-textsize ::first-letter {
+		margin-right: 10px;
+		  font-size: xx-large;
+		  font-weight: bold;
+		  float: left;
+	}
+	 
 </style>
 <body id="top">
   <%@ include file="/WEB-INF/views/Main/header.jsp" %>
@@ -138,6 +170,23 @@
 			      	</c:forEach>
 			    </div>
 			  </div>
+		</div>
+		
+		<!-- 회사 소개 영역 -->
+		<div class="container_12">
+		  <div class="company-section">
+		    <div class="company-img">
+		      <img src="/img/hands.jpg" alt="회사 이미지">
+		    </div>
+		    <div class="company-text">
+		      <h2>Plantopia 소개</h2>
+		        <div class="company-textsize">Plantopia는 식물(Plant)과 유토피아(Utopia)의 결합으로, 
+		        식물이 주는 이상적인 삶을 제안하는 반려식물 플랫폼입니다.<br>
+		        우리는 도심 속에서도 누구나 식물을 쉽고 즐겁게 기를 수 있도록, 지식과 일상을 함께 나눕니다. <br>
+		        Plantopia는 초보자부터 전문가까지 모두를 위한 식물 동반자입니다. <br>
+		      </div>
+		    </div>
+		  </div>
 		</div>      
 	</div>
 	</div>
