@@ -71,7 +71,7 @@ public class NoticeController {
 		
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/notice/";
+			String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/notice/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {
@@ -110,7 +110,7 @@ public class NoticeController {
 		
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/notice/";
+			String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/notice/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {

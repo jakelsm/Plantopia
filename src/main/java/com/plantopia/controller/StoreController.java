@@ -97,7 +97,7 @@ public class StoreController {
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
 			//String uploadPath = "C:/upload/img/store/";
-			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/store/";
+			String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/store/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {
@@ -143,7 +143,7 @@ public class StoreController {
 				
 		if(!imgFile.isEmpty()) {			
 			fileName = imgFile.getOriginalFilename();			
-			String uploadPath = "C:/Spingboot/Plantopia/src/main/resources/static/img/store/";
+			String uploadPath = "C:/Springboot/Plantopia/src/main/resources/static/img/store/";
 			File file = new File(uploadPath + fileName);
 			imgFile.transferTo(file);
 		} else {
