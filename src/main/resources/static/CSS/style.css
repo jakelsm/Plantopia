@@ -2,9 +2,9 @@
 @import "grid.css";
 @import "font-awesome.css";
 @import "superfish.css";
-@import url(//fonts.googleapis.com/css?family=Marvel:400);
-@import url(//fonts.googleapis.com/css?family=Marvel:700);
-@import url(//fonts.googleapis.com/css?family=Yellowtail);
+/* @import url(//fonts.googleapis.com/css?family=Marvel:400); */
+/* @import url(//fonts.googleapis.com/css?family=Marvel:700); */
+/* @import url(//fonts.googleapis.com/css?family=Yellowtail); */
 html {
 	width: 100%;
 }
@@ -23,7 +23,6 @@ body {
 	min-width: 960px;
     background-color: #53534a;
     color: #7a7a7a;
-    font: 14px/20px Arial, Helvetica, sans-serif;
 }
 
 .ic {
@@ -70,7 +69,6 @@ img {
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Marvel', sans-serif;;
 	color: #1a1a1a;
     font-weight: normal;
 }
@@ -271,7 +269,6 @@ header h1 a img {
 
 .slogan {
     text-align: center;
-    font: 36px/36px 'Yellowtail', cursive;
     color: #e7e6d4;
     padding-bottom: 113px;
 }
@@ -293,7 +290,6 @@ header h1 a img {
 }
 
 .text1 {
-    font: bold 22px/30px 'Marvel', sans-serif;
     color: #5f604b;
     border-bottom: 1px solid #b7b7b6;
     padding-top: 1px;
@@ -440,7 +436,6 @@ border-color:  transparent transparent #717262 transparent;
 
 .block2 .title {
     margin-bottom: 15px;
-    font: 18px/18px 'Marvel', sans-serif;
 }
 
 .block2 ul {
@@ -475,7 +470,6 @@ border-color:  transparent transparent #717262 transparent;
 
 .bq_bot {
     padding-left: 54px;
-    font: 16px/18px 'Marvel', sans-serif;
     color: #5f604b;
 }
 
@@ -506,7 +500,6 @@ a.gal .img_block {
 .gallery .title {
     padding-top: 20px;
     text-align: center;
-    font: 22px/30px 'Marvel', sans-serif;
     color: #5f604b;
 }
 
@@ -794,7 +787,6 @@ footer {
     width: 201px;
     background-color: #dad9d1;
     color: #92928d;
-    font: italic 12px/18px Arial, Helvetica, sans-serif;
     height: 34px;
     padding: 8px 15px 8px;
     -moz-box-sizing: border-box;

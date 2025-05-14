@@ -14,7 +14,6 @@
 	-moz-box-sizing: border-box; /*Firefox 1-3*/
 	-webkit-box-sizing: border-box; /* Safari */
 	color: #92928d;
-    font: 14px/18px Arial, Helvetica, sans-serif;
 	border: 1px solid #e5e5e4;
     padding: 7px 12px 7px;
 }
@@ -33,7 +32,6 @@
 	float:left;
 	margin: 0;
 	color: #92928d;
-    font: 14px/18px Arial, Helvetica, sans-serif;
 	border: 1px solid #e5e5e4;
 	background: #fafaf6;
     padding: 8px 12px 13px;
@@ -46,7 +44,6 @@
 	-o-transition: 0.5s ease;
 	-webkit-transition: 0.5s ease;
 	color: #92928d;
-    font: 14px/18px Arial, Helvetica, sans-serif;
 	border: 1px solid transparent;
     padding: 6px 18px 8px;
 	height: 32px !important;

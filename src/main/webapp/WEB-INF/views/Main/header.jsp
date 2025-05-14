@@ -9,11 +9,20 @@
   <link rel="icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/form.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
   <script src="/js/jquery.js"></script>
   <script src="/js/jquery-migrate-1.1.1.js"></script>
   <script src="/js/script.js"></script>
   <style>
-  
+  	body {
+    	font-family: 'Noto Sans KR', sans-serif;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+	    font-family: 'Noto Sans KR', sans-serif;
+	}
   	.header-right{
   		text-align : right;
   	}
@@ -29,12 +38,9 @@
     <div class="container_12">
       <div class="grid_12">
       	 <div class="header-right">
-	        <a href="/profile">내 프로필/</a>
+	        <a href="/profile"><strong>${loginInfo.user_nickname}님</strong>/</a>
 	        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니/</a>
 	        <a href="/logout">로그아웃</a>
-	        <c:if test="${not empty loginInfo}">
-          		<p>✅ <strong>${loginInfo.user_nickname}님</strong></p>
-       		</c:if>  
         </div>         
         <h1>
           <a href="/"><img src="/img/팀로고.png" alt="Plantopia 로고" class="logo-img"></a>

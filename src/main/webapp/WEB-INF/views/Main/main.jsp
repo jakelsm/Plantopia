@@ -8,6 +8,11 @@
   <title>메인 페이지</title>
 </head>
 <style>
+	.word {
+		font-size: 20px;
+		color: black;
+	}
+	
 	.store-preview-list {
 	  display: flex;
 	  gap: 20px;
@@ -53,7 +58,42 @@
   <div class="content">
     <div class="container_12">
       <div class="grid_12">
-        <h2>Welcome to Plantopia!</h2>
+        <!-- 인기글 영역 시작 -->
+		  <div class="container_12 popular-section">
+		  	<h2 class="black">인기 글 순위</h2>
+		  	<!-- 1~4위 (왼쪽 6칸) -->
+		    <div class="grid_6">
+		      <ol>
+		        <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
+		          <li>
+		          	<div class="word">
+			            ${vs.index+1}. 
+			            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
+			              ${post.pla_title}
+			            </a>
+			            <p></p>
+		            </div>
+		          </li>
+		        </c:forEach>
+		      </ol>
+		    </div>
+		    <!-- 5~8위 (오른쪽 6칸) -->
+		    <div class="grid_6">
+		      <ol start="5">
+		        <c:forEach var="post" items="${popularList}" begin="4" end="7" varStatus="vs">
+			      <li>
+			      	<div class="word">
+				        ${vs.index+1}. <!-- vs.index 는 0~3 이고, 여기에 5를 더하면 5~8 -->
+				        <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
+				          ${post.pla_title}
+				        </a>
+				        <p></p>
+			        </div>
+			      </li>
+			    </c:forEach>
+		      </ol>
+		    </div>
+		  </div>
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
 			<div class="grid_12">

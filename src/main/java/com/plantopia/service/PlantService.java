@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantopia.dao.PlantMapper;
 import com.plantopia.dto.PlantDto;
@@ -42,9 +41,13 @@ public class PlantService {
 		return plantMapper.deletePlant(plaIdx);
 	}
 	
-	/** (추가) 특정 사용자가 쓴 글만 반환 */
+	// 특정 사용자가 쓴 글만 반환
     public List<PlantDto> selectPlantByUser(int userNum) throws Exception {
         return plantMapper.selectPlantByUser(userNum);
     }
-	
+    
+    // 인기글 상위 n개 가져오기 
+    public List<PlantDto> getPopularPlants(int topN) throws Exception {
+        return plantMapper.selectPopularPlants(topN);
+    }
 }

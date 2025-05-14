@@ -1,6 +1,9 @@
 package com.plantopia.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.plantopia.dao.IUserDao;
 import com.plantopia.dto.CustomUserDetails;
+import com.plantopia.dto.PlantDto;
 import com.plantopia.dto.StoreDto;
 import com.plantopia.dto.UserDto;
+import com.plantopia.service.PlantService;
+import com.plantopia.service.PostLikeService;
 import com.plantopia.service.ProfileService;
 import com.plantopia.service.StoreService;
 
@@ -33,6 +39,12 @@ public class UserController {
 	
 	@Autowired
     private ProfileService profileService;   // ← 추가
+	
+	@Autowired
+	private PlantService plantService;
+	
+	@Autowired
+	private PostLikeService postLikeService;
 	
 	@Autowired
 	StoreService storeService;
@@ -100,12 +112,38 @@ public class UserController {
 	
 	// 2) 로그인 성공 확인용 (필요 없으면 삭제 가능)
 	@RequestMapping("/Main")
-	public String mainPage(@AuthenticationPrincipal CustomUserDetails user, Model model, HttpSession session) {
+	public String mainPage(@AuthenticationPrincipal CustomUserDetails user, Model model, HttpSession session) throws Exception {
 	    if (user != null) {	    	
 	    	session.setAttribute("user_num", user.getUser_num());
 	        session.setAttribute("user_nickname", user.getUser_nickname());
 	        
 	        model.addAttribute("loginInfo", user);
+	        
+	        // 2) Plant 전체 리스트 가져오기
+	        List<PlantDto> allPlants = plantService.selectPlantList();
+
+	        // 3) 각 글별 (조회수 + 좋아요) 합산 → 정렬 → 상위 8개 추출
+	        List<Map<String,Object>> popularList = allPlants.stream()
+	            .map(p -> {
+	                Map<String,Object> m = new HashMap<>();
+	                m.put("pla_idx",    p.getPla_idx());
+	                m.put("pla_title",  p.getPla_title());
+	                m.put("hit_cnt",    p.getPla_hit_cnt());
+	                try {
+	                    int likeCount = postLikeService.countLike(p.getPla_idx());
+	                    m.put("likeCount", likeCount);
+	                } catch(Exception e) {
+	                    m.put("likeCount", 0);
+	                }
+	                // 순위 기준 점수
+	                m.put("score", ((Integer)m.get("hit_cnt")) + ((Integer)m.get("likeCount")));
+	                return m;
+	            })
+	            .sorted((m1, m2) -> ((Integer)m2.get("score")).compareTo((Integer)m1.get("score")))
+	            .limit(8)
+	            .collect(Collectors.toList());
+
+	        model.addAttribute("popularList", popularList);
 	        
 	        // 스토어 게시글 5개 가져오기 (최신순 or 인기순)
 	        List<StoreDto> storeList = storeService.getTop5();

@@ -12,6 +12,7 @@
         <result property="pla_hit_cnt" column="pla_hit_cnt" />
         <result property="user_num" column="user_num" />
         <result property="writer" column="writer" />
+        <result property="likeCount"  column="like_cnt"/>
     </resultMap>
 
 	<!-- 게시글 목록 -->
@@ -77,5 +78,29 @@
 	    where p.user_num = #{user_num}
 	    order by p.pla_date DESC
 	</select>
+	
+	<!-- 인기글 조회: 조회수 + 좋아요수 합산하여 내림차순, 상위 8개 -->
+  <select id="selectPopularPlants" resultMap="plantResultMap">
+    SELECT
+      p.pla_idx,
+      p.pla_title,
+      p.pla_contents,
+      p.pla_img,
+      p.pla_date,
+      p.pla_hit_cnt,
+      p.user_num,
+      u.user_nickname AS writer,
+      COALESCE(l.like_cnt,0) AS like_cnt
+    FROM Plant p
+    JOIN User u
+      ON p.user_num = u.user_num
+    LEFT JOIN (
+      SELECT pla_idx, COUNT(*) AS like_cnt
+      FROM PostLike
+      GROUP BY pla_idx
+    ) l ON p.pla_idx = l.pla_idx
+    ORDER BY (p.pla_hit_cnt + COALESCE(l.like_cnt,0)) DESC
+    LIMIT 8
+  </select>
 </mapper>        
         
