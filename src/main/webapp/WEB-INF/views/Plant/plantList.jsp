@@ -28,8 +28,8 @@
 	            <!-- admin 이거나, 내가 쓴 글이면 버튼 보임 -->
 	            <c:if test="${loginInfo.user_authority eq 'admin' or loginInfo.user_num eq dto.user_num}">
 	            <td>
-				  	<a href="<c:url value='/Plant/plantUpdate?pla_idx=${dto.pla_idx}'/>">삭제</a> | 
-				  	<a href="<c:url value='/Plant/plantdelete?pla_idx=${dto.pla_idx}'/>">수정</a>
+				  	<a href="<c:url value='/Plant/plantUpdate?pla_idx=${dto.pla_idx}'/>">수정</a> | 
+				  	<a href="<c:url value='/Plant/plantdelete?pla_idx=${dto.pla_idx}'/>">삭제</a>
 				</td>
 				</c:if>
           	</c:if>
