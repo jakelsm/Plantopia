@@ -28,4 +28,8 @@ public interface INoticeDao {
 	public List<NoticeDto> getNoticePaging(@Param("offset") int offset, @Param("limit") int limit);
 	
 	public int getTotalNoticeCount(); // 공지 게시판 페이징 총 카운트
+	
+	// 메인 페이지용 최근 공지사항 5개
+	public List<NoticeDto> getRecentNotices();
+
 }

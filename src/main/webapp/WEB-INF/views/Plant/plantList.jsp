@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h3>게시판 목록</h3>
+	<a href="/Plant/plantWrite">글쓰기</a>
 	<table border="1" width="600">
 		<tr>
 			<th>번호</th>

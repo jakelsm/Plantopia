@@ -49,4 +49,10 @@ public class NoticeService {
 		int total = noticeDao.getTotalNoticeCount();
 		return (int) Math.ceil((double) total / pageSize);
 	}
+	
+	// 메인 페이지용 공지사항 5개 미리보기
+	public List<NoticeDto> getRecentNotices() {
+	    return noticeDao.getRecentNotices();
+	}
+
 }

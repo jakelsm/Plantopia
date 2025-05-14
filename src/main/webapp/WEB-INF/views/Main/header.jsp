@@ -38,7 +38,7 @@
     <div class="container_12">
       <div class="grid_12">
       	 <div class="header-right">
-	        <a href="/profile"><strong>${loginInfo.user_nickname}님</strong>/</a>
+	        <a href="/profile"><strong>${sessionScope.user_nickname}님</strong>/</a>
 	        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니/</a>
 	        <a href="/logout">로그아웃</a>
         </div>         

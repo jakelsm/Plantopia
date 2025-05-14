@@ -38,4 +38,13 @@
 	<select id="getTotalNoticeCount" resultType="int">
 		select count(*) from Notice 
 	</select>
+	
+	<!-- 📌 메인 페이지용 최근 공지사항 5개 조회 -->
+	<select id="getRecentNotices" resultType="com.plantopia.dto.NoticeDto">
+		SELECT n_idx, n_title, n_contents, n_img, n_date
+    FROM Notice
+    ORDER BY n_date DESC
+    LIMIT 5
+	</select>
+	
 </mapper>

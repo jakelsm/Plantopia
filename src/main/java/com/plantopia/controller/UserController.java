@@ -19,9 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.plantopia.dao.IUserDao;
 import com.plantopia.dto.CustomUserDetails;
+import com.plantopia.dto.NoticeDto;
 import com.plantopia.dto.PlantDto;
 import com.plantopia.dto.StoreDto;
 import com.plantopia.dto.UserDto;
+import com.plantopia.service.NoticeService;
 import com.plantopia.service.PlantService;
 import com.plantopia.service.PostLikeService;
 import com.plantopia.service.ProfileService;
@@ -48,6 +50,9 @@ public class UserController {
 	
 	@Autowired
 	StoreService storeService;
+	
+	@Autowired
+	NoticeService noticeService;
 	
 	@RequestMapping("/")
 	public String root() {
@@ -149,6 +154,9 @@ public class UserController {
 	        List<StoreDto> storeList = storeService.getTop5();
 	        model.addAttribute("storeList", storeList);
 	        
+	        // 최근 공지사항 5개 가져오기
+			List<NoticeDto> noticeList = noticeService.getRecentNotices();
+			model.addAttribute("noticeList", noticeList);
 	        
 	        return "Main/main"; // 로그인 성공 후 확인용 JSP
 	    } else {
