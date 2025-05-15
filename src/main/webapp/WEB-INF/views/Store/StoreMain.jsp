@@ -25,6 +25,7 @@
 		width : 250px;
 		height : 250px;
 		object-fit : cover;
+		border : 1px solid #c0c0c0;
 	}
 	
 	.store-item {
@@ -38,9 +39,9 @@
 	}
 		
 	.store-item .price {
-		font-size: 20px;
+		font-size: 16px;
 	    font-weight: bold;
-	    color: #696969;
+	    color: #a3d977;
 	}
 		
 	.store-item:hover {

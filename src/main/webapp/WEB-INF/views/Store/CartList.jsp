@@ -209,21 +209,7 @@
 </head>
 <body>
 	<div class="cart-wrapper">
-  <div class="select-payment">
-    <div>
-      <label>결제수단 선택: </label>
-      <select id="pg-select">
-        <option value="tosspay.tosstest">토스페이</option>
-        <option value="kakaopay.TC0ONETIME">카카오페이</option>
-        <option value="payco.PARTNERTEST">페이코</option>
-        <option value="smilepay.cnstest25m">스마일페이</option>
-      </select>
-    </div>
-    <div>
-      선택한 상품 총액: <strong id="totalPrice">0</strong> 원
-      <button type="button" id="selectedPayBtn">선택 상품 결제하기</button>
-    </div>
-  </div>
+  
 
   <c:forEach var="cart" items="${cartList}">
     <div class="cart-box">
@@ -242,6 +228,22 @@
       </div>
     </div>
   </c:forEach>
+  
+  <div class="select-payment">
+    <div>
+      <label>결제수단 선택: </label>
+      <select id="pg-select">
+        <option value="tosspay.tosstest">토스페이</option>
+        <option value="kakaopay.TC0ONETIME">카카오페이</option>
+        <option value="payco.PARTNERTEST">페이코</option>
+        <option value="smilepay.cnstest25m">스마일페이</option>
+      </select>
+    </div>
+    <div>
+      선택한 상품 총액: <strong id="totalPrice">0</strong> 원
+      <button type="button" id="selectedPayBtn">선택 상품 결제하기</button>
+    </div>
+  </div>
 
   <div style="text-align:center; margin-top: 20px;">
     <a href="StoreMain">스토어목록</a>
