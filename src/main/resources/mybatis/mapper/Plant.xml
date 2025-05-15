@@ -126,5 +126,18 @@
     ORDER BY (p.pla_hit_cnt + COALESCE(l.like_cnt,0)) DESC
     LIMIT 8
   </select>
+  
+  <!-- 프로필 페이지 페이징 용 코드 -->
+  <select id="selectPlantByUserPaging" resultMap="plantResultMap" parameterType="map">
+	  SELECT p.*, u.user_nickname AS writer
+	    FROM Plant p
+	    JOIN User u ON p.user_num = u.user_num
+	   WHERE p.user_num = #{userNum}
+	   ORDER BY p.pla_date DESC
+	   LIMIT #{offset}, #{pageSize}
+  </select>
+  <select id="countByUser" resultType="int" parameterType="int">
+	   SELECT COUNT(*) FROM Plant WHERE user_num = #{userNum}
+  </select>
 </mapper>        
         

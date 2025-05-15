@@ -54,5 +54,13 @@ public class PlantClinicService {
 	 public int getTotalClinicCount() throws Exception {
 	     return plantClinicMapper.getTotalClinicCount();
 	 }
+	 
+	 // 프로필 페이지 페이징 용 코드
+	 public List<PlantClinicDto> selectClinicByUserPaging(int userNum, int offset, int pageSize) throws Exception {
+	     return plantClinicMapper.selectClinicByUserPaging(userNum, offset, pageSize);
+	 }
+	 public int countByUser(int userNum) throws Exception {
+	     return plantClinicMapper.countByUser(userNum);
+	 }
 
 }

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/* profile.css */
+.profile-container {
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+  max-width: 800px;
+}
+
+.profile-box {
+  border: 2px solid var(--primary-color);
+  border-radius: .5rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  background: var(--white);
+}
+
+.profile-box legend {
+  padding: 0 .5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.profile-table,
+.list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.profile-table th,
+.profile-table td,
+.list-table th,
+.list-table td {
+  border: 1px solid var(--gray);
+  padding: .75rem;
+  text-align: left;
+  font-size: .95rem;
+}
+
+.list-table th {
+  background: var(--gray-2);
+  color: var(--white);
+}
+
+.btn-group {
+  text-align: right;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: .6rem 1.2rem;
+  border-radius: .4rem;
+  text-decoration: none;
+  font-size: .95rem;
+  margin-left: .5rem;
+  transition: background .3s;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.btn-danger {
+  background: #E02A05;
+  color: var(--white);
+}
+
+.btn-secondary {
+  background: var(--gray-2);
+  color: var(--white);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.white-box {
+  background: #ffffff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 각 박스 내부 제목 */
+.white-box h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* 표 스타일 정리 */
+.white-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.white-box table th,
+.white-box table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+  color: #555;
+}

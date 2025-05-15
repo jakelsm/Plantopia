@@ -46,12 +46,12 @@
     <div class="container_12">
       <div class="grid_12">
       	 <div class="header-right">
-	        <a href="/profile"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong>/</a>
-	        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니/</a>
+	        <a href="/profile"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong></a> | 
+	        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니</a> | 
 	        <a href="/logout">로그아웃</a>
         </div>         
         <h1>
-          <a href="/"><img src="/img/팀로고.png" alt="Plantopia 로고" class="logo-img"></a>
+          <a href="/"><img src="/img/팀로고2.png" alt="Plantopia 로고" class="logo-img"></a>
         </h1>     
       </div>    
     </div>

@@ -20,4 +20,13 @@ public interface PlantClinicMapper {
     List<PlantClinicDto> getClinicPaging(@Param("offset") int offset, @Param("limit") int limit);
     // 전체 게시글 수
     int getTotalClinicCount();
+    // 내가 쓴 Clinic 글을 페이징해서 조회
+    List<PlantClinicDto> selectClinicByUserPaging(
+        @Param("userNum")   int userNum,
+        @Param("offset")    int offset,
+        @Param("pageSize")  int pageSize
+    ) throws Exception;
+
+    // 내가 쓴 Clinic 글 총 개수 
+    int countByUser(@Param("userNum") int userNum) throws Exception;
 }

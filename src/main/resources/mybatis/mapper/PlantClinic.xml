@@ -86,4 +86,16 @@
     SELECT COUNT(*) FROM PlantClinic
 	</select>
   	
+  	<!-- 프로필 페이지 페이징 용 코드 -->
+  	<select id="selectClinicByUserPaging" resultMap="clinicResultMap" parameterType="map">
+	  SELECT c.*, u.user_nickname AS writer
+	    FROM PlantClinic c
+	    JOIN User u ON c.user_num = u.user_num
+	   WHERE c.user_num = #{userNum}
+	   ORDER BY c.plc_date DESC
+	   LIMIT #{offset}, #{pageSize}
+	</select>
+	<select id="countByUser" resultType="int" parameterType="int">
+	  SELECT COUNT(*) FROM PlantClinic WHERE user_num = #{userNum}
+	</select>
 </mapper>

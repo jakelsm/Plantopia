@@ -19,13 +19,17 @@
       font-size: 1.2rem;
       vertical-align: middle;
     }
-	.letter {
-		font-size: 30px;
-		color: green;
-	}
+	
 	.word {
 		font-size: 20px;
 		color: black;
+	}
+	
+	.letter::first-letter {
+		font-size: 200%;
+		font-weight: bold;
+		color:green;
+		vertical-align:bottom;
 	}
 	
 	.wcolor {

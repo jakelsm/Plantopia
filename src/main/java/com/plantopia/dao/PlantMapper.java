@@ -15,12 +15,21 @@ public interface PlantMapper {
 	public PlantDto selectPlantDetail(@Param("pla_idx") int pla_idx) throws Exception;
 	public int updatePlant(PlantDto plant) throws Exception;
 	public int deletePlant(@Param("pla_idx") int pla_idx) throws Exception;
-	/** 특정 사용자가 쓴 글만 가져오기 */
+	// 특정 사용자가 쓴 글만 가져오기
     List<PlantDto> selectPlantByUser(@Param("user_num") int userNum) throws Exception;
-    /** 인기글 조회 (조회수 + 좋아요수 합산 순, 상위 n개) */
+    // 인기글 조회 (조회수 + 좋아요수 합산 순, 상위 n개)
     List<PlantDto> selectPopularPlants(@Param("limit") int limit);
     // 게시글 페이징 처리된 조회
     List<PlantDto> selectPlantPaging(@Param("offset") int offset, @Param("limit") int limit) throws Exception;
     // 전체 게시글 수 조회 (페이징을 위한 전체 게시글 수)
     int getTotalPlantCount() throws Exception;
+    // 내가 쓴 Plant 글을 페이징해서 조회
+    List<PlantDto> selectPlantByUserPaging(
+        @Param("userNum")   int userNum,
+        @Param("offset")    int offset,
+        @Param("pageSize")  int pageSize
+    ) throws Exception;
+
+    // 내가 쓴 Plant 글 총 개수
+    int countByUser(@Param("userNum") int userNum) throws Exception;
 }

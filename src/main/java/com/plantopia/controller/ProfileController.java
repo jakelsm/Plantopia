@@ -7,6 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.plantopia.dto.CustomUserDetails;
 import com.plantopia.dto.PlantClinicDto;
@@ -18,7 +19,8 @@ import com.plantopia.service.ProfileService;
 
 @Controller
 public class ProfileController {
-
+	private static final int PAGE_SIZE = 8;
+	
     @Autowired
     private ProfileService profileService;
     
@@ -26,7 +28,7 @@ public class ProfileController {
     private PlantService plantService;
     
     @Autowired
-    private PlantClinicService plantClinicService;       // ← 추가
+    private PlantClinicService plantClinicService;
     
     /**
      * GET /profile
@@ -34,27 +36,39 @@ public class ProfileController {
      */
     @RequestMapping("/profile")
     public String profile(@AuthenticationPrincipal CustomUserDetails user,
+    					  @RequestParam(defaultValue="1") int plantPage,
+    					  @RequestParam(defaultValue="1") int clinicPage,
                           Model model) throws Exception {
         int userNum = user.getUser_num();
         
-        // Profile 정보
+        // 1) Profile 기본 정보
         ProfileDto profile = profileService.getByUserNum(userNum);
         model.addAttribute("profile", profile);
-        
-        // 별점 평균
+
+        // 2) 평균 별점
         Double avgRating = profileService.getAverageRatingByUserNum(userNum);
         model.addAttribute("avgRating", avgRating);
-        
-        // 내가 쓴 Plant 게시판 글 목록
-        List<PlantDto> myPosts = plantService.selectPlantByUser(userNum);
+
+        // 3) Plant 게시판 페이징
+        int plantOffset = (plantPage - 1) * PAGE_SIZE;
+        List<PlantDto> myPosts = plantService.selectPlantByUserPaging(userNum, plantOffset, PAGE_SIZE);
+        int plantTotal = plantService.countByUser(userNum);
+        int plantTotalPage = (int)Math.ceil((double)plantTotal / PAGE_SIZE);
         model.addAttribute("myPosts", myPosts);
-        
-        // 내가 쓴 Clinic 글
-        List<PlantClinicDto> myClinics = plantClinicService.getClinicsByUser(userNum);
+        model.addAttribute("currentPlantPage", plantPage);
+        model.addAttribute("totalPlantPage", plantTotalPage);
+
+        // 4) Clinic 게시판 페이징
+        int clinicOffset = (clinicPage - 1) * PAGE_SIZE;
+        List<PlantClinicDto> myClinics = plantClinicService.selectClinicByUserPaging(userNum, clinicOffset, PAGE_SIZE);
+        int clinicTotal = plantClinicService.countByUser(userNum);
+        int clinicTotalPage = (int)Math.ceil((double)clinicTotal / PAGE_SIZE);
         model.addAttribute("clinicList", myClinics);
-		
-        // 로그인 정보도 그대로 전달하면, JSP에서 권한별 버튼 제어 등에 쓰기 편합니다.
-        model.addAttribute("myPosts", myPosts);
+        model.addAttribute("currentClinicPage", clinicPage);
+        model.addAttribute("totalClinicPage", clinicTotalPage);
+
+        // 로그인 정보도 넘겨주면 JSP 권한 제어 등에 편합니다
+        model.addAttribute("loginInfo", user);
         return "Profile/profile";  // /WEB-INF/views/Profile/profile.jsp
     }
 }
