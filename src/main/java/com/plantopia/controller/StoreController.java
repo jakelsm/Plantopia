@@ -67,11 +67,13 @@ public class StoreController {
 			if (user != null) {
 		        model.addAttribute("user_num", user.getUser_num());
 		        model.addAttribute("user_nickname", user.getUser_nickname());
+		        model.addAttribute("userAuthority", user.getUser_authority());
 		    } else {
 		        model.addAttribute("user_num", null);
 		        model.addAttribute("user_nickname", null);
+		        model.addAttribute("userAuthority", null);
 		    }
-					
+
 			return "Store/StoreDetail";
 		}
 	

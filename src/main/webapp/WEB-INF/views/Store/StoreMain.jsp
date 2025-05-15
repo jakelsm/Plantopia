@@ -6,8 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>StoreMain</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <style>
+	body {
+	  background-color: #f6f6f6;
+	  font-family: 'Noto Sans KR', sans-serif;
+	}	
+	
 	.container {
 		display : grid;
 		grid-template-columns: repeat(4, 1fr);
@@ -26,6 +32,20 @@
 		text-align : center;
 	}
 	
+	.store-item .name {
+		font-size: 15px;
+		color: #c0c0c0;
+	}
+		
+	.store-item .price {
+		font-size: 20px;
+	    font-weight: bold;
+	    color: #696969;
+	}
+		
+	.store-item:hover {
+	  transform: scale(1.03);
+	} 			
 	.ctn {
 		text-align : center;
 	}
@@ -64,6 +84,22 @@
 	  font-weight: bold;
 	}
 	
+	input[type="text"], input[type="submit"] {
+	  padding: 8px 12px;
+	  margin: 10px 5px;
+	  border-radius: 5px;
+	  border: 1px solid #ccc;
+	}
+	input[type="submit"] {
+	  background-color: #4CAF50;
+	  color: white;
+	  font-weight: bold;
+	  cursor: pointer;
+	}
+	input[type="submit"]:hover {
+	  background-color: #45a049;
+	}
+		
 </style>
 <body id="top">
 	 <%@ include file="/WEB-INF/views/Main/header.jsp" %> 
@@ -71,22 +107,18 @@
     	<div class="container_12">
       	<div class="grid_12">
 			<form name="StoreMain" id="StoreMain" method="post" action="/addStore">
-			<h2>Plantopia 쇼핑몰</h2>
 			<div class="right">
-				<p><strong>${sessionScope.user_nickname}님</strong></p>
-				<a href="getCartList?user_num=${sessionScope.user_num}">장바구니</a>
-				<a href="getCartList?user_num=${sessionScope.user_num}">
-				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
- 					<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-				</svg>
-				</a>
+				<p>🌱<strong>${sessionScope.user_nickname}님</strong></p>
+				<a href="getCartList?user_num=${sessionScope.user_num}">장바구니<i class="bi bi-cart"></i></a>
 			</div>		
 			<div class="container">
 			<c:forEach var="dto" items="${lists}">	
 			<div class="store-item">
+				<a href="StoreDetail?p_idx=${dto.p_idx}">
 				<img src="/img/store/${dto.p_img}" alt="${dto.p_name}" />
-				<h4><a href="StoreDetail?p_idx=${dto.p_idx}">${dto.p_name}</a></h4>
-				<p>${dto.p_price}</p>
+				</a>
+				<div class="name"><h4><a href="StoreDetail?p_idx=${dto.p_idx}">${dto.p_name}</a></h4></div>
+				<span class="price"><p>${dto.p_price}원</p></span>
 				<c:if test="${userAuthority eq 'admin'}">
 					<a href="StoreUpdate?p_idx=${dto.p_idx}">수정</a>
 					<a href="StoreDelete?p_idx=${dto.p_idx}">삭제</a>
@@ -112,6 +144,14 @@
 	 	</div>
     	</div>
   	</div>
+  	
+  	<!-- 아래쪽 영역 시작 -->
+	<div class="bottom_block">
+  	<div class="container_12">
+ 
+  </div>
+</div>
+	
 	<%@ include file="/WEB-INF/views/Main/footer.jsp" %>
 </body>
 </html>

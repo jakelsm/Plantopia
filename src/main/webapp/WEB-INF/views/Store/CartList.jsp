@@ -113,73 +113,139 @@
 	        });	
 	      });    
   </script>
+  <style>
+  	.cart-wrapper {
+	  max-width: 1000px;
+	  margin: 40px auto;
+	  font-family: 'Noto Sans KR', sans-serif;
+	}
+	
+	.cart-box {
+	  border: 1px solid #e0e0e0;
+	  border-radius: 10px;
+	  padding: 20px;
+	  margin-bottom: 30px;
+	  background-color: #fff;
+	}
+	
+	.cart-item {
+	  display: flex;
+	  align-items: center;
+	  border-bottom: 1px solid #eee;
+	  padding: 15px 0;
+	}
+	
+	.cart-item:last-child {
+	  border-bottom: none;
+	}
+	
+	.cart-item img {
+	  width: 120px;
+	  height: 120px;
+	  object-fit: cover;
+	  border-radius: 6px;
+	  margin-right: 20px;
+	}
+	
+	.cart-info {
+	  flex: 1;
+	}
+	
+	.cart-info a {
+	  font-size: 16px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  color: #333;
+	}
+	
+	.cart-info p {
+	  margin: 4px 0;
+	  color: #555;
+	}
+	
+	.cart-actions {
+	  text-align: right;
+	  margin-top: 10px;
+	}
+	
+	.cart-actions a {
+	  margin-left: 10px;
+	  color: #007bff;
+	  font-size: 14px;
+	  text-decoration: none;
+	}
+	
+	.cart-actions a:hover {
+	  text-decoration: underline;
+	}
+	
+	.total-summary {
+	  text-align: right;
+	  font-size: 16px;
+	  margin-top: 10px;
+	}
+	
+	.select-payment {
+	  margin: 20px 0;
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	}
+	
+	#selectedPayBtn {
+	  padding: 10px 20px;
+	  background-color: #00c73c;
+	  color: white;
+	  border: none;
+	  border-radius: 6px;
+	  cursor: pointer;
+	  font-weight: bold;
+	}
+	
+	#selectedPayBtn:hover {
+	  background-color: #00a32a;
+	}
+  </style>
 </head>
 <body>
-	<p> 선택한 상품 총액 : <span id="totalPrice">0</span> 원</p>
-	<label>결제수단 선택: </label>
-	<select id="pg-select">
-	  	<option value="tosspay.tosstest">토스페이</option>
-	  	<option value="kakaopay.TC0ONETIME">카카오페이</option>
-	  	<option value="payco.PARTNERTEST">페이코</option>
-	  	<option value="smilepay.cnstest25m">스마일페이</option>
-	</select>
-	<button type="button" id="selectedPayBtn">선택 상품 결제하기</button> <br>
-	<a href="StoreMain">메인목록으로</a>
-	<c:forEach var="cart" items="${cartList}">
-		<div>
-			<input type="checkbox" class="item-check"
-					data-price="${cart.c_price}"
-      				data-cidx="${cart.c_idx}"> <br>
-       				
-			<img src="/img/store/${cart.c_img}" width="150px"><br>
-			제품명 : <a href="StoreDetail?p_idx=${cart.p_idx}">${cart.p_name}</a><br>
-			가격 : ${cart.c_price} <br>
-			수량 : ${cart.c_amount} <br>
-			
-			<!-- 아임포트 결제 버튼 -->
-      		<!-- PG 코드, 주문ID, 금액을 모두 넘겨줍니다 -->
-<!-- 		      <button type="button" -->
-<%-- 		        onclick="requestPay( --%>
-<!-- 		          'tosspay.tosstest',               /* PG 코드 */ -->
-<%-- 		          '${cart.user_num}-${cart.c_idx}',  /* merchantUid */ --%>
-<%-- 		          ${cart.c_price}                   /* amount */ --%>
-<%-- 		        );"> --%>
-<!-- 		        토스페이 결제하기 -->
-<!-- 		      </button> -->
-		
-<!-- 		      <button type="button" -->
-<%-- 		        onclick="requestPay( --%>
-<!-- 		          'kakaopay.TC0ONETIME', -->
-<%-- 		          '${cart.user_num}-${cart.c_idx}', --%>
-<%-- 		          ${cart.c_price} --%>
-<%-- 		        );"> --%>
-<!-- 		        카카오페이 결제하기 -->
-<!-- 		      </button> -->
-		
-<!-- 		      <button type="button" -->
-<%-- 		        onclick="requestPay( --%>
-<!-- 		          'payco.PARTNERTEST', -->
-<%-- 		          '${cart.user_num}-${cart.c_idx}', --%>
-<%-- 		          ${cart.c_price} --%>
-<%-- 		        );"> --%>
-<!-- 		        페이코 결제하기 -->
-<!-- 		      </button> -->
-		
-<!-- 		      <button type="button" -->
-<%-- 		        onclick="requestPay( --%>
-<!-- 		          'smilepay.cnstest25m', -->
-<%-- 		          '${cart.user_num}-${cart.c_idx}', --%>
-<%-- 		          ${cart.c_price} --%>
-<%-- 		        );"> --%>
-<!-- 		        스마일페이 결제하기 -->
-<!-- 		      </button> -->
-			
-			<p>
-				<a href="CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}">삭제</a>
-				<a href="CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}">수정</a>
-			</p>
-			<hr>
-		</div>
-	</c:forEach>
+	<div class="cart-wrapper">
+  <div class="select-payment">
+    <div>
+      <label>결제수단 선택: </label>
+      <select id="pg-select">
+        <option value="tosspay.tosstest">토스페이</option>
+        <option value="kakaopay.TC0ONETIME">카카오페이</option>
+        <option value="payco.PARTNERTEST">페이코</option>
+        <option value="smilepay.cnstest25m">스마일페이</option>
+      </select>
+    </div>
+    <div>
+      선택한 상품 총액: <strong id="totalPrice">0</strong> 원
+      <button type="button" id="selectedPayBtn">선택 상품 결제하기</button>
+    </div>
+  </div>
+
+  <c:forEach var="cart" items="${cartList}">
+    <div class="cart-box">
+      <div class="cart-item">
+        <input type="checkbox" class="item-check" data-price="${cart.c_price}" data-cidx="${cart.c_idx}" style="margin-right:10px;">
+        <img src="/img/store/${cart.c_img}" alt="${cart.p_name}">
+        <div class="cart-info">
+          <a href="StoreDetail?p_idx=${cart.p_idx}">${cart.p_name}</a>
+          <p>가격: ${cart.c_price}원</p>
+          <p>수량: ${cart.c_amount}</p>
+          <div class="cart-actions">
+            <a href="CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}">수정</a>
+            <a href="CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}">삭제</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </c:forEach>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <a href="StoreMain">스토어목록</a>
+  </div>
+</div>
 </body>
 </html>
