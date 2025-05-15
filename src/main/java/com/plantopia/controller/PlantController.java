@@ -39,9 +39,15 @@ public class PlantController {
 	public String plantList(@RequestParam(defaultValue = "1", name = "page") int page,
 							@AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
 		int pageSize = 10;  // 한 페이지에 보여줄 게시글 수
-	    List<PlantDto> plantList = plantService.getPlantPaging(page, pageSize);  // 페이징 처리된 게시글 목록
-	    int totalPage = plantService.getTotalPlantCount(pageSize);  // 전체 페이지 수 계산
+	    int totalCount = plantService.getTotalPlantCount(); // 전체 게시글 수
+	    int totalPage = (int) Math.ceil((double) totalCount / pageSize); // 페이지 수 계산
 
+	    if (page > totalPage && totalPage > 0) {
+            page = totalPage; // 현재 페이지가 범위 초과 시 보정
+        }
+	    
+	    List<PlantDto> plantList = plantService.getPlantPaging(page, pageSize);  // 페이징 처리된 게시글 목록
+	    
 	    model.addAttribute("plantList", plantList);  // 페이징된 게시글 목록
 	    model.addAttribute("currentPage", page);     // 현재 페이지
 	    model.addAttribute("totalPage", totalPage);  // 전체 페이지 수

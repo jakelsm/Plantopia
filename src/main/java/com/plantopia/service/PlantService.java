@@ -57,10 +57,9 @@ public class PlantService {
         return plantMapper.selectPlantPaging(offset, pageSize);  // Mapper 호출
     }
 
-    // 전체 게시글 수를 조회
-    public int getTotalPlantCount(int pageSize) throws Exception {
-        int total = plantMapper.getTotalPlantCount();  // 전체 게시글 수 조회
-        return (int) Math.ceil((double) total / pageSize);  // 총 페이지 수 계산
+    // 전체 게시글 수만 반환
+    public int getTotalPlantCount() throws Exception {
+        return plantMapper.getTotalPlantCount();
     }
     
     // 프로필 페이지 페이징 용 코드

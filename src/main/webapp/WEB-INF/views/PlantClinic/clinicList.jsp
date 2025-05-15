@@ -7,7 +7,50 @@
 <meta charset="UTF-8">
 <title>클리닉 게시판 목록</title>
 </head>
+<style>
+	.container {
+		display : grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap : 20px;
+		padding : 20px;
+	}
+	
+	.pagination {
+		text-align : center;
+	}
+	
+	.pagination {
+		text-align: center;
+ 		margin: 30px 0 10px 0;
+	}
+	
+	.pagination a {
+	    display: inline-block;
+	    margin: 0 5px;
+	    padding: 6px 12px;
+	    border: 1px solid #ddd;
+	    border-radius: 4px;
+	    background-color: #f9f9f9;
+	    text-decoration: none;
+	    color: #333;
+ 	 }
+ 	
+ 	.pagination a:hover {
+    	background-color: #e0e0e0;
+  	}
+  	
+  	.pagination a.active {
+	  background-color: #4CAF50;
+	  color: white;
+	  font-weight: bold;
+	}
+	
+</style>
 <body>
+  <%@ include file="/WEB-INF/views/Main/header.jsp" %>
+	<div class="content">
+	 <div class="container_12">
+	 <div class="grid_12">
 	<h3>클리닉 게시판 목록</h3>
 	<a href="/Clinic/clinicWrite">글쓰기</a>
 	<table border="1" width="900">
@@ -50,5 +93,9 @@
             <a href="/Clinic/clinicList?page=${currentPage + 1}">다음</a>
         </c:if>
     </div>
+    </div>	
+	</div>
+  </div>	
+  <%@ include file="/WEB-INF/views/Main/footer.jsp" %>	
 </body>
 </html>
