@@ -105,7 +105,7 @@ ul {
 }
 
 ul.list li {
-    background: url(../images/marker.png) 0 7px no-repeat;
+    background: url(../img/marker.png) 0 7px no-repeat;
     padding-left: 22px;
 }
 
@@ -218,12 +218,11 @@ a.btn:hover {
 
 /*header*/
 header {
-    background: url(../images/header_img.jpg) center -240px no-repeat;
+    background: url(../img/header_img.jpg) center -240px no-repeat;
 	display: block;
     overflow: hidden;
     padding: 42px 0 0;
     position: relative;
-
 }
 
 .page1 header {
@@ -409,6 +408,7 @@ border-color:  transparent transparent #717262 transparent;
 }
 
 .page1 .bottom_block  {
+	
     padding-bottom: 70px;
 
 }
@@ -450,7 +450,7 @@ border-color:  transparent transparent #717262 transparent;
     font-style: italic;
     position: relative;
     background-color: #dad9d1;
-    background: url(../images/quotes.png) 16px 22px no-repeat #dad9d1;
+    background: url(../img/quotes.png) 16px 22px no-repeat #dad9d1;
     margin-bottom: 11px;
     padding: 30px 25px 30px 30px;
 }
@@ -485,7 +485,7 @@ border-color:  transparent transparent #717262 transparent;
 }
 
 a.gal {
-    background: url(../images/magnify.png) center center no-repeat;
+    background: url(../img/magnify.png) center center no-repeat;
     display: block;
 }
 
@@ -698,7 +698,7 @@ border-top-color: #f3f2e9;
 
 .price {
     overflow: hidden;
-    background: url(../images/price_dot.png) 0 bottom repeat-x;
+    background: url(../img/price_dot.png) 0 bottom repeat-x;
 }
 
 .price a {
@@ -735,7 +735,7 @@ footer {
 }
 
 #toTop {
-    background: url("../images/totop.png") no-repeat scroll left 0 rgba(0, 0, 0, 0);
+    background: url("../img/totop.png") no-repeat scroll left 0 rgba(0, 0, 0, 0);
     border: medium none;
     bottom: 70px;
     display: none;

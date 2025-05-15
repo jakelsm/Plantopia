@@ -4,12 +4,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+	<!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1G+LcOV2e1zF1ikGmF5j5Qe1VVtS3IQfTbtE3MoK7nr"
+        crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+        rel="stylesheet">
+  <link rel="icon" href="/img/favicon.ico">
+  		<link rel="stylesheet" href="/css/style.css">
+  		<link rel="stylesheet" href="/css/form.css">
+  		<link rel="stylesheet" href="owl.carousel.css">	
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">	
+		<script src="JS/jquery.js"></script>
+		<script src="JS/jquery-migrate-1.1.1.js"></script>
+		<script src="JS/script.js"></script>
+		<script src="JS/jquery.ui.totop.js"></script>
+		<script src="JS/superfish.js"></script>
+		<script src="JS/sForm.js"></script>
+		<script src="JS/jquery.equalheights.js"></script>
+		<script src="JS/jquery.mobilemenu.js"></script>
+		<script src="JS/jquery.easing.1.3.js"></script>
+		<script src="JS/owl.carousel.js"></script>
+		<script>
+		$(document).ready(function() {
+  		$().UItoTop({ easingType: 'easeOutQuart' });
+
+		  $("#owl").owlCarousel({
+		    items: 1,
+		    nav: true,
+		    navText: ["<", ">"], // 버튼 텍스트 또는 아이콘
+		    dots: false,
+		    loop: true
+		  });
+		
+		  $("#owl1").owlCarousel({
+		    items: 1,
+		    nav: true,
+		    navText: ["<", ">"], // 버튼 텍스트 또는 아이콘
+		    dots: false,
+		    loop: true
+		  });
+		});
+		</script>
   <title>메인 페이지</title>
 </head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <style>
-	 /* 메달 색상 정의 */
+	/* 메달 색상 정의 */
     .medal-1 { color: #FFD700; } /* 골드 */
     .medal-2 { color: #C0C0C0; } /* 실버 */
     .medal-3 { color: #CD7F32; } /* 브론즈 */
@@ -20,16 +64,10 @@
       vertical-align: middle;
     }
 	
+
 	.word {
 		font-size: 20px;
 		color: black;
-	}
-	
-	.letter::first-letter {
-		font-size: 200%;
-		font-weight: bold;
-		color:green;
-		vertical-align:bottom;
 	}
 	
 	.wcolor {
@@ -112,12 +150,66 @@
 	 
 </style>
 <body id="top">
-  <%@ include file="/WEB-INF/views/Main/header.jsp" %>
-  <!-- 본문 콘텐츠 -->
-  <div class="content">
+  	<%@ include file="/WEB-INF/views/Main/header.jsp" %>
+ 	 <!-- 본문 콘텐츠 -->
+  <div class="content" style="padding-top: 50px;"><div class="ic">Plantopia!</div>
+  		<div class="container_12">
+			<div class="grid_4">
+				<div class="block1">
+					<div class="img_block">
+						<img src="img/page1_img1.jpg" alt="" class="img_inner">
+						<span class="l"></span>
+						<span class="ll"></span>
+						<span class="r"></span>
+						<span class="rr"></span>
+						<span class="lb"></span>
+						<span class="llb"></span>
+						<span class="rb"></span>
+						<span class="rrb"></span>
+					</div>
+					<div class="text1">Landscape Design</div><br>
+						<a href="#" class="btn">more</a>
+					</div>
+				</div>
+				<div class="grid_4">
+					<div class="block1">
+						<div class="img_block">
+							<img src="img/page1_img2.jpg" alt="" class="img_inner">
+							<span class="l"></span>
+							<span class="ll"></span>
+							<span class="r"></span>
+							<span class="rr"></span>
+							<span class="lb"></span>
+							<span class="llb"></span>
+							<span class="rb"></span>
+							<span class="rrb"></span>
+						</div>
+						<div class="text1">Garden Plans</div><br>
+						<a href="#" class="btn">more</a>
+					</div>
+				</div>
+				<div class="grid_4">
+					<div class="block1">
+						<div class="img_block">
+							<img src="img/page1_img3.jpg" alt="" class="img_inner">
+							<span class="l"></span>
+							<span class="ll"></span>
+							<span class="r"></span>
+							<span class="rr"></span>
+							<span class="lb"></span>
+							<span class="llb"></span>
+							<span class="rb"></span>
+							<span class="rrb"></span>
+						</div>
+						<div class="text1">Planting Design</div><br>
+						<a href="#" class="btn">more</a>
+					</div>			
+				</div>
+				<div class="clear"></div>				
+			</div>	
     <div class="container_12">
       <div class="grid_12">
-        <!-- 인기글 영역 시작 -->
+      <!-- 인기글 영역 시작 -->
 		  <div class="container_12 popular-section">
 		  	<h2 class="black">🏆 인기 글 순위</h2>
 		  	<!-- 1~4위 (왼쪽 6칸) -->
@@ -165,9 +257,11 @@
 		    </div>
 		  </div>
 		
+		<!-- 공지사항 시작 -->  
+		
 		<div class="container_12"> 
 			<div class="grid_12">
-			<h2><a href="NoticeMain" style="color: black;">📢 공지사항</a></h2>
+			<h3><a href="NoticeMain">📢 공지사항</a></h3>
 			<ul>
 			  <c:forEach var="notice" items="${noticeList}">
 			    <li>
@@ -187,7 +281,7 @@
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
 			<div class="grid_12">
-			<h2 class="black">🎁 인기 상품 미리보기</h2>
+			<h3>인기 상품 미리보기</h3>
 			   <div class="store-preview-list">
 			   		<c:forEach var="store" items="${storeList}" begin="0" end="3">
 			        <div class="store-preview-card">
@@ -202,25 +296,96 @@
 			  </div>
 		</div>
 		
-		<!-- 회사 소개 영역 -->
-		<div class="container_12">
-		  <div class="company-section">
+		<!-- 회사소개 -->
+		<div id="owl" class="owl-carousel owl-theme">		
+		   <div class="company-section">
 		    <div class="company-img">
-		      <img src="/img/hands.jpg" alt="회사 이미지">
-		    </div>
+     		 	<img src="/img/hands.jpg" alt="회사 이미지">
+   			</div>	  
 		    <div class="company-text">
 		      <h2>Plantopia 소개</h2>
-		        <div class="company-textsize">Plantopia는 식물(Plant)과 유토피아(Utopia)의 결합으로, 
-		        식물이 주는 이상적인 삶을 제안하는 반려식물 플랫폼입니다.<br>
-		        우리는 도심 속에서도 누구나 식물을 쉽고 즐겁게 기를 수 있도록, 지식과 일상을 함께 나눕니다. <br>
-		        Plantopia는 초보자부터 전문가까지 모두를 위한 식물 동반자입니다. <br>
+		      <div class="company-textsize">
+		        Plantopia는 식물(Plant)과 유토피아(Utopia)의 결합으로, 식물이 주는 이상적인 삶을 제안하는 반려식물 플랫폼입니다.<br>
+		        우리는 도심 속에서도 누구나 식물을 쉽고 즐겁게 기를 수 있도록, 지식과 일상을 함께 나눕니다.<br>
+		        Plantopia는 초보자부터 전문가까지 모두를 위한 식물 동반자입니다.
 		      </div>
 		    </div>
-		  </div>
-		</div>      
+		    </div>		 
+		</div>
 	</div>
 	</div>
 	</div>
+	
+	<!-- 아래쪽 영역 시작 -->
+	<div class="bottom_block">
+  	<div class="container_12">
+ 
+    <!-- Top Projects -->
+    <div class="grid_3">
+      <h3>Top Projects</h3>
+      <div id="owl1" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+        <div class="owl-wrapper-outer">
+          <div class="owl-wrapper" style="width: 440px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px);">
+            
+            <div class="owl-item" style="width: 110px;">
+              <div class="item">
+                <div class="img_block ib1">
+                  <img src="img/car_img1.jpg" alt="" class="img_inner">
+                  <span class="l"></span><span class="ll"></span><span class="r"></span><span class="rr"></span>
+                  <span class="lb"></span><span class="llb"></span><span class="rb"></span><span class="rrb"></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="owl-item" style="width: 110px;">
+              <div class="item">
+                <div class="img_block ib1">
+                  <img src="img/car_img2.jpg" alt="" class="img_inner">
+                  <span class="l"></span><span class="ll"></span><span class="r"></span><span class="rr"></span>
+                  <span class="lb"></span><span class="llb"></span><span class="rb"></span><span class="rrb"></span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="owl-controls clickable" style="display: none;">
+          <div class="owl-buttons">
+            <div class="owl-prev">prev</div>
+            <div class="owl-next">next</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Latest News -->
+    <div class="grid_4 prefix_1">
+      <h3>Latest News</h3>
+      <p class="col1">
+        <time datetime="2014-01-01">04.01.14</time> -
+        <a href="#">Your Garden</a>
+      </p>
+      Curabitur vel lorem sit amet nullaertylllamcr fermentum. In vitae varius augue, eu onse ligula. Etiam dui er laoreet sit amet est ve
+    </div>
+
+    <!-- Newsletter Sign Up -->
+    <div class="grid_4">
+      <h3>Newsletter Sign Up</h3>
+      <p>In vitae varius augue, eu onse ligula. Etiam dui er laoreet sit amet est ve commodo</p>
+      <form id="newsletter">
+        <div class="rel">
+          <div class="success" style="display: none;">Your subscribe request has been sent!</div>
+          <label class="email">
+            <input type="email" value="Enter your e-mail here...">
+            <a href="#" class="" data-type="submit">submit</a>
+            <span class="error">*This is not a valid email address.</span>
+          </label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
    <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
 </body>
 </html>

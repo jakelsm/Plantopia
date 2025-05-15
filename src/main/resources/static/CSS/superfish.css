@@ -14,7 +14,6 @@
 
 .menu_block nav {
 	padding-left: 73px;
-    font-family: 'Marvel', sans-serif;
 }
 
 
@@ -35,7 +34,7 @@ nav{ position:relative;padding: 0px 0 0 0;}
 }
 
 .sf-menu>li+li {
-	margin-left: 124px;
+	margin-left: 60px;
 }
 
 .sf-menu>li+li:after {

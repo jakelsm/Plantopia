@@ -1,12 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
 
 #owl {
 	overflow: hidden;
 	z-index: 1;
 	position: relative;
 }
-
-
 
 #owl .owl-item {
 	float: left;
@@ -28,7 +26,7 @@
 #owl .owl-prev, #owl .owl-next {
 	cursor: pointer;
 	position: absolute;
-	background: url(../images/prevnext.png) 0 0 no-repeat;
+	background: url(../img/prevnext.png) 0 0 no-repeat;
 	display: block;
 	height: 24px;
 	left: 0;
@@ -108,7 +106,7 @@
 #owl1 .owl-prev, #owl1 .owl-next {
 	cursor: pointer;
 	position: absolute;
-	background: url(../images/prevnext.png) 0 bottom no-repeat;
+	background: url(../img/prevnext.png) 0 bottom no-repeat;
 	display: block;
 	height: 24px;
 	right: 34px;
@@ -132,4 +130,29 @@
 
 #owl1 .owl-prev:hover {
 	background-position: 0 0;
+}
+
+.owl-nav {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  pointer-events: none; /* 부모 요소가 포인터 이벤트를 막지 않도록 조치 */
+}
+
+.owl-prev, .owl-next {
+  background: #4CAF50;
+  color: white;
+  font-size: 20px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1000;
+}
+
+.owl-prev:hover, .owl-next:hover {
+  background: #388E3C;
 }
