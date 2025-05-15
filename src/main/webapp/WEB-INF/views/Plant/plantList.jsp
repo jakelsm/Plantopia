@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,7 @@
 <title>게시판 목록</title>
 </head>
 <body>
+  <%@ include file="/WEB-INF/views/Main/header.jsp" %>
 	<h3>게시판 목록</h3>
 	<a href="/Plant/plantWrite">글쓰기</a>
 	<table border="1" width="600">
@@ -55,5 +56,6 @@
 			<a href="/Plant/plantList?page=${currentPage + 1}">다음</a>
 		</c:if>
 	</div>
+  <%@ include file="/WEB-INF/views/Main/footer.jsp" %>	
 </body>
 </html>
