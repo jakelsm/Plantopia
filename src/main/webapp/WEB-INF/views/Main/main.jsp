@@ -205,7 +205,7 @@
 						<a href="/StoreMain" class="btn">more</a>
 					</div>			
 				</div>
-				<div class="grid_4" style="padding-top: 50px;">
+				<div class="grid_4" style="padding-top: 50px; padding-bottom: 50px;">
 				<div class="block1">
 					<div class="img_block">
 						<img src="img/mainpage/apiicon.png" alt="" class="img_inner" style="width: 222px;">
@@ -222,7 +222,8 @@
 						<a href="/gardenList" class="btn">more</a>
 					</div>
 				</div>
-				<div class="clear"></div>				
+				<div class="clear"></div>	
+				<hr>			
 			</div>	
     <div class="container_12">
       <div class="grid_12">
@@ -230,7 +231,7 @@
 		  <div class="container_12 popular-section">
 		  	<h2 class="black">🏆 인기 글 순위</h2>
 		  	<!-- 1~4위 (왼쪽 6칸) -->
-		    <div class="grid_6">
+		    <div class="grid_6" style="padding-bottom: 50px;">
 		      <ol>
 		        <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
 		          <li>
@@ -257,7 +258,7 @@
 		      </ol>
 		    </div>
 		    <!-- 5~8위 (오른쪽 6칸) -->
-		    <div class="grid_6">
+		    <div class="grid_6" style="padding-bottom: 50px;">
 		      <ol start="5">
 		        <c:forEach var="post" items="${popularList}" begin="4" end="7" varStatus="vs">
 			      <li>
@@ -277,8 +278,9 @@
 		<!-- 공지사항 시작 -->  
 		
 		<div class="container_12"> 
-			<div class="grid_12">
-			<h3><a href="NoticeMain">📢 공지사항</a></h3>
+			<div class="grid_12" style="padding-bottom: 50px;">
+			<hr>
+			<h2><a href="NoticeMain">📢 공지사항</a></h2>
 			<ul>
 			  <c:forEach var="notice" items="${noticeList}">
 			    <li>
@@ -293,12 +295,13 @@
 			  </c:if>
 			</ul>
 			</div>
+			<hr>
   		</div>
   		
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
-			<div class="grid_12">
-			<h3>인기 상품 미리보기</h3>
+			<div class="grid_12" style="padding-bottom: 50px;">
+			<h2>인기 상품 미리보기</h2>
 			   <div class="store-preview-list">
 			   		<c:forEach var="store" items="${storeList}" begin="0" end="3">
 			        <div class="store-preview-card">
@@ -311,6 +314,7 @@
 			      	</c:forEach>
 			    </div>
 			  </div>
+			  <hr>
 		</div>
 		
 		<!-- 회사소개 -->
