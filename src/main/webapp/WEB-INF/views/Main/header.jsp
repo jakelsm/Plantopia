@@ -67,6 +67,11 @@
 		.logo-img {
  			display: flex;
   			justify-content: center;
+		}
+		
+		.color-white {
+			color: #E9E9E9;
+			font-weight: bold;
 		}	
   </style>
 </head>
@@ -75,14 +80,13 @@
 		<div class="container_12">
 			<div class="grid_12">
 				<div class="header-right">
-			        <a href="/profile"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong></a> | 
-			        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니</a> | 
-			        <a href="/logout">로그아웃</a>
+			        <a href="/profile" class="color-white"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong></a> | 
+			        <a href="/getCartList?user_num=${sessionScope.user_num}" class="color-white">장바구니</a> | 
+			        <a href="/logout" class="color-white">로그아웃</a>
       		  	</div>         
 				<span class="logo-img">
 					<a href="/Main"><img src="/img/newlogo.png" alt="Plantopia 로고" style="widows: 600px"></a>
 				</span>
-				<div class="slogan">로고 밑 들어가는 문구</div>
 			</div>
 		</div>
 		<div class="clear"></div>
