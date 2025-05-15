@@ -167,8 +167,8 @@
 						<span class="rb"></span>
 						<span class="rrb"></span>
 					</div>
-					<div class="text1">Landscape Design</div><br>
-						<a href="#" class="btn">more</a>
+					<div class="text1">다른 식물 집사들과 소통해보세요!</div><br>
+						<a href="/Plant/plantList" class="btn">more</a>
 					</div>
 				</div>
 				<div class="grid_4">
@@ -184,8 +184,8 @@
 							<span class="rb"></span>
 							<span class="rrb"></span>
 						</div>
-						<div class="text1">Garden Plans</div><br>
-						<a href="#" class="btn">more</a>
+						<div class="text1">시들시들한 식물도 다시 푸르게!</div><br>
+						<a href="/Clinic/clinicList" class="btn">more</a>
 					</div>
 				</div>
 				<div class="grid_4">
@@ -201,9 +201,26 @@
 							<span class="rb"></span>
 							<span class="rrb"></span>
 						</div>
-						<div class="text1">Planting Design</div><br>
-						<a href="#" class="btn">more</a>
+						<div class="text1">반려식물, 여기서 바로 데려가세요!</div><br>
+						<a href="/StoreMain" class="btn">more</a>
 					</div>			
+				</div>
+				<div class="grid_4" style="padding-top: 50px;">
+				<div class="block1">
+					<div class="img_block">
+						<img src="img/page1_img1.jpg" alt="" class="img_inner">
+						<span class="l"></span>
+						<span class="ll"></span>
+						<span class="r"></span>
+						<span class="rr"></span>
+						<span class="lb"></span>
+						<span class="llb"></span>
+						<span class="rb"></span>
+						<span class="rrb"></span>
+					</div>
+					<div class="text1">궁금한 식물 정보, 여기서 검색해보세요!</div><br>
+						<a href="/gardenList" class="btn">more</a>
+					</div>
 				</div>
 				<div class="clear"></div>				
 			</div>	
