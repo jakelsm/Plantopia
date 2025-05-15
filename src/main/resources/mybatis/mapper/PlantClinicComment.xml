@@ -13,7 +13,6 @@
         <result property="plccom_indent" column="plccom_indent"/>
         <result property="user_num" column="user_num"/>
         <result property="plc_idx" column="plc_idx"/>
-        <result property="rating" column="rating"/>
         <result property="writer" column="writer"/>
     </resultMap>
 
@@ -28,10 +27,10 @@
     <insert id="insertComment" parameterType="com.plantopia.dto.PlantClinicCommentDto" useGeneratedKeys="true" keyProperty="plccom_idx">
         INSERT INTO PlantClinic_Comment (
             plccom_contents, plccom_date, plccom_root, plccom_step, plccom_indent,
-            user_num, plc_idx, rating
+            user_num, plc_idx
         ) VALUES (
             #{plccom_contents}, NOW(), #{plccom_root}, #{plccom_step}, #{plccom_indent},
-            #{user_num}, #{plc_idx}, #{rating}
+            #{user_num}, #{plc_idx}
         )
     </insert>
 
@@ -47,7 +46,7 @@
 
     <update id="updateComment">
         UPDATE PlantClinic_Comment
-        SET plccom_contents = #{plccom_contents}, plccom_date = NOW(), rating = #{rating}
+        SET plccom_contents = #{plccom_contents}, plccom_date = NOW()
         WHERE plccom_idx = #{plccom_idx}
     </update>
 

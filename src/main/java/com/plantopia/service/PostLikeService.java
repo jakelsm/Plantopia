@@ -31,11 +31,13 @@ public class PostLikeService {
     }
     
     // 눌렀으면 취소, 안 눌렀으면 등록 (toggle)
-    public void toggleLike(int pla_idx, int user_num) throws Exception {
+    public boolean toggleLike(int pla_idx, int user_num) throws Exception {
         if (hasUserLiked(pla_idx, user_num)) {
             removeLike(pla_idx, user_num);
+            return false; // 좋아요 취소
         } else {
             addLike(pla_idx, user_num);
+            return true; // 좋아요 추가
         }
     }
 }

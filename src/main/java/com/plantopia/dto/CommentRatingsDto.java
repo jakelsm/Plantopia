@@ -12,4 +12,5 @@ public class CommentRatingsDto {
     private int rating;         // 별점 값 (1~5)
     private int user_num;       // 사용자 ID (FK)
     private int plccom_idx; 	// 댓글 ID (FK)
+    private Double average_rating;  // 평균 별점 
 }

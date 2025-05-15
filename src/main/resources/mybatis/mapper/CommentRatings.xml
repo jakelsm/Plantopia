@@ -4,29 +4,48 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.plantopia.dao.CommentRatingsMapper">
 
+    <!-- 별점 추가 -->
     <insert id="insertRating">
         INSERT INTO comment_ratings (rating, user_num, plccom_idx)
         VALUES (#{rating}, #{user_num}, #{plccom_idx})
     </insert>
 
+    <!-- 별점 업데이트 -->
     <update id="updateRating">
         UPDATE comment_ratings
         SET rating = #{rating}
         WHERE user_num = #{user_num} AND plccom_idx = #{plccom_idx}
     </update>
 
+    <!-- 별점 삭제 -->
     <delete id="deleteRating">
         DELETE FROM comment_ratings
         WHERE user_num = #{user_num} AND plccom_idx = #{plccom_idx}
     </delete>
 
+    <!-- 사용자가 선택한 별점 조회 (이미 별점을 매긴 경우) -->
     <select id="getRatingByUser" resultType="int">
         SELECT rating FROM comment_ratings
         WHERE user_num = #{user_num} AND plccom_idx = #{plccom_idx}
     </select>
 
+    <!-- 댓글에 대한 평균 별점 조회 -->
     <select id="getAverageRating" resultType="double">
         SELECT ROUND(AVG(rating), 2) FROM comment_ratings
         WHERE plccom_idx = #{plccom_idx}
     </select>
+
+    <!-- 댓글에 대한 별점 수 조회 -->
+    <select id="getRatingCount" resultType="int">
+        SELECT COUNT(*) FROM comment_ratings
+        WHERE plccom_idx = #{plccom_idx}
+    </select>
+
+    <!-- 댓글의 평균 별점 갱신 -->
+    <update id="updateCommentAverageRating" parameterType="map">
+        UPDATE PlantClinic_Comment
+        SET average_rating = #{averageRating}  
+        WHERE plccom_idx = #{plccom_idx}
+    </update>
+    
 </mapper>
