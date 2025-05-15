@@ -63,10 +63,10 @@
 	  	.header-right{
 	  		text-align : right;
 	  	}
-	  	
-	  	.logo-img {
-		  width: 200px;
-		  height: auto;
+		
+		.logo-img {
+ 			display: flex;
+  			justify-content: center;
 		}	
   </style>
 </head>
@@ -79,7 +79,9 @@
 			        <a href="/getCartList?user_num=${sessionScope.user_num}">장바구니</a> | 
 			        <a href="/logout">로그아웃</a>
       		  	</div>         
-				<h1> <a href="/Main"><img src="/img/팀로고.png" alt="Plantopia 로고" class="logo-img"></a></h1>
+				<span class="logo-img">
+					<a href="/Main"><img src="/img/newlogo.png" alt="Plantopia 로고" style="widows: 600px"></a>
+				</span>
 				<div class="slogan">로고 밑 들어가는 문구</div>
 			</div>
 		</div>

@@ -157,7 +157,7 @@
 			<div class="grid_4">
 				<div class="block1">
 					<div class="img_block">
-						<img src="img/mainpage/식물자랑게시판.png" alt="" class="img_inner" style="width: 222px;">
+						<img src="img/mainpage/planticon.png" alt="" class="img_inner" style="width: 222px;">
 						<span class="l"></span>
 						<span class="ll"></span>
 						<span class="r"></span>
@@ -174,7 +174,7 @@
 				<div class="grid_4">
 					<div class="block1">
 						<div class="img_block">
-							<img src="img/mainpage/식물클리닉게시판.png" alt="" class="img_inner" style="width: 222px;">
+							<img src="img/mainpage/clinicicon.png" alt="" class="img_inner" style="width: 222px;">
 							<span class="l"></span>
 							<span class="ll"></span>
 							<span class="r"></span>
@@ -191,7 +191,7 @@
 				<div class="grid_4">
 					<div class="block1">
 						<div class="img_block">
-							<img src="img/mainpage/스토어게시판.png" alt="" class="img_inner" style="width: 222px;">
+							<img src="img/mainpage/storeicon.png" alt="" class="img_inner" style="width: 222px;">
 							<span class="l"></span>
 							<span class="ll"></span>
 							<span class="r"></span>
@@ -208,7 +208,7 @@
 				<div class="grid_4" style="padding-top: 50px;">
 				<div class="block1">
 					<div class="img_block">
-						<img src="img/mainpage/식물백과사전.png" alt="" class="img_inner" style="width: 222px;">
+						<img src="img/mainpage/apiicon.png" alt="" class="img_inner" style="width: 222px;">
 						<span class="l"></span>
 						<span class="ll"></span>
 						<span class="r"></span>
