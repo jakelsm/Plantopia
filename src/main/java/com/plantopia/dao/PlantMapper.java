@@ -19,4 +19,8 @@ public interface PlantMapper {
     List<PlantDto> selectPlantByUser(@Param("user_num") int userNum) throws Exception;
     /** 인기글 조회 (조회수 + 좋아요수 합산 순, 상위 n개) */
     List<PlantDto> selectPopularPlants(@Param("limit") int limit);
+    // 게시글 페이징 처리된 조회
+    List<PlantDto> selectPlantPaging(@Param("offset") int offset, @Param("limit") int limit) throws Exception;
+    // 전체 게시글 수 조회 (페이징을 위한 전체 게시글 수)
+    int getTotalPlantCount() throws Exception;
 }

@@ -50,4 +50,17 @@ public class PlantService {
     public List<PlantDto> getPopularPlants(int topN) throws Exception {
         return plantMapper.selectPopularPlants(topN);
     }
+    
+    // 페이징 처리된 게시글 목록
+    public List<PlantDto> getPlantPaging(int page, int pageSize) throws Exception {
+        int offset = (page - 1) * pageSize;  // 페이지 시작 위치 계산
+        return plantMapper.selectPlantPaging(offset, pageSize);  // Mapper 호출
+    }
+
+    // 전체 게시글 수를 조회
+    public int getTotalPlantCount(int pageSize) throws Exception {
+        int total = plantMapper.getTotalPlantCount();  // 전체 게시글 수 조회
+        return (int) Math.ceil((double) total / pageSize);  // 총 페이지 수 계산
+    }
+
 }

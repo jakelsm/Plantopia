@@ -36,7 +36,7 @@
 	    </c:forEach>
 	</table>
 	
-	<!-- 페이지네이션 추가 -->
+	<!-- 페이지네이션 -->
     <div class="pagination">
         <c:if test="${currentPage > 1}">
             <a href="/Clinic/clinicList?page=${currentPage - 1}">이전</a>

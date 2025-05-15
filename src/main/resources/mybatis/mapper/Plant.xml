@@ -15,18 +15,42 @@
         <result property="likeCount"  column="like_cnt"/>
     </resultMap>
 
-	<!-- 게시글 목록 -->
+	<!-- 게시글 목록 조회 (기본 목록 조회) -->
 	<select id="selectPlantList" resultMap="plantResultMap">
-    select 
-      p.pla_idx,
-      p.pla_title,
-      p.pla_date,
-      p.pla_hit_cnt,
-      p.user_num, 
-      u.user_nickname as writer
-    from Plant p
-    join User u on p.user_num = u.user_num
-</select>
+	    SELECT 
+	        p.pla_idx,
+	        p.pla_title,
+	        p.pla_contents,
+	        p.pla_img,
+	        p.pla_date,
+	        p.pla_hit_cnt,
+	        p.user_num, 
+	        u.user_nickname AS writer
+	    FROM Plant p
+	    JOIN User u ON p.user_num = u.user_num
+	    ORDER BY p.pla_date DESC
+	</select>
+
+
+	<!-- 게시글 목록 조회 (페이징 처리된) -->
+    <select id="selectPlantPaging" resultMap="plantResultMap">
+        SELECT 
+            p.pla_idx,
+            p.pla_title,
+            p.pla_date,
+            p.pla_hit_cnt,
+            p.user_num, 
+            u.user_nickname AS writer
+        FROM Plant p
+        JOIN User u ON p.user_num = u.user_num
+        ORDER BY p.pla_date DESC
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+
+    <!-- 전체 게시글 수 조회 -->
+    <select id="getTotalPlantCount" resultType="int">
+        SELECT COUNT(*) FROM Plant
+    </select>
 
 	<!-- 게시글 등록 -->
 	<insert id="insertPlant" parameterType="com.plantopia.dto.PlantDto">
