@@ -45,7 +45,7 @@ function check(){
 	}
 	
 	if(form.user_nickname.value == "") {
-		alert("닉네임을 설정헤주세요!");
+		alert("닉네임을 설정해주세요!");
 		form.user_nickname.focus();
 		return false;
 	}

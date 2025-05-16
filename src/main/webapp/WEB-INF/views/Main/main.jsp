@@ -362,7 +362,7 @@
  	            <div class="owl-item" style="width: 180px;">
  	              <div class="item">
  	                <div class="img_block ib1">
- 	                  <img src="/img/store_interior.png" alt="Inside Plantopia Store" class="img_inner">
+ 	                  <img src="/img/store_inside.png" alt="Inside Plantopia Store" class="img_inner">
  	                </div>
  	              </div>
  	            </div>
