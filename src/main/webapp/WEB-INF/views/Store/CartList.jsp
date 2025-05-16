@@ -11,6 +11,7 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <!-- 아임포트 결제 SDK -->
   <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+  <link rel="stylesheet" href="/CSS/cartList.css" type="text/css">
   <script>
     // 가맹점 식별코드(아임포트 콘솔에서 발급된 Client Key)
     const IMP = window.IMP;
@@ -113,104 +114,10 @@
 	        });	
 	      });    
   </script>
-  <style>
-  	.cart-wrapper {
-	  max-width: 1000px;
-	  margin: 40px auto;
-	  font-family: 'Noto Sans KR', sans-serif;
-	}
-	
-	.cart-box {
-	  border: 1px solid #e0e0e0;
-	  border-radius: 10px;
-	  padding: 20px;
-	  margin-bottom: 30px;
-	  background-color: #fff;
-	}
-	
-	.cart-item {
-	  display: flex;
-	  align-items: center;
-	  border-bottom: 1px solid #eee;
-	  padding: 15px 0;
-	}
-	
-	.cart-item:last-child {
-	  border-bottom: none;
-	}
-	
-	.cart-item img {
-	  width: 120px;
-	  height: 120px;
-	  object-fit: cover;
-	  border-radius: 6px;
-	  margin-right: 20px;
-	}
-	
-	.cart-info {
-	  flex: 1;
-	}
-	
-	.cart-info a {
-	  font-size: 16px;
-	  font-weight: bold;
-	  text-decoration: none;
-	  color: #333;
-	}
-	
-	.cart-info p {
-	  margin: 4px 0;
-	  color: #555;
-	}
-	
-	.cart-actions {
-	  text-align: right;
-	  margin-top: 10px;
-	}
-	
-	.cart-actions a {
-	  margin-left: 10px;
-	  color: #007bff;
-	  font-size: 14px;
-	  text-decoration: none;
-	}
-	
-	.cart-actions a:hover {
-	  text-decoration: underline;
-	}
-	
-	.total-summary {
-	  text-align: right;
-	  font-size: 16px;
-	  margin-top: 10px;
-	}
-	
-	.select-payment {
-	  margin: 20px 0;
-	  display: flex;
-	  justify-content: space-between;
-	  align-items: center;
-	}
-	
-	#selectedPayBtn {
-	  padding: 10px 20px;
-	  background-color: #00c73c;
-	  color: white;
-	  border: none;
-	  border-radius: 6px;
-	  cursor: pointer;
-	  font-weight: bold;
-	}
-	
-	#selectedPayBtn:hover {
-	  background-color: #00a32a;
-	}
-  </style>
 </head>
 <body>
 	<div class="cart-wrapper">
   
-
   <c:forEach var="cart" items="${cartList}">
     <div class="cart-box">
       <div class="cart-item">
@@ -221,7 +128,8 @@
           <p>가격: ${cart.c_price}원</p>
           <p>수량: ${cart.c_amount}</p>
           <div class="cart-actions">
-            <a href="CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}">수정</a>
+           <a href="#" onclick="window.open('CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}','cartUpdatePopup', 
+                        'width=500,height=400,top=200,left=300,resizable=no,scrollbars=yes'); return false;">수정</a>
             <a href="CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}">삭제</a>
           </div>
         </div>

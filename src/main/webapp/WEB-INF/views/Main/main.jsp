@@ -148,6 +148,9 @@
 		  float: left;
 	}
 
+	.store-preview-card:hover {
+	  transform: scale(1.03);
+	} 
 </style>
 <body id="top">
   	<%@ include file="/WEB-INF/views/Main/header.jsp" %>

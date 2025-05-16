@@ -63,7 +63,8 @@ public class StoreCommentController {
 	@RequestMapping("/CommentUpdateProcess")
 	public String CommentUpdateProcess(@RequestParam("scom_idx") int scom_idx,
 										@RequestParam("scom_contents") String scom_contents,
-										@RequestParam("p_idx") int p_idx
+										@RequestParam("p_idx") int p_idx,
+										Model model
 										) throws Exception {
 		StoreCommentDto commentDto = StoreCommentDto.builder()
 									.scom_contents(scom_contents)
@@ -73,7 +74,10 @@ public class StoreCommentController {
 		
 		commentService.updateStoreComment(commentDto);
 		
-		return "redirect:StoreDetail?p_idx=" + p_idx;
+		 // script를 바로 리턴
+	    model.addAttribute("script",
+	        "<script>window.opener.location.reload(); window.close();</script>");
+	    return "Store/storeCommentClose"; 
 	}
 	
 	// 4. 스토어 후기 삭제

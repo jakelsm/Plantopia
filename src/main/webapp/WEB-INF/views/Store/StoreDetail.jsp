@@ -7,177 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>제품 상세 페이지</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="/CSS/storeDetail.css" type="text/css">		
 </head>
-<style>
-	.container {
-		display: flex;
-	    align-items: flex-start;
-	    gap: 40px;
-	    max-width: 1200px;
-	    margin: 40px auto;
-	    padding: 20px;
-	    background: #fff;
-	    border-radius: 8px;
-	}
-	
-	.product-img img {
-	    width: 500px;
-	    height: 500px;
-	    border-radius: 6px;
- 	 }
-	
-	.product-detail {
-	    flex: 1;
-	    font-family: 'Noto Sans KR', sans-serif;
-	  }
-	
-	.product-detail h1 {
-	    font-size: 24px;
-	    font-weight: bold;
-	    margin-bottom: 10px;
-	  }
-	  
-	 .product-detail .price {
-	    font-size: 22px;
-	    font-weight: bold;
-	    color: #d9230f;
-	    margin: 10px 0;
-	  }
-	  
-	 .product-detail .desc {
-	    font-size: 15px;
-	    line-height: 1.6;
-	    margin-bottom: 20px;
-	    color: #444;
-	  }
-	  
-	 .product-detail label {
-	    font-weight: 600;
-	  }
-	  
-	 .product-detail input[type="number"] {
-	    width: 80px;
-	    padding: 4px;
-	    margin-left: 10px;
-	  }
-	  
-	 .product-detail input[type="submit"] {
-	    margin-top: 20px;
-	    padding: 10px 20px;
-	    background: #a3d977;
-	    color: white;
-	    border: none;
-	    border-radius: 4px;
-	    cursor: pointer;
-	  }
-  
-	 .product-detail input[type="submit"]:hover {
-	    background: #58c22e;
-	  }
-	  
-	   hr {
-	    margin: 40px 0 20px;
-	  }
-	  
-	 .back-link {
-	    display: inline-block;
-	    margin-top: 30px;
-	    padding: 6px 14px;
-	    background-color: #eee;
-	    border-radius: 4px;
-	    text-decoration: none;
-	    color: #333;
-	  }
-	  
-	.back-link:hover {
-	    background-color: #ccc;
-	  }
-	  
-	.comment-section {
-		  max-width: 1200px;
-		  margin: 0 auto;
-		  padding: 20px;
-		  background: #fafafa;
-		  border-radius: 8px;
-		  font-family: 'Noto Sans KR', sans-serif;
-		}
-		
-	.comment-form {
-		  margin-bottom: 20px;
-		}	
-	.comment-form textarea {
-	    width: 50%;
-	    height: 80px;
-	    padding: 8px;
-	    margin-top: 10px;
-	    resize: vertical;
-	  }
-
-	.comment-form input[type="submit"] {
-	  margin-top: 10px;
-	  padding: 6px 16px;
-	  background-color: #4caf50;
-	  color: white;
-	  border: none;
-	  border-radius: 4px;
-	  cursor: pointer;
-	}
-	
-	.comment-form input[type="submit"]:hover {
-	  background-color: #388e3c;
-	}
-
-	.comment-box {
-	   	background-color: #fff;
-	  	padding: 15px;
-	  	margin-bottom: 16px;
-	  	border-radius: 6px;
-	  	border-bottom : 1px solid #c0c0c0;
-	  }
-
-	.comment-box p {
-		 margin: 4px 0;
-		 font-size: 14px;
-		 color: #333;
-	}
-
-	.comment-box .actions a {
-		  margin-left: 10px;
-		  font-size: 13px;
-		  color: #007bff;
-		  text-decoration: none;
-		}
-		
-	.comment-box .actions a:hover {
-		  text-decoration: underline;
-		}
-	 
-	 .center {
-	 	max-width: 1200px;
-		margin: 0 auto;
-		padding: 20px;		
-		font-family: 'Noto Sans KR', sans-serif;
-	 }
-	 
-	  .product-detail .right{
-	 	text-align : right;
-	 }
-
-	.action-btn {
-	  padding: 6px 12px;
-	  background-color: #f1f1f1;
-	  border: 1px solid #ccc;
-	  border-radius: 4px;
-	  cursor: pointer;
-	  margin-right: 5px;
-	}
-
-	.action-btn:hover {
-	  background-color: #e0e0e0;
-	}
-
-</style>
 <body>	
 	<div class="container">
 		<div class="product-img">		
@@ -185,7 +17,7 @@
 		</div>
 		<div class="product-detail">
 		<div class="right">
-			<a href="getCartList?user_num=${user_num}">장바구니<i class="bi bi-cart"></i></a>
+			<a href="getCartList?user_num=${user_num}" target="_blank">장바구니<i class="bi bi-cart"></i></a>
 		</div>
 			<form name="StoreDetail" id="StoreDetail" method="post" action="/addCart">
 				<p><label>등록일 : </label><fmt:formatDate value="${store.p_addedDate}" pattern="yyyy-MM-dd HH:mm" /></p>
@@ -227,13 +59,15 @@
 			<textarea name="scom_contents" maxlength="200"></textarea><br>
 		<input type="submit" value="후기등록">	
 	</form>
+	
 	<c:forEach var="comment" items="${commentList}">
 	<div class="comment-box">
 		<p>닉네임 : ${comment.user_nickname}</p>
 		<p>후기내용 : ${comment.scom_contents}</p>
 		<c:if test="${user_num == comment.user_num}">
-			<a href="CommentUpdate?scom_idx=${comment.scom_idx}&p_idx=${store.p_idx}">수정</a>
-			<a href="CommentDelete?scom_idx=${comment.scom_idx}&p_idx=${store.p_idx}">삭제</a>
+    		<button type="button" class="action-btn" onclick="window.open('CommentUpdate?scom_idx=${comment.scom_idx}&p_idx=${store.p_idx}','후기수정',
+                            'width=500,height=400,top=200,left=300,resizable=no,scrollbars=yes');">수정</button>
+    		<button type="button" class="action-btn" onclick="location.href='CommentDelete?scom_idx=${comment.scom_idx}&p_idx=${store.p_idx}'">삭제</button>
 		</c:if>
 		</div>
 	</c:forEach>

@@ -5,6 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>후기 댓글 수정 폼 페이지</title>
+<style>
+	body {
+	 font-family: 'Noto Sans KR'; padding: 20px; 
+	 }
+	textarea {
+	 width: 100%; height: 100px; 
+	 }
+</style>
 </head>
 <body>
 	<form name="commentUpdateForm" id="commentUpdateForm" method="post" action="CommentUpdateProcess">

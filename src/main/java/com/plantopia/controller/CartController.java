@@ -74,8 +74,8 @@ public class CartController {
 	@RequestMapping("/CartUpdateProcess")
 	public String CartUpdateProcess(@RequestParam("c_idx") int c_idx,
 									@RequestParam("c_amount") int c_amount,
-									@RequestParam("user_num") int user_num
-									) throws Exception {
+									@RequestParam("user_num") int user_num,
+									Model model) throws Exception {
 				
 		CartDto originCart = cartService.getCartbyIdx(c_idx); // 현재 장바구니 항목 조회
 		
@@ -89,7 +89,10 @@ public class CartController {
 			
 		cartService.updateCart(cartDto);
 		
-		return "redirect:/getCartList?user_num=" + user_num;	
+		 // 팝업 닫기 + 부모창 새로고침을 위한 script 리턴
+	    model.addAttribute("script", "<script>window.opener.location.reload(); window.close();</script>");
+	    return "Store/CartPopupClose"; // 이 JSP는 script만 출력
+			
 	}
 		
 	
