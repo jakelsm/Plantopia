@@ -43,6 +43,17 @@
 	<!-- 글 목록으로 이동 버튼 -->
 	<p><a href="/Plant/plantList" class="btn btn-secondary mt-3">목록으로</a></p>
 
+	<!-- 로그인 상태일 때만 검사 -->
+	<c:if test="${not empty loginInfo}">
+	    <!-- admin 이거나, 내가 쓴 글이면 버튼 보임 -->
+	    <c:if test="${loginInfo.user_authority eq 'admin' or loginInfo.user_num eq plant.user_num}">
+	        <td>
+	            <a href="<c:url value='/Plant/plantUpdate?pla_idx=${plant.pla_idx}'/>">수정</a> | 
+	            <a href="<c:url value='/Plant/plantdelete?pla_idx=${plant.pla_idx}'/>">삭제</a>
+	        </td>
+	    </c:if>
+	</c:if>
+
     <!-- 댓글 목록 출력 -->
     <h3>댓글</h3>
     <c:forEach var="comment" items="${commentList}">

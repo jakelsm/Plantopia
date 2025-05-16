@@ -67,6 +67,7 @@
 	            <td>${dto.plc_idx}</td>
 	            <td><a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">${dto.plc_title}</a></td>
 	            <td>${dto.writer}</td>
+	            <!-- admin 이거나, 내가 쓴 글이면 버튼 보임 -->
 	            <c:if test="${not empty loginInfo}">
                     <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == dto.user_num}">
 			            <td>

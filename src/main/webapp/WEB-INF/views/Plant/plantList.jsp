@@ -103,9 +103,8 @@
 	        <a href="/Plant/plantList?page=${currentPage + 1}&search=${param.search}">다음</a>
 	    </c:if>
 	</div>
-
-	</div>	
 	</div>
+	</div>	
   </div>	
   <%@ include file="/WEB-INF/views/Main/footer.jsp" %>	
 </body>
