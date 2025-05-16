@@ -38,7 +38,7 @@ public class PlantController {
 	@RequestMapping("/Plant/plantList")
 	public String plantList(@RequestParam(defaultValue = "1", name = "page") int page,
 							@AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
-		int pageSize = 10;  // 한 페이지에 보여줄 게시글 수
+		int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
 	    int totalCount = plantService.getTotalPlantCount(); // 전체 게시글 수
 	    int totalPage = (int) Math.ceil((double) totalCount / pageSize); // 페이지 수 계산
 
