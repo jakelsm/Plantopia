@@ -37,40 +37,49 @@ public class PlantController {
 	
 	@RequestMapping("/Plant/plantList")
 	public String plantList(@RequestParam(defaultValue = "1", name = "page") int page,
-							@AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
+            @RequestParam(required = false) String search, // 검색어
+            @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
 		int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
-	    int totalCount = plantService.getTotalPlantCount(); // 전체 게시글 수
-	    int totalPage = (int) Math.ceil((double) totalCount / pageSize); // 페이지 수 계산
-
-	    if (page > totalPage && totalPage > 0) {
-            page = totalPage; // 현재 페이지가 범위 초과 시 보정
-        }
-	    
-	    List<PlantDto> plantList = plantService.getPlantPaging(page, pageSize);  // 페이징 처리된 게시글 목록
-	    
-	    model.addAttribute("plantList", plantList);  // 페이징된 게시글 목록
-	    model.addAttribute("currentPage", page);     // 현재 페이지
-	    model.addAttribute("totalPage", totalPage);  // 전체 페이지 수
-	    model.addAttribute("loginInfo", user);       // 로그인 정보 전달
+		int totalCount = (search == null || search.trim().isEmpty()) ? plantService.getTotalPlantCount() : plantService.getTotalPlantCountBySearch(search); // 검색이 없으면 전체 게시글 수
+		int totalPage = (int) Math.ceil((double) totalCount / pageSize); // 페이지 수 계산
+		
+		if (page > totalPage && totalPage > 0) {
+		page = totalPage; // 현재 페이지가 범위 초과 시 보정
+		}
+		
+		List<PlantDto> plantList;
+		if (search != null && !search.trim().isEmpty()) {
+		// 검색어가 있을 때
+		plantList = plantService.getPlantListBySearch(search, page, pageSize);
+		} else {
+		// 검색어가 없을 때
+		plantList = plantService.getPlantPaging(page, pageSize);
+		}
+		
+		model.addAttribute("plantList", plantList);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("loginInfo", user);
 		
 		// 액션 칼럼 노출 여부 판단
-	    boolean showAction = false;
-	    if (user != null) {
-	        // 관리자면 무조건 true
-	        if ("admin".equals(user.getUser_authority())) {
-	            showAction = true;
-	        } else {
-	            // 일반 사용자는 자신의 글이 하나라도 있으면 true
-	            for (PlantDto p : plantList) {
-	                if (p.getUser_num() == user.getUser_num()) {
-	                    showAction = true;
-	                    break;
-	                }
-	            }
-	        }
+		boolean showAction = false;
+		if (user != null) {
+		// 관리자면 무조건 true
+		if ("admin".equals(user.getUser_authority())) {
+		showAction = true;
+		} else {
+		// 일반 사용자는 자신의 글이 하나라도 있으면 true
+		for (PlantDto p : plantList) {
+		    if (p.getUser_num() == user.getUser_num()) {
+		        showAction = true;
+		        break;
+	      }
 	    }
-	    model.addAttribute("showAction", showAction);
-		return "Plant/plantList";
+	  }
+	}
+	model.addAttribute("showAction", showAction);
+	
+	return "Plant/plantList";
 	}
 	
 	@RequestMapping("/Plant/plantWrite")

@@ -17,8 +17,8 @@ public class PlantDto {
 	private String pla_img;
 	private LocalDateTime pla_date;
 	private int pla_hit_cnt;
-	private int user_num; // 외래키
+	private int user_num;  // 외래키
 	private String writer; // 조회 시 닉네임 담는 용도
-	private int likeCount;      // PostLike 테이블에서 집계된 좋아요 수
+	private int likeCount; // PostLike 테이블에서 집계된 좋아요 수
 }
 	

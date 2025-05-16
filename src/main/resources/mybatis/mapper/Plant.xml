@@ -139,5 +139,32 @@
   <select id="countByUser" resultType="int" parameterType="int">
 	   SELECT COUNT(*) FROM Plant WHERE user_num = #{userNum}
   </select>
+  
+    <!-- 제목으로 검색 -->
+	<select id="selectPlantListBySearch" resultMap="plantResultMap">
+	    SELECT 
+	        p.pla_idx,
+	        p.pla_title,
+	        p.pla_contents,
+	        p.pla_img,
+	        p.pla_date,
+	        p.pla_hit_cnt,
+	        p.user_num, 
+	        u.user_nickname AS writer
+	    FROM Plant p
+	    JOIN User u ON p.user_num = u.user_num
+	    WHERE p.pla_title LIKE CONCAT('%', #{search}, '%')  <!-- 제목에서 검색어가 포함된 게시글을 찾음 -->
+	    ORDER BY p.pla_date DESC
+	    LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<!-- 제목으로 검색한 게시글 수 조회 -->
+	<select id="getTotalPlantCountBySearch" resultType="int">
+	    SELECT COUNT(*) 
+	    FROM Plant p
+	    WHERE p.pla_title LIKE CONCAT('%', #{search}, '%')  <!-- 제목에서 검색어가 포함된 게시글의 개수 조회 -->
+	</select>
+  
+  
 </mapper>        
         

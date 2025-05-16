@@ -70,4 +70,14 @@ public class PlantService {
         return plantMapper.countByUser(userNum);
     }
 
+   // 검색어로 게시글을 조회하는 메서드
+    public List<PlantDto> getPlantListBySearch(String search, int page, int pageSize) throws Exception {
+        int offset = (page - 1) * pageSize;  // 페이지 시작 위치 계산
+        return plantMapper.selectPlantListBySearch(search, offset, pageSize);  // Mapper 호출
+    }
+
+    // 검색어로 전체 게시글 수를 조회하는 메서드
+    public int getTotalPlantCountBySearch(String search) throws Exception {
+        return plantMapper.getTotalPlantCountBySearch(search);
+    }
 }

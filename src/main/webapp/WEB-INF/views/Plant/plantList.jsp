@@ -81,23 +81,29 @@
 			</c:forEach>
 		</table>
 		
+		<form action="/Plant/plantList" method="get">
+		    <input type="text" name="search" placeholder="제목을 입력하세요.">
+		    <button type="submit">검색</button>
+		</form>
+		
 		<!-- 페이징 처리 -->
-		<div class="pagination">
-			<!-- 이전 버튼 -->
-			<c:if test="${currentPage > 1}">
-				<a href="/Plant/plantList?page=${currentPage - 1}">이전</a>
-			</c:if>
+	<div class="pagination">
+	    <!-- 이전 버튼 -->
+	    <c:if test="${currentPage > 1}">
+	        <a href="/Plant/plantList?page=${currentPage - 1}&search=${param.search}">이전</a>
+	    </c:if>
 	
-			<!-- 페이지 번호 -->
-			<c:forEach var="i" begin="1" end="${totalPage}">
-				<a href="/Plant/plantList?page=${i}" class="${i == currentPage ? 'active' : ''}">${i}</a>
-			</c:forEach>
+	    <!-- 페이지 번호 -->
+	    <c:forEach var="i" begin="1" end="${totalPage}">
+	        <a href="/Plant/plantList?page=${i}&search=${param.search}" class="${i == currentPage ? 'active' : ''}">${i}</a>
+	    </c:forEach>
 	
-			<!-- 다음 버튼 -->
-			<c:if test="${currentPage < totalPage}">
-				<a href="/Plant/plantList?page=${currentPage + 1}">다음</a>
-			</c:if>
-		</div>
+	    <!-- 다음 버튼 -->
+	    <c:if test="${currentPage < totalPage}">
+	        <a href="/Plant/plantList?page=${currentPage + 1}&search=${param.search}">다음</a>
+	    </c:if>
+	</div>
+
 	</div>	
 	</div>
   </div>	

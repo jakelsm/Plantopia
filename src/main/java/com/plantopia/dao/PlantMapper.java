@@ -32,4 +32,8 @@ public interface PlantMapper {
 
     // 내가 쓴 Plant 글 총 개수
     int countByUser(@Param("userNum") int userNum) throws Exception;
+    // 제목으로 검색된 게시글 리스트 조회
+    List<PlantDto> selectPlantListBySearch(@Param("search") String search, @Param("offset") int offset, @Param("limit") int limit) throws Exception;
+    // 제목으로 검색된 게시글 수 조회
+    int getTotalPlantCountBySearch(@Param("search") String search) throws Exception;
 }
