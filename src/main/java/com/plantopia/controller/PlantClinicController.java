@@ -40,7 +40,7 @@ public class PlantClinicController {
                              @RequestParam(required = false) String search,  // 검색어 파라미터 추가
                              @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
         
-        int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
+        int pageSize = 6;  // 한 페이지에 보여줄 게시글 수
         int totalCount;
         List<PlantClinicDto> list;
 

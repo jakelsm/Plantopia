@@ -1,21 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>    
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>클리닉 게시판 목록</title>
+<title>반려식물 클리닉 게시판</title>
 </head>
 <style>
-	.container {
-		display : grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap : 20px;
-		padding : 20px;
-	}
-	
-	.pagination {
+	.ctn {
 		text-align : center;
 	}
 	
@@ -45,29 +39,59 @@
 	  font-weight: bold;
 	}
 	
+	input[type="text"], input[type="submit"] {
+	  padding: 8px 12px;
+	  margin: 10px 5px;
+	  border-radius: 5px;
+	  border: 1px solid #ccc;
+	}
+	input[type="submit"] {
+	  background-color: #4CAF50;
+	  color: white;
+	  font-weight: bold;
+	  cursor: pointer;
+	}
+	input[type="submit"]:hover {
+	  background-color: #45a049;
+	}
+	
 </style>
 <body>
   <%@ include file="/WEB-INF/views/Main/header.jsp" %>
 	<div class="content">
 	 <div class="container_12">
-	 <div class="grid_12">
-	<h3>클리닉 게시판 목록</h3>
-	<a href="/Clinic/clinicWrite">글쓰기</a>
-	<table border="1" width="900">
-	    <tr>
-	        <th>번호</th>
-	        <th>제목</th>
-	        <th>작성자</th>
-	        <c:if test="${showAction}">
-        		<th>관리</th>
-      		</c:if>
-	    </tr>
+		<div class="grid_12">
+			<h3>반려식물 클리닉 게시판</h3>
+		</div>
+		<div class="clear cl1"></div>
+	
 	    <c:forEach var="dto" items="${clinicList}">
-	        <tr>
-	            <td>${dto.plc_idx}</td>
-	            <td><a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">${dto.plc_title}</a></td>
-	            <td>${dto.writer}</td>
-	            <!-- admin 이거나, 내가 쓴 글이면 버튼 보임 -->
+	            <div class="grid_4">
+	            <div class="text1">
+				    <c:choose>
+				        <c:when test="${fn:length(dto.plc_title) > 17}">
+				            <a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">
+				                ${fn:substring(dto.plc_title, 0, 17)}...
+				            </a>
+				        </c:when>
+				        <c:otherwise>
+				            <a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">
+				                ${dto.plc_title}
+				            </a>
+				        </c:otherwise>
+				    </c:choose>
+				</div>
+	            <br>
+                    <c:choose>
+					    <c:when test="${fn:length(dto.plc_contents) > 89}">
+					        ${fn:substring(dto.plc_contents, 0, 89)}...
+					    </c:when>
+					    <c:otherwise>
+					        ${dto.plc_contents}
+					    </c:otherwise>
+					</c:choose>
+	            <br><a class="btn">${dto.writer}</a>
+	            <div class="clear cl1"></div>
 	            <c:if test="${not empty loginInfo}">
                     <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == dto.user_num}">
 			            <td>
@@ -76,15 +100,31 @@
 			            </td>
 	            	</c:if>
 	           </c:if>
-	        </tr>
+	           
+	           </div>
 	    </c:forEach>
-	</table>
 	
-	<form action="/Clinic/clinicList" method="get">
-	    <input type="text" name="search" value="${search}" placeholder="제목을 입력하세요.">
-	    <button type="submit">검색</button>
-	</form>
+	<div class="clear cl1"></div>
+	<div class="grid_9">&nbsp;</div>
+	    <div class="grid_3">
+		<a href="/Clinic/clinicWrite">글쓰기</a></div>
+	</div>
+	</div>
 	
+	<div class="bottom_block">
+	  <div class="container_12">
+	    
+	    <div class="grid_3">&nbsp;</div>
+	    <div class="grid_6">
+		<div class="clear cl1"></div>	  
+	  
+	  	  <div class="ctn">	
+			<form action="/Clinic/clinicList" method="get">
+			    <input type="text" name="search" value="${search}" placeholder="제목을 입력하세요.">
+			    <input type="submit" value="검색">
+			</form>
+		  </div>	
+		<div class="clear cl1"></div>	
 		<!-- 페이지네이션 -->
 	    <div class="pagination">
 	    <c:if test="${currentPage > 1}">
@@ -98,10 +138,12 @@
 	    <c:if test="${currentPage < totalPage}">
 	        <a href="/Clinic/clinicList?page=${currentPage + 1}&search=${param.search}">다음</a>
 	    </c:if>
+    	</div>
+    	</div>
+    	<div class="grid_3">&nbsp;</div>
+	  </div>
 	</div>
-    </div>	
-	</div>
-  </div>	
+  
   <%@ include file="/WEB-INF/views/Main/footer.jsp" %>	
 </body>
 </html>

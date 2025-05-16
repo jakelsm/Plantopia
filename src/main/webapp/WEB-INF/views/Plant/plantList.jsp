@@ -80,7 +80,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-		
+				
 		<form action="/Plant/plantList" method="get">
 		    <input type="text" name="search" placeholder="제목을 입력하세요.">
 		    <button type="submit">검색</button>
