@@ -7,17 +7,26 @@
 <meta charset="UTF-8">
 <title>StoreMain</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="/CSS/storeMain.css" type="text/css">	
+<link rel="stylesheet" href="/CSS/storeMain.css" type="text/css">
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+<script>
+
+</script>	
 </head>
-<body id="top">
+<style>
+
+</style>
+<body>
 	 <%@ include file="/WEB-INF/views/Main/header.jsp" %> 
 	 <div class="content">
     	<div class="container_12">
       	<div class="grid_12">
 			<form name="StoreMain" id="StoreMain" method="post" action="/addStore">
-			<div class="right">
-				<p>🌱<strong>${sessionScope.user_nickname}님</strong></p>
-				<a href="getCartList?user_num=${sessionScope.user_num}">장바구니<i class="bi bi-cart"></i></a>
+			<div class="right" style="padding-top:50px;">
+				<p>
+					<button type="button" class="action-btn" onclick="location.href='getCartList?user_num=${sessionScope.user_num}'">
+					<i class="bi bi-cart"></i>장바구니</button>
+				</p>				
 			</div>		
 			<div class="container">
 			<c:forEach var="dto" items="${lists}">	
@@ -27,6 +36,7 @@
 				</a>
 				<div class="name"><h4><a href="StoreDetail?p_idx=${dto.p_idx}">${dto.p_name}</a></h4></div>
 				<span class="price"><p>${dto.p_price}원</p></span>
+				
 				<c:if test="${userAuthority eq 'admin'}">
 					<a href="StoreUpdate?p_idx=${dto.p_idx}">수정</a>
 					<a href="StoreDelete?p_idx=${dto.p_idx}">삭제</a>
@@ -34,9 +44,11 @@
 			</div>
 			</c:forEach>
 			</div>
+			
 			<c:if test="${userAuthority eq 'admin'}">
 				<input type="submit" value="제품추가">
 			</c:if>
+			
 			</form>
 			<form name="StoreSearch" id="StoreSearch" method="get" action="/StoreSearch">
 				<div class="ctn">
@@ -56,7 +68,15 @@
   	<!-- 아래쪽 영역 시작 -->
 	<div class="bottom_block">
   	<div class="container_12">
- 
+  		<img src="/img/teamlogo1.png" style="width:150px; height:150px;">
+  		<div class="bottom-box">
+  			<p><span class="bottom-text1"><i class="bi bi-exclamation-circle-fill"></i> 반품 배송비, 반품 배송주소 등은 해당 상품 페이지 내 안내를 참고해주세요.</span></p>
+  			<p><span style="font-size:14px;">주식회사 플랜토피아 농업회사법인 ooo 인증</span> |<span class="bottom-text1"><a href="#">판매자 상세정보 확인 </a></span>|
+  			<span style="font-size : 12px; font-weight:bold;"><a href="#"> 판매자 개인정보 처리방침 </a></span></p>
+			   <a href="https://www.facebook.com/plantopia" target="_blank"><i class="bi bi-facebook"></i> Facebook |</a>
+			   <a href="https://www.instagram.com/plantopia" target="_blank"><i class="bi bi-instagram"></i> Instagram |</a>
+			   <a href="https://www.twitter.com/plantopia" target="_blank"><i class="bi bi-twitter"></i> Twitter</a>
+  		</div>
   </div>
 </div>
 	

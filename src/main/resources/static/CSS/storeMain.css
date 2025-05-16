@@ -1,26 +1,26 @@
 @charset "UTF-8";
 body {
 	  background-color: #f6f6f6;
-	  font-family: 'Noto Sans KR', sans-serif;
 	}	
-	
+		
 	.container {
-		display : grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap : 20px;
-		padding : 20px;
+	  display: grid;
+	  grid-template-columns: repeat(4, 1fr); /* 4개의 열로 구성 */
+	  gap: 20px;
+	  padding: 20px;
 	}
-	
-	img {
-		width : 250px;
-		height : 250px;
-		object-fit : cover;
-		border : 1px solid #c0c0c0;
+			
+	.store-item img {
+	  width: 100%;               /* 부모 크기에 맞게 */
+	  aspect-ratio: 1 / 1;       /* 4:3 비율로 설정 */
+	  object-fit: cover;         /* 비율을 맞추면서 이미지 잘라내기 */
+	  border: 1px solid #c0c0c0;
+	  border-radius: 5px;
 	}
-	
+			
 	.store-item {
 		padding : 10px;
-		text-align : center;
+		text-align : center;		
 	}
 	
 	.store-item .name {
@@ -89,5 +89,18 @@ body {
 	}
 	input[type="submit"]:hover {
 	  background-color: #45a049;
+	}
+	
+	.action-btn {
+	  padding: 6px 12px;
+	  background-color: #fcfcfc;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  margin-right: 5px;
+	}
+
+	.action-btn:hover {
+	  background-color: #e0e0e0;
 	}
 		

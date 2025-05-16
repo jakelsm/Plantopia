@@ -17,7 +17,7 @@
 		</div>
 		<div class="product-detail">
 		<div class="right">
-			<a href="getCartList?user_num=${user_num}" target="_blank">장바구니<i class="bi bi-cart"></i></a>
+			<button type="button" class="action-btn" onclick="location.href='getCartList?user_num=${user_num}'">장바구니<i class="bi bi-cart"></i></button>
 		</div>
 			<form name="StoreDetail" id="StoreDetail" method="post" action="/addCart">
 				<p><label>등록일 : </label><fmt:formatDate value="${store.p_addedDate}" pattern="yyyy-MM-dd HH:mm" /></p>
@@ -46,8 +46,12 @@
 	</div>
 	<div class="center">
 	<a class="back-link" href="StoreMain">목록으로</a>
-	</div>
+			
 	<hr>
+	</div>
+	
+	<!-- 후기  -->
+
 	<h3 class="center">상품후기</h3>
 	<div class="comment-section">
 	<form class="comment-form" name="StoreComment" id="StoreComment" method="post" action="/addCommentProcess?p_idx=${store.p_idx}">

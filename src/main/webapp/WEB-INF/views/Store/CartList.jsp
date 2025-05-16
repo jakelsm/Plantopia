@@ -12,6 +12,7 @@
   <!-- 아임포트 결제 SDK -->
   <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
   <link rel="stylesheet" href="/CSS/cartList.css" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <script>
     // 가맹점 식별코드(아임포트 콘솔에서 발급된 Client Key)
     const IMP = window.IMP;
@@ -148,14 +149,14 @@
       </select>
     </div>
     <div>
-      선택한 상품 총액: <strong id="totalPrice">0</strong> 원
-      <button type="button" id="selectedPayBtn">선택 상품 결제하기</button>
+      	선택한 상품 총액: <strong id="totalPrice">0</strong> 원
+      	<button type="button" id="selectedPayBtn">선택 상품 결제하기</button>
     </div>
   </div>
 
-  <div style="text-align:center; margin-top: 20px;">
-    <a href="StoreMain">스토어목록</a>
-  </div>
+ 	<div style="display: flex; justify-content: center; margin-top: 20px;">
+        <button type="button" class="action-btn" onclick="location.href='StoreMain'"><i class="bi bi-list"></i>스토어목록</button>
+    </div>
 </div>
 </body>
 </html>

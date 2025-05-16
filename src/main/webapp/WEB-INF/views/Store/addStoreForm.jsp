@@ -12,6 +12,16 @@
 	<form name="addStoreForm" id="addStoreForm" method="post" action="addProcess" enctype="multipart/form-data">		
 			<label for="p_name">제품명 : </label><input type="text" name="p_name" id="p_name" placeholder="제품명을 입력하세요"><br>
 			<label for="p_price">제품 가격 : </label><input type="number" name="p_price" id="p_price" placeholder="제품가격을 입력하세요"><br>
+			<label for="discountCheck">할인 적용 : </label><input type="checkbox" name="discountCheck" id="discountCheck" onclick="updatePrice()"><br>
+			<label for="discountSelect">할인률 : </label>
+			<select name ="discountSelect" id="discountSelect" onchange="updatePrice()">
+				<option value="0%">할인 없음</option>
+				<option value="10%">10%</option>
+				<option value="20%">20%</option>
+				<option value="30%">30%</option>
+				<option value="40%">40%</option>
+				<option value="50%">50%</option>			
+			</select><br>
 			<label for="p_description">제품 설명 : </label><textarea name="p_description" id="p_description" placeholder="제품설명을 입력하세요"></textarea><br>
 			<label for="p_stockQuantity">재고 수량 : </label><input type="number" name="p_stockQuantity"><br>
 			<label for="imgFile">제품 이미지 : </label><input type="file" name="imgFile" id="imgFile"><br>

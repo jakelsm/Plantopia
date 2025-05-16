@@ -36,7 +36,7 @@ public class StoreController {
 	@RequestMapping("/StoreMain")
 	public String StoreMain(@RequestParam(defaultValue="1",name = "page") int page, Model model,@AuthenticationPrincipal CustomUserDetails user) throws Exception {
 		
-		int pageSize = 8; 
+		int pageSize = 16; 
 		
 		List<StoreDto> storeList = storeService.getStorePaging(page, pageSize);
 		

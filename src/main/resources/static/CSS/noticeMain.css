@@ -1,0 +1,83 @@
+@charset "UTF-8";
+.table-wrapper {
+	    max-width: 1000px;
+	    margin: 40px auto;
+	    background: #fff;
+	    padding: 20px;
+	    border: 1px solid #ccc;
+	    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    	border-radius: 8px;
+ 	 }
+
+	table {
+		width: 100%;
+		table-layout: fixed; /* 고정된 열 폭 적용 */
+   	 	border-collapse: collapse;
+    	font-family: 'Noto Sans KR', sans-serif;
+    	font-size: 15px;
+	}
+	
+	td,th {
+		border: 1px solid #ddd;
+   		padding: 12px 10px;
+   		text-align: center;
+	}
+	
+	td a {
+		 display: inline-block;
+		 overflow: hidden;
+		 white-space: nowrap;
+		 text-overflow: ellipsis;
+		 max-width: 100%;
+	}
+	
+	th {
+	    background-color: #f7f7f7;
+	    font-weight: 600;
+  	}
+	
+	tr:hover {
+  		background-color: #fafafa;
+	}
+	
+	.pagination {
+		text-align: center;
+ 		margin: 30px 0 10px 0;
+	}
+	
+	.pagination a {
+	    display: inline-block;
+	    margin: 0 5px;
+	    padding: 6px 12px;
+	    border: 1px solid #ddd;
+	    border-radius: 4px;
+	    background-color: #f9f9f9;
+	    text-decoration: none;
+	    color: #333;
+ 	 }
+ 	
+ 	.pagination a:hover {
+    	background-color: #e0e0e0;
+  	}
+  	
+  	.pagination a.active {
+	  background-color: #4CAF50;
+	  color: white;
+	  font-weight: bold;
+	}
+	
+	
+	.action-btn {
+	  padding: 6px 12px;
+	  background-color: #fcfcfc;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  cursor: pointer;
+	  margin-right: 5px;
+	}
+
+	.action-btn:hover {
+	  background-color: #e0e0e0;
+	}
+		
+ 	 
