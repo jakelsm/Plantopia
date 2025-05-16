@@ -36,40 +36,49 @@ public class PlantClinicController {
 
     // 클리닉 게시글 목록
     @RequestMapping("/Clinic/clinicList")
-    public String clinicList(@RequestParam(defaultValue="1") int page,
-    						 @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
-    	int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
-    	int totalCount = plantClinicService.getTotalClinicCount();
-    	int totalPage = (int) Math.ceil((double) totalCount / pageSize);  
-    	
-    	if (page > totalPage && totalPage > 0) {
+    public String clinicList(@RequestParam(defaultValue = "1") int page,
+                             @RequestParam(required = false) String search,  // 검색어 파라미터 추가
+                             @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
+        
+        int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
+        int totalCount;
+        List<PlantClinicDto> list;
+
+        if (search != null && !search.trim().isEmpty()) {
+            totalCount = plantClinicService.getTotalClinicCountBySearch(search);  // 검색된 게시글 개수
+            list = plantClinicService.getClinicListBySearch(search, page, pageSize);  // 검색된 게시글 목록
+        } else {
+            totalCount = plantClinicService.getTotalClinicCount();  // 전체 게시글 개수
+            list = plantClinicService.getClinicPaging(page, pageSize);  // 전체 게시글 목록
+        }
+
+        int totalPage = (int) Math.ceil((double) totalCount / pageSize);  // 전체 페이지 수 계산
+
+        if (page > totalPage && totalPage > 0) {
             page = totalPage; // 현재 페이지가 범위 초과 시 보정
         }
-    	
-    	List<PlantClinicDto> list = plantClinicService.getClinicPaging(page, pageSize);
 
         model.addAttribute("clinicList", list);
         model.addAttribute("loginInfo", user);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPage", totalPage > 0 ? totalPage : 1);
-        
+        model.addAttribute("search", search);  // 검색어 전달
+
         // 액션 칼럼 노출 여부 판단
-	    boolean showAction = false;
-	    if (user != null) {
-	        // 관리자면 무조건 true
-	        if ("admin".equals(user.getUser_authority())) {
-	            showAction = true;
-	        } else {
-	            // 일반 사용자는 자신의 글이 하나라도 있으면 true
-	            for (PlantClinicDto p : list) {
-	                if (p.getUser_num() == user.getUser_num()) {
-	                    showAction = true;
-	                    break;
-	                }
-	            }
-	        }
-	    }
-	    model.addAttribute("showAction", showAction);
+        boolean showAction = false;
+        if (user != null) {
+            if ("admin".equals(user.getUser_authority())) {
+                showAction = true;
+            } else {
+                for (PlantClinicDto p : list) {
+                    if (p.getUser_num() == user.getUser_num()) {
+                        showAction = true;
+                        break;
+                    }
+                }
+            }
+        }
+        model.addAttribute("showAction", showAction);
         return "PlantClinic/clinicList";
     }
 

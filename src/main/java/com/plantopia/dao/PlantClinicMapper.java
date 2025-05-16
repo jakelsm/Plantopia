@@ -26,7 +26,11 @@ public interface PlantClinicMapper {
         @Param("offset")    int offset,
         @Param("pageSize")  int pageSize
     ) throws Exception;
-
     // 내가 쓴 Clinic 글 총 개수 
     int countByUser(@Param("userNum") int userNum) throws Exception;
+    // 제목으로 검색된 게시글 리스트 조회
+    List<PlantClinicDto> selectClinicListBySearch(@Param("search") String search, @Param("offset") int offset, @Param("limit") int limit) throws Exception;
+    // 제목으로 검색된 게시글 수 조회
+    int getTotalClinicCountBySearch(@Param("search") String search) throws Exception;
+
 }

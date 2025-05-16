@@ -79,20 +79,25 @@
 	    </c:forEach>
 	</table>
 	
-	<!-- 페이지네이션 -->
-    <div class="pagination">
-        <c:if test="${currentPage > 1}">
-            <a href="/Clinic/clinicList?page=${currentPage - 1}">이전</a>
-        </c:if>
-        
-        <c:forEach var="i" begin="1" end="${totalPage}">
-            <a href="/Clinic/clinicList?page=${i}" class="${i == currentPage ? 'active' : ''}">${i}</a>
-        </c:forEach>
-        
-        <c:if test="${currentPage < totalPage}">
-            <a href="/Clinic/clinicList?page=${currentPage + 1}">다음</a>
-        </c:if>
-    </div>
+	<form action="/Clinic/clinicList" method="get">
+	    <input type="text" name="search" value="${search}" placeholder="제목을 입력하세요.">
+	    <button type="submit">검색</button>
+	</form>
+	
+		<!-- 페이지네이션 -->
+	    <div class="pagination">
+	    <c:if test="${currentPage > 1}">
+	        <a href="/Clinic/clinicList?page=${currentPage - 1}&search=${param.search}">이전</a>
+	    </c:if>
+	
+	    <c:forEach var="i" begin="1" end="${totalPage}">
+	        <a href="/Clinic/clinicList?page=${i}&search=${param.search}" class="${i == currentPage ? 'active' : ''}">${i}</a>
+	    </c:forEach>
+	
+	    <c:if test="${currentPage < totalPage}">
+	        <a href="/Clinic/clinicList?page=${currentPage + 1}&search=${param.search}">다음</a>
+	    </c:if>
+	</div>
     </div>	
 	</div>
   </div>	

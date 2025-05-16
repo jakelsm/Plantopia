@@ -54,13 +54,21 @@ public class PlantClinicService {
 	 public int getTotalClinicCount() throws Exception {
 	     return plantClinicMapper.getTotalClinicCount();
 	 }
-	 
 	 // 프로필 페이지 페이징 용 코드
 	 public List<PlantClinicDto> selectClinicByUserPaging(int userNum, int offset, int pageSize) throws Exception {
 	     return plantClinicMapper.selectClinicByUserPaging(userNum, offset, pageSize);
 	 }
 	 public int countByUser(int userNum) throws Exception {
 	     return plantClinicMapper.countByUser(userNum);
+	 }
+	 // 제목으로 검색된 클리닉 게시글 리스트 조회
+	 public List<PlantClinicDto> getClinicListBySearch(String search, int page, int pageSize) throws Exception {
+	     int offset = (page - 1) * pageSize;  // 페이지 번호를 기준으로 OFFSET 계산
+	     return plantClinicMapper.selectClinicListBySearch(search, offset, pageSize);
+	 }
+	 // 제목으로 검색된 클리닉 게시글의 총 개수 조회
+	 public int getTotalClinicCountBySearch(String search) throws Exception {
+	     return plantClinicMapper.getTotalClinicCountBySearch(search);
 	 }
 
 }

@@ -98,4 +98,22 @@
 	<select id="countByUser" resultType="int" parameterType="int">
 	  SELECT COUNT(*) FROM PlantClinic WHERE user_num = #{userNum}
 	</select>
+	
+	<!-- 제목으로 검색된 클리닉 게시글 리스트 조회 -->
+	<select id="selectClinicListBySearch" resultMap="clinicResultMap">
+	    SELECT c.*, u.user_nickname AS writer
+	    FROM PlantClinic c
+	    JOIN User u ON c.user_num = u.user_num
+	    WHERE c.plc_title LIKE CONCAT('%', #{search}, '%')
+	    ORDER BY c.plc_date DESC
+	    LIMIT #{limit} OFFSET #{offset}
+	</select>
+	
+	<!-- 제목으로 검색된 클리닉 게시글 수 조회 -->
+	<select id="getTotalClinicCountBySearch" resultType="int">
+	    SELECT COUNT(*)
+	    FROM PlantClinic c
+	    WHERE c.plc_title LIKE CONCAT('%', #{search}, '%')
+	</select>
+	
 </mapper>
