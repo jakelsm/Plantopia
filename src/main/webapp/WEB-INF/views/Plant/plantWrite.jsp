@@ -33,7 +33,7 @@
 			<p>작성자: ${nickname}</p>
 			<div class="clear"></div>
 			<div class="btns">
-			  <a href="/Clinic/clinicList" class="btn">목록으로</a>
+			  <a href="/Plant/plantList" class="btn">목록으로</a>
 			  <a href="#" data-type="reset" class="btn">다시 쓰기</a>
 			  <a href="#" class="btn" onclick="if (validateForm()) { document.getElementById('form').submit(); } return false;">글 작성</a>
 			</div>

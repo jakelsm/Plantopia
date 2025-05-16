@@ -37,7 +37,7 @@ public class PlantController {
 	
 	@RequestMapping("/Plant/plantList")
 	public String plantList(@RequestParam(defaultValue = "1", name = "page") int page,
-            @RequestParam(required = false) String search, // 검색어
+			@RequestParam(name = "search", required = false) String search, // 검색어
             @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
 		int pageSize = 8;  // 한 페이지에 보여줄 게시글 수
 		int totalCount = (search == null || search.trim().isEmpty()) ? plantService.getTotalPlantCount() : plantService.getTotalPlantCountBySearch(search); // 검색이 없으면 전체 게시글 수

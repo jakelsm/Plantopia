@@ -36,8 +36,8 @@ public class PlantClinicController {
 
     // 클리닉 게시글 목록
     @RequestMapping("/Clinic/clinicList")
-    public String clinicList(@RequestParam(defaultValue = "1") int page,
-                             @RequestParam(required = false) String search,  // 검색어 파라미터 추가
+    public String clinicList(@RequestParam(name = "page", defaultValue = "1") int page,
+                             @RequestParam(name = "search", required = false) String search, // 검색어 추가
                              @AuthenticationPrincipal CustomUserDetails user, Model model) throws Exception {
         
         int pageSize = 6;  // 한 페이지에 보여줄 게시글 수
