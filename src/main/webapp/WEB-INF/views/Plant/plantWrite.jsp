@@ -6,10 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 작성</title>
+ <script src="/js/plantFormValidation.js"></script> <!-- 유효성검사 JS 파일  -->
 </head>
 <body>
 	<h3>게시판 작성</h3>
-	<form name="plantForm" method="post" action="/plantWriteProc" enctype="multipart/form-data">
+	<form name="plantForm" method="post" action="/plantWriteProc" 
+	 enctype="multipart/form-data" onsubmit="return validateForm()">
 		제목 : <input type="text" name="pla_title"> <br>
 		내용 : <textarea name="pla_contents" rows="5" cols="40"></textarea> <br>
 		<input type="file" name="imgFile"> <br>

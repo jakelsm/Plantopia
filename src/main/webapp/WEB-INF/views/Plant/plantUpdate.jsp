@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 수정</title>
+  <script src="/js/plantFormValidation.js"></script> <!-- 유효성검사 JS 파일  -->
 </head>
 <body>
 	<h3>게시글 수정</h3>
-	<form name="plantUpdate" method="post" action="plantUpdateProc" enctype="multipart/form-data">
+	<form name="plantForm" method="post" action="plantUpdateProc" enctype="multipart/form-data"
+	 onsubmit="return validateForm()">
 		<input type="hidden" name="pla_idx" value="${dto.pla_idx}" />
 	    제목 : <input type="text" name="pla_title" value="${dto.pla_title}" /> <br>
 	    내용 : <textarea name="pla_contents" rows="5" cols="40">${dto.pla_contents}</textarea> <br>
@@ -17,5 +19,6 @@
 	    새 이미지 : <input type="file" name="imgFile"> <br>
 		<input type="submit" value="수정">
 	</form>
+	
 </body>
 </html>

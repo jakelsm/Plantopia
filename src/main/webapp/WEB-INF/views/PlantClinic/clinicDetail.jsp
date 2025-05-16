@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- Bootstrap 5 CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>클리닉 상세보기</title>
 	 <style>
         .comment {
@@ -96,6 +98,8 @@
     <c:if test="${not empty clinic.plc_img}">
         <p><img src="/img/plantClinic/${clinic.plc_img}" alt="이미지" style="max-width:400px;"></p>
     </c:if>
+    
+    <a href="/Clinic/clinicList" class="btn btn-secondary mt-3">글 목록으로</a>
     
     <hr>
     <h3>댓글</h3>

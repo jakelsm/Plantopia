@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- Bootstrap 5 CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <title>게시글 상세보기</title>
 	<style>
 		.like-button {
@@ -37,6 +39,9 @@
     <button class="like-button" data-pla_idx="${plant.pla_idx}">
         ${userLiked ? '좋아요 취소' : '좋아요'}
     </button>
+
+	<!-- 글 목록으로 이동 버튼 -->
+	<p><a href="/Plant/plantList" class="btn btn-secondary mt-3">목록으로</a></p>
 
     <!-- 댓글 목록 출력 -->
     <h3>댓글</h3>
