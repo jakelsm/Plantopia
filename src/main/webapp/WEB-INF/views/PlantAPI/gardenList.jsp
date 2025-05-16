@@ -77,6 +77,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/encyclopedia.css">
 </head>
 <body>
+  <%@ include file="/WEB-INF/views/Main/header.jsp" %>
   <div class="white-box">
     <h3><strong>실내정원용 식물 검색 및 목록</strong></h3>
     <hr>
@@ -121,35 +122,35 @@
             <button type="button" onclick="fncSearch();">검색</button>
           </td>
         </tr>
-        <tr>
-          <th>첫글자 검색</th>
-          <td>
-            <select id="wordType" name="wordType" onchange="fncWordTypeOption();">
-              <option value="">선택</option>
-              <option value="cntntsSj" <%=wordType.equals("cntntsSj")?"selected":""%>>국명</option>
-              <option value="plntbneNm" <%=wordType.equals("plntbneNm")?"selected":""%>>학명</option>
-            </select>
-            <div id="koreanSrch" style="display:block;">
-              <%-- ㄱ~ㅎ 링크 --%>
-              <% String[] kor = {"ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"}; 
-                 for(String c:kor) { %>
-                   <a href="#" onclick="document.searchApiForm.word.value='<%=c%>';fncSearch(); return false;"
-                     style="font-weight:<%=request.getParameter("word")!=null&&request.getParameter("word").equals(c)?"bold":""%>">
-                     <%=c%>
-                   </a>&nbsp;
-              <% } %>
-            </div>
-            <div id="englishSrch" style="display:none;">
-              <% for(char c='A';c<='Z';c++){ String cs=String.valueOf(c); %>
-                <a href="#" onclick="document.searchApiForm.word.value='<%=cs%>';fncSearch(); return false;"
-                  style="font-weight:<%=request.getParameter("word")!=null&&request.getParameter("word").equals(cs)?"bold":""%>">
-                  <%=cs%>
-                </a>&nbsp;
-              <% } %>
-            </div>
-           <input type="hidden" name="word" value="<%=request.getParameter("word")==null?"":request.getParameter("word")%>">
-          </td>
-        </tr>
+<!--         <tr> -->
+<!--           <th>첫글자 검색</th> -->
+<!--           <td> -->
+<!--             <select id="wordType" name="wordType" onchange="fncWordTypeOption();"> -->
+<!--               <option value="">선택</option> -->
+<%--               <option value="cntntsSj" <%=wordType.equals("cntntsSj")?"selected":""%>>국명</option> --%>
+<%--               <option value="plntbneNm" <%=wordType.equals("plntbneNm")?"selected":""%>>학명</option> --%>
+<!--             </select> -->
+<!--             <div id="koreanSrch" style="display:block;"> -->
+<%--               ㄱ~ㅎ 링크 --%>
+<%--               <% String[] kor = {"ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"};  --%>
+<%--                  for(String c:kor) { %> --%>
+<%--                    <a href="#" onclick="document.searchApiForm.word.value='<%=c%>';fncSearch(); return false;" --%>
+<%--                      style="font-weight:<%=request.getParameter("word")!=null&&request.getParameter("word").equals(c)?"bold":""%>"> --%>
+<%--                      <%=c%> --%>
+<!--                    </a>&nbsp; -->
+<%--               <% } %> --%>
+<!--             </div> -->
+<!--             <div id="englishSrch" style="display:none;"> -->
+<%--               <% for(char c='A';c<='Z';c++){ String cs=String.valueOf(c); %> --%>
+<%--                 <a href="#" onclick="document.searchApiForm.word.value='<%=cs%>';fncSearch(); return false;" --%>
+<%--                   style="font-weight:<%=request.getParameter("word")!=null&&request.getParameter("word").equals(cs)?"bold":""%>"> --%>
+<%--                   <%=cs%> --%>
+<!--                 </a>&nbsp; -->
+<%--               <% } %> --%>
+<!--             </div> -->
+<%--            <input type="hidden" name="word" value="<%=request.getParameter("word")==null?"":request.getParameter("word")%>"> --%>
+<!--           </td> -->
+<!--         </tr> -->
       </table>
     </form>
 
@@ -241,6 +242,7 @@
     <% } else { %>
       <p class="error-message"><%=rm%></p>
     <% } %>
-  </div> <!-- /.white-box -->
+  </div>
+  <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
 </body>
 </html>

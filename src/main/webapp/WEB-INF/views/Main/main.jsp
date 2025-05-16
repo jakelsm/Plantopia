@@ -18,7 +18,7 @@
   		<link rel="stylesheet" href="owl.carousel.css">	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">	
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 		<script src="JS/jquery.js"></script>
 		<script src="JS/jquery-migrate-1.1.1.js"></script>
 		<script src="JS/script.js"></script>
@@ -147,7 +147,7 @@
 		  font-weight: bold;
 		  float: left;
 	}
-	 
+
 </style>
 <body id="top">
   	<%@ include file="/WEB-INF/views/Main/header.jsp" %>
@@ -229,7 +229,7 @@
       <div class="grid_12">
       <!-- 인기글 영역 시작 -->
 		  <div class="container_12 popular-section">
-		  	<h2 class="black">🏆 인기 글 순위</h2>
+		  	<h2>🏆 인기 글 순위</h2>
 		  	<!-- 1~4위 (왼쪽 6칸) -->
 		    <div class="grid_6" style="padding-bottom: 50px;">
 		      <ol>
@@ -339,73 +339,60 @@
 	
 	<!-- 아래쪽 영역 시작 -->
 	<div class="bottom_block">
-  	<div class="container_12">
- 
-    <!-- Top Projects -->
-    <div class="grid_3">
-      <h3>Top Projects</h3>
-      <div id="owl1" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
-        <div class="owl-wrapper-outer">
-          <div class="owl-wrapper" style="width: 440px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px);">
-            
-            <div class="owl-item" style="width: 110px;">
-              <div class="item">
-                <div class="img_block ib1">
-                  <img src="img/car_img1.jpg" alt="" class="img_inner">
-                  <span class="l"></span><span class="ll"></span><span class="r"></span><span class="rr"></span>
-                  <span class="lb"></span><span class="llb"></span><span class="rb"></span><span class="rrb"></span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="owl-item" style="width: 110px;">
-              <div class="item">
-                <div class="img_block ib1">
-                  <img src="img/car_img2.jpg" alt="" class="img_inner">
-                  <span class="l"></span><span class="ll"></span><span class="r"></span><span class="rr"></span>
-                  <span class="lb"></span><span class="llb"></span><span class="rb"></span><span class="rrb"></span>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        <div class="owl-controls clickable" style="display: none;">
-          <div class="owl-buttons">
-            <div class="owl-prev">prev</div>
-            <div class="owl-next">next</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Latest News -->
-    <div class="grid_4 prefix_1">
-      <h3>Latest News</h3>
-      <p class="col1">
-        <time datetime="2014-01-01">04.01.14</time> -
-        <a href="#">Your Garden</a>
-      </p>
-      Curabitur vel lorem sit amet nullaertylllamcr fermentum. In vitae varius augue, eu onse ligula. Etiam dui er laoreet sit amet est ve
-    </div>
-
-    <!-- Newsletter Sign Up -->
-    <div class="grid_4">
-      <h3>Newsletter Sign Up</h3>
-      <p>In vitae varius augue, eu onse ligula. Etiam dui er laoreet sit amet est ve commodo</p>
-      <form id="newsletter">
-        <div class="rel">
-          <div class="success" style="display: none;">Your subscribe request has been sent!</div>
-          <label class="email">
-            <input type="email" value="Enter your e-mail here...">
-            <a href="#" class="" data-type="submit">submit</a>
-            <span class="error">*This is not a valid email address.</span>
-          </label>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+	  <div class="container_12">
+	
+	    <!-- Store Location -->
+	    <div class="grid_3">
+	      <h3>Store Location</h3>
+	      <div id="owl1" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+	        <div class="owl-wrapper-outer">
+	          <div class="owl-wrapper" style="width: 600px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px);">
+	
+<!--  	            <div class="owl-item" style="width: 180px;"> -->
+<!--  	              <div class="item">  -->
+<!-- 	                <div class="img_block ib1"> -->
+<!--  	                  <img src="/img/store_front.png" alt="Plantopia Store Front" class="img_inner"> -->
+<!--  	                </div> -->
+<!--  	              </div> -->
+<!-- 	            </div> -->
+	
+ 	            <div class="owl-item" style="width: 180px;">
+ 	              <div class="item">
+ 	                <div class="img_block ib1">
+ 	                  <img src="/img/store_interior.png" alt="Inside Plantopia Store" class="img_inner">
+ 	                </div>
+ 	              </div>
+ 	            </div>
+	
+	          </div>
+	        </div>
+	      </div>
+	      <p>서울특별시 성동구 성수일로 123, 플랜토피아 스토어</p>
+	      <p>운영시간: 평일 09:00–18:00</p>
+	    </div>
+	
+	    <!-- Contact Information -->
+	    <div class="grid_4 prefix_1">
+	      <h3>Contact Information</h3>
+	      <p class="col1">
+	        전화: 02-1234-5678<br>
+	        이메일: support@plantopia.com
+	      </p>
+	      <p>고객센터 운영시간: 평일 09:00–18:00</p>
+	    </div>
+	
+	    <!-- Follow Us -->
+		<div class="grid_4">
+		  <h3>Follow Us</h3>
+		  <p>Plantopia의 새로운 소식과 이벤트를 SNS에서 만나보세요.</p>
+		  <ul class="social-links">
+		    <li><a href="https://www.facebook.com/plantopia" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+		    <li><a href="https://www.instagram.com/plantopia" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+		    <li><a href="https://www.twitter.com/plantopia" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
 
    <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
 </body>
