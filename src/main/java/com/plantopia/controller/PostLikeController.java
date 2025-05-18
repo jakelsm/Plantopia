@@ -1,5 +1,8 @@
 package com.plantopia.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -16,17 +19,24 @@ public class PostLikeController {
 	PostLikeService postLikeService;
 
 	// AJAX 요청을 처리하는 메서드
-    @RequestMapping("/Plant/plantList/detail/like")
-    @ResponseBody
-    public String toggleLike(@RequestParam int pla_idx,
-                             @AuthenticationPrincipal CustomUserDetails user) throws Exception {
-        if (user == null) {
-            return "redirect:/login";
-        }
-        
-        int user_num = user.getUser_num();
-        boolean isLiked = postLikeService.toggleLike(pla_idx, user_num);
-        
-        return isLiked ? "liked" : "unliked";
-    }
+	@RequestMapping("/Plant/plantList/detail/like")
+	@ResponseBody
+	public Map<String, Object> toggleLike(@RequestParam("pla_idx") int pla_idx,
+	                                      @AuthenticationPrincipal CustomUserDetails user) throws Exception {
+	    Map<String, Object> resultMap = new HashMap<>();
+	    if (user == null) {
+	        resultMap.put("result", "unauthorized");
+	        return resultMap;
+	    }
+
+	    int user_num = user.getUser_num();
+	    boolean isLiked = postLikeService.toggleLike(pla_idx, user_num);
+	    int updatedLikeCount = postLikeService.countLike(pla_idx); 
+
+	    resultMap.put("result", isLiked ? "liked" : "unliked");
+	    resultMap.put("likeCount", updatedLikeCount); 
+
+	    return resultMap;
+	}
 }
+

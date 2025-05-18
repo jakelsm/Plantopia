@@ -37,6 +37,8 @@
         SELECT 
             p.pla_idx,
             p.pla_title,
+            p.pla_contents,
+        	p.pla_img, 
             p.pla_date,
             p.pla_hit_cnt,
             p.user_num, 

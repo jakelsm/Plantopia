@@ -64,8 +64,14 @@
 			<h3>반려식물 클리닉 게시판</h3>
 		</div>
 		<div class="clear cl1"></div>
-	
-	    <c:forEach var="dto" items="${clinicList}">
+		   <div class="grid_9">
+				<p>클리닉 게시판 설명</p>
+		   </div>
+	    <c:forEach var="dto" items="${clinicList}" varStatus="status">
+	          <c:if test="${status.index % 3 == 0 && status.index != 0}">
+			        <div class="clear cl2"></div>
+			  </c:if>  
+	            
 	            <div class="grid_4">
 	            <div class="text1">
 				    <c:choose>
@@ -91,7 +97,7 @@
 					    </c:otherwise>
 					</c:choose>
 	            <br><a class="btn">${dto.writer}</a>
-	            <div class="clear cl1"></div>
+	            <div class="clear"></div>
 	            <c:if test="${not empty loginInfo}">
                     <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == dto.user_num}">
 			            <td>
@@ -101,22 +107,19 @@
 	            	</c:if>
 	           </c:if>
 	           
+	           
 	           </div>
 	    </c:forEach>
 	
 	<div class="clear cl1"></div>
-	<div class="grid_9">&nbsp;</div>
-	    <div class="grid_3">
+	<div class="grid_10">&nbsp;</div>
+	    <div class="grid_2">
 		<a href="/Clinic/clinicWrite">글쓰기</a></div>
 	</div>
 	</div>
 	
 	<div class="bottom_block">
-	  <div class="container_12">
-	    
-	    <div class="grid_3">&nbsp;</div>
-	    <div class="grid_6">
-		<div class="clear cl1"></div>	  
+	  <div class="clear cl1"></div>	  
 	  
 	  	  <div class="ctn">	
 			<form action="/Clinic/clinicList" method="get">
@@ -130,20 +133,14 @@
 	    <c:if test="${currentPage > 1}">
 	        <a href="/Clinic/clinicList?page=${currentPage - 1}&search=${param.search}">이전</a>
 	    </c:if>
-	
 	    <c:forEach var="i" begin="1" end="${totalPage}">
 	        <a href="/Clinic/clinicList?page=${i}&search=${param.search}" class="${i == currentPage ? 'active' : ''}">${i}</a>
 	    </c:forEach>
-	
 	    <c:if test="${currentPage < totalPage}">
 	        <a href="/Clinic/clinicList?page=${currentPage + 1}&search=${param.search}">다음</a>
 	    </c:if>
     	</div>
-    	</div>
-    	<div class="grid_3">&nbsp;</div>
-	  </div>
 	</div>
-  
   <%@ include file="/WEB-INF/views/Main/footer.jsp" %>	
 </body>
 </html>

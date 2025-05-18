@@ -7,22 +7,26 @@
 <meta charset="UTF-8">
 <!-- Bootstrap 5 CSS CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito:400" rel="stylesheet" type="text/css">
 <title>게시글 상세보기</title>
 	<style>
-		.like-button {
-		    background-color: #f0f0f0;
-		    border: 1px solid #ccc;
-		    padding: 5px 10px;
-		    cursor: pointer;
-		}
-		
-		.like-button:hover {
-		    background-color: #e0e0e0;
-		}
-		
-		.like-button:active {
-		    background-color: #d0d0d0;
-		}
+	.heart-icon {
+    vertical-align: middle;
+  }
+
+  .heart-fill {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: fill 0.4s ease, stroke 0.4s ease;
+  }
+
+  .like-button.active .heart-fill {
+    fill: #ec6d46;
+    stroke: #ec6d46;
+  }
 	</style>
 </head>
 <body>
@@ -33,14 +37,20 @@
     <img src="/img/plant/${plant.pla_img}" alt="#" width="300" height="300"/> <br>
     내용 : ${plant.pla_contents} <br>
     
-    <p> 좋아요 수 : ${likeCount} </p>
+    <p>좋아요 수 : <span id="likeCount">${likeCount}</span></p>
 
-    <!-- 좋아요 버튼 -->
-    <button class="like-button" data-pla_idx="${plant.pla_idx}">
-        ${userLiked ? '좋아요 취소' : '좋아요'}
-    </button>
-
-	<!-- 글 목록으로 이동 버튼 -->
+    <!-- 좋아요 -->
+	<button class="like-button ${userLiked ? 'active' : ''}" data-pla_idx="${plant.pla_idx}">
+	  <span class="like-text">${userLiked ? '좋아요 취소' : '좋아요'}</span>
+	  <svg class="heart-icon" width="24" height="22" viewBox="0 0 90.65 85.04">
+	    <path class="heart-fill" 
+	          d="M45.137,23.041c4.912-24.596,40.457-27.775,42.128-0.435
+	             c1.398,22.88-21.333,40.717-42.128,50.522
+	             M45.137,23.041C40.225-1.555,5.057-4.734,3.387,22.606
+	             c-1.398,22.88,20.955,40.717,41.75,50.522"/>
+	  </svg>
+	</button>
+	<!-- 글 목록으로 이동 -->
 	<p><a href="/Plant/plantList" class="btn btn-secondary mt-3">목록으로</a></p>
 
 	<!-- 로그인 상태일 때만 검사 -->
@@ -83,28 +93,34 @@
     <!-- AJAX 코드 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $(".like-button").click(function() {
-                var pla_idx = $(this).data("pla_idx"); // 게시글 ID 가져오기
-                var button = $(this);
-                
-                $.ajax({
-                    type: "GET",
-                    url: "/Plant/plantList/detail/like",
-                    data: { pla_idx: pla_idx },
-                    success: function(response) {
-                        if (response === "liked") {
-                            button.text("좋아요 취소");
-                        } else {
-                            button.text("좋아요");
-                        }
-                    },
-                    error: function() {
-                        alert("오류가 발생했습니다.");
-                    }
-                });
-            });
-        });
+    $(document).ready(function () {
+    	  $('.like-button').click(function () {
+    	    const pla_idx = $(this).data('pla_idx');
+    	    const button = $(this);
+    	    const text = $(this).find('.like-text');
+    	    const likeCountSpan = $('#likeCount');
+
+    	    $.ajax({
+    	      type: 'GET',
+    	      url: '/Plant/plantList/detail/like',
+    	      data: { pla_idx: pla_idx },
+    	      success: function (response) {
+    	    	  if (response.result === 'liked') {
+    	    	    button.addClass('active');
+    	    	    text.text('좋아요 취소');
+    	    	  } else {
+    	    	    button.removeClass('active');
+    	    	    text.text('좋아요');
+    	    	  }
+    	    	  likeCountSpan.text(response.likeCount);
+    	    	},
+    	      error: function () {
+    	        alert('오류가 발생했습니다.');
+    	        button.removeClass('active');
+    	      },
+    	    });
+    	  });
+    	});
     </script>
 	
 </body>
