@@ -20,7 +20,7 @@ public class PlantCommentController {
     private PlantCommentService plantCommentService;
 	
 	@RequestMapping("/Plant/plantList/detail")
-    public String detail(@RequestParam int pla_idx, Model model) throws Exception {
+    public String detail(@RequestParam("pla_idx") int pla_idx, Model model) throws Exception {
         List<PlantCommentDto> commentList = plantCommentService.selectComments(pla_idx);
         model.addAttribute("commentList", commentList);
         return "Plant/plantDetail";
@@ -28,9 +28,9 @@ public class PlantCommentController {
 	
 	@RequestMapping("/Plant/plantList/comment")
     public String insertComment(PlantCommentDto dto,
-                                @RequestParam String placom_contents,
-                                @RequestParam int pla_idx,
-                                @RequestParam(required = false) Integer parentId,
+                                @RequestParam("placom_contents") String placom_contents,
+                                @RequestParam("pla_idx") int pla_idx,
+                                @RequestParam(value = "parentId",required = false) Integer parentId,
                                 @AuthenticationPrincipal CustomUserDetails user,
                                 Model model) throws Exception {
         
@@ -51,8 +51,8 @@ public class PlantCommentController {
     }
 
     @RequestMapping("/Plant/plantList/comment/update")
-    public String updateComment(@RequestParam int placom_idx, 
-					    		@RequestParam int pla_idx,
+    public String updateComment(@RequestParam("placom_idx") int placom_idx, 
+					    		@RequestParam("pla_idx") int pla_idx,
 					    		@AuthenticationPrincipal CustomUserDetails user,
 					    		Model model) throws Exception {
         PlantCommentDto dto = plantCommentService.selectCommentDetail(placom_idx);
@@ -73,10 +73,10 @@ public class PlantCommentController {
 
     // 댓글 수정 처리
     @RequestMapping("/Plant/plantList/comment/updateProc")
-    public String updateCommentProc(@RequestParam int placom_idx,
-                                    @RequestParam String placom_contents,
+    public String updateCommentProc(@RequestParam("placom_idx") int placom_idx,
+                                    @RequestParam("placom_contents") String placom_contents,
                                     @AuthenticationPrincipal CustomUserDetails user,
-                                    @RequestParam int pla_idx) throws Exception {
+                                    @RequestParam("pla_idx") int pla_idx) throws Exception {
     	// 권한 확인
     	PlantCommentDto dto = plantCommentService.selectCommentDetail(placom_idx);
 
@@ -90,8 +90,8 @@ public class PlantCommentController {
     }
     
     @RequestMapping("/Plant/plantList/comment/delete")
-    public String deleteComment(@RequestParam int placom_idx, 
-					    		@RequestParam int pla_idx, 
+    public String deleteComment(@RequestParam("placom_idx") int placom_idx, 
+					    		@RequestParam("pla_idx") int pla_idx, 
 					    		@AuthenticationPrincipal CustomUserDetails user,
 					    		Model model) throws Exception {
     	// 권한 확인

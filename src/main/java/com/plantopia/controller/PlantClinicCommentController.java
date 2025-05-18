@@ -21,7 +21,7 @@ public class PlantClinicCommentController {
 
 	// 댓글 목록 조회 (별도 경로로 필요 시 사용 가능)
 	    @RequestMapping("/Clinic/comment/list")
-	    public String commentList(@RequestParam int plc_idx, Model model) throws Exception {
+	    public String commentList(@RequestParam("plc_idx") int plc_idx, Model model) throws Exception {
 	        List<PlantClinicCommentDto> commentList = commentService.selectComments(plc_idx);
 	        model.addAttribute("commentList", commentList);
 	        return "PlantClinic/clinicDetail"; 
@@ -31,9 +31,9 @@ public class PlantClinicCommentController {
 	    @RequestMapping("/Clinic/comment/write")
 	    public String writeComment(PlantClinicCommentDto dto,
 	                                @RequestParam("plccom_contents") String plccom_contents,
-	                                @RequestParam int plc_idx,
+	                                @RequestParam("plc_idx") int plc_idx,
 	                                @AuthenticationPrincipal CustomUserDetails user,
-	                                @RequestParam(required = false) Integer parentId) throws Exception {
+	                                @RequestParam(value = "parentId",required = false) Integer parentId) throws Exception {
 
 	        dto.setPlc_idx(plc_idx);
 	        dto.setPlccom_contents(plccom_contents);
@@ -52,8 +52,8 @@ public class PlantClinicCommentController {
 
 	    // 댓글 수정 폼
 	    @RequestMapping("/Clinic/comment/update")
-	    public String updateCommentForm(@RequestParam int plccom_idx,
-	                                    @RequestParam int plc_idx,
+	    public String updateCommentForm(@RequestParam("plccom_idx") int plccom_idx,
+	                                    @RequestParam("plc_idx") int plc_idx,
 	                                    @AuthenticationPrincipal CustomUserDetails user,
 	                                    Model model) throws Exception {
 
@@ -73,9 +73,9 @@ public class PlantClinicCommentController {
 
 	    // 댓글 수정 처리
 	    @RequestMapping("/Clinic/comment/updateProc")
-	    public String updateCommentProc(@RequestParam int plccom_idx,
+	    public String updateCommentProc(@RequestParam("plccom_idx") int plccom_idx,
 	                                    @RequestParam("plccom_contents") String plccom_contents,
-	                                    @RequestParam int plc_idx,
+	                                    @RequestParam("plc_idx") int plc_idx,
 	                                    @AuthenticationPrincipal CustomUserDetails user) throws Exception {
 	    	PlantClinicCommentDto comment = commentService.selectCommentDetail(plccom_idx);
 	        boolean isAdmin = "admin".equals(user.getUser_authority());
@@ -89,8 +89,8 @@ public class PlantClinicCommentController {
 
 	    // 댓글 삭제 처리
 	    @RequestMapping("/Clinic/comment/delete")
-	    public String deleteComment(@RequestParam int plccom_idx,
-	                                @RequestParam int plc_idx,
+	    public String deleteComment(@RequestParam("plccom_idx") int plccom_idx,
+	                                @RequestParam("plc_idx") int plc_idx,
 	                                @AuthenticationPrincipal CustomUserDetails user) throws Exception {
 	    	PlantClinicCommentDto comment = commentService.selectCommentDetail(plccom_idx);
 	        boolean isAdmin = "admin".equals(user.getUser_authority());
