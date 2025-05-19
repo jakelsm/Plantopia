@@ -188,6 +188,7 @@ public class PlantClinicController {
         model.addAttribute("clinic", clinic);
         model.addAttribute("commentList", comments);
         model.addAttribute("nickname", user.getUser_nickname());
+        model.addAttribute("loginInfo", user);
 
         return "PlantClinic/clinicDetail";
     }

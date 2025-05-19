@@ -204,6 +204,16 @@
     
     <a href="/Clinic/clinicList" class="btn btn-secondary mt-3">글 목록으로</a>
     
+    <c:if test="${not empty loginInfo}">
+    <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == clinic.user_num}">
+        <div class="mt-3">
+            <a href="/Clinic/clinicUpdate?plc_idx=${clinic.plc_idx}" class="btn btn-warning btn-sm">수정</a>
+            <a href="/Clinic/clinicDelete?plc_idx=${clinic.plc_idx}" class="btn btn-danger btn-sm">삭제</a>
+        </div>
+    </c:if>
+	</c:if>
+    
+    
     <hr>
     <h3>댓글</h3>
     <c:forEach var="comment" items="${commentList}">

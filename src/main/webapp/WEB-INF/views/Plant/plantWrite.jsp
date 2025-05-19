@@ -8,14 +8,6 @@
 <title>게시글 작성</title>
   <script src="/js/plantFormValidation.js"></script> <!-- 유효성검사 JS 파일  -->
 </head>
-<style>
-	.container {
-		display : grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap : 20px;
-		padding : 20px;
-	}
-</style>
 <body>
   <%@ include file="/WEB-INF/views/Main/header.jsp" %>
   <div class="content">
@@ -34,8 +26,8 @@
 			<div class="clear"></div>
 			<div class="btns">
 			  <a href="/Plant/plantList" class="btn">목록으로</a>
-			  <a href="#" data-type="reset" class="btn">다시 쓰기</a>
-			  <a href="#" class="btn" onclick="if (validateForm()) { document.getElementById('form').submit(); } return false;">글 작성</a>
+			  <a href="#" class="btn" onclick="document.forms['plantForm'].reset(); return false;">다시 쓰기</a>
+			  <a href="#" class="btn" onclick="document.forms['plantForm'].requestSubmit(); return false;">글 작성</a>
 			</div>
 		</form>
 		</div>

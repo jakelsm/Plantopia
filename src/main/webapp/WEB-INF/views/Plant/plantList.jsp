@@ -106,13 +106,11 @@
 		<div class="grid_10">&nbsp;</div>
 		    <div class="grid_2">
 			<a href="/Plant/plantWrite">글쓰기</a></div>
-		
 		</div>
 		</div>
 		
 		<div class="bottom_block">
 		  <div class="clear cl1"></div>
-		  
 			<div class="ctn">		
 				<form action="/Plant/plantList" method="get">
 				    <input type="text" name="search" value="${search}" placeholder="제목을 입력하세요.">

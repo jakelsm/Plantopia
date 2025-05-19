@@ -106,8 +106,6 @@
 			            </td>
 	            	</c:if>
 	           </c:if>
-	           
-	           
 	           </div>
 	    </c:forEach>
 	
