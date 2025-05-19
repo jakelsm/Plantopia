@@ -72,8 +72,12 @@
 		 </div>
 		 <div class="clear cl1"></div>
 		 <div class="gallery">
-		 	<div class="grid_9">
-				<p>반려식물 자랑 게시판 설명</p>
+		 	<div class="grid_12">
+				<p>🌿 우리 집 반려식물, 함께 자랑해요! <br>
+				예쁘게 자란 몬스테라, 새 잎이 돋아난 고무나무, 귀여운 다육이까지!
+				키우고 있는 반려식물을 자랑하고, 서로의 식물 키우는 팁도 공유해보세요.
+				사진 한 장, 짧은 한 줄 소개도 좋아요 :)
+				여러분의 반려식물 이야기를 기다립니다.</p>
 			</div>
 			<div class="clear"></div>
 			<div class="clear cl1"></div>

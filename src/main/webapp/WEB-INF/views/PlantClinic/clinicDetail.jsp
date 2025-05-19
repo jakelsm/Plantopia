@@ -182,113 +182,131 @@
 	</script>
 </head>
 <body>
-    <h2>클리닉 상세보기</h2>
-
-    <p>제목: ${clinic.plc_title}</p>
-    <p>작성자: ${clinic.writer}</p>
-    <p>조회수: ${clinic.plc_hit_cnt}</p>
-    <p>키우는 장소: ${clinic.growing_loc}</p>
-    <p>자라는 환경: ${clinic.growth_con}</p>
-    <p>물 주는 방식: ${clinic.watering}</p>
-    <p>마지막 분갈이: ${clinic.last_rep}</p>
-    <p>마지막 비료 시기: ${clinic.last_fert}</p>
-    <p>마지막 가지치기: ${clinic.last_pruned}</p>
-    <p>식물이 자라는 위치: ${clinic.plant_pos}</p>
-    <p>병충해 피해 유무: ${clinic.pest_dmg}</p>
-    <p>변색 잎 여부: ${clinic.discolored}</p>
-    <p>본문:<br><c:out value="${clinic.plc_contents}" escapeXml="false"/></p>
-    
-    <c:if test="${not empty clinic.plc_img}">
-        <p><img src="/img/plantClinic/${clinic.plc_img}" alt="이미지" style="max-width:400px;"></p>
-    </c:if>
-    
-    <a href="/Clinic/clinicList" class="btn btn-secondary mt-3">글 목록으로</a>
-    
-    <c:if test="${not empty loginInfo}">
-    <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == clinic.user_num}">
-        <div class="mt-3">
-            <a href="/Clinic/clinicUpdate?plc_idx=${clinic.plc_idx}" class="btn btn-warning btn-sm">수정</a>
-            <a href="/Clinic/clinicDelete?plc_idx=${clinic.plc_idx}" class="btn btn-danger btn-sm">삭제</a>
-        </div>
-    </c:if>
-	</c:if>
-    
-    
-    <hr>
-    <h3>댓글</h3>
-    <c:forEach var="comment" items="${commentList}">
-        <div class="comment" style="margin-left: ${comment.plccom_indent * 20}px">
-            <p>작성자: ${comment.writer}</p>
-            <p class="comment-body">댓글 내용 :${comment.plccom_contents}</p>
-
-            <!-- 평균 별점: 일반 댓글만 표시 -->
-           <c:if test="${comment.plccom_indent == 0}">
-		    <div id="ratingDisplay-${comment.plccom_idx}" class="rating-section">
-		        <c:if test="${not empty comment.avgRating}">
-		            <p class="stars" id="avgRating-${comment.plccom_idx}">
-		                평균 별점:
-		                <c:forEach var="i" begin="1" end="5">
-		                    <c:choose>
-		                        <c:when test="${i <= comment.avgRating}">&#9733;</c:when>
-		                        <c:otherwise>&#9734;</c:otherwise>
-		                    </c:choose>
-		                </c:forEach>
-		                (${comment.avgRating}점)
-		            </p>
-		        </c:if>
+    <%@ include file="/WEB-INF/views/Main/header.jsp" %>
+      <div class="content">
+	   <div class="container_12">
+	    
+	    <div class="grid_6">
+	    <h3>클리닉 게시글 상세보기</h3>
+		<div class="clear cl1"></div>
+		<c:if test="${not empty clinic.plc_img}">
+	        <p><img src="/img/plantClinic/${clinic.plc_img}" alt="이미지" height="600"></p>
+	    </c:if>
+		</div>
 		
-		        <c:if test="${not empty comment.myRating}">
-		            <p class="stars" id="myRating-${comment.plccom_idx}">
-		                내 별점:
-		                <c:forEach var="i" begin="1" end="5">
-		                    <c:choose>
-		                        <c:when test="${i <= comment.myRating}">&#9733;</c:when>
-		                        <c:otherwise>&#9734;</c:otherwise>
-		                    </c:choose>
-		                </c:forEach>
-		                (${comment.myRating}점)
-		            </p>
-		            <form class="deleteRatingForm" action="/Clinic/comment/rating/delete" method="post">
-		                <input type="hidden" name="plccom_idx" value="${comment.plccom_idx}" />
-		                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
-		                <input type="submit" value="별점 삭제" />
-		            </form>
-		        </c:if>
-		
-		        <c:if test="${empty comment.myRating}">
-		            <p>&nbsp;</p>
-		            <div class="stars">
-		                <span class="star" data-rating="1" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
-		                <span class="star" data-rating="2" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
-		                <span class="star" data-rating="3" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
-		                <span class="star" data-rating="4" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
-		                <span class="star" data-rating="5" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
-		            </div>
-		        </c:if>
-		    </div>
+		<div class="grid_6">
+		<h3>&nbsp;</h3>
+	    <div class="clear cl1"></div>
+	    <span class="col1">제목 : ${clinic.plc_title}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    조회수 : ${clinic.plc_hit_cnt} 
+	    <p>&nbsp;</p>
+	    <p>작성자 : ${clinic.writer}</p>
+	    &nbsp;<br> 
+	    <p>키우는 장소 : ${clinic.growing_loc}</p>
+	    <p>자라는 환경 : ${clinic.growth_con}</p>
+	    <p>물 주는 방식 : ${clinic.watering}</p>
+	    <p>마지막 분갈이 : ${clinic.last_rep}</p>
+	    <p>마지막 비료 시기 : ${clinic.last_fert}</p>
+	    <p>마지막 가지치기 : ${clinic.last_pruned}</p>
+	    <p>식물이 자라는 위치 : ${clinic.plant_pos}</p>
+	    <p>병충해 피해 유무 : ${clinic.pest_dmg}</p>
+	    <p>변색 잎 여부 : ${clinic.discolored}</p>
+	    &nbsp;<br>
+	    <p><span class="col1">본문 : <c:out value="${clinic.plc_contents}" escapeXml="false"/></span></p>
+	    </div>
+	    
+	    <div class="clear cl1"></div>
+	    <div class="btns">
+	    <a href="/Clinic/clinicList" class="btn">목록으로</a>
+	    
+	    <c:if test="${not empty loginInfo}">
+		    <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == clinic.user_num}">
+		            <a href="/Clinic/clinicUpdate?plc_idx=${clinic.plc_idx}" class="btn">수정</a>
+		            <a href="/Clinic/clinicDelete?plc_idx=${clinic.plc_idx}" class="btn">삭제</a>
+		    </c:if>
 		</c:if>
-
-            <!-- 수정/삭제 링크 -->
-            <a href="/Clinic/comment/update?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">수정</a>
-            <a href="/Clinic/comment/delete?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">삭제</a>
-
-            <!-- 대댓글 작성 -->
-            <form action="/Clinic/comment/write" method="post">
-                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
-                <input type="hidden" name="parentId" value="${comment.plccom_idx}" />
-                <textarea name="plccom_contents" rows="2" cols="50" placeholder="답글 작성"></textarea><br>
-                <input type="submit" value="답글 작성">
-            </form>
-        </div>
-    </c:forEach>
-
-    <hr>
-    <h3>댓글 작성</h3>
-    <form action="/Clinic/comment/write" method="post">
-        <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
-        <textarea name="plccom_contents" rows="4" cols="50"></textarea><br>
-        <input type="submit" value="댓글 작성">
-    </form>
-</body>
+	    </div>
+	    
+	    <div class="grid_12">
+	    <hr>
+	    <h3>댓글</h3>
+	    <c:forEach var="comment" items="${commentList}">
+	        <div class="comment" style="margin-left: ${comment.plccom_indent * 20}px">
+	            <p>작성자: ${comment.writer}</p>
+	            <p class="comment-body">댓글 내용 :${comment.plccom_contents}</p>
+	
+	            <!-- 평균 별점: 일반 댓글만 표시 -->
+	           <c:if test="${comment.plccom_indent == 0}">
+			    <div id="ratingDisplay-${comment.plccom_idx}" class="rating-section">
+			        <c:if test="${not empty comment.avgRating}">
+			            <p class="stars" id="avgRating-${comment.plccom_idx}">
+			                평균 별점:
+			                <c:forEach var="i" begin="1" end="5">
+			                    <c:choose>
+			                        <c:when test="${i <= comment.avgRating}">&#9733;</c:when>
+			                        <c:otherwise>&#9734;</c:otherwise>
+			                    </c:choose>
+			                </c:forEach>
+			                (${comment.avgRating}점)
+			            </p>
+			        </c:if>
+			
+			        <c:if test="${not empty comment.myRating}">
+			            <p class="stars" id="myRating-${comment.plccom_idx}">
+			                내 별점:
+			                <c:forEach var="i" begin="1" end="5">
+			                    <c:choose>
+			                        <c:when test="${i <= comment.myRating}">&#9733;</c:when>
+			                        <c:otherwise>&#9734;</c:otherwise>
+			                    </c:choose>
+			                </c:forEach>
+			                (${comment.myRating}점)
+			            </p>
+			            <form class="deleteRatingForm" action="/Clinic/comment/rating/delete" method="post">
+			                <input type="hidden" name="plccom_idx" value="${comment.plccom_idx}" />
+			                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
+			                <input type="submit" value="별점 삭제" />
+			            </form>
+			        </c:if>
+			
+			        <c:if test="${empty comment.myRating}">
+			            <p>&nbsp;</p>
+			            <div class="stars">
+			                <span class="star" data-rating="1" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
+			                <span class="star" data-rating="2" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
+			                <span class="star" data-rating="3" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
+			                <span class="star" data-rating="4" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
+			                <span class="star" data-rating="5" data-comment-id="${comment.plccom_idx}" data-plc-idx="${clinic.plc_idx}">★</span>
+			            </div>
+			        </c:if>
+			    </div>
+			</c:if>
+	
+	            <!-- 수정/삭제 링크 -->
+	            <a href="/Clinic/comment/update?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">수정</a>
+	            <a href="/Clinic/comment/delete?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">삭제</a>
+	
+	            <!-- 대댓글 작성 -->
+	            <form action="/Clinic/comment/write" method="post">
+	                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
+	                <input type="hidden" name="parentId" value="${comment.plccom_idx}" />
+	                <textarea name="plccom_contents" rows="2" cols="50" placeholder="답글 작성"></textarea><br>
+	                <input type="submit" value="답글 작성">
+	            </form>
+	        </div>
+	    </c:forEach>
+	
+	    <hr>
+	    <h3>댓글 작성</h3>
+	    <form action="/Clinic/comment/write" method="post">
+	        <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
+	        <textarea name="plccom_contents" rows="4" cols="50"></textarea><br>
+	        <input type="submit" value="댓글 작성">
+	    </form>
+	    
+	    </div>
+      </div>
+	  </div>
+    <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
 </body>
 </html>
