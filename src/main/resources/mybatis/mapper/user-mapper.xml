@@ -17,12 +17,12 @@
 	</select>
 	
 	<insert id="insertUser"
-        parameterType="com.plantopia.dto.UserDto"
-        useGeneratedKeys="true"
-        keyProperty="user_num">
+        parameterType="com.plantopia.dto.UserDto" useGeneratedKeys="true" keyProperty="user_num">
 		<![CDATA[
-			insert into User(user_id, user_passwd, user_name, user_nickname, roadAddrPart1, addrDetail, zipNo, user_email, user_tel)
-			 values(#{user_id}, #{user_passwd}, #{user_name}, #{user_nickname}, #{roadAddrPart1}, #{addrDetail}, #{zipNo}, #{user_email}, #{user_tel})
+			INSERT INTO `User`
+      		(user_id, user_passwd, user_name, user_nickname, roadAddrPart1, addrDetail, zipNo, user_email, user_tel, user_authority)
+    		 VALUES
+      		 (#{user_id}, #{user_passwd}, #{user_name}, #{user_nickname}, #{roadAddrPart1}, #{addrDetail}, #{zipNo}, #{user_email}, #{user_tel}, #{user_authority})
 		]]>
 	</insert>
 	
@@ -64,4 +64,5 @@
     		select * from User where user_email=#{user_email}
     	]]>
 	</select>
+
 </mapper>

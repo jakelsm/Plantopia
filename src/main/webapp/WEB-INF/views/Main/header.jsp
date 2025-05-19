@@ -85,7 +85,7 @@
 			        <a href="/logout" class="color-white">로그아웃</a>
       		  	</div>         
 				<span class="logo-img">
-					<a href="/Main"><img src="/img/newlogo.png" alt="Plantopia 로고" style="widows: 600px"></a>
+					<a href="/Main"><img src="/img/newlogo.png" alt="Plantopia 로고" style="width: 600px"></a>
 				</span>
 			</div>
 		</div>

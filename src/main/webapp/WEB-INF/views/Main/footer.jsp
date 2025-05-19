@@ -17,7 +17,7 @@
     <div class="container_12">
       <div class="grid_12">
         <div class="copy">
-          &copy; Plantopia 2025 | Growing Together
+          Copyright &copy; 2025 Plantopia All Right Reserved.
         </div>
       </div>
     </div>

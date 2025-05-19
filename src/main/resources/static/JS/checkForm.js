@@ -50,5 +50,35 @@ function check(){
 		return false;
 	}
 	
+	if (form.roadAddrPart1.value === "") {
+	    alert("주소를 검색해주세요!");
+	    form.roadAddrPart1.focus();
+	    return false;
+	}
+
+	if (form.addrDetail.value === "") {
+	    alert("상세주소를 입력해주세요!");
+	    form.addrDetail.focus();
+	    return false;
+	}
+
+	if (form.zipNo.value === "") {
+	    alert("우편번호를 입력해주세요!");
+	    form.zipNo.focus();
+	    return false;
+	}
+
+	if (form.user_email.value === "") {
+	    alert("이메일을 입력해주세요!");
+	    form.user_email.focus();
+	    return false;
+	}
+
+	if (form.user_tel.value === "") {
+	    alert("전화번호를 입력해주세요!");
+	    form.user_tel.focus();
+	    return false;
+	}
+	
 	form.submit();
 }

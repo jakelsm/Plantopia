@@ -40,7 +40,7 @@ public class UserController {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
-    private ProfileService profileService;   // ← 추가
+    private ProfileService profileService;
 	
 	@Autowired
 	private PlantService plantService;
