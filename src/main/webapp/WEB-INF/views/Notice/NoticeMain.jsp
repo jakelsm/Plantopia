@@ -11,7 +11,7 @@
 <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/Main/header.jsp" %> 
+	<%@ include file="../Main/header.jsp" %> 
 	<div class="content">
    		<div class="container_12">
       		<div class="grid_12">
@@ -63,6 +63,6 @@
   		<div class="container_12">
   		</div>
 	</div>	
-	<%@ include file="/WEB-INF/views/Main/footer.jsp" %>
+	<%@ include file="../Main/footer.jsp" %>
 </body>
 </html>

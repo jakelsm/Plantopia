@@ -17,7 +17,7 @@
 
 </style>
 <body>
-	 <%@ include file="/WEB-INF/views/Main/header.jsp" %> 
+	 <%@ include file="../Main/header.jsp" %> 
 	 <div class="content">
     	<div class="container_12">
       	<div class="grid_12">
@@ -68,7 +68,6 @@
   	<!-- 아래쪽 영역 시작 -->
 	<div class="bottom_block">
   	<div class="container_12">
-  		<img src="/img/teamlogo1.png" style="width:150px; height:150px;">
   		<div class="bottom-box">
   			<p><span class="bottom-text1"><i class="bi bi-exclamation-circle-fill"></i> 반품 배송비, 반품 배송주소 등은 해당 상품 페이지 내 안내를 참고해주세요.</span></p>
   			<p><span style="font-size:14px;">주식회사 플랜토피아 농업회사법인 플랜토피아 인증</span> |<span class="bottom-text1"><a href="#">판매자 상세정보 확인 </a></span>|
@@ -80,6 +79,6 @@
   </div>
 </div>
 	
-	<%@ include file="/WEB-INF/views/Main/footer.jsp" %>
+	<%@ include file="../Main/footer.jsp" %>
 </body>
 </html>
