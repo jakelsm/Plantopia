@@ -7,6 +7,7 @@
   <meta charset="UTF-8">
   <title>회원 정보 리스트</title>
   <!-- 공통 CSS -->
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.css">
@@ -18,7 +19,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/touchTouch.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ie.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/encyclopedia.css">
-
+  <link rel="stylesheet" href="/CSS/button.css" type="text/css">
   <!-- 페이지 전용 간단 스타일 -->
   <style>
     .white-box {
@@ -94,8 +95,8 @@
           <td>${dto.user_tel}</td>
           <td>${dto.user_authority}</td>
           <td class="actions">
-            <a href="accountUpdate?user_num=${dto.user_num}">수정</a>|
-            <a href="accountDelete?user_num=${dto.user_num}">삭제</a>
+            <a href="accountUpdate?user_num=${dto.user_num}"><button type="button" class="action-btn">수정</button></a>
+            <a href="accountDelete?user_num=${dto.user_num}"><button type="button" class="action-btn">삭제</button></a>
           </td>
         </tr>
       </c:forEach>
