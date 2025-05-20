@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,9 +152,16 @@
 	.store-preview-card:hover {
 	  transform: scale(1.03);
 	} 
+	
+	.box-section {
+	  background-color: #f3f2e9;
+	  border-radius: 12px;
+	  padding: 20px 25px;
+	  margin-bottom: 20px;
+	}
 </style>
 <body id="top">
-  	<%@ include file="/WEB-INF/views/Main/header.jsp" %>
+  	<%@ include file="../Main/header.jsp" %>
  	 <!-- 본문 콘텐츠 -->
   <div class="content" style="padding-top: 50px;"><div class="ic">Plantopia!</div>
   		<div class="container_12">
@@ -231,67 +239,72 @@
     <div class="container_12">
       <div class="grid_12">
       <!-- 인기글 + 공지사항 나란히 배치 -->
-<div class="container_12" style="padding-bottom: 50px;">
-  <!-- 인기글 영역 (왼쪽 6칸) -->
-  <div class="grid_6">
-    <h2>🏆 인기 글 순위</h2>
-    <ol>
-      <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
-        <li>
-          <div class="word">
-            <c:choose>
-              <c:when test="${vs.index == 0}">
-                <i class="bi bi-trophy-fill medal-1"></i>
-              </c:when>
-              <c:when test="${vs.index == 1}">
-                <i class="bi bi-trophy-fill medal-2"></i>
-              </c:when>
-              <c:when test="${vs.index == 2}">
-                <i class="bi bi-trophy-fill medal-3"></i>
-              </c:when>
-            </c:choose>
-            ${vs.index + 1}.
-            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
-              ${post.pla_title}
-            </a>
-            <p></p>
-          </div>
-        </li>
-      </c:forEach>
-    </ol>
-    <ol start="5">
-      <c:forEach var="post" items="${popularList}" begin="4" end="7" varStatus="vs">
-        <li>
-          <div class="word">
-            ${vs.index + 1}. <!-- 실제 순위는 5~8 -->
-            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
-              ${post.pla_title}
-            </a>
-            <p></p>
-          </div>
-        </li>
-      </c:forEach>
-    </ol>
-  </div>
-  <!-- 공지사항 영역 (오른쪽 6칸) -->
-  <div class="grid_6">
-    <h2><a href="NoticeMain">📢 공지사항</a></h2>
-    <ul>
-      <c:forEach var="notice" items="${noticeList}">
-        <li>
-          <div class="word">
-            <a href="/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
-            <span style="font-size: 20px; color: gray;">(${notice.n_date})</span>
-          </div>
-        </li>
-      </c:forEach>
-      <c:if test="${empty noticeList}">
-        <li>등록된 공지사항이 없습니다.</li>
-      </c:if>
-    </ul>
-  </div>
-</div>
-<hr>  		
+		<div class="container_12" style="padding-bottom: 50px;">
+		  <!-- 인기글 영역 (왼쪽 6칸) -->
+		  <div class="grid_6">
+		    <h2>🏆 인기 글 순위</h2>
+		    <div class="box-section">
+		    <ol>
+		      <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
+		        <li>
+		          <div class="word">
+		            <c:choose>
+		              <c:when test="${vs.index == 0}">
+		                <i class="bi bi-trophy-fill medal-1"></i>
+		              </c:when>
+		              <c:when test="${vs.index == 1}">
+		                <i class="bi bi-trophy-fill medal-2"></i>
+		              </c:when>
+		              <c:when test="${vs.index == 2}">
+		                <i class="bi bi-trophy-fill medal-3"></i>
+		              </c:when>
+		            </c:choose>
+		            ${vs.index + 1}.
+		            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
+		              ${post.pla_title}
+		            </a>
+		            <p></p>
+		          </div>
+		        </li>
+		      </c:forEach>
+		    </ol>
+		    <ol start="5">
+		      <c:forEach var="post" items="${popularList}" begin="4" end="7" varStatus="vs">
+		        <li>
+		          <div class="word">
+		            ${vs.index + 1}. <!-- 실제 순위는 5~8 -->
+		            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
+		              ${post.pla_title}
+		            </a>
+		            <p></p>
+		          </div>
+		        </li>
+		      </c:forEach>
+		    </ol>
+		    </div>
+		  </div>
+		  <!-- 공지사항 영역 (오른쪽 6칸) -->
+		  <div class="grid_6">
+		    <h2><a href="NoticeMain">📢 공지사항</a></h2>
+		    <div class="box-section">
+		    <ul>
+		      <c:forEach var="notice" items="${noticeList}">
+		        <li>
+		          <div class="word">
+		            <a href="/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
+		            <span style="font-size: 20px; color: gray;"><fmt:formatDate value="${notice.n_date}" pattern="(yyyy-MM-dd HH:mm)" /></span>
+		          </div>
+		          <p></p>
+		        </li>
+		      </c:forEach>
+		      <c:if test="${empty noticeList}">
+		        <li>등록된 공지사항이 없습니다.</li>
+		      </c:if>
+		    </ul>
+		  </div>
+		  </div>
+		</div>
+		<hr>  		
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
 			<div class="grid_12" style="padding-bottom: 50px;">
@@ -388,6 +401,6 @@
 	  </div>
 	</div>
 
-   <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
+   <%@ include file="../Main/footer.jsp" %>
 </body>
 </html>
