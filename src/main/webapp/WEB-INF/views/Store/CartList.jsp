@@ -131,8 +131,8 @@
           <p>수량: ${cart.c_amount}</p>
           <div class="cart-actions">
            <a href="#" onclick="window.open('CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}','cartUpdatePopup', 
-                        'width=500,height=400,top=200,left=300,resizable=no,scrollbars=yes'); return false;">수정</a>
-            <a href="CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}">삭제</a>
+                        'width=500,height=400,top=200,left=300,resizable=no,scrollbars=yes'); return false;"><button type="button" class="action-btn">수정</button></a>
+            <a href="CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}"><button type="button" class="action-btn">삭제</button></a>
           </div>
         </div>
       </div>
