@@ -12,10 +12,30 @@
 <link rel="icon" href="/img/favicon.ico">
 <title>게시글 상세보기</title>
 	<style>
+	  .like-button {
+	  font-size: 18px;
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 6px;
+	  background-color: #e0f7fa; /* 연한 하늘색 배경 */
+	  color: #00796b;            /* 진한 청록 글자 */
+	  display: inline-flex;
+	  align-items: center;
+	  gap: 8px;
+	  cursor: pointer;
+	  transition: background-color 0.3s ease, transform 0.2s ease;
+	}
+	.like-button:hover {
+	  background-color: #b2ebf2; /* hover 시 더 진한 하늘색 */
+	  transform: scale(1.05);    /* 약간 커지는 효과 */
+	}
+	.like-button.active {
+	  background-color: #ffcdd2;
+	  color: #c62828;
+	}	
 	.heart-icon {
     vertical-align: middle;
   }
-
   .heart-fill {
     fill: none;
     stroke: #ccc;
@@ -24,12 +44,14 @@
     stroke-linejoin: round;
     transition: fill 0.4s ease, stroke 0.4s ease;
   }
-
   .like-button.active .heart-fill {
     fill: #ec6d46;
     stroke: #ec6d46;
   }
-  
+  .like-count {
+  font-size: 27px;
+  margin-left: 10px;
+  }
 	  /* 공통 말풍선 스타일 */
 	.comment-bubble {
 	  position: relative;
@@ -43,16 +65,16 @@
 	
 	/* 댓글 (최상위):  + 왼쪽 아래 꼬리 */
 	.comment-bubble.root {
-	  background: #e6f4e6;
+	  background: #eaffea;
 	}
 	.comment-bubble.root::after {
 	  content: "";
 	  position: absolute;
-	  bottom: -10px;
-	  left: 20px;
-	  border-width: 10px 10px 0 0;
+	  bottom: -12px;
+	  left: 18px;
+	  border-width: 12px 12px 0 0;
 	  border-style: solid;
-	  border-color: #e6f4e6 transparent transparent transparent;
+	  border-color: #eaffea transparent transparent transparent;
 	}
 	
 	/* 대댓글 (들여쓰기된): 파스텔 배경 + 오른쪽 아래 꼬리 */
@@ -62,13 +84,40 @@
 	.comment-bubble.reply::after {
 	  content: "";
 	  position: absolute;
-	  bottom: -10px;
-	  right: 20px;
-	  border-width: 10px 0 0 10px;
+	  bottom: -12px;
+	  right: 18px;
+	  border-width: 12px 0 0 12px;
 	  border-style: solid;
 	  border-color: #e0f7fa transparent transparent transparent;
 	}
 
+	.comment-form input[type="submit"] {
+	  margin-top: 10px;
+	  padding: 6px 16px;
+	  background-color: #4caf50;
+	  color: white;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	
+	.comment-form input[type="submit"]:hover {
+	  background-color: #388e3c;
+	}
+
+	.reply-form input[type="submit"] {
+	  margin-top: 10px;
+	  padding: 6px 16px;
+	  background-color: #b3e5fc;  /* 연한 하늘색 */
+	  color: white;               /* 흰색 텍스트 */
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	
+	.reply-form input[type="submit"]:hover {
+	  background-color: #81d4fa; /* hover 시 약간 진한 하늘색 */
+	}
 	</style>
 </head>
 <body>
@@ -85,9 +134,9 @@
 	    <div class="grid_5">
 	    <h3>&nbsp;</h3>
 	    <div class="clear cl1"></div>
-	    <p><span class="col1">제목 : ${plant.pla_title}</span></p> 
-	    작성자 : ${plant.writer} <br>
-	    <p>조회수 : ${plant.pla_hit_cnt}</p>
+	    <span class="col1" style="font-size: 22px; font-weight: bold; color: #66bb66;">제목 : ${plant.pla_title}</span><br>
+	    조회수 : ${plant.pla_hit_cnt}
+	    <p>작성자 : ${plant.writer} </p>
 	    <p>내용 : ${plant.pla_contents} </p>
 	    </div>
 	    
@@ -96,16 +145,14 @@
 		    <div class="clear cl1"></div>
 			<button class="like-button ${userLiked ? 'active' : ''}" data-pla_idx="${plant.pla_idx}">
 			  <span class="like-text">${userLiked ? '좋아요 취소' : '좋아요'}</span>
-			  <svg class="heart-icon" width="24" height="22" viewBox="0 0 90.65 85.04">
+			  <svg class="heart-icon" width="30" height="28" viewBox="0 0 90.65 85.04">
 			    <path class="heart-fill" 
 			          d="M45.137,23.041c4.912-24.596,40.457-27.775,42.128-0.435
 			             c1.398,22.88-21.333,40.717-42.128,50.522
 			             M45.137,23.041C40.225-1.555,5.057-4.734,3.387,22.606
 			             c-1.398,22.88,20.955,40.717,41.75,50.522"/>
 			  </svg>
-			</button> <span id="likeCount">${likeCount}</span>
-		
-			
+			</button> <span id="likeCount" class="like-count">${likeCount}</span>
 			<div class="btns">
 			<!-- 글 목록으로 이동 -->
 			<p><a href="/Plant/plantList" class="btn">목록으로</a></p>
@@ -146,8 +193,13 @@
 	            
 	            <p><strong>${comment.writer}</strong></p>
 				
+				<p>
+				  <a href="/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">수정</a> |
+				  <a href="/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+				</p>
+				
 	            <!-- 대댓글 작성 폼 -->
-	            <form action="/Plant/plantList/comment" method="post" style="margin-top: 5px;">
+	            <form class="reply-form" action="/Plant/plantList/comment" method="post" style="margin-top: 5px;">
 	                <input type="hidden" name="pla_idx" value="${plant.pla_idx}" />
 	                <input type="hidden" name="placom_root" value="${comment.placom_root}" />
 	                <input type="hidden" name="placom_indent" value="${comment.placom_indent}" />
@@ -160,7 +212,7 @@
 		<div class="clear cl1"></div>	
 	    <!-- 최상위 댓글 작성 폼 -->
 		    <h4>댓글 작성</h4>
-		    <form action="/Plant/plantList/comment" method="post">
+		    <form class="comment-form" action="/Plant/plantList/comment" method="post">
 		        <input type="hidden" name="pla_idx" value="${plant.pla_idx}" />
 		        <textarea name="placom_contents" placeholder="댓글을 입력하세요" rows="3" cols="60"></textarea><br>
 		        <input type="submit" value="댓글 등록" />

@@ -16,8 +16,12 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #f4fff4;
         }
+        
+		.comment.reply {
+		   background-color: #e3f2fd; /* 연한 하늘색 */
+		}
         .stars {
             color: gold;
             font-size: 18px;
@@ -67,6 +71,33 @@
         .rated {
             color: gold;
         }
+        
+        .comment-form input[type="submit"] {
+		  margin-top: 10px;
+		  padding: 6px 16px;
+		  background-color: #4caf50;
+		  color: white;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		}
+		
+		.comment-form input[type="submit"]:hover {
+		  background-color: #388e3c;
+		}
+		 .reply-form input[type="submit"] {
+		  margin-top: 10px;
+		  padding: 6px 16px;
+		  background-color: #b3e5fc;  /* 연한 하늘색 */
+		  color: white;               /* 흰색 텍스트 */
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		}
+		
+		.reply-form input[type="submit"]:hover {
+		  background-color: #81d4fa; /* hover 시 약간 진한 하늘색 */
+		}
     </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	 <script>
@@ -90,12 +121,13 @@
 		    '<p class="stars" id="avgRating-' + commentId + '">' +
 		        '평균 별점: ' + renderStars(Math.round(newRating)) + ' (' + newRating.toFixed(1) + '점)</p>' +
 		    '<p class="stars" id="myRating-' + commentId + '">' +
-		        '내 별점: ' + renderStars(myRating) + ' (' + myRating + '점)</p>' +
-		    '<form class="deleteRatingForm" action="/Clinic/comment/rating/delete" method="post">' +
-		        '<input type="hidden" name="plccom_idx" value="' + commentId + '" />' +
-		        '<input type="hidden" name="plc_idx" value="' + plcIdx + '" />' +
-		        '<input type="submit" value="별점 삭제" />' +
-		        '</form>'
+		        '내 별점: ' + renderStars(myRating) + ' (' + myRating + '점)</p>' 
+// 		        +
+// 		    '<form class="deleteRatingForm" action="/Clinic/comment/rating/delete" method="post">' +
+// 		        '<input type="hidden" name="plccom_idx" value="' + commentId + '" />' +
+// 		        '<input type="hidden" name="plc_idx" value="' + plcIdx + '" />' +
+// 		        '<input type="submit" value="별점 삭제" />' +
+// 		        '</form>'
 		    );
 		}
 	 
@@ -199,22 +231,22 @@
 		<div class="grid_6">
 		<h3>&nbsp;</h3>
 	    <div class="clear cl1"></div>
-	    <span class="col1">제목 : ${clinic.plc_title}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <span class="col1" style="font-size: 22px; font-weight: bold; color: #66bb66;">제목 : ${clinic.plc_title}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	    조회수 : ${clinic.plc_hit_cnt} 
 	    <p>&nbsp;</p>
 	    <p>작성자 : ${clinic.writer}</p>
 	    &nbsp;<br> 
-	    <p>키우는 장소 : ${clinic.growing_loc}</p>
-	    <p>자라는 환경 : ${clinic.growth_con}</p>
-	    <p>물 주는 방식 : ${clinic.watering}</p>
-	    <p>마지막 분갈이 : ${clinic.last_rep}</p>
-	    <p>마지막 비료 시기 : ${clinic.last_fert}</p>
-	    <p>마지막 가지치기 : ${clinic.last_pruned}</p>
-	    <p>식물이 자라는 위치 : ${clinic.plant_pos}</p>
-	    <p>병충해 피해 유무 : ${clinic.pest_dmg}</p>
-	    <p>변색 잎 여부 : ${clinic.discolored}</p>
+	    <p style="font-size: 18px;">키우는 장소 🏠 ${clinic.growing_loc}</p>
+	    <p style="font-size: 18px;">자라는 환경 ☀️ ${clinic.growth_con}</p>
+	    <p style="font-size: 18px;">물 주는 방식 💧 ${clinic.watering}</p>
+	    <p style="font-size: 18px;">마지막 분갈이 🪴 ${clinic.last_rep}</p>
+	    <p style="font-size: 18px;">마지막 비료 시기 🌾 ${clinic.last_fert}</p>
+	    <p style="font-size: 18px;">마지막 가지치기 ✂️ ${clinic.last_pruned}</p>
+	    <p style="font-size: 18px;">식물이 자라는 위치 🌳 ${clinic.plant_pos}</p>
+	    <p style="font-size: 18px;">병충해 피해 유무 🦠 ${clinic.pest_dmg}</p>
+	    <p style="font-size: 18px;">변색 잎 여부 🌿 ${clinic.discolored}</p>
 	    &nbsp;<br>
-	    <p><span class="col1">본문 : <c:out value="${clinic.plc_contents}" escapeXml="false"/></span></p>
+	    <p><span class="col1" style="font-size: 16px; color: #a8d5a2;">본문 : <c:out value="${clinic.plc_contents}" escapeXml="false"/></span></p>
 	    </div>
 	    
 	    <div class="clear cl1"></div>
@@ -233,7 +265,7 @@
 	    <hr>
 	    <h3>댓글</h3>
 	    <c:forEach var="comment" items="${commentList}">
-	        <div class="comment" style="margin-left: ${comment.plccom_indent * 20}px">
+	        <div class="comment ${comment.plccom_indent > 0 ? 'reply' : ''}" style="margin-left: ${comment.plccom_indent * 20}px">
 	            <p>작성자: ${comment.writer}</p>
 	            <p class="comment-body">댓글 내용 :${comment.plccom_contents}</p>
 	
@@ -264,11 +296,11 @@
 			                </c:forEach>
 			                (${comment.myRating}점)
 			            </p>
-			            <form class="deleteRatingForm" action="/Clinic/comment/rating/delete" method="post">
-			                <input type="hidden" name="plccom_idx" value="${comment.plccom_idx}" />
-			                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
-			                <input type="submit" value="별점 삭제" />
-			            </form>
+<!-- 			            <form class="deleteRatingForm" action="/Clinic/comment/rating/delete" method="post"> -->
+<%-- 			                <input type="hidden" name="plccom_idx" value="${comment.plccom_idx}" /> --%>
+<%-- 			                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" /> --%>
+<!-- 			                <input type="submit" value="별점 삭제" /> -->
+<!-- 			            </form> -->
 			        </c:if>
 			
 			        <c:if test="${empty comment.myRating}">
@@ -285,11 +317,11 @@
 			</c:if>
 	
 	            <!-- 수정/삭제 링크 -->
-	            <a href="/Clinic/comment/update?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">수정</a>
-	            <a href="/Clinic/comment/delete?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">삭제</a>
+	            <p><a href="/Clinic/comment/update?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">수정 | </a>
+	            <a href="/Clinic/comment/delete?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">삭제</a></p>
 	
 	            <!-- 대댓글 작성 -->
-	            <form action="/Clinic/comment/write" method="post">
+	            <form class="reply-form" action="/Clinic/comment/write" method="post">
 	                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
 	                <input type="hidden" name="parentId" value="${comment.plccom_idx}" />
 	                <textarea name="plccom_contents" rows="2" cols="50" placeholder="답글 작성"></textarea><br>
@@ -300,7 +332,7 @@
 	
 	    <hr>
 	    <h3>댓글 작성</h3>
-	    <form action="/Clinic/comment/write" method="post">
+	    <form class="comment-form" action="/Clinic/comment/write" method="post">
 	        <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
 	        <textarea name="plccom_contents" rows="4" cols="50"></textarea><br>
 	        <input type="submit" value="댓글 작성">

@@ -93,8 +93,9 @@
 						<img src="/img/plant/${dto.pla_img}" alt="" >
 					</div>	
 			  </a>
-		      <div class="title"><a href="<c:url value='/Plant/plantDetail?pla_idx=${dto.pla_idx}'/>">${dto.pla_title}</a></div>
-			  <a class="btn">${dto.writer}</a>
+		      <div class="title" style="font-size: 18px; font-weight: bold; color: #66cc66;">
+		      <a href="<c:url value='/Plant/plantDetail?pla_idx=${dto.pla_idx}'/>">${dto.pla_title}</a></div>
+		      <a class="btn">${dto.writer}</a>
 			  	<!-- 로그인 상태일 때만 검사 -->
 	          	<c:if test="${not empty loginInfo}">
 		            <!-- admin 이거나, 내가 쓴 글이면 버튼 보임 -->
@@ -105,6 +106,7 @@
 	          	</c:if>
 	          </div>  
 			</c:forEach>
+			
 		  </div>
 		
 		<div class="clear cl1"></div>

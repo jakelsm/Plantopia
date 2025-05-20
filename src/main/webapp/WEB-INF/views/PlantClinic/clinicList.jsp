@@ -78,15 +78,15 @@
 			  </c:if>  
 	            
 	            <div class="grid_4">
-	            <div class="text1">
+	            <div class="text1" style="font-size: 20px; font-weight: bold; color: #66cc66;">
 				    <c:choose>
-				        <c:when test="${fn:length(dto.plc_title) > 17}">
-				            <a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">
-				                ${fn:substring(dto.plc_title, 0, 17)}...
+				        <c:when test="${fn:length(dto.plc_title) > 15}">
+				            <a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}" style="color: #66cc66;">
+				                ${fn:substring(dto.plc_title, 0, 15)}...
 				            </a>
 				        </c:when>
 				        <c:otherwise>
-				            <a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}">
+				            <a href="/Clinic/clinicDetail?plc_idx=${dto.plc_idx}" style="color: #66cc66;">
 				                ${dto.plc_title}
 				            </a>
 				        </c:otherwise>
