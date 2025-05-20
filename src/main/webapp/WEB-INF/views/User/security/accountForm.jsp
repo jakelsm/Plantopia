@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 <!-- 회원가입 전용 스타일 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/signup.css">
 <!-- JS 토글 (로그인 페이지와 동일한 CSS 애니메이션을 위해 필요) -->

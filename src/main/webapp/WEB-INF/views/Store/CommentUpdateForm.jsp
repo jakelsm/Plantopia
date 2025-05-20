@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>후기 댓글 수정 폼 페이지</title>
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 <style>
 	body {
 	 font-family: 'Noto Sans KR'; padding: 20px; 

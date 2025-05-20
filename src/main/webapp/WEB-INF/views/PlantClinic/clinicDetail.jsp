@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <!-- Bootstrap 5 CSS CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 <title>클리닉 상세보기</title>
 	 <style>
        .comment {

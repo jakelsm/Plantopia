@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>공지 상세보기</title>
 <link rel="stylesheet" href="/CSS/noticeDetail.css" type="text/css">
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">ㄴ
 </head>
 <body>
 	<div class="notice-container">

@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 작성</title>
+  <!-- 웹 아이콘 설정 -->
+  <link rel="icon" href="/img/favicon.ico">
   <script src="/js/plantFormValidation.js"></script> <!-- 유효성검사 JS 파일  -->
 </head>
 <body>

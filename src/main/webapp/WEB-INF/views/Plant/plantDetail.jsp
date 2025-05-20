@@ -8,6 +8,8 @@
 <!-- Bootstrap 5 CSS CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:400" rel="stylesheet" type="text/css">
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 <title>게시글 상세보기</title>
 	<style>
 	.heart-icon {

@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <script src="/js/clinicFormValidation.js"></script> <!-- 유효성검사 JS -->
 <title>클리닉 게시글 수정</title>
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/Main/header.jsp" %>

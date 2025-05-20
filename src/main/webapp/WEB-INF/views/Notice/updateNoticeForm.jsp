@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>공지 게시판 수정</title>
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 <link rel="stylesheet" href="/CSS/addNoticeForm.css" type="text/css">
 </head>
 <body>

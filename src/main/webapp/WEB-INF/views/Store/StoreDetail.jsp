@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>제품 상세 페이지</title>
+	<!-- 웹 아이콘 설정 -->
+	<link rel="icon" href="/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 	<link rel="stylesheet" href="/CSS/storeDetail.css" type="text/css">		
 </head>

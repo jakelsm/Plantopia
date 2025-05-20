@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>addStoreForm</title>
 <link rel="stylesheet" href="/CSS/addStoreForm.css" type="text/css">	
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
 	<h2>상품 등록</h2>

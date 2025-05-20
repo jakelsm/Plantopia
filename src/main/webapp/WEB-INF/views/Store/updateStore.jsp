@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 수정</title>
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 <link rel="stylesheet" href="/CSS/addStoreForm.css" type="text/css">	
 </head>
 <body>

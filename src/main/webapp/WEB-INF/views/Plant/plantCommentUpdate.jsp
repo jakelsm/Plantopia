@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>댓글 수정</title>
+<!-- 웹 아이콘 설정 -->
+<link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
 	<h3>댓글 수정</h3>
