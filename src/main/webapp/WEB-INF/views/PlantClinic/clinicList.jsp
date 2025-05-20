@@ -58,7 +58,7 @@
 	
 </style>
 <body>
-  <%@ include file="/WEB-INF/views/Main/header.jsp" %>
+  <%@ include file="../Main/header.jsp" %>
 	<div class="content">
 	 <div class="container_12">
 		<div class="grid_12">
@@ -66,8 +66,12 @@
 		</div>
 		<div class="clear cl1"></div>
 		   <div class="grid_9">
-				<p>클리닉 게시판 설명</p>
+				<p>🌿 식물이 아파 보이거나 잎이 노랗게 변했나요?<br>
+					반려식물에 대한 고민을 나누고 조언을 받을 수 있는 공간입니다.<br>
+					식물도 함께 살아가는 가족입니다.<br>
+					정성을 다해 돌보고, 함께 키워나가요! 🌱</p>
 		   </div>
+		   <div class="clear cl1"></div>
 	    <c:forEach var="dto" items="${clinicList}" varStatus="status">
 	          <c:if test="${status.index % 3 == 0 && status.index != 0}">
 			        <div class="clear cl2"></div>
@@ -115,10 +119,7 @@
 	    <div class="grid_2">
 		<a href="/Clinic/clinicWrite">글쓰기</a></div>
 	</div>
-	</div>
-	
-	<div class="bottom_block">
-	  <div class="clear cl1"></div>	  
+	<div class="clear cl1"></div>	  
 	  
 	  	  <div class="ctn">	
 			<form action="/Clinic/clinicList" method="get">
@@ -140,6 +141,61 @@
 	    </c:if>
     	</div>
 	</div>
-  <%@ include file="/WEB-INF/views/Main/footer.jsp" %>	
+	   
+	<div class="bottom_block">
+	<div class="container_12">
+		  <!-- Store Location -->
+	    <div class="grid_3">
+	      <h3>Store Location</h3>
+	      <div id="owl1" class="owl-carousel owl-theme" style="opacity: 1; display: block;">
+	        <div class="owl-wrapper-outer">
+	          <div class="owl-wrapper" style="width: 600px; left: 0px; display: block; transform: translate3d(0px, 0px, 0px);">
+	
+<!--  	            <div class="owl-item" style="width: 180px;"> -->
+<!--  	              <div class="item">  -->
+<!-- 	                <div class="img_block ib1"> -->
+<!--  	                  <img src="/img/store_front.png" alt="Plantopia Store Front" class="img_inner"> -->
+<!--  	                </div> -->
+<!--  	              </div> -->
+<!-- 	            </div> -->
+	
+ 	            <div class="owl-item" style="width: 180px;">
+ 	              <div class="item">
+ 	                <div class="img_block ib1">
+ 	                  <img src="/img/store_inside.png" alt="Inside Plantopia Store" class="img_inner">
+ 	                </div>
+ 	              </div>
+ 	            </div>
+	
+	          </div>
+	        </div>
+	      </div>
+	      <p>서울특별시 성동구 성수일로 123, 플랜토피아 스토어</p>
+	      <p>운영시간: 평일 09:00–18:00</p>
+	    </div>
+	
+	    <!-- Contact Information -->
+	    <div class="grid_4 prefix_1">
+	      <h3>Contact Information</h3>
+	      <p class="col1">
+	        전화: 02-1234-5678<br>
+	        이메일: support@plantopia.com
+	      </p>
+	      <p>고객센터 운영시간: 평일 09:00–18:00</p>
+	    </div>
+	
+	    <!-- Follow Us -->
+		<div class="grid_4">
+		  <h3>Follow Us</h3>
+		  <p>Plantopia의 새로운 소식과 이벤트를 SNS에서 만나보세요.</p>
+		  <ul class="social-links">
+		    <li><a href="https://www.facebook.com/plantopia" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+		    <li><a href="https://www.instagram.com/plantopia" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+		    <li><a href="https://www.twitter.com/plantopia" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+  <%@ include file="../Main/footer.jsp" %>	
 </body>
 </html>

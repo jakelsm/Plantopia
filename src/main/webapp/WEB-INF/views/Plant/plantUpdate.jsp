@@ -10,7 +10,7 @@
   <script src="/js/plantFormValidation.js"></script> <!-- 유효성검사 JS 파일  -->
 </head>
 <body>
-	<%@ include file="/WEB-INF/views/Main/header.jsp" %>
+	<%@ include file="../Main/header.jsp" %>
 	<div class="content">
     <div class="container_12">	
 	  <div class="grid_2">&nbsp;</div>
@@ -36,6 +36,6 @@
 	  </div>
   </div>
 	
-	<%@ include file="/WEB-INF/views/Main/footer.jsp" %>
+	<%@ include file="../Main/footer.jsp" %>
 </body>
 </html>

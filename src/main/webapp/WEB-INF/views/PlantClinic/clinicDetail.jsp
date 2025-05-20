@@ -184,7 +184,7 @@
 	</script>
 </head>
 <body>
-    <%@ include file="/WEB-INF/views/Main/header.jsp" %>
+    <%@ include file="../Main/header.jsp" %>
       <div class="content">
 	   <div class="container_12">
 	    
@@ -309,6 +309,6 @@
 	    </div>
       </div>
 	  </div>
-    <%@ include file="/WEB-INF/views/Main/footer.jsp" %>
+    <%@ include file="../Main/footer.jsp" %>
 </body>
 </html>
