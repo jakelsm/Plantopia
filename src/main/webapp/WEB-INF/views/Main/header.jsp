@@ -81,7 +81,7 @@
 			<div class="grid_12">
 				<div class="header-right">
 					<c:if test="${loginInfo.user_authority eq 'admin' or loginInfo.user_num eq dto.user_num}">
-					  	<a href="accountList" class="color-white">관리자용 페이지</a> | 
+					  	<a href="/adminpage" class="color-white">관리자용 페이지</a> | 
 					</c:if>
 			        <a href="/profile" class="color-white"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong></a> | 
 			        <a href="/getCartList?user_num=${sessionScope.user_num}" class="color-white">장바구니</a> | 

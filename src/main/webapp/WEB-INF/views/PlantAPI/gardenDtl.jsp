@@ -55,7 +55,7 @@
       } finally {
         apiStream.close();
       }
-
+      
       // 결과 코드 및 메시지
       String resultCode="", resultMsg="";
       try{ resultCode = doc.getElementsByTagName("resultCode")
@@ -120,7 +120,6 @@
     <% } else { %>
       <p class="error-message"><%=resultMsg%></p>
     <% } %>
-
     <!-- 목록 버튼 -->
     <div class="btn-group">
       <button type="button" class="btn btn-secondary" onclick="fncList();">

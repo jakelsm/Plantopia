@@ -166,6 +166,11 @@ public class UserController {
 	    }
 	}
 	
+	@RequestMapping("adminpage")
+	public String adminPage() {
+	    return "User/admin/adminpage"; // 실제 JSP 위치
+	}
+	
 	@RequestMapping("accountList")
 	public ModelAndView memberList() throws Exception {
 		ModelAndView mv = new ModelAndView("User/admin/accountList");
