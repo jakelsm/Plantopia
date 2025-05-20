@@ -230,77 +230,68 @@
 			</div>	
     <div class="container_12">
       <div class="grid_12">
-      <!-- 인기글 영역 시작 -->
-		  <div class="container_12 popular-section">
-		  	<h2>🏆 인기 글 순위</h2>
-		  	<!-- 1~4위 (왼쪽 6칸) -->
-		    <div class="grid_6" style="padding-bottom: 50px;">
-		      <ol>
-		        <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
-		          <li>
-		          	<div class="word">
-			          	<c:choose>
-				            <c:when test="${vs.index == 0}">
-				              <i class="bi bi-trophy-fill medal-1"></i>
-				            </c:when>
-				            <c:when test="${vs.index == 1}">
-				              <i class="bi bi-trophy-fill medal-2"></i>
-				            </c:when>
-				            <c:when test="${vs.index == 2}">
-				              <i class="bi bi-trophy-fill medal-3"></i>
-				            </c:when>
-				        </c:choose>
-				        ${vs.index + 1}.
-			            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
-			              ${post.pla_title}
-			            </a>
-			            <p></p>
-		            </div>
-		          </li>
-		        </c:forEach>
-		      </ol>
-		    </div>
-		    <!-- 5~8위 (오른쪽 6칸) -->
-		    <div class="grid_6" style="padding-bottom: 50px;">
-		      <ol start="5">
-		        <c:forEach var="post" items="${popularList}" begin="4" end="7" varStatus="vs">
-			      <li>
-			      	<div class="word">
-				        ${vs.index+1}. <!-- vs.index 는 0~3 이고, 여기에 5를 더하면 5~8 -->
-				        <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
-				          ${post.pla_title}
-				        </a>
-				        <p></p>
-			        </div>
-			      </li>
-			    </c:forEach>
-		      </ol>
-		    </div>
-		  </div>
-		
-		<!-- 공지사항 시작 -->  
-		
-		<div class="container_12"> 
-			<div class="grid_12" style="padding-bottom: 50px;">
-			<hr>
-			<h2><a href="NoticeMain">📢 공지사항</a></h2>
-			<ul>
-			  <c:forEach var="notice" items="${noticeList}">
-			    <li>
-			      <div class="word">
-			      <a href="/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
-			      <span style="font-size: 20px; color: gray;">(${notice.n_date})</span>
-			      </div>
-			    </li>
-			  </c:forEach>
-			  <c:if test="${empty noticeList}">
-			    <li>등록된 공지사항이 없습니다.</li>
-			  </c:if>
-			</ul>
-			</div>
-			<hr>
-  		</div>
-  		
+      <!-- 인기글 + 공지사항 나란히 배치 -->
+<div class="container_12" style="padding-bottom: 50px;">
+  <!-- 인기글 영역 (왼쪽 6칸) -->
+  <div class="grid_6">
+    <h2>🏆 인기 글 순위</h2>
+    <ol>
+      <c:forEach var="post" items="${popularList}" begin="0" end="3" varStatus="vs">
+        <li>
+          <div class="word">
+            <c:choose>
+              <c:when test="${vs.index == 0}">
+                <i class="bi bi-trophy-fill medal-1"></i>
+              </c:when>
+              <c:when test="${vs.index == 1}">
+                <i class="bi bi-trophy-fill medal-2"></i>
+              </c:when>
+              <c:when test="${vs.index == 2}">
+                <i class="bi bi-trophy-fill medal-3"></i>
+              </c:when>
+            </c:choose>
+            ${vs.index + 1}.
+            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
+              ${post.pla_title}
+            </a>
+            <p></p>
+          </div>
+        </li>
+      </c:forEach>
+    </ol>
+    <ol start="5">
+      <c:forEach var="post" items="${popularList}" begin="4" end="7" varStatus="vs">
+        <li>
+          <div class="word">
+            ${vs.index + 1}. <!-- 실제 순위는 5~8 -->
+            <a href="<c:url value='/Plant/plantDetail?pla_idx=${post.pla_idx}'/>">
+              ${post.pla_title}
+            </a>
+            <p></p>
+          </div>
+        </li>
+      </c:forEach>
+    </ol>
+  </div>
+  <!-- 공지사항 영역 (오른쪽 6칸) -->
+  <div class="grid_6">
+    <h2><a href="NoticeMain">📢 공지사항</a></h2>
+    <ul>
+      <c:forEach var="notice" items="${noticeList}">
+        <li>
+          <div class="word">
+            <a href="/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
+            <span style="font-size: 20px; color: gray;">(${notice.n_date})</span>
+          </div>
+        </li>
+      </c:forEach>
+      <c:if test="${empty noticeList}">
+        <li>등록된 공지사항이 없습니다.</li>
+      </c:if>
+    </ul>
+  </div>
+</div>
+<hr>  		
         <!-- Store 게시판 미리보기 영역 -->
 		<div class="container_12">
 			<div class="grid_12" style="padding-bottom: 50px;">

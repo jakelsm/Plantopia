@@ -78,6 +78,8 @@ public class UserController {
 	        return "User/security/accountForm"; // 다시 회원가입 폼으로 이동
 	    }
 		
+		dto.setUser_authority("user");
+		
 		// 비밀번호 암호화 후 저장
 		dto.setUser_passwd(passwordEncoder.encode(dto.getUser_passwd()));
 		iuserdao.insertUser(dto);
