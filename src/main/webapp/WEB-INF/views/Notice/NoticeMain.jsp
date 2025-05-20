@@ -36,8 +36,8 @@
 						<td>운영자</td>
 						<c:if test="${userAuthority eq 'admin'}">								
 						<td>
-						<a href="updateNotice?n_idx=${notice.n_idx}">수정</a>				
-							/<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a>						
+						<a href="updateNotice?n_idx=${notice.n_idx}">수정</a> | 			
+						<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a>						
 						</td>
 						</c:if>
 					</tr>
