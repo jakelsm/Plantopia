@@ -16,6 +16,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>실내정원용 식물 목록</title>
+  <link rel="icon" href="/img/favicon.ico">
   <script type="text/javascript">
     function fncDtl(cNo){
       with(document.searchApiForm){

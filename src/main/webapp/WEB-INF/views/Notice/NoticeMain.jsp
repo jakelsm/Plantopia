@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>공지 게시판</title>
 <link rel="stylesheet" href="/CSS/noticeMain.css" type="text/css">
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<%@ include file="/WEB-INF/views/Main/header.jsp" %> 
@@ -33,9 +34,12 @@
 						<td><a href="NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a></td>
 						<td><fmt:formatDate value="${notice.n_date}" pattern="yyyy-MM-dd HH:mm" /></td>
 						<td>운영자</td>
-						<c:if test="${userAuthority eq 'admin'}">			
-						<td><a href="updateNotice?n_idx=${notice.n_idx}">수정</a>
-							/<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a></td>
+						<c:if test="${userAuthority eq 'admin'}">								
+						<td>
+						<button type="button" class="action-btn"></button>
+						<a href="updateNotice?n_idx=${notice.n_idx}">수정</a>
+							/<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a>						
+						</td>
 						</c:if>
 					</tr>
 					</c:forEach>

@@ -38,8 +38,8 @@
 				<span class="price"><p>${dto.p_price}원</p></span>
 				
 				<c:if test="${userAuthority eq 'admin'}">
-					<a href="StoreUpdate?p_idx=${dto.p_idx}">수정</a>
-					<a href="StoreDelete?p_idx=${dto.p_idx}">삭제</a>
+					<a href="StoreUpdate?p_idx=${dto.p_idx}"><button type="button" class="action-btn">수정</button></a>			
+					<a href="StoreDelete?p_idx=${dto.p_idx}"><button type="button" class="action-btn">삭제</button></a>
 				</c:if>
 			</div>
 			</c:forEach>
@@ -71,8 +71,8 @@
   		<img src="/img/teamlogo1.png" style="width:150px; height:150px;">
   		<div class="bottom-box">
   			<p><span class="bottom-text1"><i class="bi bi-exclamation-circle-fill"></i> 반품 배송비, 반품 배송주소 등은 해당 상품 페이지 내 안내를 참고해주세요.</span></p>
-  			<p><span style="font-size:14px;">주식회사 플랜토피아 농업회사법인 ooo 인증</span> |<span class="bottom-text1"><a href="#">판매자 상세정보 확인 </a></span>|
-  			<span style="font-size : 12px; font-weight:bold;"><a href="#"> 판매자 개인정보 처리방침 </a></span></p>
+  			<p><span style="font-size:14px;">주식회사 플랜토피아 농업회사법인 플랜토피아 인증</span> |<span class="bottom-text1"><a href="#">판매자 상세정보 확인 </a></span>|
+  			<span style="font-size : 12px; font-weight:bold;"><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9/%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%20%EB%B3%B4%ED%98%B8%EB%B2%95/%EC%A0%9C30%EC%A1%B0"> 판매자 개인정보 처리방침 </a></span></p>
 			   <a href="https://www.facebook.com/plantopia" target="_blank"><i class="bi bi-facebook"></i> Facebook |</a>
 			   <a href="https://www.instagram.com/plantopia" target="_blank"><i class="bi bi-instagram"></i> Instagram |</a>
 			   <a href="https://www.twitter.com/plantopia" target="_blank"><i class="bi bi-twitter"></i> Twitter</a>

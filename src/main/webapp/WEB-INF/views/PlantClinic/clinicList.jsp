@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>반려식물 클리닉 게시판</title>
+ <link rel="icon" href="/img/favicon.ico">
 </head>
 <style>
 	.ctn {

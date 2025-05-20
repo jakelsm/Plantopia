@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
   <!-- 프로필 전용 스타일 -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profile.css">
+   <link rel="icon" href="/img/favicon.ico">
 </head>
 <body>
   <div class="container_12 profile-container">
