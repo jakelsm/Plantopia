@@ -17,20 +17,20 @@
   	<link rel="icon" href="/img/favicon.ico">
   	<link rel="stylesheet" href="/css/style.css">
   	<link rel="stylesheet" href="/css/form.css">
-  	<link rel="stylesheet" href="owl.carousel.css">	
+  	<link rel="stylesheet" href="/css/owl.carousel.css">	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">	
-	<script src="JS/jquery.js"></script>
-	<script src="JS/jquery-migrate-1.1.1.js"></script>
-	<script src="JS/script.js"></script>
-	<script src="JS/jquery.ui.totop.js"></script>
-	<script src="JS/superfish.js"></script>
-	<script src="JS/sForm.js"></script>
-	<script src="JS/jquery.equalheights.js"></script>
-	<script src="JS/jquery.mobilemenu.js"></script>
-	<script src="JS/jquery.easing.1.3.js"></script>
-	<script src="JS/owl.carousel.js"></script>
+	<script src="/JS/jquery.js"></script>
+	<script src="/JS/jquery-migrate-1.1.1.js"></script>
+	<script src="/JS/script.js"></script>
+	<script src="/JS/jquery.ui.totop.js"></script>
+	<script src="/JS/superfish.js"></script>
+	<script src="/JS/sForm.js"></script>
+	<script src="/JS/jquery.equalheights.js"></script>
+	<script src="/JS/jquery.mobilemenu.js"></script>
+	<script src="/JS/jquery.easing.1.3.js"></script>
+	<script src="/JS/owl.carousel.js"></script>
 	<script>
 		$(document).ready(function() {
   		$().UItoTop({ easingType: 'easeOutQuart' });

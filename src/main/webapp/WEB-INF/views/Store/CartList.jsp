@@ -64,7 +64,7 @@
 	        $('#selectedPayBtn').on('click', function () {
 	          const selected = [];
 	          let totalAmount = 0;
-	
+		
 	          $('.item-check:checked').each(function () {
 	            const cidx = $(this).data('cidx');
 	            const price = $(this).data('price');
@@ -79,7 +79,8 @@
 	          }
 	
 	          const pg = $('#pg-select').val(); // 선택된 PG사
-	          const merchantUid = 'multi-' + new Date().getTime();
+
+	          const merchantUid = 'plantopia-' + new Date().getTime(); // 주문번호 생성
 	
 	          IMP.request_pay({
 	            pg: pg,
@@ -104,6 +105,10 @@
 	                success: function () {
 	                  alert('결제 성공!');
 	                  location.href = '${pageContext.request.contextPath}/StoreMain';
+
+	                  // 사용자 번호는 세션에서 JSTL로 JS에 주입
+	                  const userNum = '${sessionScope.user_num}';
+
 	                },
 	                error: function () {
 	                  alert('서버 검증 실패');
