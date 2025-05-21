@@ -8,10 +8,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 	 @Override
 	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-	        // /img/store/** 로 들어온 요청을 실제 디스크 경로에 매핑
-	        //registry.addResourceHandler("/img/store/**")
-	                //.addResourceLocations("file:///C:/upload/img/store/");  // ← 실제 저장된 경로
+            //	/img/store/** 로 들어온 요청을 실제 디스크 경로에 매핑
+//	        registry.addResourceHandler("/**")
+//	                .addResourceLocations("classpath:/static/");  // ← 실제 저장된 경로
 	        
+//          /img/store/** 로 들어온 요청을 실제 디스크 경로에 매핑
+		 	registry.addResourceHandler("/**")
+               .addResourceLocations("classpath:/static/");
+       
+		    registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/CSS/");
+		    registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/JS/");
+		    registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/");
+		    
 	        // plant 이미지
 	        registry.addResourceHandler("/img/plant/**") // 상대 경로
 	                .addResourceLocations("file:///C:/Springboot/Plantopia/src/main/resources/static/img/plant/"); // 실제 경로

@@ -8,20 +8,20 @@
 <meta charset="UTF-8">
 <title>제품 상세 페이지</title>
 	<!-- 웹 아이콘 설정 -->
-	<link rel="icon" href="/img/favicon.ico">
+	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-	<link rel="stylesheet" href="/CSS/storeDetail.css" type="text/css">		
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/storeDetail.css" type="text/css">		
 </head>
 <body>	
 	<div class="container">
 		<div class="product-img">		
-			<img src="/img/store/${store.p_img}" alt="${store.p_name}" width="600" height="600"/> <br>
+			<img src="${pageContext.request.contextPath}/img/store/${store.p_img}" alt="${store.p_name}" width="600" height="600"/> <br>
 		</div>
 		<div class="product-detail">
 		<div class="right">
 			<button type="button" class="action-btn" onclick="location.href='getCartList?user_num=${user_num}'">장바구니<i class="bi bi-cart"></i></button>
 		</div>
-			<form name="StoreDetail" id="StoreDetail" method="post" action="/addCart">
+			<form name="StoreDetail" id="StoreDetail" method="post" action="${pageContext.request.contextPath}/addCart">
 				<p><label>등록일 : </label><fmt:formatDate value="${store.p_addedDate}" pattern="yyyy-MM-dd HH:mm" /></p>
 				<h1>${store.p_name}</h1>
 				<div class="price">${store.p_price}원</div>
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div class="center">
-	<a class="back-link" href="StoreMain">목록으로</a>
+	<a class="back-link" href="${pageContext.request.contextPath}/StoreMain">목록으로</a>
 			
 	<hr>
 	</div>
@@ -56,7 +56,7 @@
 
 	<h3 class="center">상품후기</h3>
 	<div class="comment-section">
-	<form class="comment-form" name="StoreComment" id="StoreComment" method="post" action="/addCommentProcess?p_idx=${store.p_idx}">
+	<form class="comment-form" name="StoreComment" id="StoreComment" method="post" action="${pageContext.request.contextPath}/addCommentProcess?p_idx=${store.p_idx}">
 		<input type="hidden" name="p_idx" value="${store.p_idx}">		
 			<c:if test="${not empty user_nickname}">
 				<p><i class="bi bi-person-circle fs-4"></i> ${user_nickname}</p>				

@@ -14,7 +14,7 @@
   <!-- 프로필 전용 스타일 -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/profile.css">
   <!-- 웹 아이콘 설정 -->
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <body>
   <div class="container_12 profile-container">
@@ -28,8 +28,8 @@
 	      </table>
 	
 	    <p class="btn-group">
-	      <a href="accountUpdate?user_num=${profile.user_num}" class="btn btn-primary">회원정보수정</a>
-	      <a href="accountDelete?user_num=${profile.user_num}" class="btn btn-danger">회원탈퇴</a>
+	      <a href="${pageContext.request.contextPath}/accountUpdate?user_num=${profile.user_num}" class="btn btn-primary">회원정보수정</a>
+	      <a href="${pageContext.request.contextPath}/accountDelete?user_num=${profile.user_num}" class="btn btn-danger">회원탈퇴</a>
 	    </p>
 	  </div>
 	  
@@ -91,7 +91,7 @@
 	            <tr>
 	              <td>${dto.plc_idx}</td>
 	              <td>
-	                <a href="<c:url value='/Clinic/clinicDetail?plc_idx=${dto.plc_idx}'/>">
+	                <a href="<c:url value='Clinic/clinicDetail?plc_idx=${dto.plc_idx}'/>">
 	                  ${dto.plc_title}
 	                </a>
 	              </td>

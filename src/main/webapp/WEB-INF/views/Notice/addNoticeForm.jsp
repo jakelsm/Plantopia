@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>공지 추가</title>
-<link rel="stylesheet" href="/CSS/addNoticeForm.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/addNoticeForm.css" type="text/css">
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <body>
 	<form name="addNoticeForm" id="addNoticeForm" method="post" action="addNoticeProcess" enctype="multipart/form-data">

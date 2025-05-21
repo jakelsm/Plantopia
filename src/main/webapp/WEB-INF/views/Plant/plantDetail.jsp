@@ -9,7 +9,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Nunito:400" rel="stylesheet" type="text/css">
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <title>게시글 상세보기</title>
 	<style>
 	  .like-button {
@@ -128,7 +128,7 @@
 		<div class="grid_7">		 	
 		<h3>게시글 상세보기</h3>
 		<div class="clear cl1"></div>
-		<img src="/img/plant/${plant.pla_img}" alt="#" height="600"/>
+		<img src="${pageContext.request.contextPath}/img/plant/${plant.pla_img}" alt="#" height="600"/>
 	    </div>
 	    
 	    <div class="grid_5">
@@ -155,7 +155,7 @@
 			</button> <span id="likeCount" class="like-count">${likeCount}</span>
 			<div class="btns">
 			<!-- 글 목록으로 이동 -->
-			<p><a href="/Plant/plantList" class="btn">목록으로</a></p>
+			<p><a href="${pageContext.request.contextPath}/Plant/plantList" class="btn">목록으로</a></p>
 		
 			<!-- 로그인 상태일 때만 검사 -->
 			<c:if test="${not empty loginInfo}">
@@ -194,12 +194,12 @@
 	            <p><strong>${comment.writer}</strong></p>
 				
 				<p>
-				  <a href="/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">수정</a> |
-				  <a href="/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+				  <a href="${pageContext.request.contextPath}/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">수정</a> |
+				  <a href="${pageContext.request.contextPath}/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
 				</p>
 				
 	            <!-- 대댓글 작성 폼 -->
-	            <form class="reply-form" action="/Plant/plantList/comment" method="post" style="margin-top: 5px;">
+	            <form class="reply-form" action="${pageContext.request.contextPath}/Plant/plantList/comment" method="post" style="margin-top: 5px;">
 	                <input type="hidden" name="pla_idx" value="${plant.pla_idx}" />
 	                <input type="hidden" name="placom_root" value="${comment.placom_root}" />
 	                <input type="hidden" name="placom_indent" value="${comment.placom_indent}" />
@@ -212,7 +212,7 @@
 		<div class="clear cl1"></div>	
 	    <!-- 최상위 댓글 작성 폼 -->
 		    <h4>댓글 작성</h4>
-		    <form class="comment-form" action="/Plant/plantList/comment" method="post">
+		    <form class="comment-form" action="${pageContext.request.contextPath}/Plant/plantList/comment" method="post">
 		        <input type="hidden" name="pla_idx" value="${plant.pla_idx}" />
 		        <textarea name="placom_contents" placeholder="댓글을 입력하세요" rows="3" cols="60"></textarea><br>
 		        <input type="submit" value="댓글 등록" />
@@ -230,7 +230,7 @@
 	
 	    	    $.ajax({
 	    	      type: 'GET',
-	    	      url: '/Plant/plantList/detail/like',
+	    	      url: '${pageContext.request.contextPath}/Plant/plantList/detail/like',
 	    	      data: { pla_idx: pla_idx },
 	    	      success: function (response) {
 	    	    	  if (response.result === 'liked') {

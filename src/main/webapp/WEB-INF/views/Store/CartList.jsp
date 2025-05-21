@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니 리스트</title>
- <link rel="icon" href="/img/favicon.ico">
-<script src="/js/CartPay.js"></script>
+ <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+<script src="${pageContext.request.contextPath}/js/CartPay.js"></script>
 <!-- jQuery (아임포트 SDK 콜백에서 $.ajax 를 쓰고 싶다면) -->
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <!-- 아임포트 결제 SDK -->
   <script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-  <link rel="stylesheet" href="/CSS/cartList.css" type="text/css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/cartList.css" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <script>
     // 가맹점 식별코드(아임포트 콘솔에서 발급된 Client Key)
@@ -105,7 +105,7 @@
 	                success: function () {	                	
 	                	
 	                alert('결제 성공!');
-	                	  
+	                location.href = '${pageContext.request.contextPath}/StoreMain'; 
 	                },
 	                error: function () {
 	                  alert('서버 검증 실패');
@@ -127,15 +127,15 @@
     <div class="cart-box">
       <div class="cart-item">
         <input type="checkbox" class="item-check" data-price="${cart.c_price}" data-cidx="${cart.c_idx}" style="margin-right:10px;">
-        <img src="/img/store/${cart.c_img}" alt="${cart.p_name}">
+        <img src="${pageContext.request.contextPath}/img/store/${cart.c_img}" alt="${cart.p_name}">
         <div class="cart-info">
-          <a href="StoreDetail?p_idx=${cart.p_idx}">${cart.p_name}</a>
+          <a href="${pageContext.request.contextPath}/StoreDetail?p_idx=${cart.p_idx}">${cart.p_name}</a>
           <p>가격: ${cart.c_price}원</p>
           <p>수량: ${cart.c_amount}</p>
           <div class="cart-actions">
-           <a href="#" onclick="window.open('CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}','cartUpdatePopup', 
+           <a href="#" onclick="window.open('${pageContext.request.contextPath}/CartUpdate?c_idx=${cart.c_idx}&user_num=${cart.user_num}','cartUpdatePopup', 
                         'width=500,height=400,top=200,left=300,resizable=no,scrollbars=yes'); return false;"><button type="button" class="action-btn">수정</button></a>
-            <a href="CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}"><button type="button" class="action-btn">삭제</button></a>
+            <a href="${pageContext.request.contextPath}/CartDelete?c_idx=${cart.c_idx}&user_num=${cart.user_num}"><button type="button" class="action-btn">삭제</button></a>
           </div>
         </div>
       </div>

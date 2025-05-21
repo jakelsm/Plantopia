@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>공지 상세보기</title>
-<link rel="stylesheet" href="/CSS/noticeDetail.css" type="text/css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/noticeDetail.css" type="text/css">
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">ㄴ
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <body>
 	<div class="notice-container">
@@ -20,19 +20,19 @@
 			작성일 : <fmt:formatDate value="${notice.n_date}" pattern="yyyy-MM-dd HH:mm" />
 		</div>
 		<div>
-			<img src="/img/notice/${notice.n_img}" width="600" height="600"/> <br>	
+			<img src="${pageContext.request.contextPath}/img/notice/${notice.n_img}" width="600" height="600"/> <br>	
 		</div>
 		<div class="notice-content">
 			${notice.n_contents}
 		</div>
 		<div class="button-group">
 			<c:if test="${userAuthority eq 'admin'}">
-				<a href="updateNotice?n_idx=${notice.n_idx}"><button type="button">수정</button></a>
-				<a href="deleteNotice?n_idx=${notice.n_idx}"><button type="button">삭제</button></a>
+				<a href="${pageContext.request.contextPath}/updateNotice?n_idx=${notice.n_idx}"><button type="button">수정</button></a>
+				<a href="${pageContext.request.contextPath}/deleteNotice?n_idx=${notice.n_idx}"><button type="button">삭제</button></a>
 			</c:if>
 		</div>
 	</form>
-	<a class="back-button" href="NoticeMain">목록으로</a>	
+	<a class="back-button" href="${pageContext.request.contextPath}/NoticeMain">목록으로</a>	
 	</div>
 </body>
 </html>

@@ -20,10 +20,10 @@
   <!-- Bootstrap Icons -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         rel="stylesheet">
-<link rel="icon" href="/img/favicon.ico">
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/form.css">
-<link rel="stylesheet" href="owl.carousel.css">	
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">	
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">

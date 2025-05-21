@@ -14,22 +14,22 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         rel="stylesheet">
   <link rel="icon" href="/img/favicon.ico">
-  		<link rel="stylesheet" href="/css/style.css">
-  		<link rel="stylesheet" href="/css/form.css">
-  		<link rel="stylesheet" href="owl.carousel.css">	
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css">
+  		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">	
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nanum+Gothic&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-		<script src="JS/jquery.js"></script>
-		<script src="JS/jquery-migrate-1.1.1.js"></script>
-		<script src="JS/script.js"></script>
-		<script src="JS/jquery.ui.totop.js"></script>
-		<script src="JS/superfish.js"></script>
-		<script src="JS/sForm.js"></script>
-		<script src="JS/jquery.equalheights.js"></script>
-		<script src="JS/jquery.mobilemenu.js"></script>
-		<script src="JS/jquery.easing.1.3.js"></script>
-		<script src="JS/owl.carousel.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/jquery.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/jquery-migrate-1.1.1.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/script.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/jquery.ui.totop.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/superfish.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/sForm.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/jquery.equalheights.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/jquery.mobilemenu.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/jquery.easing.1.3.js"></script>
+		<script src="${pageContext.request.contextPath}/JS/owl.carousel.js"></script>
 		<script>
 		$(document).ready(function() {
   		$().UItoTop({ easingType: 'easeOutQuart' });
@@ -168,7 +168,7 @@
 			<div class="grid_4">
 				<div class="block1">
 					<div class="img_block">
-						<img src="img/mainpage/planticon.png" alt="" class="img_inner" style="width: 222px;">
+						<img src="${pageContext.request.contextPath}/img/mainpage/planticon.png" alt="" class="img_inner" style="width: 222px;">
 						<span class="l"></span>
 						<span class="ll"></span>
 						<span class="r"></span>
@@ -179,13 +179,13 @@
 						<span class="rrb"></span>
 					</div>
 					<div class="text1">다른 식물 집사들과 소통해보세요!</div><br>
-						<a href="/Plant/plantList" class="btn">more</a>
+						<a href="${pageContext.request.contextPath}/Plant/plantList" class="btn">more</a>
 					</div>
 				</div>
 				<div class="grid_4">
 					<div class="block1">
 						<div class="img_block">
-							<img src="img/mainpage/clinicicon.png" alt="" class="img_inner" style="width: 222px;">
+							<img src="${pageContext.request.contextPath}/img/mainpage/clinicicon.png" alt="" class="img_inner" style="width: 222px;">
 							<span class="l"></span>
 							<span class="ll"></span>
 							<span class="r"></span>
@@ -196,13 +196,13 @@
 							<span class="rrb"></span>
 						</div>
 						<div class="text1">시들시들한 식물도 다시 푸르게!</div><br>
-						<a href="/Clinic/clinicList" class="btn">more</a>
+						<a href="${pageContext.request.contextPath}/Clinic/clinicList" class="btn">more</a>
 					</div>
 				</div>
 				<div class="grid_4">
 					<div class="block1">
 						<div class="img_block">
-							<img src="img/mainpage/storeicon.png" alt="" class="img_inner" style="width: 222px;">
+							<img src="${pageContext.request.contextPath}/img/mainpage/storeicon.png" alt="" class="img_inner" style="width: 222px;">
 							<span class="l"></span>
 							<span class="ll"></span>
 							<span class="r"></span>
@@ -213,13 +213,13 @@
 							<span class="rrb"></span>
 						</div>
 						<div class="text1">반려식물, 여기서 바로 데려가세요!</div><br>
-						<a href="/StoreMain" class="btn">more</a>
+						<a href="${pageContext.request.contextPath}/StoreMain" class="btn">more</a>
 					</div>			
 				</div>
 				<div class="grid_4" style="padding-top: 50px; padding-bottom: 50px;">
 				<div class="block1">
 					<div class="img_block">
-						<img src="img/mainpage/apiicon.png" alt="" class="img_inner" style="width: 222px;">
+						<img src="${pageContext.request.contextPath}/img/mainpage/apiicon.png" alt="" class="img_inner" style="width: 222px;">
 						<span class="l"></span>
 						<span class="ll"></span>
 						<span class="r"></span>
@@ -230,7 +230,7 @@
 						<span class="rrb"></span>
 					</div>
 					<div class="text1">궁금한 식물 정보, 여기서 검색해보세요!</div><br>
-						<a href="/gardenList" class="btn">more</a>
+						<a href="${pageContext.request.contextPath}/gardenList" class="btn">more</a>
 					</div>
 				</div>
 				<div class="clear"></div>	
@@ -291,7 +291,7 @@
 		      <c:forEach var="notice" items="${noticeList}">
 		        <li>
 		          <div class="word">
-		            <a href="/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
+		            <a href="${pageContext.request.contextPath}/NoticeDetail?n_idx=${notice.n_idx}">${notice.n_title}</a>
 		            <span style="font-size: 20px; color: gray;"><fmt:formatDate value="${notice.n_date}" pattern="(yyyy-MM-dd HH:mm)" /></span>
 		          </div>
 		          <p></p>
@@ -312,8 +312,8 @@
 			   <div class="store-preview-list">
 			   		<c:forEach var="store" items="${storeList}" begin="0" end="3">
 			        <div class="store-preview-card">
-			        	<a href="/StoreDetail?p_idx=${store.p_idx}">	          
-			           	<img src="/img/store/${store.p_img}" alt="${store.p_name}" class="store-thumb">
+			        	<a href="${pageContext.request.contextPath}/StoreDetail?p_idx=${store.p_idx}">	          
+			           	<img src="${pageContext.request.contextPath}/img/store/${store.p_img}" alt="${store.p_name}" class="store-thumb">
 			           	</a>           
 			         	<h3>${store.p_name}</h3>
 			          	<p>${store.p_price}원</p>
@@ -328,7 +328,7 @@
 		<div id="owl" class="owl-carousel owl-theme">		
 		   <div class="company-section">
 		    <div class="company-img">
-     		 	<img src="/img/hands.jpg" alt="회사 이미지">
+     		 	<img src="${pageContext.request.contextPath}/img/hands.jpg" alt="회사 이미지">
    			</div>	  
 		    <div class="company-text">
 		      <h2>Plantopia 소개</h2>
@@ -366,7 +366,7 @@
  	            <div class="owl-item" style="width: 180px;">
  	              <div class="item">
  	                <div class="img_block ib1">
- 	                  <img src="/img/store_inside.png" alt="Inside Plantopia Store" class="img_inner">
+ 	                  <img src="${pageContext.request.contextPath}/img/store_inside.png" alt="Inside Plantopia Store" class="img_inner">
  	                </div>
  	              </div>
  	            </div>

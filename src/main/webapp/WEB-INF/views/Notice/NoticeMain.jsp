@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>공지 게시판</title>
-<link rel="stylesheet" href="/CSS/noticeMain.css" type="text/css">
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/noticeMain.css" type="text/css">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<%@ include file="../Main/header.jsp" %> 
@@ -36,8 +36,8 @@
 						<td>운영자</td>
 						<c:if test="${userAuthority eq 'admin'}">								
 						<td>
-						<a href="updateNotice?n_idx=${notice.n_idx}">수정</a> | 			
-						<a href="deleteNotice?n_idx=${notice.n_idx}">삭제</a>						
+						<a href="${pageContext.request.contextPath}/updateNotice?n_idx=${notice.n_idx}">수정</a> | 			
+						<a href="${pageContext.request.contextPath}/deleteNotice?n_idx=${notice.n_idx}">삭제</a>						
 						</td>
 						</c:if>
 					</tr>
@@ -46,13 +46,13 @@
 				</div>
 			</form>
 			<c:if test="${userAuthority eq 'admin'}">	
-				<a href="/addNotice"><button type="button" class="action-btn">공지추가</button></a>
+				<a href="${pageContext.request.contextPath}/addNotice"><button type="button" class="action-btn">공지추가</button></a>
 			</c:if>
 		</div>
 	</div>
 		<div class="pagination">
 		<c:forEach var="i" begin="1" end="${totalPage}">
-			<a href="/NoticeMain?page=${i}">${i}</a>
+			<a href="${pageContext.request.contextPath}/NoticeMain?page=${i}">${i}</a>
 		</c:forEach>
 	</div>
 	</div>

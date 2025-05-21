@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="/js/clinicFormValidation.js"></script> <!-- 유효성검사 JS -->
+<script src="${pageContext.request.contextPath}/js/clinicFormValidation.js"></script> <!-- 유효성검사 JS -->
 <title>클리닉 게시글 수정</title>
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <body>
 	<%@ include file="../Main/header.jsp" %>
@@ -17,7 +17,7 @@
 	  <div class="grid_2">&nbsp;</div>
 	  <div class="grid_8">
 			<h3>클리닉 게시글 수정</h3>
-			<form id="form" name="clinicForm" action="/Clinic/clinicUpdateProc" method="post" enctype="multipart/form-data">
+			<form id="form" name="clinicForm" action="${pageContext.request.contextPath}/Clinic/clinicUpdateProc" method="post" enctype="multipart/form-data">
 			   <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
 			   <input type="hidden" name="original_img" value="${clinic.plc_img}" />
 				    제목 <label class="name"><input type="text" name="plc_title" value="${clinic.plc_title}"></label><br>
@@ -33,11 +33,11 @@
 				    본문 <label class="message">
 				    <textarea name="plc_contents" rows="10" cols="50">${clinic.plc_contents}</textarea></label><br>
 				    <c:if test="${not empty clinic.plc_img}">
-					  기존 이미지 : <img src="/img/plantClinic/${clinic.plc_img}" width="100" /> <br>
+					  기존 이미지 : <img src="${pageContext.request.contextPath}/img/plantClinic/${clinic.plc_img}" width="100" /> <br>
 					</c:if>
 				    새 이미지 <input type="file" name="imgFile"><br><br>
 		      		<div class="btns">
-					  <a href="/Clinic/clinicList" class="btn">목록으로</a>
+					  <a href="${pageContext.request.contextPath}/Clinic/clinicList" class="btn">목록으로</a>
 					  <a href="#" class="btn" onclick="resetClinicForm(); return false;">다시 쓰기</a>
 					  <a href="#" class="btn" onclick="if (validateClinicForm()) document.forms['clinicForm'].submit(); return false;">수정 완료</a>
 					</div>

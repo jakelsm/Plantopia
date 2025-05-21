@@ -72,20 +72,20 @@
 <body>
 
 <div class="header-right">
-	관리자 접속 중 | <a href="/logout" class="color-white">로그아웃</a>
+	관리자 접속 중 | <a href="${pageContext.request.contextPath}/logout" class="color-white">로그아웃</a>
 </div>
 
 <div class="admin-container">
 	<h2>🌿 관리자 페이지</h2>
 	<div class="menu-grid">
-		<a href="/accountList">회원 관리</a>
-		<a href="/StoreMain">상품 관리</a>
-		<a href="/addStore">상품 추가</a>
-		<a href="/NoticeMain">공지사항 관리</a>
-		<a href="/addNotice">공지사항 추가</a>
-		<a href="/Plant/plantList">반려식물 게시판 관리</a>
-		<a href="/Clinic/clinicList">클리닉 게시판 관리</a>
-		<a href="/gardenList">식물 백과사전 관리</a>
+		<a href="${pageContext.request.contextPath}/accountList">회원 관리</a>
+		<a href="${pageContext.request.contextPath}/StoreMain">상품 관리</a>
+		<a href="${pageContext.request.contextPath}/addStore">상품 추가</a>
+		<a href="${pageContext.request.contextPath}/NoticeMain">공지사항 관리</a>
+		<a href="${pageContext.request.contextPath}/addNotice">공지사항 추가</a>
+		<a href="${pageContext.request.contextPath}/Plant/plantList">반려식물 게시판 관리</a>
+		<a href="${pageContext.request.contextPath}/Clinic/clinicList">클리닉 게시판 관리</a>
+		<a href="${pageContext.request.contextPath}/gardenList">식물 백과사전 관리</a>
 	</div>
 </div>
 </body>

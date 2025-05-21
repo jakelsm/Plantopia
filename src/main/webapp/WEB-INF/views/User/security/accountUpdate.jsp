@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <title>회원정보 수정페이지</title>
   <!-- 웹 아이콘 설정 -->
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
   <!-- 회원가입 전용 스타일 -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/profile.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/userupdate.css">
-  <script src="/JS/checkForm.js"></script>
+  <script src="${pageContext.request.contextPath}/JS/checkForm.js"></script>
 </head>
 <body>
   <div class="form-container">

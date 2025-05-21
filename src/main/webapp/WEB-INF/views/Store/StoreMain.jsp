@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title>StoreMain</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-<link rel="stylesheet" href="/CSS/storeMain.css" type="text/css">
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/storeMain.css" type="text/css">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon">
 <script>
 
 </script>	
@@ -31,15 +31,15 @@
 			<div class="container">
 			<c:forEach var="dto" items="${lists}">	
 			<div class="store-item">
-				<a href="StoreDetail?p_idx=${dto.p_idx}">
-				<img src="/img/store/${dto.p_img}" alt="${dto.p_name}" />
+				<a href="${pageContext.request.contextPath}/StoreDetail?p_idx=${dto.p_idx}">
+				<img src="${pageContext.request.contextPath}/img/store/${dto.p_img}" alt="${dto.p_name}" />
 				</a>
-				<div class="name"><h4><a href="StoreDetail?p_idx=${dto.p_idx}">${dto.p_name}</a></h4></div>
+				<div class="name"><h4><a href="${pageContext.request.contextPath}/StoreDetail?p_idx=${dto.p_idx}">${dto.p_name}</a></h4></div>
 				<span class="price"><p>${dto.p_price}원</p></span>
 				
 				<c:if test="${userAuthority eq 'admin'}">
-					<a href="StoreUpdate?p_idx=${dto.p_idx}"><button type="button" class="action-btn">수정</button></a>			
-					<a href="StoreDelete?p_idx=${dto.p_idx}"><button type="button" class="action-btn">삭제</button></a>
+					<a href="${pageContext.request.contextPath}/StoreUpdate?p_idx=${dto.p_idx}"><button type="button" class="action-btn">수정</button></a>			
+					<a href="${pageContext.request.contextPath}/StoreDelete?p_idx=${dto.p_idx}"><button type="button" class="action-btn">삭제</button></a>
 				</c:if>
 			</div>
 			</c:forEach>
@@ -50,7 +50,7 @@
 			</c:if>
 			
 			</form>
-			<form name="StoreSearch" id="StoreSearch" method="get" action="/StoreSearch">
+			<form name="StoreSearch" id="StoreSearch" method="get" action="${pageContext.request.contextPath}/StoreSearch">
 				<div class="ctn">
 					<input type="text" name="keyword" placeholder="제품명을 입력하세요">
 					<input type="submit" value="검색">
@@ -58,7 +58,7 @@
 			</form>
 			<div class="pagination">
 			<c:forEach var="i" begin="1" end="${totalPage}">
-				<a href="/StoreMain?page=${i}">${i}</a>
+				<a href="${pageContext.request.contextPath}/StoreMain?page=${i}">${i}</a>
 			</c:forEach>
 			</div>
 	 	</div>

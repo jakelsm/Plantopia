@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>후기 댓글 수정 폼 페이지</title>
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <style>
 	body {
 	 font-family: 'Noto Sans KR'; padding: 20px; 
@@ -17,7 +17,7 @@
 </style>
 </head>
 <body>
-	<form name="commentUpdateForm" id="commentUpdateForm" method="post" action="CommentUpdateProcess">
+	<form name="commentUpdateForm" id="commentUpdateForm" method="post" action="${pageContext.request.contextPath}/CommentUpdateProcess">
 		<input type="hidden" name="scom_idx" value="${comment.scom_idx}">
 		<input type="hidden" name="p_idx" value="${p_idx}">
 		작성자 : ${user_nickname}<br>

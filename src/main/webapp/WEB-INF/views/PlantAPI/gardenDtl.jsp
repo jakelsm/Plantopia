@@ -17,7 +17,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>실내정원용 식물 상세</title>
   <!-- 웹 아이콘 설정 -->
-  <link rel="icon" href="/img/favicon.ico">
+  <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reset.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/grid.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.css">
@@ -147,7 +147,7 @@
       function fncList(){
         with(document.searchApiForm){
           method="get";
-          action="/gardenList";
+          action="${pageContext.request.contextPath}/gardenList";
           submit();
         }
       }

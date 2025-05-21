@@ -5,7 +5,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-   <link rel="icon" href="/img/favicon.ico">
+   <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
   <title>로그인</title>
   <!-- 외부 CSS -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/auth.css">

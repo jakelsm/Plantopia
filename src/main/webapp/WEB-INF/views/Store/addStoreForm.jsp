@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>addStoreForm</title>
-<link rel="stylesheet" href="/CSS/addStoreForm.css" type="text/css">	
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/addStoreForm.css" type="text/css">	
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <body>
 	<h2>상품 등록</h2>

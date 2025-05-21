@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>footer</title>
-  <link rel="icon" href="/images/favicon.ico">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/form.css">
-  <script src="/js/jquery.js"></script>
-  <script src="/js/jquery-migrate-1.1.1.js"></script>
-  <script src="/js/script.js"></script>
+  <link rel="icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form.css">
+  <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+  <script src="${pageContext.request.contextPath}/js/jquery-migrate-1.1.1.js"></script>
+  <script src="${pageContext.request.contextPath}/js/script.js"></script>
 </head>
 <body>
 	<footer>

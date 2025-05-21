@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>상품 수정</title>
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
-<link rel="stylesheet" href="/CSS/addStoreForm.css" type="text/css">	
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/addStoreForm.css" type="text/css">	
 </head>
 <body>
 	<h2>상품 수정</h2>

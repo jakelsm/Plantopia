@@ -8,7 +8,7 @@
 <!-- Bootstrap 5 CSS CDN -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <title>클리닉 상세보기</title>
 	 <style>
        .comment {
@@ -151,7 +151,7 @@
 		        }, 600);
 		        
 		        $.ajax({
-		            url: '/Clinic/comment/rate',
+		            url: '${pageContext.request.contextPath}/Clinic/comment/rate',
 		            type: 'POST',
 		            data: {
 		                rating: rating,
@@ -189,7 +189,7 @@
 		        var plcIdx = form.find('input[name="plc_idx"]').val();
 
 		        $.ajax({
-		            url: '/Clinic/comment/rating/delete',
+		            url: '${pageContext.request.contextPath}/Clinic/comment/rating/delete',
 		            type: 'POST',
 		            data: {
 		                plccom_idx: commentId,
@@ -224,7 +224,7 @@
 	    <h3>클리닉 게시글 상세보기</h3>
 		<div class="clear cl1"></div>
 		<c:if test="${not empty clinic.plc_img}">
-	        <p><img src="/img/plantClinic/${clinic.plc_img}" alt="이미지" height="600"></p>
+	        <p><img src="${pageContext.request.contextPath}/img/plantClinic/${clinic.plc_img}" alt="이미지" height="600"></p>
 	    </c:if>
 		</div>
 		
@@ -251,12 +251,12 @@
 	    
 	    <div class="clear cl1"></div>
 	    <div class="btns">
-	    <a href="/Clinic/clinicList" class="btn">목록으로</a>
+	    <a href="${pageContext.request.contextPath}/Clinic/clinicList" class="btn">목록으로</a>
 	    
 	    <c:if test="${not empty loginInfo}">
 		    <c:if test="${loginInfo.user_authority == 'admin' or loginInfo.user_num == clinic.user_num}">
-		            <a href="/Clinic/clinicUpdate?plc_idx=${clinic.plc_idx}" class="btn">수정</a>
-		            <a href="/Clinic/clinicDelete?plc_idx=${clinic.plc_idx}" class="btn">삭제</a>
+		            <a href="${pageContext.request.contextPath}/Clinic/clinicUpdate?plc_idx=${clinic.plc_idx}" class="btn">수정</a>
+		            <a href="${pageContext.request.contextPath}/Clinic/clinicDelete?plc_idx=${clinic.plc_idx}" class="btn">삭제</a>
 		    </c:if>
 		</c:if>
 	    </div>
@@ -317,11 +317,11 @@
 			</c:if>
 	
 	            <!-- 수정/삭제 링크 -->
-	            <p><a href="/Clinic/comment/update?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">수정 | </a>
-	            <a href="/Clinic/comment/delete?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">삭제</a></p>
+	            <p><a href="${pageContext.request.contextPath}/Clinic/comment/update?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">수정 | </a>
+	            <a href="${pageContext.request.contextPath}/Clinic/comment/delete?plccom_idx=${comment.plccom_idx}&plc_idx=${clinic.plc_idx}">삭제</a></p>
 	
 	            <!-- 대댓글 작성 -->
-	            <form class="reply-form" action="/Clinic/comment/write" method="post">
+	            <form class="reply-form" action="${pageContext.request.contextPath}/Clinic/comment/write" method="post">
 	                <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
 	                <input type="hidden" name="parentId" value="${comment.plccom_idx}" />
 	                <textarea name="plccom_contents" rows="2" cols="50" placeholder="답글 작성"></textarea><br>
@@ -332,7 +332,7 @@
 	
 	    <hr>
 	    <h3>댓글 작성</h3>
-	    <form class="comment-form" action="/Clinic/comment/write" method="post">
+	    <form class="comment-form" action="${pageContext.request.contextPath}/Clinic/comment/write" method="post">
 	        <input type="hidden" name="plc_idx" value="${clinic.plc_idx}" />
 	        <textarea name="plccom_contents" rows="4" cols="50"></textarea><br>
 	        <input type="submit" value="댓글 작성">

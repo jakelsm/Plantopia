@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>반려식물 자랑 게시판</title>
- <link rel="icon" href="/img/favicon.ico">
+ <link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 </head>
 <style>
 	.ctn {
@@ -88,9 +88,9 @@
 			 </c:if>
 		     
 		     <div class="grid_3"> 
-		      <a href="/img/plant/${dto.pla_img}" class="gal">
+		      <a href="${pageContext.request.contextPath}/img/plant/${dto.pla_img}" class="gal">
  					<div class="img_block"> 
-						<img src="/img/plant/${dto.pla_img}" alt="" >
+						<img src="${pageContext.request.contextPath}/img/plant/${dto.pla_img}" alt="" >
 					</div>	
 			  </a>
 		      <div class="title" style="font-size: 18px; font-weight: bold; color: #66cc66;">
@@ -112,12 +112,12 @@
 		<div class="clear cl1"></div>
 		<div class="grid_10">&nbsp;</div>
 		    <div class="grid_2">
-			<a href="/Plant/plantWrite">글쓰기</a></div>
+			<a href="${pageContext.request.contextPath}/Plant/plantWrite">글쓰기</a></div>
 			</div>
 			
 			<div class="clear cl1"></div>
 			<div class="ctn">		
-				<form action="/Plant/plantList" method="get">
+				<form action="${pageContext.request.contextPath}/Plant/plantList" method="get">
 				    <input type="text" name="search" value="${search}" placeholder="제목을 입력하세요.">
 				    <input type="submit" value="검색">
 				</form>
@@ -126,13 +126,13 @@
 			<!-- 페이징 처리 -->
 			<div class="pagination">
 			    <c:if test="${currentPage > 1}">
-			        <a href="/Plant/plantList?page=${currentPage - 1}&search=${param.search}">이전</a>
+			        <a href="${pageContext.request.contextPath}/Plant/plantList?page=${currentPage - 1}&search=${param.search}">이전</a>
 			    </c:if>
 			    <c:forEach var="i" begin="1" end="${totalPage}">
-			        <a href="/Plant/plantList?page=${i}&search=${param.search}" class="${i == currentPage ? 'active' : ''}">${i}</a>
+			        <a href="${pageContext.request.contextPath}/Plant/plantList?page=${i}&search=${param.search}" class="${i == currentPage ? 'active' : ''}">${i}</a>
 			    </c:forEach>
 			    <c:if test="${currentPage < totalPage}">
-			        <a href="/Plant/plantList?page=${currentPage + 1}&search=${param.search}">다음</a>
+			        <a href="${pageContext.request.contextPath}/Plant/plantList?page=${currentPage + 1}&search=${param.search}">다음</a>
 			    </c:if>
 			 </div>
 		</div>	 
@@ -158,7 +158,7 @@
 		 	            <div class="owl-item" style="width: 180px;">
 		 	              <div class="item">
 		 	                <div class="img_block ib1">
-		 	                  <img src="/img/store_inside.png" alt="Inside Plantopia Store" class="img_inner" style="height: 50%;">
+		 	                  <img src="${pageContext.request.contextPath}/img/store_inside.png" alt="Inside Plantopia Store" class="img_inner" style="height: 50%;">
 		 	                </div>
 		 	              </div>
 		 	            </div>

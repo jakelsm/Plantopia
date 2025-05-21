@@ -6,14 +6,14 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <!-- 웹 아이콘 설정 -->
-<link rel="icon" href="/img/favicon.ico">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico">
 <!-- 회원가입 전용 스타일 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/signup.css">
 <!-- JS 토글 (로그인 페이지와 동일한 CSS 애니메이션을 위해 필요) -->
 <script src="${pageContext.request.contextPath}/js/signup.js"></script>
 <!-- 기존 체크폼 기능 -->
 <script src="${pageContext.request.contextPath}/js/checkForm.js"></script>
-<script src="/JS/checkForm.js"></script>
+<script src="${pageContext.request.contextPath}/JS/checkForm.js"></script>
 </head>
 <script>
 // 아이디 중복 확인
