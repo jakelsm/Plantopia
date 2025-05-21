@@ -102,13 +102,10 @@
 	                  merchant_uid: merchantUid,
 	                  c_idx_list: selected
 	                }),
-	                success: function () {
-	                  alert('결제 성공!');
-	                  location.href = '${pageContext.request.contextPath}/StoreMain';
-
-	                  // 사용자 번호는 세션에서 JSTL로 JS에 주입
-	                  const userNum = '${sessionScope.user_num}';
-
+	                success: function () {	                	
+	                	
+	                alert('결제 성공!');
+	                	  
 	                },
 	                error: function () {
 	                  alert('서버 검증 실패');
@@ -123,6 +120,7 @@
   </script>
 </head>
 <body>
+<p>세션 사용자 번호: ${sessionScope.user_num}</p>
 	<div class="cart-wrapper">
   
   <c:forEach var="cart" items="${cartList}">

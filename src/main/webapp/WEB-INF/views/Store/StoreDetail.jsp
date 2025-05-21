@@ -70,7 +70,7 @@
 	<div class="comment-box">
 		<p>닉네임 : ${comment.user_nickname}</p>
 		<p>후기내용 : ${comment.scom_contents}</p>
-		<c:if test="${user_num == comment.user_num}">
+		<c:if test="${user_num == comment.user_num || userAuthority == 'admin'}">
     		<button type="button" class="action-btn" onclick="window.open('CommentUpdate?scom_idx=${comment.scom_idx}&p_idx=${store.p_idx}','후기수정',
                             'width=500,height=400,top=200,left=300,resizable=no,scrollbars=yes');">수정</button>
     		<button type="button" class="action-btn" onclick="location.href='CommentDelete?scom_idx=${comment.scom_idx}&p_idx=${store.p_idx}'">삭제</button>
