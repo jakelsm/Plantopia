@@ -222,4 +222,11 @@ public class UserController {
         // 관리자가 삭제한 경우 리스트로
 		return "redirect:accountList";
 	}
-}
+	
+	//메인페이지 이벤트 팝업창 띄우기 
+	@RequestMapping("mainEvent")
+	public String showMainEventPage() {
+        return "Main/mainEvent"; // ViewResolver가 /WEB-INF/views/Main/mainEvent.jsp로 매핑
+    }
+	
+}	

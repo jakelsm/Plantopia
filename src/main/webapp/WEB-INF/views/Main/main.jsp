@@ -50,6 +50,25 @@
 		    loop: true
 		  });
 		});
+		
+		function getCookie(name) {
+			  var cookies = document.cookie.split(';');
+			  for (var i = 0; i < cookies.length; i++) {
+			    var c = cookies[i].trim();
+			    if (c.indexOf(name + "=") === 0) {
+			      return c.substring(name.length + 1, c.length);
+			    }
+			  }
+			  return null;
+			}
+
+			window.onload = function () {
+			  if (!getCookie("hideEventPopup")) {
+			    window.open('${pageContext.request.contextPath}/mainEvent',
+			      'eventPopup',
+			      'width=600,height=700,top=150,left=400,resizable=no,scrollbars=yes');
+			  }
+			};
 		</script>
   <title>메인 페이지</title>
 </head>
