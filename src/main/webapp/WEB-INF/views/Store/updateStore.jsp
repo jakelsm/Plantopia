@@ -10,7 +10,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/addStoreForm.css" type="text/css">	
 </head>
 <body>
-	<h2>상품 수정</h2>
 	<form name="updateStore" id="updateStore" method="post" action="StoreUpdateProcess" enctype="multipart/form-data">
 		<input type="hidden" name="p_idx" value="${store.p_idx}">
 		<input type="hidden" name="original_img" value="${store.p_img}">		

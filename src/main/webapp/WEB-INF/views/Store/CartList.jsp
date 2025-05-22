@@ -120,7 +120,6 @@
   </script>
 </head>
 <body>
-<p>세션 사용자 번호: ${sessionScope.user_num}</p>
 	<div class="cart-wrapper">
   
   <c:forEach var="cart" items="${cartList}">
