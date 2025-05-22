@@ -80,7 +80,7 @@
 		<div class="container_12">
 			<div class="grid_12">
 				<div class="header-right">
-					<c:if test="${loginInfo.user_authority eq 'admin' or loginInfo.user_num eq dto.user_num}">
+					<c:if test="${loginInfo.user_authority eq 'admin'}">
 					  	<a href="${pageContext.request.contextPath}/adminpage" class="color-white">관리자용 페이지</a> | 
 					</c:if>
 			        <a href="${pageContext.request.contextPath}/profile" class="color-white"><i class="bi bi-person-circle fs-4"></i> <strong>${sessionScope.user_nickname}님</strong></a> | 
