@@ -19,7 +19,9 @@ function closePopup() {
 }
 </script>
 <body>
+	<a href="/NoticeDetail?n_idx=1">
 	<img src="${pageContext.request.contextPath}/img/mainpage/eventimage.png" alt="event" style="width: 600px;">
+	</a>
 	<label><input type="checkbox" id="noToday"> 오늘 하루 이 창을 다시 보지 않기</label>
   	<button onclick="closePopup()">닫기</button>
 </body>
