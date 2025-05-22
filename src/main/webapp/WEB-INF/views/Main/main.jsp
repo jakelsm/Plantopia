@@ -69,6 +69,11 @@
 			      'width=600,height=700,top=150,left=400,resizable=no,scrollbars=yes');
 			  }
 			};
+			
+			
+			
+			
+			
 		</script>
   <title>메인 페이지</title>
 </head>

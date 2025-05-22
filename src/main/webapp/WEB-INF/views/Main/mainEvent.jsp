@@ -8,18 +8,24 @@
 <link rel="icon" href="/img/favicon.ico">
 </head>
 <script>
-function closePopup() {
-  if (document.getElementById("noToday").checked) {
-    // 1일짜리 쿠키 설정
-    var date = new Date();
-    date.setDate(date.getDate() + 1);
-    document.cookie = "hideEventPopup=true; path=/; expires=" + date.toUTCString();
-  }
-  window.close();
-}
+	function goToNotice() {
+		  if (window.opener && !window.opener.closed) {
+		    window.opener.location.href = '${pageContext.request.contextPath}/NoticeDetail?n_idx=1';
+		  }
+		  window.close();
+		}
+	
+		function closePopup() {
+		  if (document.getElementById("noToday").checked) {
+		    var date = new Date();
+		    date.setDate(date.getDate() + 1);
+		    document.cookie = "hideEventPopup=true; path=/; expires=" + date.toUTCString();
+		  }
+		  window.close();
+		}
 </script>
 <body>
-	<a href="/NoticeDetail?n_idx=1">
+	<a href="#" onclick="goToNotice(); return false;">
 	<img src="${pageContext.request.contextPath}/img/mainpage/eventimage.png" alt="event" style="width: 600px;">
 	</a>
 	<label><input type="checkbox" id="noToday"> 오늘 하루 이 창을 다시 보지 않기</label>
