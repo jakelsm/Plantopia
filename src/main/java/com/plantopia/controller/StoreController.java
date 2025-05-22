@@ -45,6 +45,7 @@ public class StoreController {
 		model.addAttribute("lists", storeList);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("loginInfo", user);
 		
 		if (user != null) {
 	        model.addAttribute("userAuthority", user.getUser_authority());

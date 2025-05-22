@@ -35,7 +35,8 @@ public class NoticeController {
 		
 		model.addAttribute("noticeLists", noticeList);
 		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPage", totalPage); 
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("loginInfo", user);
 		
 	    if (user != null) {
 	        model.addAttribute("userAuthority", user.getUser_authority());
