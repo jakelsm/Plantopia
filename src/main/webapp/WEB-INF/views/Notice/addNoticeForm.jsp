@@ -14,7 +14,7 @@
 		<label for="n_title">공지 제목 : </label><input type="text" name="n_title" id="n_title" maxlength="100"><br>
 		<label for="n_contents">공지 내용 : </label><textarea name="n_contents" id="n_contents" rows="5" cols="50"></textarea><br>
 		<label for="imgFile">공지 이미지 : </label><input type="file" name="imgFile" id="imgFile"><br>
-		<input type="submit" value="공지추가">
+		<input type="submit" value="공지 추가">
 	</form>
 </body>
 </html>

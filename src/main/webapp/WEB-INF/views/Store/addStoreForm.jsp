@@ -16,7 +16,7 @@
 			<label for="p_description">제품 설명 : </label><textarea name="p_description" id="p_description" placeholder="제품설명을 입력하세요"></textarea><br>
 			<label for="p_stockQuantity">재고 수량 : </label><input type="number" name="p_stockQuantity"><br>
 			<label for="imgFile">제품 이미지 : </label><input type="file" name="imgFile" id="imgFile"><br>
-			<input type="submit" value="전송">
+			<input type="submit" value="추가">
 	</form>
 </body>
 </html>
