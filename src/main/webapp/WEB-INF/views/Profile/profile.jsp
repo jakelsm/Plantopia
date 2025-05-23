@@ -34,7 +34,7 @@
 	  </div>
 	  
 	  <div class="white-box">
-	  	<h3>Plant게시판 작성글 목록</h3>
+	  	<h3>반려식물 자랑 게시판 작성글 목록</h3>
 	      <c:if test="${empty myPosts}">
 	        <p>아직 작성하신 글이 없습니다.</p>
 	      </c:if>
@@ -82,7 +82,7 @@
 	  </div>
 	  
 	  <div class="white-box">
-	  	<h3>PlantClinic게시판 작성글 목록</h3>
+	  	<h3>반려식물 클리닉 게시판 작성글 목록</h3>
 	      <c:if test="${not empty clinicList}">
 	        <table class="list-table">
 	          <thead><tr><th>번호</th><th>제목</th><th>작성일</th></tr></thead>
