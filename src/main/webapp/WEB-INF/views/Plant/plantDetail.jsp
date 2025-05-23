@@ -193,10 +193,12 @@
 	            
 	            <p><strong>${comment.writer}</strong></p>
 				
-				<p>
-				  <a href="${pageContext.request.contextPath}/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">수정</a> |
-				  <a href="${pageContext.request.contextPath}/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
-				</p>
+				<c:if test="${loginInfo.user_num eq comment.user_num}">
+				  <p>
+				    <a href="${pageContext.request.contextPath}/Plant/plantList/comment/update?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}">수정</a> |
+				    <a href="${pageContext.request.contextPath}/Plant/plantList/comment/delete?placom_idx=${comment.placom_idx}&pla_idx=${plant.pla_idx}" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
+				  </p>
+				</c:if>
 				
 	            <!-- 대댓글 작성 폼 -->
 	            <form class="reply-form" action="${pageContext.request.contextPath}/Plant/plantList/comment" method="post" style="margin-top: 5px;">
