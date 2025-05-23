@@ -28,7 +28,7 @@
 	        u.user_nickname AS writer
 	    FROM Plant p
 	    JOIN User u ON p.user_num = u.user_num
-	    ORDER BY p.pla_date DESC
+	    ORDER BY p.pla_idx DESC
 	</select>
 
 
@@ -45,7 +45,7 @@
             u.user_nickname AS writer
         FROM Plant p
         JOIN User u ON p.user_num = u.user_num
-        ORDER BY p.pla_date DESC
+        ORDER BY p.pla_idx DESC
         LIMIT #{limit} OFFSET #{offset}
     </select>
 
@@ -102,7 +102,7 @@
 	    from Plant p
 	    join User u on p.user_num = u.user_num
 	    where p.user_num = #{user_num}
-	    order by p.pla_date DESC
+	    order by p.pla_idx DESC
 	</select>
 	
 	<!-- 인기글 조회: 조회수 + 좋아요수 합산하여 내림차순, 상위 8개 -->
@@ -156,7 +156,7 @@
 	    FROM Plant p
 	    JOIN User u ON p.user_num = u.user_num
 	    WHERE p.pla_title LIKE CONCAT('%', #{search}, '%')  <!-- 제목에서 검색어가 포함된 게시글을 찾음 -->
-	    ORDER BY p.pla_date DESC
+	    ORDER BY p.pla_idx DESC
 	    LIMIT #{limit} OFFSET #{offset}
 	</select>
 	

@@ -28,7 +28,7 @@
         SELECT c.*, u.user_nickname AS writer
         FROM PlantClinic c
         JOIN User u ON c.user_num = u.user_num
-        ORDER BY c.plc_date DESC
+        ORDER BY c.plc_idx DESC
     </select>
 
     <select id="selectClinicDetail" parameterType="int" resultMap="clinicResultMap">
@@ -71,14 +71,14 @@
       	FROM PlantClinic c
       	JOIN User u ON c.user_num = u.user_num
      	WHERE c.user_num = #{user_num}
-     	ORDER BY c.plc_date DESC
+     	ORDER BY c.plc_idx DESC
   	</select>
   	
   	<select id="getClinicPaging" resultMap="clinicResultMap">
     SELECT c.*, u.user_nickname AS writer
     FROM PlantClinic c
     JOIN User u ON c.user_num = u.user_num
-    ORDER BY c.plc_date DESC
+    ORDER BY c.plc_idx DESC
     LIMIT #{limit} OFFSET #{offset}
 	</select>
   	
@@ -92,7 +92,7 @@
 	    FROM PlantClinic c
 	    JOIN User u ON c.user_num = u.user_num
 	   WHERE c.user_num = #{userNum}
-	   ORDER BY c.plc_date DESC
+	   ORDER BY c.plc_idx DESC
 	   LIMIT #{offset}, #{pageSize}
 	</select>
 	<select id="countByUser" resultType="int" parameterType="int">
@@ -105,7 +105,7 @@
 	    FROM PlantClinic c
 	    JOIN User u ON c.user_num = u.user_num
 	    WHERE c.plc_title LIKE CONCAT('%', #{search}, '%')
-	    ORDER BY c.plc_date DESC
+	    ORDER BY c.plc_idx DESC
 	    LIMIT #{limit} OFFSET #{offset}
 	</select>
 	
