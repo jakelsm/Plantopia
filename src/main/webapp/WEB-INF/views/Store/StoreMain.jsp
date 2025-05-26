@@ -21,7 +21,7 @@
 	 <div class="content">
     	<div class="container_12">
       	<div class="grid_12">
-			<form name="StoreMain" id="StoreMain" method="post" action="/addStore">
+			<form name="StoreMain" id="StoreMain" method="post" action="${pageContext.request.contextPath}/addStore">
 			<div class="right" style="padding-top:50px;">
 				<p>
 					<button type="button" class="action-btn" onclick="location.href='getCartList?user_num=${sessionScope.user_num}'">
