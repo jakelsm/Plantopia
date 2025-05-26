@@ -73,7 +73,7 @@ function checkDuplicateEmail() {
         return;
     }
 
-    fetch(`${contextPath}/checkEmail?user_email=` + encodeURIComponent(email))
+    fetch("${pageContext.request.contextPath}/checkEmail?user_email=" + encodeURIComponent(email))
         .then(response => response.text())
         .then(result => {
             if (result === "EXISTS") {
