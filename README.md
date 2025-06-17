@@ -14,13 +14,17 @@ Spring 기반 백엔드 아키텍처와 보안 설계, 주요 기능 구현 및 
 
 주요 기여
 
-Spring Security 기반 로그인/회원가입 및 권한 분리 설계
+Spring Security 기반 로그인, 회원가입 및 권한 분리 설계
 
-MyBatis를 활용한 DB 연동 및 CRUD 처리
+사용자별 권한 제어 및 접근 제한 기능 구현 (ROLE_USER / ROLE_ADMIN)
+
+프로필 페이지 및 관리자 전용 페이지 개발
+
+메인 페이지의 인기글 순위 노출 기능 구현
 
 도로명 주소 API, 실내정원 식물 API, Iamport 결제 API 연동
 
-전체 웹 시스템 구조 설계 및 배포 환경 세팅(Tomcat, WAR 추출)
+전체 프로젝트 구조 설계 및 백엔드 기술 스택 총괄
 
 <h1>🧭 프로젝트 목표</h1>
 
@@ -32,7 +36,7 @@ MyBatis를 활용한 DB 연동 및 CRUD 처리
 
 <h1>🛠️ 주요 기능 및 구현</h1>
 
-<h3>기능	설명	기여도</h3>
+<h3>기능	설명  및	 기여도</h3>
 
 🔐 로그인 및 회원가입	Spring Security 기반	100% (설계 + 구현)
 
@@ -66,22 +70,32 @@ Infra: Apache Tomcat 10.1, Git, GitHub
 
 API: 행정안전부 도로명 주소 API, 농사로 식물 정보 API, Iamport 결제 API
 
+<h1>🧩 데이터베이스 설계 (ERD)</h1>
+Plantopia는 사용자, 게시판, 스토어, 식물 정보를 효율적으로 연동하기 위해 관계형 데이터베이스 기반의 설계를 적용했습니다.
+
+ERD를 통해 테이블 간 관계와 기능 연결 구조를 명확히 정의하였습니다.
+
+
+
 <h1>🖥️ 실행 화면 예시</h1>
+<img width="714" alt="화면 캡처 2025-06-08 230150" src="https://github.com/user-attachments/assets/6e3df2c7-db87-4102-9867-17cf091c8721" />
+<img width="407" alt="화면 캡처 2025-06-08 230249" src="https://github.com/user-attachments/assets/24a32b9c-445e-4942-b1b4-0b8fd8aa673d" />
+<img width="1121" alt="화면 캡처 2025-06-08 233940" src="https://github.com/user-attachments/assets/1f8d61bb-c2af-47cb-9ec9-e2149ba51f2a" />
+<img width="1097" alt="화면 캡처 2025-06-08 234206" src="https://github.com/user-attachments/assets/ecb01979-bd2c-473d-9788-ea9693b6c1b2" />
+<img width="1100" alt="화면 캡처 2025-06-17 110913" src="https://github.com/user-attachments/assets/0fd7d7f7-3799-46fd-a04c-9539f1962a25" />
+<img width="796" alt="화면 캡처 2025-06-17 111714" src="https://github.com/user-attachments/assets/7fc9209e-cf92-4497-b8f4-21152d23427c" />
+<img width="982" alt="화면 캡처 2025-06-17 111827" src="https://github.com/user-attachments/assets/e91297c1-0fd9-4d90-8f64-2fad529faf00" />
+<img width="905" alt="화면 캡처 2025-06-17 112710" src="https://github.com/user-attachments/assets/c6228aea-b1d4-4219-bd18-3301caf3cbd9" />
+<img width="1066" alt="화면 캡처 2025-06-17 112810" src="https://github.com/user-attachments/assets/dc0823a1-db39-42a9-b55d-5be3a39351ad" />
 
-<./images/main_page.png>
-<./images/login.png>
-<./images/plant_detail.png>
-<./images/payment.png>
 
-(이미지는 나중에 삽입하시면 됩니다)
+<h1>👨‍👩‍👧 팀 구성 및 역활</h1>
 
-<h1>👨‍👩‍👧 팀 구성</h1>
+이승민	팀장 / 로그인 및 권한 설계 / 관리자 기능 / 인기글 구현 / 결제 API 구현 / 식물 백과사전 API 구
 
-이승민	팀장 / 백엔드, DB 설계, 보안 / API	
+김나현 팀원 / 스토어 페이지 / 장바구니 / 공지 게시판 / 인기상품 미리보기
 
-김OO / 프론트엔드 / UI 디자인
-
-박OO / DB 설계 / 클리닉 기능 구현
+최민성 팀원 / 게시판 CRUD / 댓글 계층 구조 / 좋아요 및 별점
 
 <h1>🔗 참고자료</h1>
 
