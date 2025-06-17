@@ -1,10 +1,10 @@
-🌱 Plantopia | 반려식물 커뮤니티 & 스토어 플랫폼
+<h1>🌱 Plantopia | 반려식물 커뮤니티 & 스토어 플랫폼</h1>
 
 Plantopia는 반려식물에 관심 있는 사용자들을 위한 웹 기반 통합 플랫폼입니다.
 저는 이 프로젝트에서 팀장으로 전체적인 개발 방향을 리드하였고,
 Spring 기반 백엔드 아키텍처와 보안 설계, 주요 기능 구현 및 외부 API 연동을 직접 담당했습니다.
 
-📌 프로젝트 개요
+<h1>📌 프로젝트 개요</h1>
 
 개발 기간: 2025.04 ~ 2025.05 (5주)
 
@@ -22,7 +22,7 @@ MyBatis를 활용한 DB 연동 및 CRUD 처리
 
 전체 웹 시스템 구조 설계 및 배포 환경 세팅(Tomcat, WAR 추출)
 
-🧭 프로젝트 목표
+<h1>🧭 프로젝트 목표</h1>
 
 반려식물 커뮤니티의 부재 문제 해결
 기존 반려동물 중심 커뮤니티와 달리, 식물 애호가들이 정보 교류하고 제품을 구매할 수 있는 플랫폼이 필요했습니다.
@@ -30,9 +30,9 @@ MyBatis를 활용한 DB 연동 및 CRUD 처리
 사용자 접근성 + 기능성 동시 확보
 커뮤니티, 클리닉 상담, 식물 정보 탐색, 온라인 스토어 기능을 통합 제공
 
-🛠️ 주요 기능 및 구현
+<h1>🛠️ 주요 기능 및 구현</h1>
 
-기능	설명	기여도
+<h3>기능	설명	기여도</h3>
 
 🔐 로그인 및 회원가입	Spring Security 기반	100% (설계 + 구현)
 
@@ -54,7 +54,7 @@ MyBatis를 활용한 DB 연동 및 CRUD 처리
 
 🚀 배포 환경 구성	WAR 추출, Tomcat 배포, 경로 설정	100%
 
-⚙️ 기술 스택
+<h1>⚙️ 기술 스택</h1>
 
 Frontend: HTML5, CSS3, JavaScript, JSP, Bootstrap
 
@@ -64,15 +64,9 @@ Database: MySQL
 
 Infra: Apache Tomcat 10.1, Git, GitHub
 
-API:
+API: 행정안전부 도로명 주소 API, 농사로 식물 정보 API, Iamport 결제 API
 
-행정안전부 도로명 주소 API
-
-농사로 식물 정보 API
-
-Iamport 결제 API
-
-🖥️ 실행 화면 예시
+<h1>🖥️ 실행 화면 예시</h1>
 
 <./images/main_page.png>
 <./images/login.png>
@@ -81,25 +75,23 @@ Iamport 결제 API
 
 (이미지는 나중에 삽입하시면 됩니다)
 
-👨‍👩‍👧 팀 구성
+<h1>👨‍👩‍👧 팀 구성</h1>
 
-이름	역할	GitHub
+이승민	팀장 / 백엔드, DB 설계, 보안 / API	
 
-이승민	팀장 / 백엔드 / 보안 / API	github.com/yourusername
+김OO / 프론트엔드 / UI 디자인
 
-김OO	프론트엔드 / UI 디자인
+박OO / DB 설계 / 클리닉 기능 구현
 
-박OO	DB 설계 / 클리닉 기능 구현
+<h1>🔗 참고자료</h1>
 
-🔗 참고자료
+도로명 주소 API (https://www.juso.go.kr/)
 
-도로명 주소 API
+실내정원용 식물 API (https://www.nongsaro.go.kr/)
 
-실내정원용 식물 API
+Iamport 결제 API (https://portone.io/korea/ko)
 
-Iamport 결제 API
-
-💬 회고
+<h1>💬 회고</h1>
 
 “보안을 직접 구현하며 Spring Security의 설정 방식에 대해 깊이 이해하게 되었고,
 공공 API와 상용 API를 함께 다뤄보며 실무에 가까운 설계와 오류 처리 경험을 할 수 있었습니다.”
