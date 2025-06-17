@@ -75,7 +75,7 @@ Plantopia는 사용자, 게시판, 스토어, 식물 정보를 효율적으로 �
 
 ERD를 통해 테이블 간 관계와 기능 연결 구조를 명확히 정의하였습니다.
 
-
+![erdiagram](https://github.com/user-attachments/assets/27a4ee45-fc69-4f06-b717-1e75ec9df83c)
 
 <h1>🖥️ 실행 화면 예시</h1>
 <img width="714" alt="화면 캡처 2025-06-08 230150" src="https://github.com/user-attachments/assets/6e3df2c7-db87-4102-9867-17cf091c8721" />
